@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../components/post'
-
-const client = require('contentful').createClient({
-  space: process.env.SPACE_ID,
-  accessToken: process.env.ACCESS_TOKEN
-})
+import client from '../clients/contentfulClient'
 
 function HomePage() {
+  
   async function fetchContentTypes() {
     const types = await client.getContentTypes()
+    console.log(types);
     if (types.items) return types.items
     console.log('Error getting Content Types.')
   }
+
   async function fetchEntriesForContentType(contentType) {
     const entries = await client.getEntries({
       content_type: contentType.sys.id
