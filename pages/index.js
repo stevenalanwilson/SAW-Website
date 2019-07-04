@@ -1,29 +1,16 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../components/post'
-import client from '../clients/contentfulClient'
+import fetchContentType from '../services/fetchContentType'
+import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
 function HomePage() {
   
-  async function fetchContentTypes() {
-    const types = await client.getContentTypes()
-    console.log(types);
-    if (types.items) return types.items
-    console.log('Error getting Content Types.')
-  }
-
-  async function fetchEntriesForContentType(contentType) {
-    const entries = await client.getEntries({
-      content_type: contentType.sys.id
-    })
-    if (entries.items) return entries.items
-    console.log(`Error getting Entries for ${contentType.name}.`)
-  }
   const [posts, setPosts] = useState([])
   useEffect(() => {
     async function getPosts() {
-      const contentTypes = await fetchContentTypes()
-      const allPosts = await fetchEntriesForContentType(contentTypes[0])
+      const contentArticleType = await fetchContentType('article');      
+      const  allPosts = await fetchEntriesForContentType(contentArticleType.sys.id);
       setPosts([...allPosts])
     }
     getPosts()
@@ -40,7 +27,6 @@ function HomePage() {
       </Head>
       {posts.length > 0
         ? posts.map(p => (
-          console.log(p),
             <Post
               date={p.fields.date}
               key={p.fields.title}
