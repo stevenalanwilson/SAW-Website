@@ -6,4 +6,5 @@ async function fetchContentType(contnetType) {
     console.log('Error getting article content type.')
 }
 
-module.exports = fetchContentType;
+module.exports = fetchContentType
+;
