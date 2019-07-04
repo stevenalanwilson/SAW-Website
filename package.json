@@ -4,7 +4,7 @@
   "description": "The front end app for stevenalanwilson.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "./node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,9 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-jest": "^24.8.0",
+    "babel-preset-env": "^1.7.0",
     "jest": "^24.8.0"
   }
 }
