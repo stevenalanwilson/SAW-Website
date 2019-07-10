@@ -1,0 +1,20 @@
+/* General Theming */
+
+body {
+  // background: $grey;
+}
+
+p, li, h1, h2, h3, h4, h5, h6 {
+  color: $black;
+
+  &.red {
+    color: $red;
+  }
+}
+/* Align text in section */
+
+section {
+  &.center {
+    text-align: center;
+  }
+}

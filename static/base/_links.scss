@@ -1,0 +1,17 @@
+/* Links */
+
+a {
+  text-decoration: underline;
+  color: $black;
+
+  &:active {
+
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:visited {
+  }
+}

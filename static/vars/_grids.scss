@@ -1,0 +1,56 @@
+// Requirements
+// ============
+
+@import "susy";
+
+// Susy Variables
+
+$susy: (
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: before,
+  container: 1176px,
+  container-position: center,
+  columns: 6,
+  gutters: 34px/160px,
+  global-box-sizing: content-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+$tab: 1024px; // At 44em,
+$tab-columns: 6; // use 12 columns.
+
+$desk: 1176px; // At 70em,
+$desk-columns: 6; // use 12 columns.
+
+
+.container {
+	@include container; // Define these elements as the grid containers.
+}
+
+/* Mobile
+ =======================================
+*/
+
+
+
+/* Tablet
+ =======================================
+*/
+
+	@include susy-breakpoint($tab, $tab-columns) {
+	}
+
+/* Desktop
+ =======================================
+*/
+
+	@include susy-breakpoint($desk, $desk-columns) {
+	}

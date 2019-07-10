@@ -1,0 +1,14 @@
+/* Article */
+
+article {
+
+  padding: $base-padding 0;
+
+  &.summery {
+
+  }
+
+  &.article {
+    padding: $base-padding*2.0 0;
+  }
+}

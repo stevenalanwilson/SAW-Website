@@ -1,0 +1,22 @@
+/* Footer */
+
+footer.footer {
+
+  .content-box {
+    padding: $base-padding*2 0;
+  }
+
+  background: $black;
+
+  p,h1,h2,h3,h4,h5,h6,a {
+    color: $white;
+  }
+
+  h3 {
+    border-bottom: 3px solid $white;
+    line-height: 1;
+    padding-bottom: $base-padding*0.7;
+    margin-bottom: $base-margin*0.7;
+  }
+
+}
