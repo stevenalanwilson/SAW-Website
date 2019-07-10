@@ -17,6 +17,31 @@ function Header(){
                 <a href="#" title="Open menu" id="mt" className="mob-menu cta button hvr-grow"><i className="fa fa-bars" aria-hidden="true"></i></a>
             </div>
             <style jsx>{`
+                .mob-menu  {
+                    display: none;
+                }
+
+                .main-menu {
+                    align-self: flex-end;
+                }
+
+                .main-menu ul {
+                    display: flex;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .main-menu ul li {
+                    margin: ${theme.spacing.baseMargin};
+                }
+
+                .container {
+                    width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
                 .saw--header {
                     background: ${theme.colours.black};
                     padding: ${theme.spacing.basePadding};
@@ -34,6 +59,7 @@ function Header(){
                 }
 
                 .saw--header a.logo {
+                    margin: ${theme.spacing.baseMargin};
                     color: ${theme.colours.white};
                     font-family: ${theme.fonts.secondryFont};
                 } 
