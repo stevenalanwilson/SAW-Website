@@ -32,6 +32,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "cypress": "^3.4.0",
     "jest": "^24.8.0"
   }
 }
