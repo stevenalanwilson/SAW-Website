@@ -2,6 +2,7 @@ import '../static/screen.scss'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Title from '../components/Title'
+import Postscript from '../components/Postscript'
 
 const Layout = props => (
     <>
@@ -11,6 +12,9 @@ const Layout = props => (
             href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono"
             type="text/css"
             />
+            <script 
+            src="https://use.fontawesome.com/4e7732d1f5.js"
+            ></script>
         </Head>
         <Header />
         <Title />
@@ -27,6 +31,10 @@ const Layout = props => (
                 }
             `}</style>
         </main>
+
+        <Postscript />
+        
+        
     </>
 );
 
