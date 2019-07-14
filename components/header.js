@@ -1,4 +1,5 @@
-import theme from '../styles/theme'
+import Link from 'next/link';
+import theme from '../styles/theme';
 
 function Header(){
     return (
@@ -9,9 +10,21 @@ function Header(){
                 </a>
                 <nav className="main-menu" id="mm">
                     <ul>
-                        <li><a href="/" title="The front page" className="cta button hvr-grow">Home</a></li>
-                        <li><a href="/about/" title="About Steven Alan Wilson" className="cta button hvr-grow">About</a></li>
-                        <li><a href="mailto:hello@stevenalanwilson.com?subject=Website%20enquiry" title="say hello" className="cta button hvr-grow white large"><i className="fa fa-star" aria-hidden="true"></i> Hire Steven</a></li>
+                        <li>
+                            <Link href="/">
+                                <a>Home</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                <a>About</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/hello">
+                                <a>Say hello</a>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
                 <a href="#" title="Open menu" id="mt" className="mob-menu cta button hvr-grow"><i className="fa fa-bars" aria-hidden="true"></i></a>
