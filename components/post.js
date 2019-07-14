@@ -1,44 +1,25 @@
-function Post({ date, key, image, title }) {
+function Post({ date, key, image, title, summary }) {
     return (
-      <div className="container">
-        <a href="#">
+      <article className="post content-box borders bottom one">
+       <figure>
           <img alt={title} src={image} />
-        </a>
-        <div className="text">
-          <h2>{title}</h2>
-          <h4>{date}</h4>
-        </div>
+          <figcaption>{title}</figcaption>
+        </figure>
+        <header  class="animated">
+          <h4><a href="#" rel="bookmark">{title}</a></h4>
+          <time datetime="2007-08-29T13:58Z"><i className="fa fa-calendar" aria-hidden="true"></i> {date}</time>
+        </header>
+        <p>{summary}</p>
         <style jsx>{`
-          .container {
-            cursor: pointer;
-            height: 453px;
-            margin-bottom: 48px;
-          }
-          a {
-            border-bottom: none;
-          }
-          a:hover {
-            border-bottom: none;
-          }
-          .text {
-            margin-top: -160px;
-            padding: 24px;
-            position: absolute;
-          }
-          h2 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 0;
-          }
-          h4 {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
-            font-weight: 500;
-            margin-top: 8px;
-          }
+        .post {
+          flex: 0 0 48%;
+          margin: 0 1% 2%;
+        }
+        figure {
+          margin: 0;
+        }
         `}</style>
-      </div>
+      </article>
     )
   }
-  
   export default Post
