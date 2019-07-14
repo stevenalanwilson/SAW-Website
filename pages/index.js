@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import '../static/screen.scss'
 import Head from 'next/head'
-import Post from '../components/post'
-import Header from '../components/header'
-import Title from '../components/title'
+import Post from '../components/Post'
+import Layout from '../components/Layout.js';
 import fetchContentType from '../services/fetchContentType'
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
@@ -22,40 +21,21 @@ function HomePage() {
   return (
     <>
       <Head>
-        <title>Next.js + Contentful</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono"
-          type="text/css"
-        />
+        <title>Steven Alan Wilson</title>
       </Head>
-      <Header />
-      <Title />
-      <main>
-        <div className="container">
-          {posts.length > 0
-            ? posts.map(p => (
-                <Post
-                  date={p.fields.date}
-                  key={p.fields.title}
-                  image={p.fields.thumbnail.fields.file.url}
-                  title={p.fields.title}
-                  summary={p.fields.summary}
-                />
-              ))
-        : null}
-        </div>
-        <style jsx>{`
-
-          
-        .container {
-              width: 1200px;
-              margin: 0 auto;
-              display: flex;
-              flex-flow: row wrap;
-          }
-        `}</style>
-      </main>
+      <Layout>
+        {posts.length > 0
+          ? posts.map(p => (
+              <Post
+                date={p.fields.date}
+                key={p.fields.title}
+                image={p.fields.thumbnail.fields.file.url}
+                title={p.fields.title}
+                summary={p.fields.summary}
+              />
+            ))
+      : null}
+      </Layout>
     </>
   )
 }
