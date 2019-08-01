@@ -10,6 +10,7 @@ function Postscript() {
                 ? PostscriptData.map(item => (
                     <PostscriptItem
                         title={item.title}
+                        key={item.key}
                         image={item.image}
                         caption={item.caption}
                         description={item.description}
