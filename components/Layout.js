@@ -3,6 +3,10 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import Postscript from '../components/Postscript'
+import Footer from '../components/Footer';	
+
+
+
 
 const Layout = props => (
     <>
@@ -33,8 +37,7 @@ const Layout = props => (
         </main>
 
         <Postscript />
-        
-        
+        <Footer />
     </>
 );
 
