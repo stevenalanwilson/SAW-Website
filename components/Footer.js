@@ -1,7 +1,11 @@
+import Link from 'next/link';
 import theme from '../styles/theme';
-import contactInfo from '../config/contactInfo';
+import footerContactInfo from '../config/footerContactInfo';
+import footerQuotes from '../config/footerQuotes';
+import footerCopyrightInfo from '../config/footerCopyrightInfo';
+import randomQuoteGenerator from '../services/randomQuoteGenerator';
 
-console.log(contactInfo);
+const randomQuote = randomQuoteGenerator(footerQuotes);
 
 function Footer(){
 	return (
@@ -10,16 +14,29 @@ function Footer(){
 				<div className="sitemap">
 					<h3 className="heading-3">Sitemap</h3>
 					<ul className="menu">
-						<li><a href="/" title="Home page" className="cta">Home</a></li>
-						<li><a href="/about/" title="About Steven Alan Wilson" className="cta">About</a></li>
+					<li>
+                            <Link href="/">
+                                <a>Home</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                <a>About</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/hello">
+                                <a>Say hello</a>
+                            </Link>
+                        </li>
 					</ul>
 				</div>
 				<div className="contact-info">
 					<h3 className="heading-3">Contact Info</h3>
 					<ul className="menu">
-						<li><p>t. {contactInfo.number}</p></li>
-						<li><p><i className="fa fa-facebook-official" aria-hidden="true"></i> <a href={contactInfo.twitter[0].link} title={contactInfo.twitter[0].title}>{contactInfo.twitter[0].title}</a></p></li>
-						<li><p><i className="fa fa-twitter" aria-hidden="true"></i> <a href={contactInfo.facebook[0].title} target="_blank" title={contactInfo.facebook[0].title}>{contactInfo.facebook[0].title}</a></p></li>
+						<li><p>t. {footerContactInfo.number}</p></li>
+						<li><p><i className="fa fa-facebook-official" aria-hidden="true"></i> <a href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</a></p></li>
+						<li><p><i className="fa fa-twitter" aria-hidden="true"></i> <a href={footerContactInfo.facebook[0].title} target="_blank" title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</a></p></li>
 					</ul>
 				</div>
 				<div className="about">
@@ -28,10 +45,10 @@ function Footer(){
 					<p>I have a passion for UI design, learning new technologies and experimenting with mixing the digital world with the physical world. In my spare time I like to cook for family and friends, game on my Xbox and spend time with my family.</p>
 				</div>
 				<div className="quote">
-					<h4>All growth depends upon activity. There is no development physically or intellectually without effort, and effort means work.</h4>
+					<h4>{randomQuote}</h4>
 				</div>
 				<div className="copyright">
-					<p>Steven Alan Wilson <i className="fa fa-copyright" aria-hidden="true"></i> 2017 | <a href="http://www.stevenalanwilson.com" title="www.stevenalanwilson.com">www.stevenalanwilson.com</a></p>
+					<p>{footerCopyrightInfo.title} <i className="fa fa-copyright" aria-hidden="true"></i> {footerCopyrightInfo.date} | <a href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>{footerCopyrightInfo.url}</a></p>
 				</div>
 			</div>
 			<style jsx>{`
