@@ -4,7 +4,8 @@
   "description": "The front end app for stevenalanwilson.com",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/jest/bin/jest.js"
+    "test": "./node_modules/jest/bin/jest.js",
+    "now-build": "next build"
   },
   "repository": {
     "type": "git",
