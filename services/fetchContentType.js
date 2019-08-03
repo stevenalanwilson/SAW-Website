@@ -1,9 +1,6 @@
-import * as Sentry from '@sentry/browser';
+import contentfulClient from '../clients/contentfulClient';
 
-const contentfulClient = require('../clients/contentfulClient');
-
-Sentry.init({ dsn: "https://844ab33636a24edc9a0c6ce285555d9f@sentry.io/1508421" });
-
+const Sentry = require('../log');
 
 async function fetchContentType(contentType) {
     const articleContentType = await contentfulClient.getContentType(contentType)
