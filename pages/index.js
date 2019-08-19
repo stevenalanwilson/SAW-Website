@@ -30,8 +30,9 @@ function HomePage() {
 				{posts.length > 0
 					? posts.map(p => (
 						<Post
-							date={p.fields.date}
 							key={p.sys.id}
+							date={p.fields.date}
+							id={p.sys.id}
 							image={p.fields.thumbnail.fields.file.url}
 							title={p.fields.title}
 							summary={p.fields.summary}
