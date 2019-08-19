@@ -4,7 +4,7 @@ function Post({ date, id, image, title, summary }) {
 	return (
 		<article className="post content-box borders bottom one">
 			<figure>
-				<Link href={`/post/${id}`}>
+				<Link href={`/post?id=${id}`}>
 					<a>
 						<img alt={title} src={image} />
 					</a>
@@ -13,7 +13,7 @@ function Post({ date, id, image, title, summary }) {
 			</figure>
 			<header>
 				<h4 className="heading-4">
-					<Link href={`/post/${id}`}>
+					<Link href={`/post?id=${id}`}>
 						<a>{title}</a>
 					</Link>
 				</h4>
