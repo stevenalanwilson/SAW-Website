@@ -8,4 +8,4 @@ async function fetchEntry(id) {
     Sentry.captureMessage(`Error getting entry for id: ${id}.`)
 }
 
-module.exports = fetchContentType;
+module.exports = fetchEntry;
