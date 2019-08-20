@@ -8,27 +8,15 @@ import Layout from '../components/Layout';
 import fetchContentType from '../services/fetchContentType';
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType';
 
-
-function HomePage() {
-
-	const [posts, setPosts] = useState([])
-	useEffect(() => {
-		async function getPosts() {
-			const contentArticleType = await fetchContentType('article');
-			const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id);
-			setPosts([...allPosts])
-		}
-		getPosts()
-	}, [])
-
+const HomePage = props => {
 	return (
 		<>
 			<Head>
 				<title>Steven Alan Wilson</title>
 			</Head>
 			<Layout>
-				{posts.length > 0
-					? posts.map(p => (
+				{props.posts.length > 0
+					? props.posts.map(p => (
 						<Post
 							key={p.sys.id}
 							date={p.fields.date}
@@ -42,6 +30,14 @@ function HomePage() {
 			</Layout>
 		</>
 	)
+}
+
+HomePage.getInitialProps = async () => {
+	const contentArticleType = await fetchContentType('article');
+	const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id);
+	return {
+		posts: allPosts
+	}
 }
 
 export default HomePage
