@@ -4,6 +4,8 @@ import '../static/screen.scss';
 import Head from 'next/head';
 import Post from '../components/Post';
 import Layout from '../components/Layout';
+import Title from '../components/Title'
+
 
 import fetchContentType from '../services/fetchContentType';
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType';
@@ -15,15 +17,17 @@ const HomePage = props => {
 				<title>Steven Alan Wilson</title>
 			</Head>
 			<Layout>
+			<Title />
+
 				{props.posts.length > 0
-					? props.posts.map(p => (
+					? props.posts.map(post => (
 						<Post
-							key={p.sys.id}
-							date={p.fields.date}
-							id={p.sys.id}
-							image={p.fields.thumbnail.fields.file.url}
-							title={p.fields.title}
-							summary={p.fields.summary}
+							key={post.sys.id}
+							date={post.fields.date}
+							id={post.sys.id}
+							image={post.fields.thumbnail.fields.file.url}
+							title={post.fields.title}
+							summary={post.fields.summary}
 						/>
 					))
 					: null}
