@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router';
-
 import '../static/screen.scss';
 
 import Head from 'next/head';
@@ -8,7 +6,6 @@ import Layout from '../components/Layout';
 import fetchEntity from '../services/fetchEntry';
 
 const PostPage = props => {
-	const router = useRouter();
 	return (
 		<>
 			<Head>
