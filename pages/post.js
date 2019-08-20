@@ -13,7 +13,6 @@ const PostPage = props => {
 			</Head>
 			<Layout>
 				<h1>{props.content.title}</h1>
-				
 			</Layout>
 		</>
 	)
