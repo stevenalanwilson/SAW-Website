@@ -1,7 +1,6 @@
 import '../static/screen.scss'
 import Head from 'next/head'
 import Header from '../components/Header'
-import Title from '../components/Title'
 import Postscript from '../components/Postscript'
 import Footer from '../components/Footer';	
 
@@ -21,7 +20,6 @@ const Layout = props => (
             ></script>
         </Head>
         <Header />
-        <Title />
         <main>
             <div className="container">
                 {props.children}
