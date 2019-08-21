@@ -23,6 +23,7 @@ const HomePage = props => {
 					<Post
 						key={post.key}
 						date={post.date}
+						id={post.key}
 						image={post.image}
 						title={post.title}
 						summary={post.summary}
