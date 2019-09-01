@@ -1,8 +1,8 @@
 import '../static/screen.scss'
 import Head from 'next/head'
-import Layout from '../components/Layout.js';
+import Layout from '../components/Layout.js'
 
-function AboutPage() {
+function AboutPage () {
   return (
     <>
       <Head>
