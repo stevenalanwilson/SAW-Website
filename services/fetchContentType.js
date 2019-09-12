@@ -1,7 +1,3 @@
-// import contentfulClient from '../clients/contentfulClient'
-
-const sentry = require('../log')
-
 async function fetchContentType (contentType, contentfulClient, sentry) {
   const articleContentType = await contentfulClient.getContentType(contentType)
   if (articleContentType) return articleContentType
