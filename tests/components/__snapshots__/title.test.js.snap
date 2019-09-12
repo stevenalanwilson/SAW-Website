@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<section
+  className="jsx-867169452 saw-title"
+>
+  <div
+    className="jsx-867169452 container"
+  >
+    <div
+      className="jsx-867169452 page-title borders bottom one"
+    >
+      <h1
+        className="jsx-867169452 heading-1"
+      >
+        Steven Alan Wilson
+      </h1>
+    </div>
+    <div
+      className="jsx-867169452 page-stapline"
+    >
+      <h2
+        className="jsx-867169452 heading-2"
+      >
+        Principal developer at the Ministry of Justice, creative technologist, foodie, gamer, husband & father
+      </h2>
+    </div>
+    <div
+      className="jsx-867169452 page-current"
+    >
+      <p
+        className="jsx-867169452 medium"
+      >
+        <strong
+          className="jsx-867169452"
+        >
+          I'm currently at the HMPPS Digital Studio Sheffield
+        </strong>
+         
+        <a
+          className="jsx-867169452"
+          href="mailto:hello@stevenalanwilson.com?subject=Website%20enquiry"
+          title="Say Hello"
+        >
+          but I'm still always intrested in meeting new people
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+`;
