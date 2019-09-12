@@ -1,39 +1,35 @@
 import fetchContentTypeService from '../../services/fetchContentType'
 
-describe('Ensure test the fetch content services is working as it should', () => {
-  test('Content type service returens an object', async () => {
-    const mockClient = {
-      getContentType: jest.fn()
-    }
+let mockClient = {}
+let mockSentry = {}
 
-    const mockSentry = {
-      captureMessage: jest.fn()
-    }
+beforeEach(() => {
+  mockClient = {
+    getContentType: jest.fn()
+  }
+  mockSentry = {
+    captureMessage: jest.fn()
+  }
+  mockSentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
+})
+
+describe('Ensure the fetch content type service is working as it should', () => {
+  test('Content type service returens an object and logging is NOT called', async () => {
     const response = {
       status: 'ok'
     }
-
     mockClient.getContentType.mockReturnValueOnce(response)
-    mockSentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
     const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
     expect(articleContentType).toEqual(
       expect.objectContaining({
         status: 'ok'
       })
     )
+    expect(mockSentry.captureMessage).toBeCalledTimes(0)
   })
-  test('Content type service fails properly', async () => {
-    const mockClient = {
-      getContentType: jest.fn()
-    }
-    const mockSentry = {
-      captureMessage: jest.fn()
-    }
 
+  test('Content type service fails properly and logging is called', async () => {
     mockClient.getContentType.mockReturnValueOnce(null)
-
-    mockSentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
-
     const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
     expect(articleContentType).toEqual(undefined)
     expect(mockSentry.captureMessage).toHaveBeenCalledTimes(1)
