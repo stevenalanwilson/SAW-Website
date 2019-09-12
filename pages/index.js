@@ -6,6 +6,9 @@ import Post from '../components/Post'
 import Layout from '../components/Layout'
 import Title from '../components/Title'
 
+import contentfulClient from '../clients/contentfulClient'
+import Sentry from '../log'
+
 import fetchContentType from '../services/fetchContentType'
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
@@ -35,8 +38,8 @@ const HomePage = props => {
 }
 
 HomePage.getInitialProps = async () => {
-  const contentArticleType = await fetchContentType('article')
-  const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id)
+  const contentArticleType = await fetchContentType('article', contentfulClient, Sentry)
+  const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id, contentfulClient, Sentry)
   return {
     posts: formatRawArticleData(allPosts)
   }

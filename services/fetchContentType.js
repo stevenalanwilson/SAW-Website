@@ -1,11 +1,11 @@
-import contentfulClient from '../clients/contentfulClient'
+// import contentfulClient from '../clients/contentfulClient'
 
-const Sentry = require('../log')
+const sentry = require('../log')
 
-async function fetchContentType (contentType) {
+async function fetchContentType (contentType, contentfulClient, sentry) {
   const articleContentType = await contentfulClient.getContentType(contentType)
   if (articleContentType) return articleContentType
-  Sentry.captureMessage('Error getting article content type.')
+  sentry.captureMessage('Error getting article content type.')
 }
 
 module.exports = fetchContentType
