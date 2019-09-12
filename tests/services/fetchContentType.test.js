@@ -2,6 +2,9 @@ import fetchContentTypeService from '../../services/fetchContentType'
 
 let mockClient = {}
 let mockSentry = {}
+const response = {
+  status: 'ok'
+}
 
 beforeEach(() => {
   mockClient = {
@@ -15,9 +18,6 @@ beforeEach(() => {
 
 describe('Ensure the fetchContentType service is working as it should', () => {
   test('Logging is not called on a successful call to the API', async () => {
-    const response = {
-      status: 'ok'
-    }
     mockClient.getContentType.mockReturnValueOnce(response)
     const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
     expect(articleContentType).toEqual(
