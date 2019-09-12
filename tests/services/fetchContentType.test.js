@@ -13,8 +13,8 @@ beforeEach(() => {
   mockSentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
 })
 
-describe('Ensure the fetch content type service is working as it should', () => {
-  test('Content type service returens an object and logging is NOT called', async () => {
+describe('Ensure the fetchContentType service is working as it should', () => {
+  test('Logging is not called on a successful call to the API', async () => {
     const response = {
       status: 'ok'
     }
@@ -28,7 +28,7 @@ describe('Ensure the fetch content type service is working as it should', () => 
     expect(mockSentry.captureMessage).toBeCalledTimes(0)
   })
 
-  test('Content type service fails properly and logging is called', async () => {
+  test('Logging is called when the API call fails', async () => {
     mockClient.getContentType.mockReturnValueOnce(null)
     const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
     expect(articleContentType).toEqual(undefined)
