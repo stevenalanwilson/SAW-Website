@@ -13,7 +13,7 @@ import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
 import { formatRawArticleData } from '../utils'
 
-const HomePage = props => {
+const Index = props => {
   return (
     <>
       <Head>
@@ -36,7 +36,7 @@ const HomePage = props => {
   )
 }
 
-HomePage.getInitialProps = async () => {
+Index.getInitialProps = async () => {
   const contentArticleType = await fetchContentType('article', contentfulClient, Sentry)
   const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id, contentfulClient, Sentry)
   return {
@@ -44,4 +44,4 @@ HomePage.getInitialProps = async () => {
   }
 }
 
-export default HomePage
+export default Index
