@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import '../static/screen.scss'
 
 import Head from 'next/head'
