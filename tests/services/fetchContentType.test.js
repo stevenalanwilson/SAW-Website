@@ -6,7 +6,7 @@ const response = {
   status: 'ok'
 }
 
-beforeEach(() => {
+beforeAll(() => {
   mockClient = {
     getContentType: jest.fn()
   }
@@ -18,8 +18,7 @@ beforeEach(() => {
 
 describe('Ensure the fetchContentType service is working as it should', () => {
   test('Logging is not called on a successful call to the API', async () => {
-    mockClient.getContentType.mockReturnValueOnce(response)
-    const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
+    const articleContentType = await setupfetchContentTypeServiceTest(response, 'article', mockClient, mockSentry)
     expect(articleContentType).toEqual(
       expect.objectContaining({
         status: 'ok'
@@ -29,9 +28,13 @@ describe('Ensure the fetchContentType service is working as it should', () => {
   })
 
   test('Logging is called when the API call fails', async () => {
-    mockClient.getContentType.mockReturnValueOnce(null)
-    const articleContentType = await fetchContentTypeService('article', mockClient, mockSentry)
+    const articleContentType = await setupfetchContentTypeServiceTest(null, 'article', mockClient, mockSentry)
     expect(articleContentType).toEqual(undefined)
     expect(mockSentry.captureMessage).toHaveBeenCalledTimes(1)
   })
 })
+
+const setupfetchContentTypeServiceTest = async (response, contentType, client, sentry) => {
+  mockClient.getContentType.mockReturnValueOnce(response)
+  return fetchContentTypeService(contentType, client, sentry)
+}
