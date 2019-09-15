@@ -1,23 +1,15 @@
 import fetchContentTypeService from '../../services/fetchContentType'
+import mockClient from '../../clients/contentfulClient'
+import mockSentry from '../../log/sentry'
 
-let mockClient = {}
-let mockSentry = {}
-const response = {
-  status: 'ok'
-}
-
-beforeAll(() => {
-  mockClient = {
-    getContentType: jest.fn()
-  }
-  mockSentry = {
-    captureMessage: jest.fn()
-  }
-  mockSentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
-})
+jest.mock('../../clients/contentfulClient')
+jest.mock('../../log/sentry')
 
 describe('Ensure the fetchContentType service is working as it should', () => {
   test('Logging is not called on a successful call to the API', async () => {
+    const response = {
+      status: 'ok'
+    }
     const articleContentType = await setupfetchContentTypeServiceTest(response, 'article', mockClient, mockSentry)
     expect(articleContentType).toEqual(
       expect.objectContaining({
