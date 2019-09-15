@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <unitTest version="1">
+    <file path="/Users/stevenwilson/Projects/saw/v2/tests/services/randomQuoteGenerator.test.js">
+        <testCase name="Ensure the footer random quote generator returns a string" duration="4"/>
+    </file>
+    <file path="/Users/stevenwilson/Projects/saw/v2/tests/simple.test.js">
+        <testCase name="Ensure test framework is working A simple test" duration="4"/>
+    </file>
     <file path="/Users/stevenwilson/Projects/saw/v2/tests/services/fetchContentType.test.js">
-        <testCase name="Ensure the fetchContentType service is working as it should Logging is not called on a successful call to the API" duration="5"/>
+        <testCase name="Ensure the fetchContentType service is working as it should Logging is not called on a successful call to the API" duration="6"/>
         <testCase name="Ensure the fetchContentType service is working as it should Logging is called when the API call fails" duration="1"/>
     </file>
     <file path="/Users/stevenwilson/Projects/saw/v2/tests/components/title.test.js">
-        <testCase name="renders correctly" duration="18"/>
-    </file>
-    <file path="/Users/stevenwilson/Projects/saw/v2/tests/services/randomQuoteGenerator.test.js">
-        <testCase name="Ensure the footer random quote generator returns a string" duration="2"/>
-    </file>
-    <file path="/Users/stevenwilson/Projects/saw/v2/tests/simple.test.js">
-        <testCase name="Ensure test framework is working A simple test" duration="1"/>
+        <testCase name="renders correctly" duration="25"/>
     </file>
 </unitTest>
