@@ -1,3 +1,4 @@
 module.exports = {
-  getContentType: jest.fn()
+  getContentType: jest.fn(),
+  getEntries: jest.fn()
 }
