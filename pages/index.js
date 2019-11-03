@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import Title from '../components/Title'
 
 import contentfulClient from '../clients/contentfulClient'
-import Sentry from '../log'
+import Sentry from '../log/sentry'
 
 import fetchContentType from '../services/fetchContentType'
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
