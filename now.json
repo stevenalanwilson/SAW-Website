@@ -1,10 +1,16 @@
 {
     "version": 2,
     "builds": [{ "src": "package.json", "use": "@now/next" }],
+    "env": {
+      "SPACEID": "@spaceid",
+      "ACCESSTOKEN": "@accesstoken",
+      "SENTRYDSN": "@sentrydsn"
+    }, 
     "build": {
       "env": {
-        "SPACE_ID": "@space_id",
-        "ACCESS_TOKEN": "@access_token"
+        "SPACEID": "@spaceid",
+        "ACCESSTOKEN": "@accesstoken",
+        "SENTRYDSN": "@sentrydsn"
       }
     }
   }
