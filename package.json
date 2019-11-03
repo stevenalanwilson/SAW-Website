@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
-    "now-build": "next build"
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -28,12 +30,13 @@
     "@sentry/browser": "^5.5.0",
     "@zeit/next-sass": "^1.0.1",
     "contentful": "^7.8.0",
-    "next": "^8.1.0",
+    "dotenv": "^8.2.0",
+    "next": "^9.1.2",
     "nock": "^11.3.3",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.54",
