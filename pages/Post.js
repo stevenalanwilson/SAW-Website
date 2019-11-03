@@ -5,6 +5,9 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 import Sociallinks from '../components/widgets/Sociallinks'
 
+import contentfulClient from '../clients/contentfulClient'
+import Sentry from '../log/sentry'
+
 import fetchEntity from '../services/fetchEntry'
 
 const Post = props => {
@@ -51,7 +54,7 @@ const Post = props => {
 
 Post.getInitialProps = async (context) => {
   const { id } = context.query
-  const entity = await fetchEntity(id)
+  const entity = await fetchEntity(id, Sentry, contentfulClient)
   return {
     content: entity.fields
   }
