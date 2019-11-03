@@ -7,7 +7,7 @@ import Sociallinks from '../components/widgets/Sociallinks'
 
 import fetchEntity from '../services/fetchEntry'
 
-const PostPage = props => {
+const Post = props => {
   return (
     <>
       <Head>
@@ -49,11 +49,11 @@ const PostPage = props => {
   )
 }
 
-PostPage.getInitialProps = async (context) => {
+Post.getInitialProps = async (context) => {
   const { id } = context.query
   const entity = await fetchEntity(id)
   return {
     content: entity.fields
   }
 }
-export default PostPage
+export default Post
