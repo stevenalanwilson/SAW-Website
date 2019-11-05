@@ -10,6 +10,8 @@ import Sentry from '../log/sentry'
 
 import fetchEntity from '../services/fetchEntry'
 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
 const Post = props => {
   return (
     <>
@@ -19,6 +21,9 @@ const Post = props => {
       <Layout>
         <div className='main'>
           <h1>{props.content.title}</h1>
+
+          {props.body}
+
         </div>
         <div className='sidebar'>
 
@@ -52,11 +57,21 @@ const Post = props => {
   )
 }
 
+const renderInlineImage = file => <div dangerouslySetInnerHTML={{ __html: `<img alt="${file.alt}" src="${file.url}"/>` }} />
+
+const options = {
+  renderNode: {
+    'embedded-asset-block': (node) => {
+      return renderInlineImage(node.data.target.fields.file)
+    }
+  }
+}
 Post.getInitialProps = async (context) => {
   const { id } = context.query
   const entity = await fetchEntity(id, Sentry, contentfulClient)
   return {
-    content: entity.fields
+    content: entity.fields,
+    body: documentToReactComponents(entity.fields.body, options)
   }
 }
 export default Post
