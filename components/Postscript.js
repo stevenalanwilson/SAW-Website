@@ -2,36 +2,26 @@ import theme from '../styles/theme'
 import PostscriptItem from '../components/PostscriptItem'
 import PostscriptData from '../config/PostscriptData'
 
-function Postscript() {
-    return (
-        <section className="postscript hide-on-mobile">
-            <div className="container">
-            {PostscriptData.length > 0
-                ? PostscriptData.map(item => (
-                    <PostscriptItem
-                        title={item.title}
-                        key={item.key}
-                        image={item.image}
-                        caption={item.caption}
-                        description={item.description}
-                    />
-                    ))
+function Postscript () {
+  return (
+    <section className='postscript bg-gray-800'>
+      <div className='container mx-auto'>
+        <div className='flex flex-wrap'>
+          {PostscriptData.length > 0
+            ? PostscriptData.map(item => (
+              <PostscriptItem
+                title={item.title}
+                key={item.key}
+                image={item.image}
+                caption={item.caption}
+                description={item.description}
+              />
+            ))
             : null}
-            </div>
-            <style jsx>{`
-                .container {
-                    width: 1200px;
-                    margin: 0 auto;
-                    display: flex;
-                    flex-flow: row no-wrap;
-                    justify-content: space-between;
-                }
-                .postscript {
-                    background: ${theme.colours.darkGrey};
-                }
-            `}</style>
-        </section>
-    )
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default Postscript

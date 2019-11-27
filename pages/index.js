@@ -21,16 +21,18 @@ const Index = props => {
       </Head>
       <Layout>
         <Title />
-        {props.posts.map(post => (
-          <Post
-            key={post.key}
-            date={post.date}
-            id={post.key}
-            image={post.image}
-            title={post.title}
-            summary={post.summary}
-          />
-        ))}
+        <div className='flex flex-wrap'>
+          {props.posts.map(post => (
+            <Post
+              key={post.key}
+              date={post.date}
+              id={post.key}
+              image={post.image}
+              title={post.title}
+              summary={post.summary}
+            />
+          ))}
+        </div>
       </Layout>
     </>
   )
