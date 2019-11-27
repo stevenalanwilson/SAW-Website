@@ -29,6 +29,9 @@
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^13.4.0",
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "@sentry/browser": "^5.5.0",
     "@zeit/next-sass": "^1.0.1",
     "contentful": "^7.8.0",
