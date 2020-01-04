@@ -15,7 +15,7 @@ function Title () {
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>I'm currently at the HMPPS Digital Studio Sheffield</strong> <a href='mailto:hello@stevenalanwilson.com?subject=Website%20enquiry' title='Say Hello'>but I'm still always intrested in meeting new people</a></p>
+            <p className='text-xl'><strong>I'm currently a principal developer for the Ministry of Justice</strong> <a href='mailto:hello@stevenalanwilson.com?subject=Website%20enquiry' title='Say Hello'>but I'm still always intrested in meeting new people</a></p>
           </div>
         </div>
       </div>
