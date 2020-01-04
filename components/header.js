@@ -15,17 +15,17 @@ function Header () {
               <ul className='flex justify-end'>
                 <li className='p-2'>
                   <Link href='/'>
-                    <a className='text-white'>Home</a>
+                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Home</a>
                   </Link>
                 </li>
                 <li className='p-2'>
                   <Link href='/about'>
-                    <a className='text-white'>About</a>
+                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>About</a>
                   </Link>
                 </li>
                 <li className='p-2'>
                   <Link href='/hello'>
-                    <a className='text-white'>Say hello</a>
+                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Say hello</a>
                   </Link>
                 </li>
               </ul>
