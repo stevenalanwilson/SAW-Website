@@ -15,17 +15,17 @@ function Footer () {
             <div className='border-white w-full border-b-2 mx-4 py-6'>
               <h3 className='heading-3  text-4xl border-b-2 text-white pb-4 mb-4'>Sitemap</h3>
               <ul className='menu'>
-                <li className='mb-4 pb-4 border-b-2'>
+                <li className='mb-4 pb-4 border-b'>
                   <Link href='/'>
                     <a className='text-white'>Home</a>
                   </Link>
                 </li>
-                <li className='mb-4 pb-4 border-b-2'>
+                <li className='mb-4 pb-4 border-b'>
                   <Link href='/about'>
                     <a className='text-white'>About</a>
                   </Link>
                 </li>
-                <li className='mb-4 pb-4 border-b-2'>
+                <li className='mb-4 pb-4 border-b'>
                   <Link href='/hello'>
                     <a className='text-white'>Say hello</a>
                   </Link>
@@ -37,9 +37,9 @@ function Footer () {
             <div className='p-2 border-white w-full border-b-2 mx-4 py-6'>
               <h3 className='heading-3 text-4xl border-b-2 text-white pb-4 mb-4'>Contact Info</h3>
               <ul className='menu'>
-                <li className='mb-4 pb-4 border-b-2'><p className='text-white'>t. {footerContactInfo.number}</p></li>
-                <li className='mb-4 pb-4 border-b-2'><p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' /> <a href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</a></p></li>
-                <li className='mb-4 pb-4 border-b-2'><p className='text-white'><i className='fa fa-twitter' aria-hidden='true' /> <a href={footerContactInfo.facebook[0].title} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</a></p></li>
+                <li className='mb-4 pb-4 border-b'><p className='text-white'>t. {footerContactInfo.number}</p></li>
+                <li className='mb-4 pb-4 border-b'><p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' /> <a href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</a></p></li>
+                <li className='mb-4 pb-4 border-b'><p className='text-white'><i className='fa fa-twitter' aria-hidden='true' /> <a href={footerContactInfo.facebook[0].title} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</a></p></li>
               </ul>
             </div>
           </div>
