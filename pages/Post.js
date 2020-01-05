@@ -9,6 +9,7 @@ import Sentry from '../log/sentry'
 import fetchEntity from '../services/fetchEntry'
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
 
 const Post = props => {
   return (
@@ -38,7 +39,7 @@ const renderInlineImage = file => <div dangerouslySetInnerHTML={{ __html: `<img 
 
 const options = {
   renderNode: {
-    'embedded-asset-block': (node) => {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return renderInlineImage(node.data.target.fields.file)
     }
   }
