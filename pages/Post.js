@@ -2,7 +2,6 @@ import '../static/screen.scss'
 
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import Sociallinks from '../components/widgets/Sociallinks'
 
 import contentfulClient from '../clients/contentfulClient'
 import Sentry from '../log/sentry'
@@ -21,10 +20,9 @@ const Post = props => {
         <div className='flex'>
           <div className='w-3/4 p-2 main'>
             <h1>{props.content.title}</h1>
-            {props.body}
+            {documentToReactComponents(props.content.body, options)}
           </div>
           <div className='w-1/4 p-2 sidebar'>
-            <Sociallinks />
             <div className='content-box borders bottom three'>
               <h2 className='underline'>Articles</h2>
             </div>
@@ -49,8 +47,7 @@ Post.getInitialProps = async (context) => {
   const { id } = context.query
   const entity = await fetchEntity(id, Sentry, contentfulClient)
   return {
-    content: entity.fields,
-    body: documentToReactComponents(entity.fields.body, options)
+    content: entity.fields
   }
 }
 export default Post
