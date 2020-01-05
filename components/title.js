@@ -2,7 +2,7 @@ function Title () {
   return (
     <section>
       <div className='flex flex-wrap'>
-        <div className='w-full p-2 border-black border-b py-4'>
+        <div className='w-full p-2 border-black border-b py-4  mx-4'>
           <h1 className='heading-1 font-bold text-6xl'>Steven Alan Wilson</h1>
         </div>
       </div>
