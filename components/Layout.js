@@ -1,8 +1,8 @@
 import '../static/screen.scss'
 import Head from 'next/head'
-import Header from '../components/Header'
-import Postscript from '../components/Postscript'
-import Footer from '../components/Footer'
+import Header from './Header'
+import Postscript from './Postscript'
+import Footer from './Footer'
 
 const Layout = props => (
   <>
