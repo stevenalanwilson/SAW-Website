@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "The front end app for stevenalanwilson.com",
   "main": "index.js",
+  "engines" : { 
+    "node" : ">=10.x"
+  },
+  "engineStrict" : true,
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
