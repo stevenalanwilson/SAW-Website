@@ -13,7 +13,7 @@ import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
 import { formatRawArticleData } from '../utils'
 
-const Index = props => {
+const index = props => {
   return (
     <>
       <Head>
@@ -38,7 +38,7 @@ const Index = props => {
   )
 }
 
-Index.getInitialProps = async () => {
+index.getInitialProps = async () => {
   const contentArticleType = await fetchContentType('article', contentfulClient, Sentry)
   const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id, contentfulClient, Sentry)
   return {
@@ -46,4 +46,4 @@ Index.getInitialProps = async () => {
   }
 }
 
-export default Index
+export default index

@@ -2,7 +2,7 @@ import '../static/screen.scss'
 import Head from 'next/head'
 import Layout from '../components/Layout.js'
 
-function About () {
+function about () {
   return (
     <>
       <Head>
@@ -15,4 +15,4 @@ function About () {
   )
 }
 
-export default About
+export default about

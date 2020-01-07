@@ -11,7 +11,7 @@ import fetchEntity from '../services/fetchEntry'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 
-const Post = props => {
+const post = props => {
   return (
     <>
       <Head>
@@ -65,11 +65,11 @@ const options = {
     )
   }
 }
-Post.getInitialProps = async (context) => {
+post.getInitialProps = async (context) => {
   const { id } = context.query
   const entity = await fetchEntity(id, Sentry, contentfulClient)
   return {
     content: entity.fields
   }
 }
-export default Post
+export default post
