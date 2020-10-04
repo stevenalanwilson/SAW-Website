@@ -65,3 +65,4 @@ typings/
 
 .sonar
 .scannerwork
+.DS_Store
