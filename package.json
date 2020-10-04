@@ -3,16 +3,13 @@
   "version": "1.0.0",
   "description": "The front end app for stevenalanwilson.com",
   "main": "index.js",
-  "engines": {
-    "node": ">=10.x"
-  },
   "engineStrict": true,
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
-    "build": "next build",
-    "dev": "next dev",
-    "start": "next start"
+    "build": "node_modules/next/dist/bin/next build",
+    "dev": "node_modules/next/dist/bin/next",
+    "start": "node_modules/next/dist/bin/next start"
   },
   "repository": {
     "type": "git",
