@@ -1,6 +1,5 @@
 
 import Head from 'next/head'
-import Post from '../components/Post'
 import Layout from '../components/Layout'
 import Title from '../components/Title'
 
@@ -20,18 +19,7 @@ const index = props => {
       </Head>
       <Layout>
         <Title />
-        <div className='flex flex-wrap'>
-          {props.posts.map(post => (
-            <Post
-              key={post.key}
-              date={post.date}
-              id={post.key}
-              image={post.image}
-              title={post.title}
-              summary={post.summary}
-            />
-          ))}
-        </div>
+        <div className='flex flex-wrap' />
       </Layout>
     </>
   )
