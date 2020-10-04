@@ -1,4 +1,5 @@
-import '../static/screen.scss'
+// import '../public/static/screen.scss'
+
 import Head from 'next/head'
 import Header from './Header'
 import Postscript from './Postscript'

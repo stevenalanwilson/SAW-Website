@@ -1,4 +1,3 @@
-import '../static/screen.scss'
 
 import Head from 'next/head'
 import Post from '../components/Post'
