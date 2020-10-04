@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/layout.js'
+import Layout from '../components/Layout.js'
 
 function about () {
   return (
