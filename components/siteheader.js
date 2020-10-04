@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function header () {
+function Siteheader () {
   return (
     <header className='bg-gray-900 py-2'>
       <div className='container mx-auto'>
@@ -38,4 +38,4 @@ function header () {
   )
 }
 
-export default header
+export default Siteheader
