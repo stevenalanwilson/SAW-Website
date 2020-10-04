@@ -1,5 +1,5 @@
 import theme from '../styles/theme'
-import PostscriptItem from './postscriptitem'
+import PostscriptItem from './PostscriptItem'
 import PostscriptData from '../config/postscriptData'
 
 function Postscript () {
