@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import SiteHeader from './siteheader'
-import Postscript from './postscript'
+import Postscript from './Postscript'
 import Footer from './footer'
 
 const Layout = props => (
