@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import contentfulClient from '../clients/contentfulClient'
 import Sentry from '../log/sentry'
 import fetchEntity from '../services/fetchEntry'

@@ -1,4 +1,4 @@
-function title () {
+function SiteTitle () {
   return (
     <section>
       <div className='flex flex-wrap'>
@@ -23,4 +23,4 @@ function title () {
   )
 }
 
-export default title
+export default SiteTitle

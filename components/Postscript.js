@@ -1,6 +1,6 @@
 import theme from '../styles/theme'
-import PostscriptItem from '../components/PostscriptItem'
-import PostscriptData from '../config/PostscriptData'
+import PostscriptItem from '../components/postscriptitem'
+import PostscriptData from '../config/postscriptData'
 
 function Postscript () {
   return (

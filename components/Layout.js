@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Siteheader from './siteheader'
-import Postscript from './Postscript'
-import Footer from './Footer'
+import SiteHeader from './siteheader'
+import Postscript from './postscript'
+import Footer from './footer'
 
 const Layout = props => (
   <>
@@ -13,7 +13,7 @@ const Layout = props => (
       />
       <script src='https://kit.fontawesome.com/f1741a1610.js' crossorigin='anonymous' />
     </Head>
-    <Siteheader />
+    <SiteHeader />
     <main>
       <div className='container mx-auto'>
         {props.children}

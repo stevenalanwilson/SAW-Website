@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Post from '../components/post'
-import Layout from '../components/Layout'
-import title from '../components/title'
+import Layout from '../components/layout'
+import SiteTitle from '../components/sitetitle'
 
 import contentfulClient from '../clients/contentfulClient'
 import Sentry from '../log/sentry'
@@ -18,7 +18,7 @@ const index = props => {
         <title>Steven Alan Wilson</title>
       </Head>
       <Layout>
-        <title />
+        <SiteTitle />
         <div className='flex flex-wrap'>
           {props.posts.map(post => (
             <Post
