@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Post from '../components/Post'
+import Post from '../components/post'
 import Layout from '../components/Layout'
 import Title from '../components/Title'
 

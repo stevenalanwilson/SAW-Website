@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
-function Post ({ date, id, image, title, summary }) {
+function post ({ date, id, image, title, summary }) {
   return (
     <article className='w-full md:w-2/4'>
       <div className='py-2 mx-4 mb-4 border-black border-b'>
@@ -27,4 +27,4 @@ function Post ({ date, id, image, title, summary }) {
     </article>
   )
 }
-export default Post
+export default post
