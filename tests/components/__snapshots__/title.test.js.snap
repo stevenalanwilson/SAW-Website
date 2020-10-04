@@ -1,57 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<section>
+<section
+  className="jsx-867169452 saw-title"
+>
   <div
-    className="flex flex-wrap"
+    className="jsx-867169452 container"
   >
     <div
-      className="w-full p-2 border-black border-b py-4  mx-4"
+      className="jsx-867169452 page-title borders bottom one"
     >
       <h1
-        className="heading-1 font-bold text-6xl"
+        className="jsx-867169452 heading-1"
       >
         Steven Alan Wilson
       </h1>
     </div>
-  </div>
-  <div
-    className="flex"
-  >
     <div
-      className="flex flex-wrap w-full md:w-3/4"
+      className="jsx-867169452 page-stapline"
     >
-      <div
-        className="border-black border-b-4 pb-6 my-6 mx-4 flex"
+      <h2
+        className="jsx-867169452 heading-2"
       >
-        <h2
-          className="heading-2 leading-tight text-4xl mr-40"
-        >
-          Principal developer at the Ministry of Justice, creative technologist, foodie, gamer, husband & father
-        </h2>
-      </div>
+        Principal developer at the Ministry of Justice, creative technologist, foodie, gamer, husband & father
+      </h2>
     </div>
     <div
-      className="flex flex-wrap w-full md:w-1/4"
+      className="jsx-867169452 page-current"
     >
-      <div
-        className="border-black border-b-4 pb-6 my-6 mx-4 flex"
+      <p
+        className="jsx-867169452 medium"
       >
-        <p
-          className="text-xl"
+        <strong
+          className="jsx-867169452"
         >
-          <strong>
-            I'm currently a principal developer for the Ministry of Justice
-          </strong>
-           
-          <a
-            href="mailto:hello@stevenalanwilson.com?subject=Website%20enquiry"
-            title="Say Hello"
-          >
-            but I'm still always intrested in meeting new people
-          </a>
-        </p>
-      </div>
+          I'm currently at the HMPPS Digital Studio Sheffield
+        </strong>
+         
+        <a
+          className="jsx-867169452"
+          href="mailto:hello@stevenalanwilson.com?subject=Website%20enquiry"
+          title="Say Hello"
+        >
+          but I'm still always intrested in meeting new people
+        </a>
+      </p>
     </div>
   </div>
 </section>
