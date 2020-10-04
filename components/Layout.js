@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from './Header'
+import header from './header'
 import Postscript from './Postscript'
 import Footer from './Footer'
 
@@ -13,7 +13,7 @@ const Layout = props => (
       />
       <script src='https://kit.fontawesome.com/f1741a1610.js' crossorigin='anonymous' />
     </Head>
-    <Header />
+    <header />
     <main>
       <div className='container mx-auto'>
         {props.children}
