@@ -7,9 +7,9 @@
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
-    "build": "next build",
-    "dev": "next",
-    "start": "next start"
+    "build": "node_modules/next/dist/bin/next build",
+    "dev": "node_modules/next/dist/bin/next",
+    "start": "node_modules/next/dist/bin/next start"
   },
   "repository": {
     "type": "git",
