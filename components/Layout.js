@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import SiteHeader from './siteheader'
 import Postscript from './Postscript'
-import Footer from './footer'
+import Footer from './Footer'
 
 const Layout = props => (
   <>
