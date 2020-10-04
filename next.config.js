@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
-  basePath: '/',
+  basePath: '',
   target: process.env.NODE_ENV === 'development' ? 'server' : 'serverless',
   env: {
     SPACEID: process.env.SPACEID,
