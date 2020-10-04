@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Post from '../components/post'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import SiteTitle from '../components/sitetitle'
 
 import contentfulClient from '../clients/contentfulClient'
