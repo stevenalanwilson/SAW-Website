@@ -9,7 +9,7 @@ import Sentry from '../log/sentry'
 import fetchContentType from '../services/fetchContentType'
 import fetchEntriesForContentType from '../services/fetchEntriesForContentType'
 
-import { formatRawArticleData } from '../utils'
+import untils from '../utils'
 
 const index = props => {
   return (
@@ -40,7 +40,7 @@ index.getInitialProps = async () => {
   const contentArticleType = await fetchContentType('article', contentfulClient, Sentry)
   const allPosts = await fetchEntriesForContentType(contentArticleType.sys.id, contentfulClient, Sentry)
   return {
-    posts: formatRawArticleData(allPosts)
+    posts: untils.formatRawArticleData(allPosts)
   }
 }
 

@@ -5,7 +5,7 @@ import Sentry from '../log/sentry'
 import fetchEntity from '../services/fetchEntry'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { richTextFromMarkdown } from '@contentful/rich-text-from-markdown'
-import { BLOCKS } from '@contentful/rich-text-types'
+import untils from '../utils'
 
 const post = props => {
   return (
@@ -15,9 +15,12 @@ const post = props => {
       </Head>
       <Layout>
         <div className='flex'>
-          <div className='w-3/4 p-2 main'>
-            <h1 className='heading-2 font-bold text-6xl'>{props.title}</h1>
-            {documentToReactComponents(props.body, options)}
+          <div className='w-full bg-gray-300 bg-auto bg-center h-64 my-5' style={{ backgroundImage: 'url(' + props.img + ')' }} />
+        </div>
+        <div className='flex'>
+          <div className='w-3/4 pb-2 px-2 main'>
+            <h1 className='heading-1 font-bold text-6xl leading-tight mb-4'>{props.title}</h1>
+            {documentToReactComponents(props.body, untils.typeographyStyling)}
           </div>
           <div className='w-1/4 p-2 sidebar'>
             <div className='content-box borders bottom three'>
@@ -30,36 +33,6 @@ const post = props => {
   )
 }
 
-const renderInlineImage = file => <div dangerouslySetInnerHTML={{ __html: `<img alt='${file.alt}' src='${file.url}' class='mb-4' />` }} />
-
-const options = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      return renderInlineImage(node.data.target.feilds.file)
-    },
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <h1 className='heading-1 text-6xl'>{children}</h1>
-    ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <h2 className='heading-2 text-5xl'>{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <h3 className='heading-3 text-4xl'>{children}</h3>
-    ),
-    [BLOCKS.HEADING_4]: (node, children) => (
-      <h4 className='heading-4 text-3xl'>{children}</h4>
-    ),
-    [BLOCKS.HEADING_5]: (node, children) => (
-      <h5 className='heading-5 text-2xl'>{children}</h5>
-    ),
-    [BLOCKS.HEADING_6]: (node, children) => (
-      <h6 className='heading-6 text-xl'>{children}</h6>
-    ),
-    [BLOCKS.PARAGRAPH]: (node, children) => (
-      <h6 className='leading-loose mb-4'>{children}</h6>
-    )
-  }
-}
 post.getInitialProps = async (context) => {
   const { id } = context.query
   const entity = await fetchEntity(id, Sentry, contentfulClient)
@@ -86,7 +59,8 @@ post.getInitialProps = async (context) => {
 
   return {
     title: entity.fields.title,
-    body: body
+    body: body,
+    img: entity.fields.thumbnail.fields.file.url
   }
 }
 export default post
