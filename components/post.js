@@ -20,7 +20,7 @@ function post ({ date, id, image, title, summary }) {
               <a className='underline'>{title}</a>
             </Link>
           </h4>
-          <time dateTime='2007-08-29T13:58Z' className='block mb-2'><FontAwesomeIcon icon={faCalendarAlt} /> {date}</time>
+          <time dateTime='2007-08-29T13:58Z' className='block mb-2'><FontAwesomeIcon size='lg' icon={faCalendarAlt} /> {date}</time>
         </header>
         <p className='leading-tight mb-2'>{summary}</p>
       </div>
