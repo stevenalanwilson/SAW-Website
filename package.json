@@ -40,7 +40,8 @@
     "nock": "^11.3.3",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "sass": "^1.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
