@@ -55,6 +55,15 @@ export default {
       title: item.fields.title,
       summary: item.fields.summary
     }))
+  },
+
+  formatRawActivityData: (data) => {
+    return data.map(item => ({
+      key: item.sys.id,
+      image: item.fields.image.fields.file.url,
+      activity: item.fields.activity,
+      description: item.fields.description
+    }))
   }
 
 }

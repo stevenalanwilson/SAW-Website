@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import SiteHeader from './siteheader'
-import Postscript from './Postscript'
 import Footer from './Footer'
 
 const Layout = props => (
@@ -15,14 +14,11 @@ const Layout = props => (
     </Head>
     <SiteHeader />
     <main>
-      <div className='container mx-auto'>
-        {props.children}
-      </div>
+      {props.children}
     </main>
-
-    <Postscript />
     <Footer />
   </>
 )
+
 
 export default Layout
