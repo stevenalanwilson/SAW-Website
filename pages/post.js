@@ -14,17 +14,19 @@ const post = props => {
         <title>Steven Alan Wilson {props.title}</title>
       </Head>
       <Layout>
-        <div className='flex'>
-          <div className='w-full bg-gray-300 bg-auto bg-center h-64 my-5' style={{ backgroundImage: 'url(' + props.img + ')' }} />
-        </div>
-        <div className='flex'>
-          <div className='w-3/4 pb-2 px-2 main'>
-            <h1 className='heading-1 font-bold text-6xl leading-tight mb-4'>{props.title}</h1>
-            {documentToReactComponents(props.body, untils.typeographyStyling)}
+        <div className='container mx-auto'>
+          <div className='flex'>
+            <div className='w-full bg-gray-300 bg-auto bg-center h-64 my-5' style={{ backgroundImage: 'url(' + props.img + ')' }} />
           </div>
-          <div className='w-1/4 p-2 sidebar'>
-            <div className='content-box borders bottom three'>
-              <h2 className='underline'>Articles</h2>
+          <div className='flex'>
+            <div className='w-3/4 pb-2 px-2 main'>
+              <h1 className='heading-1 font-bold text-6xl leading-tight mb-4'>{props.title}</h1>
+              {documentToReactComponents(props.body, untils.typeographyStyling)}
+            </div>
+            <div className='w-1/4 p-2 sidebar'>
+              <div className='content-box borders bottom three'>
+                <h2 className='underline'>Articles</h2>
+              </div>
             </div>
           </div>
         </div>
