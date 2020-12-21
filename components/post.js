@@ -10,9 +10,9 @@ function post ({ date, id, image, title, summary }) {
           <Link href={`/post?id=${id}`}>
             <a>
               <picture>
-                <source media='(min-width: 800px)' srcset={image + '?w=800&h=600&fm=webp&q=80'} />
-                <source media='(min-width: 400px)' srcset={image + '?w=400&h=300&fm=webp&q=80'} />
-                <img src={image + '?w=400&h=300&fm=webp&q=80'} alt='Source sets are awesome!' className='mb-2' />
+                <source media='(min-width: 800px)' srcset={image + '?fit=thumb&w=800&h=600&fm=webp&q=80'} />
+                <source media='(min-width: 400px)' srcset={image + '?fit=thumb&w=400&h=300&fm=webp&q=80'} />
+                <img src={image + '?fit=thumb&w=400&h=300&fm=webp&q=80'} alt='Source sets are awesome!' className='mb-2' />
               </picture>
             </a>
           </Link>
