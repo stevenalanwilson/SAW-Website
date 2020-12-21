@@ -5,12 +5,12 @@ function SiteHeader () {
     <header className='bg-gray-900 py-2'>
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
-          <div className='w-1/4 p-2'>
+          <div className='w-full lg:w-1/4 p-2'>
             <a href='/' title='Steven Alan Wilson' className='text-xl font-bold text-white'>
                 Steven Alan Wilson
             </a>
           </div>
-          <div className='w-3/4 p-2'>
+          <div className='hidden lg:block lg:w-3/4 p-2'>
             <nav className='main-menu' id='mm'>
               <ul className='flex justify-end'>
                 {/* <li className='p-2'>
