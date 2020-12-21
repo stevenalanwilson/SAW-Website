@@ -13,7 +13,7 @@ function SiteHeader () {
           <div className='w-3/4 p-2'>
             <nav className='main-menu' id='mm'>
               <ul className='flex justify-end'>
-                <li className='p-2'>
+                {/* <li className='p-2'>
                   <Link href='/'>
                     <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Home</a>
                   </Link>
@@ -27,7 +27,7 @@ function SiteHeader () {
                   <Link href='/hello'>
                     <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Say hello</a>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
