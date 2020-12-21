@@ -9,7 +9,11 @@ function post ({ date, id, image, title, summary }) {
         <figure>
           <Link href={`/post?id=${id}`}>
             <a>
-              <img alt={title} src={image} className='mb-2' />
+              <picture>
+                <source media='(min-width: 800px)' srcset={image + '?w=800&h=600&fm=webp&q=80'} />
+                <source media='(min-width: 400px)' srcset={image + '?w=400&h=300&fm=webp&q=80'} />
+                <img src={image + '?w=400&h=300&fm=webp&q=80'} alt='Source sets are awesome!' className='mb-2' />
+              </picture>
             </a>
           </Link>
           <figcaption className='italic text-gray-500 mb-2'>{title}</figcaption>
