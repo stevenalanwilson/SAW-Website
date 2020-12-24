@@ -1,8 +1,13 @@
 // import App from 'next/app'
+import React, { useEffect } from 'react'
 
 import '../public/static/screen.scss'
 
 function MyApp ({ Component, pageProps }) {
+  const lang = 'en'
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
   return <Component {...pageProps} />
 }
 

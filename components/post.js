@@ -16,14 +16,14 @@ function post ({ date, id, image, title, summary }) {
               </picture>
             </a>
           </Link>
-          <figcaption className='italic text-gray-500 mb-2'>{title}</figcaption>
+          <figcaption className='italic text-xs text-gray-800 mb-2'>{title}</figcaption>
         </figure>
         <header>
-          <h4 className='text-2xl heading-4  mb-2'>
+          <h1 className='text-2xl heading-4  mb-2'>
             <Link href={`/post?id=${id}`}>
               <a className='underline'>{title}</a>
             </Link>
-          </h4>
+          </h1>
           <time dateTime='2007-08-29T13:58Z' className='block mb-2'><FontAwesomeIcon size='lg' icon={faCalendarAlt} /> {date}</time>
         </header>
         <p className='leading-tight mb-2'>{summary}</p>
