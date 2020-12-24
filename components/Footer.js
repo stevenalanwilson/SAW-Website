@@ -20,7 +20,7 @@ function Footer () {
                     <a className='text-white'>Home</a>
                   </Link>
                 </li>
-                <li className='mb-4 pb-4 border-b'>
+                {/* <li className='mb-4 pb-4 border-b'>
                   <Link href='/about'>
                     <a className='text-white'>About</a>
                   </Link>
@@ -29,7 +29,7 @@ function Footer () {
                   <Link href='/hello'>
                     <a className='text-white'>Say hello</a>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -37,7 +37,6 @@ function Footer () {
             <div className='p-2 border-white w-full border-b-2 mx-4 py-6'>
               <h3 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>Contact Info</h3>
               <ul className='menu'>
-                <li className='mb-4 pb-4 border-b'><p className='text-white'>t. {footerContactInfo.number}</p></li>
                 <li className='mb-4 pb-4 border-b'><p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' /> <a href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</a></p></li>
                 <li className='mb-4 pb-4 border-b'><p className='text-white'><i className='fa fa-twitter' aria-hidden='true' /> <a href={footerContactInfo.facebook[0].title} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</a></p></li>
               </ul>
@@ -46,8 +45,16 @@ function Footer () {
           <div className='flex w-full md:w-1/2 lg:w-2/4 p-2'>
             <div className='border-white w-full border-b-2 mx-4 py-6'>
               <h3 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>About Steven</h3>
-              <p className='text-white leading-loose'>Hello, my name is Steven Wilson and I am a freelance full-stack digital developer and designer based in Derby UK. I’ve been in the industry for over 10 years and have had the pleasure of working with some of the UK's top creative agencies and also the UK's biggest brands such as Speedo International and Sainsburys.</p>
-              <p className='text-white leading-loose'>I have a passion for UI design, learning new technologies and experimenting with mixing the digital world with the physical world. In my spare time I like to cook for family and friends, game on my Xbox and spend time with my family.</p>
+              <p className='text-white leading-loose'>Hi, I'm Steve, and this is my digital garden.</p>
+
+              <p className='text-white leading-loose'>I use this space as a platform to publish my ideas, thoughts and creative outputs.</p>
+
+              <p className='text-white leading-loose'>I've spent my career in digital, starting as a designer, then a developer and then into leadership. so most of the content I post is about digital and leadership.</p>
+
+              <p className='text-white leading-loose'>I'm a creative at heart, so I also use this space as a creative outlet.</p>
+
+              <p className='text-white leading-loose'>I hope you like my content and please feel free to send me a message to say hello.</p>
+
             </div>
           </div>
         </div>
