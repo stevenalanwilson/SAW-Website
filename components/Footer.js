@@ -10,9 +10,9 @@ function Footer () {
   return (
     <footer className='bg-gray-900 footer'>
       <div className='container  mx-auto'>
-        <div className='flex flex-wrap -mx-2'>
+        <div className='flex flex-wrap'>
           <div className='flex w-full md:w-1/4 p-2'>
-            <div className='border-white w-full border-b-2 mx-4 py-6'>
+            <div className='border-white hidden md:block w-full border-b-2 mx-4 py-6'>
               <h3 className='heading-3  text-4xl border-b-2 text-white pb-4 mb-4'>Sitemap</h3>
               <ul className='menu'>
                 <li className='mb-4 pb-4 border-b'>
@@ -52,12 +52,12 @@ function Footer () {
           </div>
         </div>
         <div className='flex flex-wrap'>
-          <div className='w-full quote border-white border-b-2 py-6'>
+          <div className='w-full quote border-white border-b-2 mx-4 py-6'>
             <h4 className='text-center  text-2xl text-white'>{randomQuote}</h4>
           </div>
         </div>
         <div className='flex flex-wrap'>
-          <div className='w-full copyright  py-6'>
+          <div className='w-full copyright mx-4 py-6'>
             <p className='text-center text-white'>{footerCopyrightInfo.title} <i className='fa fa-copyright' aria-hidden='true' /> {footerCopyrightInfo.date} | <a href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>{footerCopyrightInfo.url}</a></p>
           </div>
         </div>
