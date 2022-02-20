@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    es6: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -20,5 +21,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    semi: ['error', 'never'],
+    'arrow-parens': 'as-needed',
   },
-};
+}
