@@ -7,6 +7,9 @@ const renderInlineImage = (file) => {
   return <div dangerouslySetInnerHTML={{ __html: `<img alt='${file.alt}' src='${file.url}' class='mb-4 border divide-gray-600' />` }} />
 }
 
+const randomQuote = quotes => quotes[Math.floor(Math.random() * (quotes.length - 1))]
+
+
 const typeographyStyling = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -46,6 +49,8 @@ export default {
   isProduction: production,
 
   typeographyStyling: typeographyStyling,
+
+  randomQuote: randomQuote,
 
   formatRawArticleData: (data) => {
     return data.map(item => ({

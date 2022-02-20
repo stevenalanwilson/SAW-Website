@@ -2,11 +2,11 @@ import Link from 'next/link'
 import footerContactInfo from '../config/footerContactInfo'
 import footerQuotes from '../config/footerQuotes'
 import footerCopyrightInfo from '../config/footerCopyrightInfo'
-import randomQuoteGenerator from '../services/randomQuoteGenerator'
+import utils from '../utils'
 
-const randomQuote = randomQuoteGenerator(footerQuotes)
+const randomQuote = utils.randomQuote(footerQuotes)
 
-function Footer () {
+function Footer() {
   return (
     <footer className='bg-gray-900 footer'>
       <div className='container  mx-auto'>
