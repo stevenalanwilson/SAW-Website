@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         <h2
           className="heading-2 leading-tight text-4xl mr-40"
         >
-          Principal developer at the Ministry of Justice, creative technologist, foodie, gamer, husband & father
+          Director of technology services at PUBLIC, technologist, creative, foodie, gamer, husband & father
         </h2>
       </div>
     </div>
@@ -41,15 +41,8 @@ exports[`renders correctly 1`] = `
           className="text-xl"
         >
           <strong>
-            I'm currently a principal developer for the Ministry of Justice
+            I'm currently the director of technology services at PUBLIC, previously a principal developer for the Ministry of Justice
           </strong>
-           
-          <a
-            href="mailto:hello@stevenalanwilson.com?subject=Website%20enquiry"
-            title="Say Hello"
-          >
-            but I'm still always intrested in meeting new people
-          </a>
         </p>
       </div>
     </div>
