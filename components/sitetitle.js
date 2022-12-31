@@ -1,4 +1,4 @@
-function SiteTitle () {
+function SiteTitle() {
   return (
     <section>
       <div className='flex flex-wrap'>
@@ -9,13 +9,13 @@ function SiteTitle () {
       <div className='hidden lg:flex'>
         <div className='flex flex-wrap w-full md:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <h2 className='heading-2 leading-tight text-4xl mr-40'>Principal developer at the Ministry of Justice, creative technologist, foodie, gamer, husband &amp; father</h2>
+            <h2 className='heading-2 leading-tight text-4xl mr-40'>Director of technology services at PUBLIC, technologist, creative, foodie, gamer, husband &amp; father</h2>
           </div>
         </div>
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>I'm currently a principal developer for the Ministry of Justice</strong> <a href='mailto:hello@stevenalanwilson.com?subject=Website%20enquiry' title='Say Hello'>but I'm still always intrested in meeting new people</a></p>
+            <p className='text-xl'><strong>I'm currently the director of technology services at PUBLIC, previously a principal developer for the Ministry of Justice</strong></p>
           </div>
         </div>
       </div>
