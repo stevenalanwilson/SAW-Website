@@ -44,17 +44,10 @@ function Footer() {
           </div>
           <div className='flex w-full md:w-1/2 lg:w-2/4 p-2'>
             <div className='border-white w-full border-b-2 mx-4 py-6'>
-              <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>About Steven</h1>
-              <p className='text-white leading-loose'>Hi, I'm Steve, and this is my digital garden.</p>
-
-              <p className='text-white leading-loose'>I use this space as a platform to publish my ideas, thoughts and creative outputs.</p>
-
-              <p className='text-white leading-loose'>I've spent my career in digital, starting as a designer, then a developer and then into leadership. so most of the content I post is about digital and leadership.</p>
-
-              <p className='text-white leading-loose'>I'm a creative at heart, so I also use this space as a creative outlet.</p>
-
-              <p className='text-white leading-loose'>I hope you like my content and please feel free to send me a message to say hello.</p>
-
+              <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>About me</h1>
+              <p className='text-white leading-loose'>I am an experienced technologist and leader, with over 20 years of experience in the design and development of  digital products and services. I have led product teams of designers, developers, content strategists, delivery and product managers to build services for the UK Government and commercial organisations.</p>
+              <p className='text-white leading-loose'>I've had much success as a technologist and enjoy working collaboratively to empower others to grow. I enjoy the challenge of working in an ever-changing field where different opportunities are always presenting themselves.</p>
+              <p className='text-white leading-loose'>I'm also a creative person and enjoy exercising my creativity on digital content, I'm a photographer, illustrator and digital creative. I like coming up with logos, flyers, posters and other interesting visuals.</p>
             </div>
           </div>
         </div>
@@ -69,7 +62,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
 
