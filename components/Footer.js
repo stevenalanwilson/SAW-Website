@@ -16,8 +16,8 @@ function Footer() {
               <h1 className='heading-3  text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>Sitemap</h1>
               <ul className='menu'>
                 <li className='mb-4 pb-4 border-b'>
-                  <Link href='/'>
-                    <a className='text-white'>Home</a>
+                  <Link href='/' className='text-white'>
+                    Home
                   </Link>
                 </li>
                 {/* <li className='mb-4 pb-4 border-b'>
@@ -63,7 +63,7 @@ function Footer() {
         </div>
       </div>
     </footer >
-  )
+  );
 }
 
 export default Footer

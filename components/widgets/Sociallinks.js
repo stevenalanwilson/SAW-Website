@@ -12,7 +12,7 @@ const Sociallinks = () => {
         {socaillinksData.length > 0 ? socaillinksData.map(link => (
           <li key={link.key}>
             <i className={`fa ${link.class}`} aria-hidden='true' />
-            <Link href={link.url}>
+            <Link href={link.url} legacyBehavior>
               <a className='socillink'>{link.title}</a>
             </Link>
           </li>
@@ -35,6 +35,6 @@ const Sociallinks = () => {
       `}
       </style>
     </div>
-  )
+  );
 }
 export default Sociallinks

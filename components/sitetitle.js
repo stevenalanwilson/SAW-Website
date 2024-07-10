@@ -1,9 +1,11 @@
+import Link from 'next/link'
+
 function SiteTitle() {
   return (
     <section>
       <div className='flex flex-wrap'>
         <div className='w-full p-2 border-black border-b border-t lg:border-t-0 py-4 mx-4 my-6 lg:my-1'>
-          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>Steven Alan Wilson Limited - Technical Leadership Consultancy</h1>
+          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>Steven Alan Wilson</h1>
         </div>
       </div>
       <div className='hidden lg:flex'>
@@ -15,7 +17,7 @@ function SiteTitle() {
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team, previously, a digital director at <a href='https://www.public.io' title='PUBLIC'>PUBLIC's</a> digital service capabilities,  a Principal Developer for the UK's <a href='https://mojdigital.blog.gov.uk' title='Ministry of Justice'>Ministry of Justice.</a></strong></p>
+            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team, previously, a digital director at <Link href='https://www.public.io' title='PUBLIC'>PUBLIC's</Link> digital service capabilities,  a Principal Developer for the UK's <Link href='https://mojdigital.blog.gov.uk' title='Ministry of Justice'>Ministry of Justice.</Link></strong></p>
           </div>
         </div>
       </div>
