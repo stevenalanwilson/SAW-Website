@@ -3,7 +3,7 @@ function SiteTitle() {
     <section>
       <div className='flex flex-wrap'>
         <div className='w-full p-2 border-black border-b border-t lg:border-t-0 py-4 mx-4 my-6 lg:my-1'>
-          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>Steven Alan Wilson</h1>
+          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>Steven Alan Wilson Limited - Technical Leadership Consultancy</h1>
         </div>
       </div>
       <div className='hidden lg:flex'>
