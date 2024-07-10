@@ -11,7 +11,7 @@ function SiteTitle() {
       <div className='hidden lg:flex'>
         <div className='flex flex-wrap w-full md:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi I'm Steve, a consultant technical leader, technologist and creative, lover of food and gaming, husband and father.</h2>
+            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi, I'm Steve, <strong>a consultant technical leader</strong>, technologist, creative, lover of food, gamer, husband and father.</h2>
           </div>
         </div>
 

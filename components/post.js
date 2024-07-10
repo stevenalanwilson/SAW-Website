@@ -7,7 +7,7 @@ function post ({ date, id, image, title, summary }) {
     <article className='w-full md:w-2/4'>
       <div className='py-2 mx-4 mb-4 border-black border-b'>
         <figure>
-          <Link href={`/post?id=${id}`}>
+          <Link href={`/post?id=${id}`} legacyBehavior>
 
             <picture>
               <source media='(min-width: 800px)' srcset={image + '?fit=thumb&w=800&h=600&fm=webp&q=80'} />
@@ -20,7 +20,7 @@ function post ({ date, id, image, title, summary }) {
         </figure>
         <header>
           <h1 className='text-2xl heading-4  mb-2'>
-            <Link href={`/post?id=${id}`} className='underline'>
+            <Link href={`/post?id=${id}`} className='underline' legacyBehavior>
               {title}
             </Link>
           </h1>

@@ -4,7 +4,7 @@ import footerQuotes from '../config/footerQuotes'
 import footerCopyrightInfo from '../config/footerCopyrightInfo'
 import utils from '../utils'
 
-const randomQuote = utils.randomQuote(footerQuotes)
+// const randomQuote = utils.randomQuote(footerQuotes)
 
 function Footer() {
   return (
@@ -53,7 +53,7 @@ function Footer() {
         </div>
         <div className='flex flex-wrap'>
           <div className='w-full quote border-white border-b-2 mx-4 py-6'>
-            <p className='text-center text-2xl text-white'>{randomQuote}</p>
+            <p className='text-center text-2xl text-white'>Quote goes here</p>
           </div>
         </div>
         <div className='flex flex-wrap'>

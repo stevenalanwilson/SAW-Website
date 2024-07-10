@@ -5,29 +5,35 @@ function SiteHeader () {
     <header className='bg-gray-900 py-2'>
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
-          <div className='w-full lg:w-1/4 p-2'>
+          <div className='w-full lg:w-2/4 p-2'>
             <a href='/' title='Steven Alan Wilson' className='text-xl font-bold text-white'>
-                Steven Alan Wilson
+                Steven Alan Wilson Limited - Technical Consultant
             </a>
           </div>
-          <div className='hidden lg:block lg:w-3/4 p-2'>
+          <div className='hidden lg:block lg:w-2/4 p-2'>
             <nav className='main-menu' id='mm'>
               <ul className='flex justify-end'>
-                {/* <li className='p-2'>
-                  <Link href='/'>
-                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Home</a>
+                <li className='p-2'>
+                  <Link
+                    href='/'
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>
+                    Home
                   </Link>
                 </li>
                 <li className='p-2'>
-                  <Link href='/about'>
-                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>About</a>
+                  <Link
+                    href='/about'
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>
+                    About
                   </Link>
                 </li>
                 <li className='p-2'>
-                  <Link href='/hello'>
-                    <a className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>Say hello</a>
+                  <Link
+                    href='/hello'
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>
+                    Say hello
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </nav>
           </div>
@@ -35,7 +41,7 @@ function SiteHeader () {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
 export default SiteHeader
