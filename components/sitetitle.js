@@ -9,13 +9,13 @@ function SiteTitle() {
       <div className='hidden lg:flex'>
         <div className='flex flex-wrap w-full md:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi I'm Steve, Director of Technology Services at PUBLIC. I'm a technologist and creative, lover of food and gaming, husband and father.</h2>
+            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi I'm Steve, a consultant technical leader, technologist and creative, lover of food and gaming, husband and father.</h2>
           </div>
         </div>
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>Currently leading <a href='https://www.public.io' title='PUBLIC'>PUBLIC's</a> digital service capabilities, previously a Principal Developer for the UK's <a href='https://mojdigital.blog.gov.uk' title='Ministry of Justice'>Ministry of Justice.</a></strong></p>
+            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team, previously, a digital director at <a href='https://www.public.io' title='PUBLIC'>PUBLIC's</a> digital service capabilities,  a Principal Developer for the UK's <a href='https://mojdigital.blog.gov.uk' title='Ministry of Justice'>Ministry of Justice.</a></strong></p>
           </div>
         </div>
       </div>
