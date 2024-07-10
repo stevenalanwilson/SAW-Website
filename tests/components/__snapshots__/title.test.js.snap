@@ -27,7 +27,7 @@ exports[`renders correctly 1`] = `
         <h2
           className="heading-2 leading-tight text-4xl mr-40"
         >
-          Hi I'm Steve, Director of Technology Services at PUBLIC. I'm a technologist and creative, lover of food and gaming, husband and father.
+          Hi I'm Steve, a consultant technical leader, technologist and creative, lover of food and gaming, husband and father.
         </h2>
       </div>
     </div>
@@ -41,14 +41,14 @@ exports[`renders correctly 1`] = `
           className="text-xl"
         >
           <strong>
-            Currently leading 
+            Currently part of Aer Lingus technical leadership team, previously, a digital director at 
             <a
               href="https://www.public.io"
               title="PUBLIC"
             >
               PUBLIC's
             </a>
-             digital service capabilities, previously a Principal Developer for the UK's 
+             digital service capabilities,  a Principal Developer for the UK's 
             <a
               href="https://mojdigital.blog.gov.uk"
               title="Ministry of Justice"
