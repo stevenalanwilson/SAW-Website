@@ -49,7 +49,7 @@ function Footer() {
         </div>
         <div className='flex flex-wrap'>
           <div className='w-full quote border-white border-b-2 mx-4 py-6'>
-            <p className='text-center text-2xl text-white'>Quote goes here</p>
+            <p className='text-center text-2xl text-white'>All growth depends upon activity. There is no development physically or intellectually without effort, and effort means work.</p>
           </div>
         </div>
         <div className='flex flex-wrap'>
