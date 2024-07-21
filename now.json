@@ -1,15 +1,9 @@
 {
   "version": 2,
   "env": {
-    // "SPACEID": "@spaceid",
-    // "ACCESSTOKEN": "@accesstoken",
-    // "SENTRYDSN": "@sentrydsn"
   }, 
   "build": {
     "env": {
-      // "SPACEID": "@spaceid",
-      // "ACCESSTOKEN": "@accesstoken",
-      // "SENTRYDSN": "@sentrydsn"
     }
   }
 }
