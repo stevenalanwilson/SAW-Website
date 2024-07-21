@@ -6,9 +6,9 @@ module.exports = {
   dev: !isProduction,
   production: isProduction,
   environment: process.env.NODE_ENV,
-  sentry: {
-    dsn: process.env.SENTRYDSN
-  },
-  space: process.env.SPACEID,
-  accessToken: process.env.ACCESSTOKEN
+  // sentry: {
+  //   dsn: process.env.SENTRYDSN
+  // },
+  // space: process.env.SPACEID,
+  // accessToken: process.env.ACCESSTOKEN
 }
