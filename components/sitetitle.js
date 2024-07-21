@@ -17,7 +17,7 @@ function SiteTitle() {
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team, previously, a digital director at <Link href='https://www.public.io' title='PUBLIC'>PUBLIC's</Link> digital service capabilities,  a Principal Developer for the UK's <Link href='https://mojdigital.blog.gov.uk' title='Ministry of Justice'>Ministry of Justice.</Link></strong></p>
+            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team; previusly: PUBLIC, Hackney Council & The Ministry of Justice Digital</strong></p>
           </div>
         </div>
       </div>
