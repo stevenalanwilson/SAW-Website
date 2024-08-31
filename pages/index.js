@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import SiteTitle from '../components/sitetitle'
+import Footer from '../components/Footer'
 
 
 const index = props => {
@@ -10,22 +11,24 @@ const index = props => {
         <title>Steven Alan Wilson Limited - Technical Leadership Consultancy</title>
       </Head>
       <Layout>
-      <section>
+        
+      <header>
         <div className='container mx-auto'>
           <SiteTitle />
-          <div className='flex flex-wrap'>
-           
-          </div>
         </div>
-      </section>
+      </header>
 
-      <section className='postscript bg-gray-800'>
+      <main>
+        <div className='container mx-auto'>
+        </div>
+      </main>
+
+      <footer className='postscript bg-gray-800'>
       <div className='container mx-auto'>
         <div className='flex flex-wrap'>
-          
           </div>
         </div>
-      </section>
+      </footer>
       </Layout>
       
     </>
