@@ -1,34 +1,13 @@
-import fs from 'fs';
-import matter from 'gray-matter';
+import postsController from '../controllers/postsController'
 
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import SiteTitle from '../components/sitetitle'
 import ListPosts from "../components/listposts"
 
-const createPageSlug = postFile => postFile.replace('.md', '')
-
-const loadPosts = files => files.map((fileName) => {
-  const slug = createPageSlug(fileName)
-  const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8')
-  const { data: frontmatter } = matter(readFile)
-  return {
-    slug,
-    frontmatter
-  };  
-})
-
-const getPosts = async () => {
-  try {
-    const files = fs.readdirSync('posts')
-    return loadPosts(files)
-  } catch (error) {
-    throw error
-  }
-}
 
 export async function getStaticProps() {
-  const posts = await getPosts()
+  const posts = await postsController.getAllPosts()
   return { 
     props: { posts } 
   }
