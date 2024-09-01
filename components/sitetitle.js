@@ -11,13 +11,14 @@ function SiteTitle() {
       <div className='hidden lg:flex'>
         <div className='flex flex-wrap w-full md:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi, I'm Steve, <strong>a consultant technical leader</strong>, technologist, creative, lover of food, gamer, husband and father.</h2>
+            {/* <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi, I'm Steve, <strong>a consultant technical leader</strong>, technologist, creative, lover of food, gamer, husband and father.</h2> */}
+            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi, <strong>I'm Steve, a technical leader</strong> with a passion for technology and innovation, I help organizations deliver digital transformation at scale.</h2>
           </div>
         </div>
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'><strong>Currently part of Aer Lingus technical leadership team; previusly: PUBLIC, Hackney Council & The Ministry of Justice Digital</strong></p>
+            <p className='text-xl'>Currently a member of the <strong>technical leadership team at <Link href={`https://www.aerlingus.com`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Aer Lingus</Link></strong>. Previously held key technical leadership roles at <Link href={`https://www.public.io`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>PUBLIC</Link>, <Link href={`https://hackney.gov.uk`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Hackney Council</Link>, and the <Link href={`https://mojdigital.blog.gov.uk`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Ministry of Justice Digital</Link>.</p>
           </div>
         </div>
       </div>
@@ -26,3 +27,9 @@ function SiteTitle() {
 }
 
 export default SiteTitle
+
+
+
+
+
+
