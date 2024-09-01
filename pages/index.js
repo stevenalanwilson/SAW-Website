@@ -1,8 +1,17 @@
+import postsController from '../controllers/postsController'
+
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import SiteTitle from '../components/sitetitle'
-import Footer from '../components/Footer'
+import ListPosts from "../components/listposts"
 
+
+export async function getStaticProps() {
+  const posts = await postsController.getAllPosts()
+  return { 
+    props: { posts } 
+  }
+};
 
 const index = props => {
   return (
@@ -20,6 +29,7 @@ const index = props => {
 
       <main>
         <div className='container mx-auto'>
+          <ListPosts posts={props.posts}/>
         </div>
       </main>
 

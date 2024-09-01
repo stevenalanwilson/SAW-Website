@@ -33,6 +33,7 @@
     "@sentry/browser": "^8.19.0",
     "dotenv": "^16.4.5",
     "eslint-config-next": "^14.2.5",
+    "gray-matter": "^4.0.3",
     "next": "^14.2.5",
     "nock": "^13.5.4",
     "normalize.css": "^8.0.1",
@@ -79,5 +80,10 @@
   },
   "transform": {
     "\\.js$": "<rootDir>/node_modules/babel-jest"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
