@@ -5,9 +5,10 @@ export default function listposts({ posts }) {
   return (
     <div className='grid grid-cols-2 gap-1'>
       {
-        posts.map(({ slug, postMetaData }) => (
-          <div key={slug} className='border-black border-b border-t lg:border-t-0 p-4 mb-5'>
-            <Link href={`/post/${slug}`} >
+        posts.map(({ postSlug, postMetaData }) => (
+          // console.log(slug),
+          <div key={postSlug} className='border-black border-b border-t lg:border-t-0 p-4 mb-5'>
+            <Link href={`/post/${postSlug}`} >
               <h1 className='text-3xl font-bold heading-4 mb-5 underline decoration-3 underline-offset-8 hover:no-underline'>{postMetaData.title}</h1>
               <Image
                 width={900}
@@ -17,7 +18,7 @@ export default function listposts({ posts }) {
                 className='mb-5'
               />
             </Link>
-            <p className='text-2xl mb-2'>{postMetaData.summary} <Link href={`/post/${slug}`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>... read more</Link></p>
+            <p className='text-2xl mb-2'>{postMetaData.summary} <Link href={`/post/${postSlug}`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>... read more</Link></p>
           </div>
         ))
       }
