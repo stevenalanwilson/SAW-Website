@@ -1,62 +1,93 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-// import md from 'markdown-it';
+
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeDocument from "rehype-document";
+import rehypeFormat from "rehype-format";
+import rehypeStringify from "rehype-stringify";
+import addClasses from 'rehype-class-names'
+
+
+import markdownService from '../../services/getMarkdownService'
+
+import Head from 'next/head'
+import Layout from '../../components/Layout'
+import PageTitle from '../../components/pagetitle'
 
 export async function getStaticPaths() {
-  try {
-    
-    const files = fs.readdirSync('posts');
-
-    console.log(files);
-    const paths = files.map((fileName) => ({
-      params: {
-        slug: fileName.replace('.md', '')
-      }
-    }));
-    console.log(paths);
-
-    return {
-      paths,
-      fallback: true
-    };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      paths: [],
-      fallback: false
-    };
+  const postsFolder = fs.readdirSync('posts')
+  const paths = markdownService.loadMarkdownStaticPaths(postsFolder)
+  return {
+    paths,
+    fallback: true
   }
-};
+}
 
 export async function getStaticProps({ params: { slug } }) {
-  try {
-    const fileName = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
-    const { data: frontmatter, content } = matter(fileName);
+  const MarkdownfileName = await markdownService.loadMarkdownFileUsingSlug(slug)
+  const { data: frontmatter, content } = matter(MarkdownfileName);
 
-    return {
-      props: {
-        frontmatter,
-        content
-      }
-    };
-  } catch (error) {
-    console.error(error);
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeFormat)
+    .use(rehypeStringify)
+    .use(addClasses, {
+      'p,h1,h2,h3,h4,h5': 'leading-relaxed mb-5',
+      h1: 'text-3xl font-bold',
+      h2: 'text-2xl font-bold',
+      p: 'text-lg'
+    })
+    .process(content);
 
-    return {
-      props: {}
-    };
+  const contentHtml = processedContent.toString();
+
+  return {
+    props: {
+      frontmatter,
+      contentHtml
+    }
   }
-};
+}
 
-function Post({ frontmatter, content }) {
+function Post({ frontmatter, contentHtml }) {
   return (
+    <>
+      <Head>
+        <title>Steven Alan Wilson Limited - Technical Leadership Consultancy</title>
+      </Head>
+      <Layout>
 
-    <div className="prose mx-auto mt-8">
-      <h1>{frontmatter.title}</h1>
-      {/* <div dangerouslySetInnerHTML={{ __html: md().render(content) }} /> */}
-    </div>
-  );
-};
+        <header>
+          <div className='container mx-auto'>
+            <PageTitle title={frontmatter.title} />
+          </div>
+        </header>
+
+        <main>
+          <div className='container mx-auto flex'>
+          <div className='flex flex-wrap w-1/4 p-4 pb-10'>
+          </div>
+            <div className='flex flex-wrap w-2/4 p-4 pb-10'>
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+            <div className='flex flex-wrap w-1/4 p-4 pb-10'>
+            </div>
+          </div>
+        </main>
+
+        <footer className='postscript bg-gray-800'>
+          <div className='container mx-auto'>
+            <div className='flex flex-wrap'>
+            </div>
+          </div>
+        </footer>
+      </Layout>
+
+    </>
+  )
+}
 
 export default Post;
