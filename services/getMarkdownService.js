@@ -1,5 +1,7 @@
 import fs from 'fs'; // Add this line to import the fs module
 import matter from 'gray-matter'; // Add this line to import the matter module
+import validator from 'validator';
+
 
 /**
  * Retrieves all markdown posts from the 'posts' directory.
@@ -58,8 +60,11 @@ const loadMarkdownStaticPaths = markdownFiles => {
   }));
 }
 
-const loadMarkdownFileUsingSlug = async slug =>  await fs.readFileSync(`posts/${slug}.md`, 'utf-8');
+const loadMarkdownFileUsingSlug = async slug =>  {
+  const sanitizedSlug = validator.escape(slug);
+  return await fs.readFileSync(`posts/${sanitizedSlug}.md`, 'utf-8');
 
+}
 export default {
   loadMarkdownFileUsingSlug: loadMarkdownFileUsingSlug,
   loadMarkdownStaticPaths: loadMarkdownStaticPaths,
