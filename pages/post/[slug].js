@@ -1,5 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { useRouter } from 'next/router'
+
 
 import { unified } from "unified";
 import remarkParse from "remark-parse";
@@ -43,16 +45,28 @@ export async function getStaticProps({ params: { slug } }) {
     .process(content);
 
   const contentHtml = processedContent.toString();
-
+  if (!contentHtml && !frontmatter) {
+    return {
+      notFound: true,
+    }
+  }
   return {
     props: {
       frontmatter,
       contentHtml
     }
   }
+
+
 }
 
 function Post({ frontmatter, contentHtml }) {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Head>
@@ -68,8 +82,8 @@ function Post({ frontmatter, contentHtml }) {
 
         <main>
           <div className='container mx-auto flex'>
-          <div className='flex flex-wrap w-1/4 p-4 pb-10'>
-          </div>
+            <div className='flex flex-wrap w-1/4 p-4 pb-10'>
+            </div>
             <div className='flex flex-wrap w-2/4 p-4 pb-10'>
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
             </div>
