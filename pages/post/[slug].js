@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { useRouter } from 'next/router'
+import validator from 'validator';
 
 
 import { unified } from "unified";
@@ -28,7 +29,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const MarkdownfileName = await markdownService.loadMarkdownFileUsingSlug(slug)
+  const sanitizedSlug = validator.escape(slug);
+  const MarkdownfileName = await markdownService.loadMarkdownFileUsingSlug(sanitizedSlug)
   const { data: frontmatter, content } = matter(MarkdownfileName);
 
   const processedContent = await unified()
