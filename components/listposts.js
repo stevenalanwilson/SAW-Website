@@ -17,7 +17,7 @@ export default function listposts({ posts }) {
                 className='mb-5'
               />
             </Link>
-            <p className='text-2xl mb-2'>{postMetaData.summary} <Link href={`/post/${postSlug}`} className='underline decoration-3 underline-offset-8 hover:no-underline'>... read more</Link></p>
+            <p className='text-xl mb-2'>{postMetaData.summary} <Link href={`/post/${postSlug}`} className='underline decoration-3 underline-offset-8 hover:no-underline'>... read more</Link></p>
           </div>
         ))
       }
