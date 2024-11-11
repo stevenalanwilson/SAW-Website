@@ -2,6 +2,8 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import { useRouter } from 'next/router'
 import validator from 'validator';
+import dayjs from 'dayjs';
+
 
 
 import { unified } from "unified";
@@ -78,7 +80,7 @@ function Post({ frontmatter, contentHtml }) {
 
         <header>
           <div className='container mx-auto'>
-            <PageTitle title={frontmatter.title} />
+            <PageTitle title={frontmatter.title} summary={frontmatter.summary} date={frontmatter.date} />
           </div>
         </header>
 

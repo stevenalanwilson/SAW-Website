@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import dayjs from 'dayjs';
 
 export default function listposts({ posts }) {
   return (
@@ -8,7 +9,8 @@ export default function listposts({ posts }) {
         posts.map(({ postSlug, postMetaData }) => (
           <div key={postSlug} className='border-black border-b border-t lg:border-t-0 p-4 mb-5'>
             <Link href={`/post/${postSlug}`} >
-              <h1 className='text-6xl font-bold heading-4 mb-10 underline decoration-3 underline-offset-8 hover:no-underline  w-2/3'>{postMetaData.title}</h1>
+              <h1 className='text-6xl font-bold heading-4 mb-5 underline decoration-3 underline-offset-8 hover:no-underline w-2/3'>{postMetaData.title}</h1>
+              <p className='text-xl font-bold heading-4 mb-10 w-2/3'>{dayjs(postMetaData.date).format('D MMMM YYYY')}</p>
               <Image
                 width={1000}
                 height={240}

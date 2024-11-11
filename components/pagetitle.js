@@ -1,5 +1,6 @@
-export default function PageTitle({ title }) {
-  console.log(title)
+import dayjs from 'dayjs';
+
+export default function PageTitle({ title, summary, date }) {
   return (
     <section>
       <div className='flex flex-wrap'>
@@ -7,7 +8,7 @@ export default function PageTitle({ title }) {
         </div>
         <div className='w-2/4 p-4 border-black border-b'>
           <h1 className='heading-1 font-bold text-6xl pb-5'>{title}</h1>
-          <p className='text-2xl leading-relaxed'> A story of how I stumbled upon my leadership style, which I now recognise as servant leadership.</p>
+          <p className='text-2xl leading-relaxed'>{summary}</p>
         </div>
         <div className='flex flex-wrap w-1/4 p-4 pb-10'>
         </div>
@@ -17,7 +18,7 @@ export default function PageTitle({ title }) {
         <div className='flex flex-wrap w-1/4 p-4 pb-10'>
         </div>
         <div className='w-2/4 p-4 border-black border-b-4 border-t'>
-          <p className='text-xl leading-relaxed'>21st May 1979</p>
+          <p className='text-xl leading-relaxed'>{dayjs(date).format('D MMMM YYYY')}</p>
         </div>
         <div className='flex flex-wrap w-1/4 p-4 pb-10'>
         </div>
