@@ -1,21 +1,18 @@
 import Head from 'next/head'
 import SiteHeader from './siteheader'
 import Footer from './Footer'
+import { Analytics } from '@vercel/analytics/react';
+
 
 const Layout = props => (
   <>
-    <Head>
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono'
-        type='text/css'
-      />
-    </Head>
+    <Head />
     <SiteHeader />
     <main>
       {props.children}
     </main>
     <Footer />
+    <Analytics />
   </>
 )
 
