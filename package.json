@@ -2,6 +2,9 @@
   "name": "saw_frontend_app",
   "version": "1.0.0",
   "description": "The front end app for stevenalanwilson.com",
+  "engines": {
+    "node": "22.x"
+  }
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
