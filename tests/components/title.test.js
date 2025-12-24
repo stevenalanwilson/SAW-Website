@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '../../components/sitetitle'
+import Title from '../../components/SiteTitle'
 import renderer from 'react-test-renderer'
 
 xit('renders correctly', () => {
