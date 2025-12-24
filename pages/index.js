@@ -2,8 +2,8 @@ import postsController from '../controllers/postsController'
 
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import SiteTitle from '../components/sitetitle'
-import ListPosts from "../components/listposts"
+import SiteTitle from '../components/SiteTitle'
+import ListPosts from "../components/ListPosts"
 
 
 export async function getStaticProps() {

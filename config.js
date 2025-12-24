@@ -5,10 +5,5 @@ module.exports = {
   appName: 'SAW',
   dev: !isProduction,
   production: isProduction,
-  environment: process.env.NODE_ENV,
-  // sentry: {
-  //   dsn: process.env.SENTRYDSN
-  // },
-  // space: process.env.SPACEID,
-  // accessToken: process.env.ACCESSTOKEN
+  environment: process.env.NODE_ENV
 }

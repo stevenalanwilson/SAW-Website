@@ -15,9 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        # Update to more stable Node.js versions
-        node-version: [18.x, 20.x]
-        # 18.x is LTS and 20.x is Current stable version
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v4

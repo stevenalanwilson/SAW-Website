@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import SiteHeader from './siteheader'
+import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import { Analytics } from '@vercel/analytics/react';
 
