@@ -6,9 +6,9 @@ function SiteHeader () {
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
           <div className='w-full lg:w-2/4 p-2'>
-            <a href='/' title='Steven Alan Wilson' className='text-xl font-bold text-white'>
+            <Link href='/' title='Steven Alan Wilson' className='text-xl font-bold text-white'>
                 Steven Alan Wilson Limited - Technical Leadership Consultant
-            </a>
+            </Link>
           </div>
           <div className='hidden lg:block lg:w-2/4 p-2'>
             <nav className='main-menu' id='mm'>
