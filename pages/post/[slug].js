@@ -19,7 +19,7 @@ import markdownService from '../../services/getMarkdownService'
 
 import Head from 'next/head'
 import Layout from '../../components/Layout'
-import PageTitle from '../../components/pagetitle'
+import PageTitle from '../../components/PageTitle'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
