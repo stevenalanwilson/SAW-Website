@@ -12,6 +12,7 @@ import SEO from '../../components/SEO'
 import Post from '../../components/Post'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import Sidebar from '../../components/Sidebar'
+import AuthorCard from '../../components/AuthorCard'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
@@ -102,6 +103,7 @@ function PostPage({ frontmatter, content, slug }) {
             </div>
 
             <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
+              <AuthorCard />
               <Sidebar />
             </div>
           </div>

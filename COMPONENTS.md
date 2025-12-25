@@ -118,6 +118,19 @@ This document lists all reusable components available in the application.
 
 ## Card Components
 
+### AuthorCard
+**File:** `components/AuthorCard.js`
+**Description:** Introduction card for blog posts that welcomes readers and introduces the author
+**Props:**
+- `className` (string, optional): Additional CSS classes
+
+**Usage:**
+```jsx
+<AuthorCard />
+```
+
+**Note:** Displays a brief author bio and welcome message. Used at the top of blog post sidebars to provide context about who wrote the content.
+
 ### ContactCard
 **File:** `components/ContactCard.js`
 **Description:** Dark card displaying contact information and social links
@@ -251,8 +264,8 @@ All components have comprehensive test coverage. Test files are located in `test
 Current test coverage: **~95%**
 
 - All components: 100% coverage
-- 132 tests passing
-- 20 test suites
+- 139 tests passing
+- 21 test suites
 
 ## Viewing Component Examples
 
