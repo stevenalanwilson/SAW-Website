@@ -28,13 +28,13 @@ function Footer() {
               <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>Contact Info</h1>
               <ul className='menu'>
                 <li className='mb-4 pb-4 border-b'>
-                  <p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' /> 
+                  <p className='text-white'><i className='fa fa-twitter' aria-hidden='true' />
                     <Link href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</Link>
                   </p>
                 </li>
                 <li className='mb-4 pb-4 border-b'>
-                  <p className='text-white'><i className='fa fa-twitter' aria-hidden='true' />
-                    <Link href={footerContactInfo.facebook[0].title} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</Link>
+                  <p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' />
+                    <Link href={footerContactInfo.facebook[0].link} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</Link>
                   </p>
                 </li>
               </ul>

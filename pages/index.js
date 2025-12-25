@@ -1,17 +1,17 @@
-import postsController from '../controllers/postsController'
+import markdownService from '../services/getMarkdownService'
 
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import SiteTitle from '../components/SiteTitle'
-import ListPosts from "../components/ListPosts"
+import ListPosts from '../components/ListPosts'
 
 
 export async function getStaticProps() {
-  const posts = await postsController.getAllPosts()
+  const posts = await markdownService.getAllMarkdownPosts()
   return {
     props: { posts }
   }
-};
+}
 
 const index = props => {
   return (

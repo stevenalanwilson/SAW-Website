@@ -1,5 +1,6 @@
-import fs from 'fs'; // Add this line to import the fs module
-import matter from 'gray-matter'; // Add this line to import the matter module
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 import validator from 'validator';
 
 
@@ -60,10 +61,40 @@ const loadMarkdownStaticPaths = markdownFiles => {
   }));
 }
 
-const loadMarkdownFileUsingSlug = async slug =>  {
+/**
+ * Safely loads a markdown file using the slug with path traversal protection.
+ *
+ * @param {string} slug - The slug of the post to load.
+ * @returns {string} - The content of the markdown file.
+ * @throws {Error} - If the slug contains invalid characters or path traversal attempts.
+ */
+const loadMarkdownFileUsingSlug = async slug => {
+  // Sanitize HTML entities
   const sanitizedSlug = validator.escape(slug);
-  return await fs.readFileSync(`posts/${sanitizedSlug}.md`, 'utf-8');
 
+  // Validate that slug only contains safe characters (alphanumeric, hyphens, underscores)
+  if (!/^[a-zA-Z0-9_-]+$/.test(sanitizedSlug)) {
+    throw new Error('Invalid slug: contains unsafe characters');
+  }
+
+  // Construct the file path
+  const postsDir = path.join(process.cwd(), 'posts');
+  const filePath = path.join(postsDir, `${sanitizedSlug}.md`);
+
+  // Resolve the absolute path and verify it's within the posts directory
+  const resolvedPath = path.resolve(filePath);
+  const resolvedPostsDir = path.resolve(postsDir);
+
+  if (!resolvedPath.startsWith(resolvedPostsDir)) {
+    throw new Error('Invalid slug: path traversal attempt detected');
+  }
+
+  // Check if file exists
+  if (!fs.existsSync(resolvedPath)) {
+    throw new Error('Post not found');
+  }
+
+  return fs.readFileSync(resolvedPath, 'utf-8');
 }
 export default {
   loadMarkdownFileUsingSlug: loadMarkdownFileUsingSlug,
