@@ -68,7 +68,14 @@ function Post({ frontmatter, contentHtml }) {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-gray-50'>
+        <div className='text-center'>
+          <div className='inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mb-4'></div>
+          <p className='text-xl text-gray-700'>Loading post...</p>
+        </div>
+      </div>
+    )
   }
 
   return (

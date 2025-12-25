@@ -1,14 +1,20 @@
-// import App from 'next/app'
 import React, { useEffect } from 'react'
+import ErrorBoundary from '../components/ErrorBoundary'
 
 import '../public/static/screen.scss'
 
+const LANG = 'en'
+
 function MyApp ({ Component, pageProps }) {
-  const lang = 'en'
   useEffect(() => {
-    document.documentElement.lang = lang
-  }, [lang])
-  return <Component {...pageProps} />
+    document.documentElement.lang = LANG
+  }, [])
+
+  return (
+    <ErrorBoundary>
+      <Component {...pageProps} />
+    </ErrorBoundary>
+  )
 }
 
 // Only uncomment this method if you have blocking data requirements for
