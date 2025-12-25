@@ -17,82 +17,79 @@ describe('createPostSlug', () => {
   })
 })
 
-xdescribe('loadAllMarkdownFilesAndCreatePosts', () => {
-  test('returns an array of posts with postSlug and postMetaData', async () => {
-    const files = ['post1.md', 'post2.md', 'post3.md']
-    const expectedPosts = [
-      {
-        postSlug: 'post1',
-        postMetaData: { /* metadata for post1 */ }
-      },
-      {
-        postSlug: 'post2',
-        postMetaData: { /* metadata for post2 */ }
-      },
-      {
-        postSlug: 'post3',
-        postMetaData: { /* metadata for post3 */ }
-      }
-    ]
-    const actualPosts = await markdownServive.loadAllMarkdownFilesAndCreatePosts(files)
-    expect(actualPosts).toEqual(expectedPosts)
+describe('loadAllMarkdownFilesAndCreatePosts', () => {
+  beforeEach(() => {
+    // Mock fs.readFileSync to return mock markdown content
+    jest.spyOn(fs, 'readFileSync').mockReturnValue(`---
+title: Test Post
+date: 2024-01-15
+summary: Test summary
+---
+# Test content`)
   })
 
-  test('returns an empty array if no files are provided', async () => {
+  afterEach(() => {
+    fs.readFileSync.mockRestore()
+  })
+
+  test('returns an array of posts with postSlug and postMetaData', () => {
+    const files = ['post1.md', 'post2.md', 'post3.md']
+    const actualPosts = markdownServive.loadAllMarkdownFilesAndCreatePosts(files)
+
+    expect(actualPosts).toHaveLength(3)
+    expect(actualPosts[0]).toHaveProperty('postSlug', 'post1')
+    expect(actualPosts[0]).toHaveProperty('postMetaData')
+    expect(actualPosts[0].postMetaData).toHaveProperty('title', 'Test Post')
+    expect(actualPosts[1]).toHaveProperty('postSlug', 'post2')
+    expect(actualPosts[2]).toHaveProperty('postSlug', 'post3')
+  })
+
+  test('returns an empty array if no files are provided', () => {
     const files = []
     const expectedPosts = []
-    const actualPosts = await markdownServive.loadAllMarkdownFilesAndCreatePosts(files)
+    const actualPosts = markdownServive.loadAllMarkdownFilesAndCreatePosts(files)
     expect(actualPosts).toEqual(expectedPosts)
   })
 })
 
-xdescribe('getAllMarkdownPosts', () => {
-  test('returns an array of markdown posts', async () => {
-    const expectedPosts = [
-      {
-        postSlug: 'post1',
-        postMetaData: { /* metadata for post1 */ }
-      },
-      {
-        postSlug: 'post2',
-        postMetaData: { /* metadata for post2 */ }
-      },
-      {
-        postSlug: 'post3',
-        postMetaData: { /* metadata for post3 */ }
-      }
-    ];
-
+describe('getAllMarkdownPosts', () => {
+  test('returns an array of markdown posts', () => {
     // Mocking fs.readdirSync to return an array of markdown files
-    jest.spyOn(fs, 'readdirSync').mockReturnValue(['post1.md', 'post2.md', 'post3.md']);
+    jest.spyOn(fs, 'readdirSync').mockReturnValue(['post1.md', 'post2.md', 'post3.md'])
 
-    // Mocking loadAllMarkdownFilesAndCreatePosts to return the expected posts
-    jest.spyOn(markdownServive, 'loadAllMarkdownFilesAndCreatePosts').mockResolvedValue(expectedPosts);
+    // Mock fs.readFileSync for the markdown content
+    jest.spyOn(fs, 'readFileSync').mockReturnValue(`---
+title: Test Post
+date: 2024-01-15
+summary: Test summary
+---
+# Test content`)
 
-    const actualPosts = await markdownServive.getAllMarkdownPosts();
+    const actualPosts = markdownServive.getAllMarkdownPosts()
 
-    expect(actualPosts).toEqual(expectedPosts);
-    expect(fs.readdirSync).toHaveBeenCalledWith('posts');
-    // expect(markdownServive.loadAllMarkdownFilesAndCreatePosts).toHaveBeenCalledWith(['post1.md', 'post2.md', 'post3.md']);
+    expect(actualPosts).toHaveLength(3)
+    expect(actualPosts[0]).toHaveProperty('postSlug', 'post1')
+    expect(actualPosts[0]).toHaveProperty('postMetaData')
+    expect(fs.readdirSync).toHaveBeenCalledWith('posts')
 
     // Restoring the original implementations
-    fs.readdirSync.mockRestore();
-    markdownServive.loadAllMarkdownFilesAndCreatePosts.mockRestore();
-  });
+    fs.readdirSync.mockRestore()
+    fs.readFileSync.mockRestore()
+  })
 
-  test('throws an error if there is an error while retrieving the markdown posts', async () => {
-    const expectedError = new Error('Failed to retrieve markdown posts');
+  test('throws an error if there is an error while retrieving the markdown posts', () => {
+    const expectedError = new Error('Failed to retrieve markdown posts')
 
     // Mocking fs.readdirSync to throw an error
     jest.spyOn(fs, 'readdirSync').mockImplementation(() => {
-      throw expectedError;
-    });
+      throw expectedError
+    })
 
-    await expect(markdownServive.getAllMarkdownPosts()).rejects.toThrow(expectedError);
+    expect(() => markdownServive.getAllMarkdownPosts()).toThrow(expectedError)
 
-    expect(fs.readdirSync).toHaveBeenCalledWith('posts');
+    expect(fs.readdirSync).toHaveBeenCalledWith('posts')
 
     // Restoring the original implementation
-    fs.readdirSync.mockRestore();
-  });
-});
+    fs.readdirSync.mockRestore()
+  })
+})
