@@ -13,7 +13,14 @@ import validator from 'validator';
 
 const getAllMarkdownPosts = () => {
   const markdownFilesInDirectory = fs.readdirSync('posts')
-  return loadAllMarkdownFilesAndCreatePosts(markdownFilesInDirectory)
+  const posts = loadAllMarkdownFilesAndCreatePosts(markdownFilesInDirectory)
+
+  // Sort posts by date in descending chronological order (newest first)
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.postMetaData.date)
+    const dateB = new Date(b.postMetaData.date)
+    return dateB - dateA
+  })
 }
 
 /**
