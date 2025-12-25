@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopyright } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import footerContactInfo from '../config/footerContactInfo'
 import footerCopyrightInfo from '../config/footerCopyrightInfo'
 import footerQuotes from '../config/footerQuotes'
@@ -26,9 +29,6 @@ function Footer() {
                 <li className='mb-4 pb-4 border-b'>
                     <Link href='/about' className='text-white'>About</Link>
                 </li>
-                <li className='mb-4 pb-4 border-b'>
-                    <Link href='/hello' className='text-white'>Say hello</Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -37,12 +37,14 @@ function Footer() {
               <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-4 mb-4'>Contact Info</h1>
               <ul className='menu'>
                 <li className='mb-4 pb-4 border-b'>
-                  <p className='text-white'><i className='fa fa-twitter' aria-hidden='true' />
+                  <p className='text-white'>
+                    <FontAwesomeIcon icon={faTwitter} className='mr-2' aria-label='Twitter' />
                     <Link href={footerContactInfo.twitter[0].link} title={footerContactInfo.twitter[0].title}>{footerContactInfo.twitter[0].title}</Link>
                   </p>
                 </li>
                 <li className='mb-4 pb-4 border-b'>
-                  <p className='text-white'><i className='fa fa-facebook-official' aria-hidden='true' />
+                  <p className='text-white'>
+                    <FontAwesomeIcon icon={faFacebook} className='mr-2' aria-label='Facebook' />
                     <Link href={footerContactInfo.facebook[0].link} target='_blank' title={footerContactInfo.facebook[0].title}>{footerContactInfo.facebook[0].title}</Link>
                   </p>
                 </li>
@@ -63,7 +65,9 @@ function Footer() {
         </div>
         <div className='flex flex-wrap'>
           <div className='w-full copyright mx-4 py-6'>
-            <p className='text-center text-white'>{footerCopyrightInfo.title} <i className='fa fa-copyright' aria-hidden='true' /> {footerCopyrightInfo.date} | <Link href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>{footerCopyrightInfo.url}</Link></p>
+            <p className='text-center text-white'>
+              {footerCopyrightInfo.title} <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' /> {footerCopyrightInfo.date} | <Link href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>{footerCopyrightInfo.url}</Link>
+            </p>
           </div>
         </div>
       </div>
