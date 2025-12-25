@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 
-export default function listposts({ posts }) {
+export default function ListPosts({ posts }) {
   return (
     <div className='grid grid-cols-1 gap-1'>
       {

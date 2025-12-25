@@ -7,7 +7,7 @@ import ListPosts from '../components/ListPosts'
 
 
 export async function getStaticProps() {
-  const posts = await markdownService.getAllMarkdownPosts()
+  const posts = markdownService.getAllMarkdownPosts()
   return {
     props: { posts }
   }
@@ -31,26 +31,11 @@ const index = props => {
           <div className='container mx-auto'>
             <div className='flex'>
               <div className='flex flex-wrap w-full md:w-3/4'>
-                <div className=''>
                 <ListPosts posts={props.posts} />
-                </div>
-              </div>
-
-              <div className='flex flex-wrap w-full md:w-1/4'>
-                <div className=''>
-                </div>
               </div>
             </div>
-
           </div>
         </main>
-
-        <footer className='postscript bg-gray-800'>
-          <div className='container mx-auto'>
-            <div className='flex flex-wrap'>
-            </div>
-          </div>
-        </footer>
       </Layout>
 
     </>

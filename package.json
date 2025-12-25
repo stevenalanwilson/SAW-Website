@@ -81,9 +81,6 @@
     "reportFile": "sonar-report.xml",
     "indent": 4
   },
-  "transform": {
-    "\\.js$": "<rootDir>/node_modules/babel-jest"
-  },
   "browser": {
     "fs": false,
     "os": false,

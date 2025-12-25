@@ -6,18 +6,14 @@ import validator from 'validator';
 
 /**
  * Retrieves all markdown posts from the 'posts' directory.
- * 
- * @returns {Promise<Array>} A promise that resolves to an array of markdown posts.
+ *
+ * @returns {Array} An array of markdown posts.
  * @throws {Error} If there is an error while retrieving the markdown posts.
  */
 
-const getAllMarkdownPosts = async () => {
-  try {
-    const markdownFilesInDirectory = fs.readdirSync('posts')
-    return await loadAllMarkdownFilesAndCreatePosts(markdownFilesInDirectory)
-  } catch (error) {
-    throw error
-  }
+const getAllMarkdownPosts = () => {
+  const markdownFilesInDirectory = fs.readdirSync('posts')
+  return loadAllMarkdownFilesAndCreatePosts(markdownFilesInDirectory)
 }
 
 /**
@@ -27,7 +23,7 @@ const getAllMarkdownPosts = async () => {
  * @returns {Array<Object>} - The array of posts with postSlug and postMetaData.
  */
 
-const loadAllMarkdownFilesAndCreatePosts = async files => files.map((fileName) => {
+const loadAllMarkdownFilesAndCreatePosts = files => files.map((fileName) => {
   const postSlug = createPostSlug(fileName)
   const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8')
   const { data: postMetaData } = matter(readFile)
@@ -68,7 +64,7 @@ const loadMarkdownStaticPaths = markdownFiles => {
  * @returns {string} - The content of the markdown file.
  * @throws {Error} - If the slug contains invalid characters or path traversal attempts.
  */
-const loadMarkdownFileUsingSlug = async slug => {
+const loadMarkdownFileUsingSlug = slug => {
   // Sanitize HTML entities
   const sanitizedSlug = validator.escape(slug);
 

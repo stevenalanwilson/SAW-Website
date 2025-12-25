@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const sanitizedSlug = validator.escape(slug);
-  const MarkdownfileName = await markdownService.loadMarkdownFileUsingSlug(sanitizedSlug)
+  const MarkdownfileName = markdownService.loadMarkdownFileUsingSlug(sanitizedSlug)
   const { data: frontmatter, content } = matter(MarkdownfileName);
 
   const processedContent = await unified()

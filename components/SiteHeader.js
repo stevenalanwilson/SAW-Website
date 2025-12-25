@@ -27,13 +27,6 @@ function SiteHeader () {
                     About
                   </Link>
                 </li>
-                <li className='p-2'>
-                  <Link
-                    href='/hello'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded'>
-                    Say hello
-                  </Link>
-                </li>
               </ul>
             </nav>
           </div>
