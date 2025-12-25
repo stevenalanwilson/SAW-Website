@@ -1,5 +1,6 @@
 import fs from 'fs'
 import matter from 'gray-matter'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import validator from 'validator'
 
@@ -79,18 +80,24 @@ function PostPage({ frontmatter, content, slug }) {
                     </p>
                   )}
                   {frontmatter.tags && frontmatter.tags.length > 0 && (
-                    <div className='flex flex-wrap gap-2 items-center'>
+                    <div className='flex flex-wrap gap-2 items-center mb-4'>
                       <span className='text-gray-600 text-base font-semibold'>Tags:</span>
                       {frontmatter.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className='inline-block bg-gray-900 text-white px-3 py-1 text-xs rounded-full'
+                          className='inline-block bg-gray-900 text-white px-3 py-1 text-xs'
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                   )}
+                  <Link
+                    href='/'
+                    className='inline-block text-gray-900 hover:text-gray-600 font-semibold text-base'
+                  >
+                    ← Back to Posts
+                  </Link>
                 </div>
               </>
             }

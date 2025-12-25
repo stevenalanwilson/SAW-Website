@@ -11,6 +11,7 @@ import PageTitle from '../components/PageTitle'
 import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
 import LoadingSpinner from '../components/LoadingSpinner'
+import AuthorCard from '../components/AuthorCard'
 
 function Components() {
   const sampleExpertiseItems = [
@@ -127,6 +128,26 @@ function Components() {
   description="Led development of major features"
   highlighted={false}
 />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* AuthorCard Component */}
+            <section className='mb-16'>
+              <SectionHeading>AuthorCard Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  The AuthorCard introduces readers to the author and welcomes them to the site.
+                  Used at the top of blog post sidebars.
+                </p>
+                <div className='max-w-md'>
+                  <AuthorCard />
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<AuthorCard />`}
                 </pre>
               </div>
             </section>
