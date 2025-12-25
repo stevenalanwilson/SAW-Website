@@ -90,6 +90,32 @@ This document lists all reusable components available in the application.
 <ListPosts posts={postArray} />
 ```
 
+### Post
+**File:** `components/Post.js`
+**Description:** Renders markdown content as styled HTML
+**Props:**
+- `content` (string, required): Markdown content
+- `className` (string, optional): Additional CSS classes
+
+**Usage:**
+```jsx
+<Post content={markdownString} />
+```
+
+### LoadingSpinner
+**File:** `components/LoadingSpinner.js`
+**Description:** Full-screen fixed position loading indicator with animated spinner
+**Props:**
+- `message` (string, optional): Loading message (default: "Loading...")
+- `className` (string, optional): Additional CSS classes
+
+**Usage:**
+```jsx
+<LoadingSpinner message="Loading post..." />
+```
+
+**Note:** Uses fixed positioning (`fixed inset-0`) to cover the entire viewport with a high z-index (`z-50`). Ideal for page transitions and async loading states.
+
 ## Card Components
 
 ### ContactCard
@@ -222,11 +248,11 @@ This document lists all reusable components available in the application.
 
 All components have comprehensive test coverage. Test files are located in `tests/components/`.
 
-Current test coverage: **94.69%**
+Current test coverage: **~95%**
 
 - All components: 100% coverage
-- 120 tests passing
-- 18 test suites
+- 132 tests passing
+- 20 test suites
 
 ## Viewing Component Examples
 

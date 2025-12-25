@@ -9,6 +9,8 @@ import StatsCard from '../components/StatsCard'
 import ExperienceCard from '../components/ExperienceCard'
 import PageTitle from '../components/PageTitle'
 import Sidebar from '../components/Sidebar'
+import Post from '../components/Post'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 function Components() {
   const sampleExpertiseItems = [
@@ -216,6 +218,45 @@ function Components() {
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
 {`<Sidebar />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* Post Component */}
+            <section className='mb-16'>
+              <SectionHeading>Post Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  The Post component renders markdown content as styled HTML.
+                </p>
+                <Post content="# Sample Heading\n\nThis is a paragraph with **bold** text.\n\n## Another Heading\n\nMore content here." />
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<Post content={markdownString} />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* LoadingSpinner Component */}
+            <section className='mb-16'>
+              <SectionHeading>LoadingSpinner Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  Full-screen fixed position loading indicator that covers the entire viewport with a semi-transparent overlay.
+                </p>
+                <div className='bg-gray-200 p-4 rounded text-center'>
+                  <p className='text-gray-600 italic'>
+                    Note: The LoadingSpinner uses fixed positioning and covers the entire screen.
+                    It&apos;s used for page transitions and is displayed in the post page when loading.
+                  </p>
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<LoadingSpinner message="Loading post..." />`}
                 </pre>
               </div>
             </section>

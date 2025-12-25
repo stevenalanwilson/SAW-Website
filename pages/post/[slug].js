@@ -1,12 +1,7 @@
-import fs from 'fs';
-import matter from 'gray-matter';
+import fs from 'fs'
+import matter from 'gray-matter'
 import { useRouter } from 'next/router'
-import validator from 'validator';
-import React from 'react';
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeReact from 'rehype-react';
+import validator from 'validator'
 
 import markdownService from '../../services/getMarkdownService'
 import config from '../../config'
@@ -14,6 +9,8 @@ import config from '../../config'
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
 import SEO from '../../components/SEO'
+import Post from '../../components/Post'
+import LoadingSpinner from '../../components/LoadingSpinner'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
@@ -46,40 +43,12 @@ export async function getStaticProps({ params: { slug } }) {
 
 }
 
-function Post({ frontmatter, content, slug }) {
+function PostPage({ frontmatter, content, slug }) {
   const router = useRouter()
 
   if (router.isFallback) {
-    return (
-      <div className='min-h-screen flex items-center justify-center bg-gray-50'>
-        <div className='text-center'>
-          <div className='inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mb-4'></div>
-          <p className='text-xl text-gray-700'>Loading post...</p>
-        </div>
-      </div>
-    )
+    return <LoadingSpinner message="Loading post..." />
   }
-
-  // Process markdown content safely using rehype-react
-  const processor = unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeReact, {
-      createElement: React.createElement,
-      Fragment: React.Fragment,
-      jsx: React.createElement,
-      jsxs: React.createElement,
-      components: {
-        p: (props) => <p className='text-lg leading-relaxed mb-5' {...props} />,
-        h1: (props) => <h1 className='text-3xl font-bold leading-relaxed mb-5' {...props} />,
-        h2: (props) => <h2 className='text-2xl font-bold leading-relaxed mb-5' {...props} />,
-        h3: (props) => <h3 className='text-xl font-bold leading-relaxed mb-5' {...props} />,
-        h4: (props) => <h4 className='text-lg font-bold leading-relaxed mb-5' {...props} />,
-        h5: (props) => <h5 className='text-base font-bold leading-relaxed mb-5' {...props} />,
-      }
-    })
-
-  const processedContent = processor.processSync(content).result
 
   return (
     <>
@@ -102,7 +71,7 @@ function Post({ frontmatter, content, slug }) {
         <main>
           <div className='container mx-auto'>
             <div className='max-w-3xl mx-auto p-4 pb-10'>
-              {processedContent}
+              <Post content={content} />
             </div>
           </div>
         </main>
@@ -112,4 +81,4 @@ function Post({ frontmatter, content, slug }) {
   )
 }
 
-export default Post;
+export default PostPage

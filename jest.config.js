@@ -10,6 +10,9 @@ const createJestConfig = nextJest({
 const config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
+  transformIgnorePatterns: [
+    'node_modules/(?!(unified|remark-parse|remark-rehype|rehype-react|unist-.*|bail|is-plain-obj|trough|vfile|vfile-message|micromark.*|mdast-.*|hast-.*|trim-lines|property-information|space-separated-tokens|comma-separated-tokens|html-void-elements|web-namespaces)/)'
+  ],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 }
