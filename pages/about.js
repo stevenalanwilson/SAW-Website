@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Layout from '../components/Layout.js'
 import SEO from '../components/SEO'
+import config from '../config'
 
 function About() {
   return (
@@ -8,7 +9,7 @@ function About() {
       <SEO
         title="About Steven Alan Wilson"
         description="Seasoned Digital, Technical, and AI Leader with over 20 years of experience in designing and developing digital products and services for government and commercial organizations."
-        url="https://stevenalanwilson.com/about"
+        url={`${config.siteUrl}/about`}
       />
       <Layout>
         <div className='container mx-auto'>

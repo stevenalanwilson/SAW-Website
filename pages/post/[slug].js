@@ -9,6 +9,7 @@ import remarkRehype from "remark-rehype";
 import rehypeReact from 'rehype-react';
 
 import markdownService from '../../services/getMarkdownService'
+import config from '../../config'
 
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
@@ -85,9 +86,10 @@ function Post({ frontmatter, content, slug }) {
       <SEO
         title={frontmatter.title}
         description={frontmatter.summary}
-        url={`https://stevenalanwilson.com/post/${slug}`}
+        url={`${config.siteUrl}/post/${slug}`}
         image={frontmatter.thumbnail || '/static/og-image.jpg'}
         type="article"
+        publishedTime={frontmatter.date}
       />
       <Layout>
 

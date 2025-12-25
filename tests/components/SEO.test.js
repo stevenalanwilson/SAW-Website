@@ -45,4 +45,35 @@ describe('SEO Component', () => {
     const { container } = render(<SEO type="article" />)
     expect(container).toBeTruthy()
   })
+
+  it('renders article metadata when type is article and publishedTime is provided', () => {
+    const { container } = render(
+      <SEO
+        type="article"
+        publishedTime="2024-01-15T00:00:00.000Z"
+      />
+    )
+    expect(container).toBeTruthy()
+  })
+
+  it('renders article metadata with modifiedTime when provided', () => {
+    const { container } = render(
+      <SEO
+        type="article"
+        publishedTime="2024-01-15T00:00:00.000Z"
+        modifiedTime="2024-01-20T00:00:00.000Z"
+      />
+    )
+    expect(container).toBeTruthy()
+  })
+
+  it('does not render article metadata for non-article types', () => {
+    const { container } = render(
+      <SEO
+        type="website"
+        publishedTime="2024-01-15T00:00:00.000Z"
+      />
+    )
+    expect(container).toBeTruthy()
+  })
 })

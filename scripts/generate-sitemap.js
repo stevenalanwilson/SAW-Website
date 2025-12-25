@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const config = require('../config');
 
-const DOMAIN = 'https://stevenalanwilson.com';
+const DOMAIN = config.siteUrl;
 
 function generateSitemap() {
   const postsDirectory = path.join(process.cwd(), 'posts');
