@@ -14,10 +14,11 @@ describe('PageHero Component', () => {
     expect(screen.getByText('Test Subtitle')).toBeInTheDocument()
   })
 
-  it('does not render subtitle paragraph when subtitle is not provided', () => {
+  it('does not render subtitle div when subtitle is not provided', () => {
     const { container } = render(<PageHero title="Test Title" />)
-    const paragraphs = container.querySelectorAll('p')
-    expect(paragraphs).toHaveLength(0)
+    const section = container.querySelector('section')
+    const divs = section.querySelectorAll('div')
+    expect(divs).toHaveLength(0)
   })
 
   it('applies default className', () => {
@@ -41,8 +42,8 @@ describe('PageHero Component', () => {
 
   it('renders subtitle with correct styling', () => {
     const { container } = render(<PageHero title="Test Title" subtitle="Test Subtitle" />)
-    const paragraph = container.querySelector('p')
-    expect(paragraph).toHaveClass('text-2xl', 'lg:text-3xl', 'leading-relaxed')
+    const subtitleDiv = container.querySelector('section > div')
+    expect(subtitleDiv).toHaveClass('text-2xl', 'lg:text-3xl', 'leading-relaxed')
   })
 
   it('renders subtitle with JSX content', () => {
