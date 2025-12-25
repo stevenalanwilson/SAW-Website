@@ -1,0 +1,8 @@
+# robots.txt for stevenalanwilson.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://stevenalanwilson.com/sitemap.xml

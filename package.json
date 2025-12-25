@@ -8,9 +8,10 @@
   "scripts": {
     "test": "jest",
     "test:upSnap": "jest --updateSnapshot",
-    "build": "next build",
+    "build": "npm run sitemap && next build",
     "dev": "next",
-    "start": "next start"
+    "start": "next start",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "repository": {
     "type": "git",

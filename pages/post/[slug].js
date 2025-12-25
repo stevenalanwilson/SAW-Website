@@ -17,9 +17,9 @@ import addClasses from 'rehype-class-names'
 
 import markdownService from '../../services/getMarkdownService'
 
-import Head from 'next/head'
 import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
+import SEO from '../../components/SEO'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
@@ -57,14 +57,15 @@ export async function getStaticProps({ params: { slug } }) {
   return {
     props: {
       frontmatter,
-      contentHtml
+      contentHtml,
+      slug
     }
   }
 
 
 }
 
-function Post({ frontmatter, contentHtml }) {
+function Post({ frontmatter, contentHtml, slug }) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -80,9 +81,13 @@ function Post({ frontmatter, contentHtml }) {
 
   return (
     <>
-      <Head>
-        <title>Steven Alan Wilson Limited - Technical Leadership Consultancy</title>
-      </Head>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.summary}
+        url={`https://stevenalanwilson.com/post/${slug}`}
+        image={frontmatter.thumbnail || '/static/og-image.jpg'}
+        type="article"
+      />
       <Layout>
 
         <header>

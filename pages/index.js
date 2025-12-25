@@ -1,9 +1,9 @@
 import markdownService from '../services/getMarkdownService'
 
-import Head from 'next/head'
 import Layout from '../components/Layout'
 import SiteTitle from '../components/SiteTitle'
 import ListPosts from '../components/ListPosts'
+import SEO from '../components/SEO'
 
 
 export async function getStaticProps() {
@@ -16,9 +16,7 @@ export async function getStaticProps() {
 const index = props => {
   return (
     <>
-      <Head>
-        <title>Steven Alan Wilson Limited - Technical Leadership Consultancy</title>
-      </Head>
+      <SEO />
       <Layout>
 
         <header>
