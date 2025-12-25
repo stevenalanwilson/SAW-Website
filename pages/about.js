@@ -5,8 +5,7 @@ import config from '../config'
 import PageHero from '../components/PageHero'
 import SectionHeading from '../components/SectionHeading'
 import ExpertiseGrid from '../components/ExpertiseGrid'
-import ContactCard from '../components/ContactCard'
-import StatsCard from '../components/StatsCard'
+import Sidebar from '../components/Sidebar'
 
 function About() {
   const expertiseItems = [
@@ -34,18 +33,6 @@ function About() {
       title: 'Team Building',
       description: 'Growing high-performing, collaborative engineering cultures'
     }
-  ]
-
-  const contactLinks = [
-    { label: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/stevenalanwilson/' },
-    { label: 'Twitter', url: 'https://twitter.com/d79design' },
-    { label: 'Facebook', url: 'https://www.facebook.com/stevenalanwilson79/' }
-  ]
-
-  const professionalStats = [
-    { label: 'LinkedIn Connections', value: '500+' },
-    { label: 'Followers', value: '2K+' },
-    { label: 'Years Experience', value: '20+' }
   ]
 
   return (
@@ -192,16 +179,7 @@ function About() {
 
             {/* Sidebar */}
             <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
-              <ContactCard
-                location="Derby, England, UK"
-                links={contactLinks}
-                className="mb-6"
-              />
-
-              <StatsCard
-                title="Professional Network"
-                stats={professionalStats}
-              />
+              <Sidebar />
             </div>
           </div>
         </div>

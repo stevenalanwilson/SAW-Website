@@ -28,6 +28,13 @@ describe('SiteHeader Component', () => {
     expect(aboutLinks[0]).toHaveAttribute('href', '/about')
   })
 
+  it('renders Components link', () => {
+    render(<SiteHeader />)
+    const componentsLinks = screen.getAllByRole('link', { name: 'Components' })
+    expect(componentsLinks.length).toBeGreaterThan(0)
+    expect(componentsLinks[0]).toHaveAttribute('href', '/components')
+  })
+
   it('logo links to homepage', () => {
     render(<SiteHeader />)
     const logoLink = screen.getByRole('link', { name: 'Steven Alan Wilson Limited - Technical Leadership Consultant' })

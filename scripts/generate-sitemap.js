@@ -11,7 +11,8 @@ function generateSitemap() {
   // Static pages
   const staticPages = [
     { url: '', priority: '1.0', changefreq: 'weekly' },
-    { url: '/about', priority: '0.8', changefreq: 'monthly' }
+    { url: '/about', priority: '0.8', changefreq: 'monthly' },
+    { url: '/components', priority: '0.6', changefreq: 'monthly' }
   ];
 
   // Dynamic blog post pages

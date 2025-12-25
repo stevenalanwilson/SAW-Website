@@ -27,6 +27,13 @@ function SiteHeader () {
                     About
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href='/components'
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-colors'>
+                    Components
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>

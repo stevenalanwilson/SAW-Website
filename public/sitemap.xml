@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://stevenalanwilson.com/components</loc>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://stevenalanwilson.com/post/sample-four</loc>
     <lastmod>2025-10-19</lastmod>
     <changefreq>monthly</changefreq>
