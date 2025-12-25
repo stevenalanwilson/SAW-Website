@@ -38,7 +38,7 @@ function About() {
               {/* Current Role */}
               <section className='mb-12'>
                 <h2 className='text-3xl font-bold mb-6 border-b-2 border-black pb-2'>Current Role</h2>
-                <div className='bg-gray-50 p-6 rounded-lg border-l-4 border-gray-900'>
+                <div className='bg-gray-50 p-6 border-l-4 border-gray-900'>
                   <h3 className='text-2xl font-bold mb-2'>
                     Digital, Technical, and AI Leader
                   </h3>
@@ -136,27 +136,27 @@ function About() {
               <section className='mb-12'>
                 <h2 className='text-3xl font-bold mb-6 border-b-2 border-black pb-2'>Areas of Expertise</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>Technical Leadership</h3>
                     <p className='text-base'>Leading multidisciplinary engineering teams to deliver complex digital products</p>
                   </div>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>Digital Transformation</h3>
                     <p className='text-base'>Driving organizational change through modern technology and practices</p>
                   </div>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>AI & Innovation</h3>
                     <p className='text-base'>Leveraging artificial intelligence to solve business challenges</p>
                   </div>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>Government Digital Services</h3>
                     <p className='text-base'>Building user-centered services for the public sector</p>
                   </div>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>Engineering Excellence</h3>
                     <p className='text-base'>Modern development practices, DevOps, and continuous delivery</p>
                   </div>
-                  <div className='bg-gray-50 p-4 rounded'>
+                  <div className='bg-gray-50 p-4 border-l-2 border-gray-900'>
                     <h3 className='font-bold text-lg mb-2'>Team Building</h3>
                     <p className='text-base'>Growing high-performing, collaborative engineering cultures</p>
                   </div>
@@ -176,7 +176,7 @@ function About() {
             {/* Sidebar */}
             <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
               {/* Contact Card */}
-              <div className='bg-gray-900 text-white p-6 rounded-lg mb-6'>
+              <div className='bg-gray-900 text-white p-6 mb-6 border-t-4 border-white'>
                 <h2 className='text-2xl font-bold mb-4 border-b-2 border-white pb-2'>Get In Touch</h2>
                 <div className='space-y-4'>
                   <div>
@@ -222,7 +222,7 @@ function About() {
               </div>
 
               {/* Stats Card */}
-              <div className='bg-gray-50 p-6 rounded-lg border-2 border-gray-900'>
+              <div className='bg-gray-50 p-6 border-l-4 border-gray-900'>
                 <h2 className='text-2xl font-bold mb-4'>Professional Network</h2>
                 <div className='space-y-3'>
                   <div className='flex justify-between items-center'>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import footerContactInfo from '../config/footerContactInfo'
 import footerCopyrightInfo from '../config/footerCopyrightInfo'
@@ -5,7 +6,12 @@ import footerQuotes from '../config/footerQuotes'
 import utils from '../utils'
 
 function Footer() {
-  const randomQuote = utils.randomQuote(footerQuotes)
+  const [randomQuote, setRandomQuote] = useState('')
+
+  useEffect(() => {
+    setRandomQuote(utils.randomQuote(footerQuotes))
+  }, [])
+
   return (
     <footer className='bg-gray-900 footer'>
       <div className='container  mx-auto'>
