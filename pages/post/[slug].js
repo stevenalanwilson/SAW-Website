@@ -7,10 +7,11 @@ import markdownService from '../../services/getMarkdownService'
 import config from '../../config'
 
 import Layout from '../../components/Layout'
-import PageTitle from '../../components/PageTitle'
+import PageHero from '../../components/PageHero'
 import SEO from '../../components/SEO'
 import Post from '../../components/Post'
 import LoadingSpinner from '../../components/LoadingSpinner'
+import Sidebar from '../../components/Sidebar'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
@@ -61,22 +62,51 @@ function PostPage({ frontmatter, content, slug }) {
         publishedTime={frontmatter.date}
       />
       <Layout>
+        <div className='container mx-auto'>
+          <PageHero
+            title={frontmatter.title}
+            subtitle={
+              <>
+                <p className='text-2xl lg:text-3xl leading-relaxed mb-4'>
+                  {frontmatter.summary}
+                </p>
+                {/* Post metadata */}
+                <div className='mt-4'>
+                  {frontmatter.author && (
+                    <p className='text-gray-600 text-base mb-2'>
+                      <span className='font-semibold'>Authored by:</span> {frontmatter.author}
+                    </p>
+                  )}
+                  {frontmatter.tags && frontmatter.tags.length > 0 && (
+                    <div className='flex flex-wrap gap-2 items-center'>
+                      <span className='text-gray-600 text-base font-semibold'>Tags:</span>
+                      {frontmatter.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className='inline-block bg-gray-900 text-white px-3 py-1 text-xs rounded-full'
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </>
+            }
+          />
 
-        <header>
-          <div className='container mx-auto'>
-            <PageTitle title={frontmatter.title} summary={frontmatter.summary} date={frontmatter.date} />
-          </div>
-        </header>
-
-        <main>
-          <div className='container mx-auto'>
-            <div className='max-w-3xl mx-auto p-4 pb-10'>
+          <div className='flex flex-wrap mx-4 my-8'>
+            <div className='w-full lg:w-2/3 pr-0 lg:pr-8'>
+              {/* Post content */}
               <Post content={content} />
             </div>
-          </div>
-        </main>
-      </Layout>
 
+            <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
+              <Sidebar />
+            </div>
+          </div>
+        </div>
+      </Layout>
     </>
   )
 }

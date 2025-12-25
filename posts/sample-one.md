@@ -3,6 +3,12 @@ title: The Power of Servant Leadership in Technical Teams.
 thumbnail: /image/servant-leadership.jpg
 summary: Many moons ago, I stumbled upon my leadership style, which I now recognise as “servant leadership.” It’s a path I initially treaded out of insecurity, but it led to profound insights and positive outcomes.
 date: '1979-05-21'
+author: Steven Alan Wilson
+tags:
+  - Leadership
+  - Team Management
+  - Servant Leadership
+  - Technical Teams
 ---
 ![The Power of Servant Leadership in Technical Teams.](/image/servant-leadership.jpg)
 ## Introduction:

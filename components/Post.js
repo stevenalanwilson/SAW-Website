@@ -3,6 +3,7 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeReact from 'rehype-react'
+import * as prod from 'react/jsx-runtime'
 
 export default function Post({ content, className = '' }) {
   // Process markdown content safely using rehype-react
@@ -10,10 +11,7 @@ export default function Post({ content, className = '' }) {
     .use(remarkParse)
     .use(remarkRehype)
     .use(rehypeReact, {
-      createElement: React.createElement,
-      Fragment: React.Fragment,
-      jsx: React.createElement,
-      jsxs: React.createElement,
+      ...prod,
       components: {
         p: (props) => <p className='text-lg leading-relaxed mb-5' {...props} />,
         h1: (props) => <h1 className='text-3xl font-bold leading-relaxed mb-5' {...props} />,
@@ -21,6 +19,14 @@ export default function Post({ content, className = '' }) {
         h3: (props) => <h3 className='text-xl font-bold leading-relaxed mb-5' {...props} />,
         h4: (props) => <h4 className='text-lg font-bold leading-relaxed mb-5' {...props} />,
         h5: (props) => <h5 className='text-base font-bold leading-relaxed mb-5' {...props} />,
+        ul: (props) => <ul className='list-disc list-inside mb-5' {...props} />,
+        ol: (props) => <ol className='list-decimal list-inside mb-5' {...props} />,
+        li: (props) => <li className='text-lg leading-relaxed mb-2' {...props} />,
+        a: (props) => <a className='text-blue-600 hover:underline' {...props} />,
+        img: (props) => <img className='w-full h-auto mb-5' {...props} alt={props.alt || ''} />,
+        blockquote: (props) => <blockquote className='border-l-4 border-gray-300 pl-4 italic mb-5' {...props} />,
+        code: (props) => <code className='bg-gray-100 px-2 py-1 rounded text-sm' {...props} />,
+        pre: (props) => <pre className='bg-gray-100 p-4 rounded overflow-x-auto mb-5' {...props} />,
       }
     })
 
