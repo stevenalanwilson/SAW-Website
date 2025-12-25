@@ -1,6 +1,8 @@
 require('dotenv').config()
 
-module.exports = {
+const { withSentryConfig } = require('@sentry/nextjs')
+
+const nextConfig = {
   // Enable React strict mode for better development warnings
   reactStrictMode: true,
 
@@ -44,3 +46,16 @@ module.exports = {
     ]
   }
 }
+
+// Sentry configuration options
+const sentryWebpackPluginOptions = {
+  // Suppresses source map uploading logs during build
+  silent: true,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+}
+
+// Only wrap with Sentry if DSN is configured
+module.exports = process.env.NEXT_PUBLIC_SENTRY_DSN
+  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+  : nextConfig
