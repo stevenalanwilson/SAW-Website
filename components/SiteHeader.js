@@ -9,7 +9,7 @@ function SiteHeader () {
   }
 
   return (
-    <header className='bg-gray-900 py-2'>
+    <header className='bg-gray-900 py-2 sticky top-0 z-50'>
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
           <div className='w-full lg:w-1/2 p-0 lg:p-2 mx-4'>
@@ -56,21 +56,21 @@ function SiteHeader () {
                 <li>
                   <Link
                     href='/'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-colors'>
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
                     Home
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='/about'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-colors'>
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
                     About
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='/components'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-colors'>
+                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
                     Components
                   </Link>
                 </li>
@@ -86,7 +86,7 @@ function SiteHeader () {
               <li>
                 <Link
                   href='/'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-colors'
+                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
@@ -95,7 +95,7 @@ function SiteHeader () {
               <li>
                 <Link
                   href='/about'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-colors'
+                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About
@@ -104,7 +104,7 @@ function SiteHeader () {
               <li>
                 <Link
                   href='/components'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-colors'
+                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Components
