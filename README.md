@@ -113,6 +113,46 @@ Pre-commit hooks are configured in:
 
 To modify what runs on commit, edit the `lint-staged` section in `package.json`.
 
+## Performance - Caching Strategy
+
+This project uses aggressive caching strategies to optimize performance and reduce server load. Caching headers are configured in `next.config.js`.
+
+### Caching Rules
+
+**Static Assets (1 year cache):**
+- `/static/*` - Your static files (images, fonts, etc.)
+- `/_next/static/*` - Next.js JavaScript/CSS bundles
+- `/_next/image/*` - Optimized images
+
+**Dynamic Pages:**
+- **Homepage** (`/`) - 5 minutes cache, revalidate in background for 1 hour
+- **Blog Posts** (`/post/*`) - 1 hour cache, revalidate in background for 24 hours
+- **Other Pages** - 10 minutes cache, revalidate in background for 1 hour
+
+### How It Works
+
+```
+Cache-Control: public, max-age=X, stale-while-revalidate=Y
+```
+
+- `max-age=X` - Content is fresh for X seconds
+- `stale-while-revalidate=Y` - Serve stale content while revalidating in background for Y seconds
+- `immutable` - Content never changes (static assets only)
+
+### Benefits
+
+✅ **Faster page loads** - Assets cached in browser and CDN
+✅ **Reduced bandwidth** - Static files served from cache
+✅ **Better UX** - Background revalidation keeps content fresh without waiting
+✅ **Lower server costs** - Fewer requests hit your server
+
+### Clearing Cache
+
+If you need to clear the cache after a deployment:
+1. Static assets auto-bust via Next.js build hash
+2. Pages refresh automatically after `max-age` expires
+3. Force refresh: Hold Shift and click reload in browser
+
 ## Site Configuration - Single Source of Truth
 
 All site content, metadata, and configuration is centralized in `config/siteConfig.js`. This provides a **single source of truth** for your entire site, making updates quick and consistent across all components.
