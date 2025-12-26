@@ -6,6 +6,7 @@ import Tagline from './Tagline'
 import ServicesList from './ServicesList'
 import LatestPosts from './LatestPosts'
 import WorkWithMe from './WorkWithMe'
+import SectionErrorBoundary from './SectionErrorBoundary'
 
 function Footer({ latestPosts = [] }) {
   return (
@@ -21,21 +22,27 @@ function Footer({ latestPosts = [] }) {
           {/* Column 1: Services */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <ServicesList />
+              <SectionErrorBoundary name="ServicesList" errorMessage="Services list failed to load">
+                <ServicesList />
+              </SectionErrorBoundary>
             </div>
           </div>
 
           {/* Column 2: Latest Thinking */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <LatestPosts posts={latestPosts} limit={2} />
+              <SectionErrorBoundary name="LatestPosts" errorMessage="Latest posts failed to load">
+                <LatestPosts posts={latestPosts} limit={2} />
+              </SectionErrorBoundary>
             </div>
           </div>
 
           {/* Column 3: Work With Me */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <WorkWithMe />
+              <SectionErrorBoundary name="WorkWithMe" errorMessage="Contact section failed to load">
+                <WorkWithMe />
+              </SectionErrorBoundary>
             </div>
           </div>
         </div>

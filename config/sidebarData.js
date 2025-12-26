@@ -1,18 +1,18 @@
+import siteConfig from './siteConfig'
+
+// Legacy export for backward compatibility
+// This file now imports from siteConfig (single source of truth)
 module.exports = {
   contactInfo: {
-    location: 'Derby, England, UK',
+    location: siteConfig.contact.location,
     links: [
-      { label: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/stevenalanwilson/' },
-      { label: 'Twitter', url: 'https://twitter.com/d79design' },
-      { label: 'Facebook', url: 'https://www.facebook.com/stevenalanwilson79/' }
+      { label: 'LinkedIn Profile', url: siteConfig.social.linkedin.link },
+      { label: 'Twitter', url: siteConfig.social.twitter.link },
+      { label: 'Facebook', url: siteConfig.social.facebook.link }
     ]
   },
   professionalStats: {
-    title: 'Professional Network',
-    stats: [
-      { label: 'LinkedIn Connections', value: '500+' },
-      { label: 'Followers', value: '2K+' },
-      { label: 'Years Experience', value: '20+' }
-    ]
+    title: siteConfig.stats.title,
+    stats: siteConfig.stats.items
   }
 }

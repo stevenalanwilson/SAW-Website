@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionErrorBoundary renders children when there is no error 1`] = `null`;
+
+exports[`SectionErrorBoundary renders custom fallback when provided 1`] = `null`;
+
+exports[`SectionErrorBoundary renders default error message when none provided 1`] = `null`;
+
+exports[`SectionErrorBoundary renders error UI when child component throws 1`] = `null`;

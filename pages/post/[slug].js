@@ -14,6 +14,7 @@ import Post from '../../components/Post'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import Sidebar from '../../components/Sidebar'
 import AuthorCard from '../../components/AuthorCard'
+import SectionErrorBoundary from '../../components/SectionErrorBoundary'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')
@@ -109,11 +110,15 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
           <div className='flex flex-wrap mx-4 my-8'>
             <div className='w-full lg:w-2/3 pr-0 lg:pr-8'>
               {/* Post content */}
-              <Post content={content} />
+              <SectionErrorBoundary name="Post" errorMessage="Post content failed to load">
+                <Post content={content} />
+              </SectionErrorBoundary>
             </div>
 
             <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
-              <AuthorCard />
+              <SectionErrorBoundary name="AuthorCard" errorMessage="Author information failed to load">
+                <AuthorCard />
+              </SectionErrorBoundary>
               <Sidebar />
             </div>
           </div>

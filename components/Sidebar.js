@@ -1,16 +1,21 @@
 import ContactCard from './ContactCard'
 import StatsCard from './StatsCard'
+import SectionErrorBoundary from './SectionErrorBoundary'
 import sidebarData from '../config/sidebarData'
 
 export default function Sidebar({ className = '' }) {
   return (
     <aside className={className}>
-      <ContactCard className="mb-6" />
+      <SectionErrorBoundary name="ContactCard" errorMessage="Contact information failed to load">
+        <ContactCard className="mb-6" />
+      </SectionErrorBoundary>
 
-      <StatsCard
-        title={sidebarData.professionalStats.title}
-        stats={sidebarData.professionalStats.stats}
-      />
+      <SectionErrorBoundary name="StatsCard" errorMessage="Statistics failed to load">
+        <StatsCard
+          title={sidebarData.professionalStats.title}
+          stats={sidebarData.professionalStats.stats}
+        />
+      </SectionErrorBoundary>
     </aside>
   )
 }

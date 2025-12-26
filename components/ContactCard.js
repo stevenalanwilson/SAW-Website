@@ -3,22 +3,43 @@ import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import footerContactInfo from '../config/footerContactInfo'
 
-export default function ContactCard({ className = '' }) {
+export default function ContactCard({ variant = 'card', className = '' }) {
   // Construct email address from obfuscated parts (helps prevent spam bot scraping)
   const emailAddress = footerContactInfo.email
     ? `${footerContactInfo.email.user}@${footerContactInfo.email.domain}`
     : null
 
+  // Variant-specific styling
+  const containerClasses = variant === 'card'
+    ? `bg-gray-900 text-white p-6 border-t-4 border-white ${className}`
+    : className
+
+  const headingClasses = variant === 'card'
+    ? 'text-2xl font-bold mb-4 border-b-2 border-white pb-2'
+    : 'heading-3 text-2xl lg:text-3xl border-b-2 text-white pb-4 mb-4'
+
+  const contentClasses = variant === 'card'
+    ? 'space-y-4'
+    : ''
+
+  const paragraphClasses = variant === 'card'
+    ? 'leading-relaxed'
+    : 'mb-4 leading-relaxed'
+
+  const locationsContainerClasses = variant === 'card'
+    ? ''
+    : 'mb-4'
+
   return (
-    <div className={`bg-gray-900 text-white p-6 border-t-4 border-white ${className}`}>
-      <h2 className='text-2xl font-bold mb-4 border-b-2 border-white pb-2'>Work With Me</h2>
-      <div className='space-y-4'>
-        <p className='leading-relaxed'>
+    <div className={containerClasses}>
+      <h2 className={headingClasses}>Work With Me</h2>
+      <div className={`text-white ${contentClasses}`}>
+        <p className={paragraphClasses}>
           Ready to transform your technical leadership and build high-performing teams?
         </p>
 
         {/* Locations */}
-        <div>
+        <div className={locationsContainerClasses}>
           <p className='text-sm font-semibold text-gray-300 mb-2'>
             <FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2' aria-label='Locations' />
             Operating Areas
