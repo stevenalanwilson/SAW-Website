@@ -63,3 +63,111 @@ Run the test suite:
 ```bash
 npm test
 ```
+
+## Site Configuration - Single Source of Truth
+
+All site content, metadata, and configuration is centralized in `config/siteConfig.js`. This provides a **single source of truth** for your entire site, making updates quick and consistent across all components.
+
+### Configuration Structure
+
+```javascript
+siteConfig
+├── app              // Application metadata
+├── site             // Site metadata (name, title, url, description)
+├── owner            // Owner information (name, title, experience)
+├── contact          // Contact details (phone, email, locations)
+├── social           // Social media links (LinkedIn, Twitter, Facebook)
+├── stats            // Professional statistics
+├── copyright        // Copyright information
+├── content          // Site content sections
+│   ├── authorBio    // Author bio for blog posts
+│   ├── hero         // Homepage hero content
+│   └── cta          // Call-to-action messaging
+└── navigation       // Menu items
+```
+
+### How to Update Site Content
+
+#### Update Your Job Title
+Edit one line in `config/siteConfig.js`:
+```javascript
+owner: {
+  title: 'Your New Title Here'
+}
+```
+This automatically updates:
+- SiteTitle component (homepage hero)
+- AuthorCard component (blog posts)
+- All SEO metadata
+
+#### Update Your Company/Role
+```javascript
+content: {
+  hero: {
+    currentRole: {
+      position: 'Your Position',
+      company: 'Company Name',
+      companyUrl: 'https://company.com',
+      location: 'City'
+    }
+  }
+}
+```
+
+#### Add/Remove Previous Companies
+```javascript
+previousRoles: [
+  { company: 'Company Name', url: 'https://company.com' },
+  // Add more companies here
+]
+```
+
+#### Update Navigation Menu
+```javascript
+navigation: {
+  main: [
+    { label: 'Home', href: '/', title: 'Home' },
+    { label: 'New Page', href: '/new-page', title: 'New Page' },
+    // Add more menu items here
+  ]
+}
+```
+
+#### Update Contact Information
+```javascript
+contact: {
+  email: {
+    user: 'hello',
+    domain: 'yoursite.com'
+  },
+  locations: ['London', 'Manchester', 'Leeds']
+}
+```
+
+#### Update Social Media Links
+```javascript
+social: {
+  linkedin: {
+    title: 'Connect on LinkedIn',
+    link: 'https://www.linkedin.com/in/yourprofile/'
+  }
+}
+```
+
+### Legacy Configuration Files
+
+For backward compatibility, the following files still exist but now import from `siteConfig.js`:
+- `config.js` - Legacy config wrapper
+- `config/footerContactInfo.js` - Footer contact data
+- `config/footerCopyrightInfo.js` - Copyright data
+- `config/sidebarData.js` - Sidebar data
+
+**You should update `config/siteConfig.js` directly** rather than editing these files.
+
+### Benefits
+
+✅ **Update once, reflect everywhere** - Change your job title in one place
+✅ **No more hunting** - All content in one organized file
+✅ **Type-safe** - Clear structure prevents errors
+✅ **Easy maintenance** - New developers know exactly where to find config
+✅ **Version control friendly** - See all content changes in one file
