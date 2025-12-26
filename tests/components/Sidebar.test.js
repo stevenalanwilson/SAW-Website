@@ -6,7 +6,7 @@ import Sidebar from '../../components/Sidebar'
 describe('Sidebar Component', () => {
   it('renders the ContactCard component', () => {
     render(<Sidebar />)
-    expect(screen.getByText('Get In Touch')).toBeInTheDocument()
+    expect(screen.getByText('Work With Me')).toBeInTheDocument()
   })
 
   it('renders the StatsCard component', () => {
@@ -14,16 +14,15 @@ describe('Sidebar Component', () => {
     expect(screen.getByText('Professional Network')).toBeInTheDocument()
   })
 
-  it('renders contact location from config', () => {
+  it('renders operating areas from config', () => {
     render(<Sidebar />)
-    expect(screen.getByText('Derby, England, UK')).toBeInTheDocument()
+    expect(screen.getByText(/London.*Manchester.*Leeds.*Derby.*Birmingham/i)).toBeInTheDocument()
   })
 
   it('renders contact links from config', () => {
     render(<Sidebar />)
-    expect(screen.getByRole('link', { name: 'LinkedIn Profile' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Twitter' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Facebook' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Connect on LinkedIn/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })).toBeInTheDocument()
   })
 
   it('renders professional stats from config', () => {

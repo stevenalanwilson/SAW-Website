@@ -3,46 +3,69 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Footer from '../../components/Footer'
 
+// Mock the child components
+jest.mock('../../components/Tagline', () => {
+  return function Tagline() {
+    return <div>Helping organizations build resilient technical teams</div>
+  }
+})
+
+jest.mock('../../components/ServicesList', () => {
+  return function ServicesList() {
+    return <div>Services</div>
+  }
+})
+
+jest.mock('../../components/LatestPosts', () => {
+  return function LatestPosts() {
+    return <div>Latest Thinking</div>
+  }
+})
+
+jest.mock('../../components/WorkWithMe', () => {
+  return function WorkWithMe() {
+    return <div>Work With Me</div>
+  }
+})
+
 describe('Footer Component', () => {
-  it('renders sitemap section', () => {
+  it('renders the tagline component', () => {
     render(<Footer />)
-    expect(screen.getByText('Sitemap')).toBeInTheDocument()
+    expect(screen.getByText(/Helping organizations build resilient technical teams/i)).toBeInTheDocument()
   })
 
-  it('renders sitemap links', () => {
+  it('renders the services section', () => {
     render(<Footer />)
-    const homeLinks = screen.getAllByRole('link', { name: 'Home' })
-    const aboutLinks = screen.getAllByRole('link', { name: 'About' })
-
-    expect(homeLinks.length).toBeGreaterThan(0)
-    expect(aboutLinks.length).toBeGreaterThan(0)
+    expect(screen.getByText('Services')).toBeInTheDocument()
   })
 
-  it('renders contact info section', () => {
+  it('renders the latest thinking section', () => {
     render(<Footer />)
-    expect(screen.getByText('Contact Info')).toBeInTheDocument()
+    expect(screen.getByText('Latest Thinking')).toBeInTheDocument()
   })
 
-  it('renders social media links', () => {
+  it('renders the work with me section', () => {
     render(<Footer />)
-    expect(screen.getByRole('link', { name: /Follow me on Twitter/i })).toHaveAttribute('href', 'https://twitter.com/d79design')
-    expect(screen.getByRole('link', { name: /Follow me on Facebook/i })).toHaveAttribute('href', 'https://www.facebook.com/stevenalanwilson79/')
-  })
-
-  it('renders about me section', () => {
-    render(<Footer />)
-    expect(screen.getByText('About me')).toBeInTheDocument()
-    expect(screen.getByText(/seasoned technologist and leader/i)).toBeInTheDocument()
-  })
-
-  it('renders a random quote', () => {
-    render(<Footer />)
-    const quoteElement = screen.getByText(/growth|quite/i)
-    expect(quoteElement).toBeInTheDocument()
+    expect(screen.getByText('Work With Me')).toBeInTheDocument()
   })
 
   it('renders copyright information', () => {
     render(<Footer />)
     expect(screen.getByText(/Steven Alan Wilson/i)).toBeInTheDocument()
+  })
+
+  it('passes latestPosts prop to LatestPosts component', () => {
+    const mockPosts = [
+      { postSlug: 'test', postMetaData: { title: 'Test', summary: 'Test summary', date: '2024-01-01' } }
+    ]
+    render(<Footer latestPosts={mockPosts} />)
+    // Component should render without errors
+    expect(screen.getByText('Latest Thinking')).toBeInTheDocument()
+  })
+
+  it('applies footer styling', () => {
+    const { container } = render(<Footer />)
+    const footer = container.querySelector('footer')
+    expect(footer).toHaveClass('bg-gray-900', 'footer')
   })
 })

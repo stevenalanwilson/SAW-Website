@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ContactCard from '../../components/ContactCard'
+import WorkWithMe from '../../components/WorkWithMe'
 
 // Mock the footerContactInfo config
 jest.mock('../../config/footerContactInfo', () => ({
@@ -16,75 +16,63 @@ jest.mock('../../config/footerContactInfo', () => ({
   locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham']
 }))
 
-describe('ContactCard Component', () => {
-  it('renders the Work With Me title', () => {
-    render(<ContactCard />)
+describe('WorkWithMe Component', () => {
+  it('renders the Work With Me heading', () => {
+    render(<WorkWithMe />)
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Work With Me')
   })
 
   it('renders the elevator pitch', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     expect(screen.getByText(/Ready to transform your technical leadership/i)).toBeInTheDocument()
   })
 
-  it('renders Operating Areas heading', () => {
-    render(<ContactCard />)
+  it('renders the Operating Areas heading', () => {
+    render(<WorkWithMe />)
     expect(screen.getByText('Operating Areas')).toBeInTheDocument()
   })
 
-  it('renders all location areas', () => {
-    render(<ContactCard />)
+  it('renders all locations', () => {
+    render(<WorkWithMe />)
     const locationsText = screen.getByText(/London.*Manchester.*Leeds.*Derby.*Birmingham/i)
     expect(locationsText).toBeInTheDocument()
   })
 
   it('renders LinkedIn button with correct link', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     const linkedInButton = screen.getByRole('link', { name: /Connect on LinkedIn/i })
     expect(linkedInButton).toBeInTheDocument()
     expect(linkedInButton).toHaveAttribute('href', 'https://www.linkedin.com/in/stevenalanwilson/')
   })
 
   it('renders email link with obfuscated email', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     const emailLink = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
     expect(emailLink).toBeInTheDocument()
     expect(emailLink).toHaveAttribute('href', 'mailto:hello@stevenalanwilson.com')
   })
 
   it('LinkedIn button opens in new tab', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     const linkedInButton = screen.getByRole('link', { name: /Connect on LinkedIn/i })
     expect(linkedInButton).toHaveAttribute('target', '_blank')
     expect(linkedInButton).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  it('applies default styling', () => {
-    const { container } = render(<ContactCard />)
-    const card = container.querySelector('div')
-    expect(card).toHaveClass('bg-gray-900', 'text-white', 'p-6', 'border-t-4', 'border-white')
-  })
-
-  it('applies custom className', () => {
-    const { container } = render(<ContactCard className="custom-class" />)
-    const card = container.querySelector('div')
-    expect(card).toHaveClass('custom-class')
-  })
-
   it('applies correct styling to LinkedIn button', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     const linkedInButton = screen.getByRole('link', { name: /Connect on LinkedIn/i })
     expect(linkedInButton).toHaveClass('bg-blue-600', 'hover:bg-blue-700')
   })
 
   it('applies correct styling to email button', () => {
-    render(<ContactCard />)
+    render(<WorkWithMe />)
     const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
     expect(emailButton).toHaveClass('border', 'border-white', 'hover:bg-white', 'hover:text-gray-900')
   })
 
-  it('constructs email from obfuscated parts to prevent scraping', () => {
-    render(<ContactCard />)
+  it('constructs email from obfuscated parts', () => {
+    render(<WorkWithMe />)
     const emailLink = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
     expect(emailLink).toHaveAttribute('href', 'mailto:hello@stevenalanwilson.com')
   })

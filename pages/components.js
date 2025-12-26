@@ -12,6 +12,10 @@ import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
 import LoadingSpinner from '../components/LoadingSpinner'
 import AuthorCard from '../components/AuthorCard'
+import Tagline from '../components/Tagline'
+import ServicesList from '../components/ServicesList'
+import LatestPosts from '../components/LatestPosts'
+import WorkWithMe from '../components/WorkWithMe'
 import markdownService from '../services/getMarkdownService'
 
 export async function getStaticProps() {
@@ -27,12 +31,6 @@ function Components({ posts = [] }) {
     { title: 'Skill 2', description: 'Description of skill 2' },
     { title: 'Skill 3', description: 'Description of skill 3' },
     { title: 'Skill 4', description: 'Description of skill 4' }
-  ]
-
-  const sampleContactLinks = [
-    { label: 'Link 1', url: '#' },
-    { label: 'Link 2', url: '#' },
-    { label: 'Link 3', url: '#' }
   ]
 
   const sampleStats = [
@@ -165,22 +163,17 @@ function Components({ posts = [] }) {
               <SectionHeading>ContactCard Component</SectionHeading>
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  The ContactCard displays a call-to-action for working together, including operating areas and contact methods.
+                  It uses the same content as the Work With Me footer component.
+                </p>
                 <div className='max-w-md'>
-                  <ContactCard
-                    location="City, Country"
-                    links={sampleContactLinks}
-                  />
+                  <ContactCard />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<ContactCard
-  location="City, Country"
-  links={[
-    { label: 'Link 1', url: '#' },
-    { label: 'Link 2', url: '#' }
-  ]}
-/>`}
+{`<ContactCard />`}
                 </pre>
               </div>
             </section>
@@ -286,6 +279,82 @@ function Components({ posts = [] }) {
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
 {`<LoadingSpinner message="Loading post..." />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* Tagline Component */}
+            <section className='mb-16'>
+              <SectionHeading>Tagline Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  A reusable tagline component used in the footer. Can display custom text.
+                </p>
+                <div className='bg-gray-900'>
+                  <Tagline />
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<Tagline text="Your custom tagline here" />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* ServicesList Component */}
+            <section className='mb-16'>
+              <SectionHeading>ServicesList Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  Displays the consultancy services from the footer. Pulls data from footerServices config.
+                </p>
+                <div className='bg-gray-900 p-6'>
+                  <ServicesList />
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<ServicesList />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* LatestPosts Component */}
+            <section className='mb-16'>
+              <SectionHeading>LatestPosts Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  Displays recent blog posts dynamically. Used in the footer and can be reused elsewhere.
+                </p>
+                <div className='bg-gray-900 p-6'>
+                  <LatestPosts posts={posts} limit={2} />
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<LatestPosts posts={posts} limit={2} />`}
+                </pre>
+              </div>
+            </section>
+
+            {/* WorkWithMe Component */}
+            <section className='mb-16'>
+              <SectionHeading>WorkWithMe Component</SectionHeading>
+              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
+                <h3 className='text-xl font-bold mb-2'>Example:</h3>
+                <p className='mb-4 text-gray-700'>
+                  Call-to-action component with operating areas and contact methods. Used in footer and sidebar.
+                </p>
+                <div className='bg-gray-900 p-6'>
+                  <WorkWithMe />
+                </div>
+              </div>
+              <div className='bg-gray-100 p-4 rounded'>
+                <pre className='text-sm overflow-x-auto'>
+{`<WorkWithMe />`}
                 </pre>
               </div>
             </section>

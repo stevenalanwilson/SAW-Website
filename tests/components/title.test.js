@@ -6,7 +6,7 @@ import SiteTitle from '../../components/SiteTitle'
 describe('SiteTitle Component', () => {
   it('renders the main heading', () => {
     render(<SiteTitle />)
-    expect(screen.getByText('Steven Alan Wilson')).toBeInTheDocument()
+    expect(screen.getByText('Steven Alan Wilson Limited')).toBeInTheDocument()
   })
 
   it('renders the introduction text', () => {
@@ -49,7 +49,7 @@ describe('SiteTitle Component', () => {
 
   it('has correct styling classes on main heading', () => {
     render(<SiteTitle />)
-    const heading = screen.getByText('Steven Alan Wilson')
+    const heading = screen.getByText('Steven Alan Wilson Limited')
     expect(heading).toHaveClass('heading-1', 'font-bold', 'text-3xl', 'lg:text-6xl')
   })
 })
