@@ -64,6 +64,55 @@ Run the test suite:
 npm test
 ```
 
+## Pre-commit Hooks
+
+This project uses **Husky** and **lint-staged** to automatically run quality checks before each commit. This ensures code quality and prevents broken code from being committed.
+
+### What Runs Automatically
+
+When you run `git commit`, the following checks run automatically on staged files:
+
+**For JavaScript/JSX files (`.js`, `.jsx`):**
+1. **ESLint** - Automatically fixes linting issues
+2. **Jest** - Runs tests related to the changed files
+
+### How It Works
+
+```bash
+# Stage your changes
+git add .
+
+# Commit (hooks run automatically)
+git commit -m "Your commit message"
+
+# If checks pass, commit succeeds
+# If checks fail, commit is blocked and you see the errors
+```
+
+### Benefits
+
+✅ **Catch errors early** - Find bugs before they reach the repository
+✅ **Consistent code style** - Auto-format code on commit
+✅ **Faster CI/CD** - Fewer failed builds in CI
+✅ **No manual steps** - Quality checks happen automatically
+
+### Skipping Hooks (Not Recommended)
+
+In rare cases where you need to skip the hooks:
+```bash
+git commit --no-verify -m "Your message"
+```
+
+**Note:** Only use `--no-verify` in emergencies. The hooks are there to help maintain code quality.
+
+### Configuration
+
+Pre-commit hooks are configured in:
+- `.husky/pre-commit` - Hook entry point
+- `package.json` - `lint-staged` configuration
+
+To modify what runs on commit, edit the `lint-staged` section in `package.json`.
+
 ## Site Configuration - Single Source of Truth
 
 All site content, metadata, and configuration is centralized in `config/siteConfig.js`. This provides a **single source of truth** for your entire site, making updates quick and consistent across all components.
