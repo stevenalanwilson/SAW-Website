@@ -8,6 +8,11 @@ import footerServices from '../config/footerServices'
 import markdownService from '../services/getMarkdownService'
 
 function Footer({ latestPosts = [] }) {
+  // Construct email address from obfuscated parts (helps prevent spam bot scraping)
+  const emailAddress = footerContactInfo.email
+    ? `${footerContactInfo.email.user}@${footerContactInfo.email.domain}`
+    : null
+
   return (
     <footer className='bg-gray-900 footer'>
       <div className='container mx-auto'>
@@ -92,13 +97,13 @@ function Footer({ latestPosts = [] }) {
                     {footerContactInfo.linkedin.title}
                   </a>
 
-                  {footerContactInfo.email && (
+                  {emailAddress && (
                     <a
-                      href={`mailto:${footerContactInfo.email}`}
+                      href={`mailto:${emailAddress}`}
                       className='block border border-white hover:bg-white hover:text-gray-900 text-white py-3 px-4 text-center transition-colors'
                     >
                       <FontAwesomeIcon icon={faEnvelope} className='mr-2' aria-label='Email' />
-                      {footerContactInfo.email}
+                      {emailAddress}
                     </a>
                   )}
                 </div>

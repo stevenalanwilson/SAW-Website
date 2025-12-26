@@ -1,6 +1,10 @@
 const footerContactInfo = {
   number: '07720846954',
-  email: 'hello@stevenalanwilson.com',
+  // Email is obfuscated to prevent spam bot scraping
+  email: {
+    user: 'hello',
+    domain: 'stevenalanwilson.com'
+  },
   linkedin: {
     title: 'Connect on LinkedIn',
     link: 'https://www.linkedin.com/in/stevenalanwilson/'
