@@ -12,8 +12,16 @@ import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
 import LoadingSpinner from '../components/LoadingSpinner'
 import AuthorCard from '../components/AuthorCard'
+import markdownService from '../services/getMarkdownService'
 
-function Components() {
+export async function getStaticProps() {
+  const posts = markdownService.getAllMarkdownPosts()
+  return {
+    props: { posts }
+  }
+}
+
+function Components({ posts = [] }) {
   const sampleExpertiseItems = [
     { title: 'Skill 1', description: 'Description of skill 1' },
     { title: 'Skill 2', description: 'Description of skill 2' },
@@ -40,7 +48,7 @@ function Components() {
         description="A showcase of all reusable components available in the application"
         url={`${config.siteUrl}/components`}
       />
-      <Layout>
+      <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
             title="Component Showcase"

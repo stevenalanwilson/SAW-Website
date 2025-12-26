@@ -6,8 +6,16 @@ import PageHero from '../components/PageHero'
 import SectionHeading from '../components/SectionHeading'
 import ExpertiseGrid from '../components/ExpertiseGrid'
 import Sidebar from '../components/Sidebar'
+import markdownService from '../services/getMarkdownService'
 
-function About() {
+export async function getStaticProps() {
+  const posts = markdownService.getAllMarkdownPosts()
+  return {
+    props: { posts }
+  }
+}
+
+function About({ posts = [] }) {
   const expertiseItems = [
     {
       title: 'Technical Leadership',
@@ -42,7 +50,7 @@ function About() {
         description="Seasoned Digital, Technical, and AI Leader with over 20 years of experience in designing and developing digital products and services for government and commercial organizations."
         url={`${config.siteUrl}/about`}
       />
-      <Layout>
+      <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
             title="About Me"

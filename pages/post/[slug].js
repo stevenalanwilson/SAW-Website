@@ -35,18 +35,21 @@ export async function getStaticProps({ params: { slug } }) {
     }
   }
 
+  const posts = markdownService.getAllMarkdownPosts()
+
   return {
     props: {
       frontmatter,
       content,
-      slug
+      slug,
+      posts
     }
   }
 
 
 }
 
-function PostPage({ frontmatter, content, slug }) {
+function PostPage({ frontmatter, content, slug, posts = [] }) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -63,7 +66,7 @@ function PostPage({ frontmatter, content, slug }) {
         type="article"
         publishedTime={frontmatter.date}
       />
-      <Layout>
+      <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
             title={frontmatter.title}

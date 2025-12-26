@@ -18,7 +18,7 @@ const index = props => {
   return (
     <>
       <SEO />
-      <Layout>
+      <Layout latestPosts={props.posts}>
 
         <header>
           <div className='container mx-auto'>

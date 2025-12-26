@@ -1,5 +1,10 @@
 const footerContactInfo = {
   number: '07720846954',
+  email: 'hello@stevenalanwilson.com',
+  linkedin: {
+    title: 'Connect on LinkedIn',
+    link: 'https://www.linkedin.com/in/stevenalanwilson/'
+  },
   twitter: [
     {
       title: 'Follow me on Twitter',
@@ -11,6 +16,7 @@ const footerContactInfo = {
       title: 'Follow me on Facebook',
       link: 'https://www.facebook.com/stevenalanwilson79/'
     }
-  ]
+  ],
+  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham']
 }
 export default footerContactInfo
