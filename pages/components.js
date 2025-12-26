@@ -7,7 +7,6 @@ import ExpertiseGrid from '../components/ExpertiseGrid'
 import ContactCard from '../components/ContactCard'
 import StatsCard from '../components/StatsCard'
 import ExperienceCard from '../components/ExperienceCard'
-import PageTitle from '../components/PageTitle'
 import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
 import LoadingSpinner from '../components/LoadingSpinner'
@@ -198,28 +197,6 @@ function Components({ posts = [] }) {
     { label: 'Metric 1', value: '100+' },
     { label: 'Metric 2', value: '50+' }
   ]}
-/>`}
-                </pre>
-              </div>
-            </section>
-
-            {/* PageTitle Component */}
-            <section className='mb-16'>
-              <SectionHeading>PageTitle Component</SectionHeading>
-              <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
-                <h3 className='text-xl font-bold mb-2'>Example:</h3>
-                <PageTitle
-                  title="Sample Blog Post Title"
-                  summary="This is a sample summary for a blog post"
-                  date="2024-12-25"
-                />
-              </div>
-              <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<PageTitle
-  title="Sample Blog Post Title"
-  summary="This is a sample summary"
-  date="2024-12-25"
 />`}
                 </pre>
               </div>
