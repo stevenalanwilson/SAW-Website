@@ -12,9 +12,9 @@ function SiteHeader () {
     <header className='bg-gray-900 py-2'>
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
-          <div className='w-full lg:w-1/2 p-0 lg:p-2'>
+          <div className='w-full lg:w-1/2 p-0 lg:p-2 mx-4'>
             <Link href='/' title='Steven Alan Wilson' className='text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:underline hover:no-underline lg:hover:underline transition-all'>
-                Steven Alan Wilson Limited - Technical Leadership Consultant
+                Steven Alan Wilson Limited - Technical Leadership Consultancy
             </Link>
           </div>
 
