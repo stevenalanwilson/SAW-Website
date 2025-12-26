@@ -2,12 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import footerContactInfo from '../config/footerContactInfo'
+import siteConfig from '../config/siteConfig'
 
 export default function ContactCard({ variant = 'card', className = '' }) {
   // Construct email address from obfuscated parts (helps prevent spam bot scraping)
   const emailAddress = footerContactInfo.email
     ? `${footerContactInfo.email.user}@${footerContactInfo.email.domain}`
     : null
+
+  const { heading, message } = siteConfig.content.cta
 
   // Variant-specific styling
   const containerClasses = variant === 'card'
@@ -32,10 +35,10 @@ export default function ContactCard({ variant = 'card', className = '' }) {
 
   return (
     <div className={containerClasses}>
-      <h2 className={headingClasses}>Work With Me</h2>
+      <h2 className={headingClasses}>{heading}</h2>
       <div className={`text-white ${contentClasses}`}>
         <p className={paragraphClasses}>
-          Ready to transform your technical leadership and build high-performing teams?
+          {message}
         </p>
 
         {/* Locations */}

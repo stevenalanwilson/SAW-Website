@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import config from '../config'
+import siteConfig from '../config/siteConfig'
 
 const SEO = ({
-  title = 'Steven Alan Wilson Limited - Technical Leadership Consultancy',
+  title = siteConfig.site.title,
   description = config.siteDescription,
   image = '/static/og-image.jpg',
   url = config.siteUrl,
@@ -10,7 +11,7 @@ const SEO = ({
   publishedTime,
   modifiedTime
 }) => {
-  const fullTitle = title.includes('Steven Alan Wilson') ? title : `${title} | ${config.siteName}`
+  const fullTitle = title.includes(siteConfig.owner.name) ? title : `${title} | ${config.siteName}`
   const fullImageUrl = image.startsWith('http') ? image : `${config.siteUrl}${image}`
 
   return (

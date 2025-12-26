@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import siteConfig from '../config/siteConfig'
 
 function SiteHeader () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuItems = siteConfig.navigation.main
+  const { title, name } = siteConfig.site
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -13,8 +16,8 @@ function SiteHeader () {
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
           <div className='w-full lg:w-1/2 p-0 lg:p-2 mx-4'>
-            <Link href='/' title='Steven Alan Wilson' className='text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:underline hover:no-underline lg:hover:underline transition-all'>
-                Steven Alan Wilson Limited - Technical Leadership Consultancy
+            <Link href='/' title={name} className='text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:underline hover:no-underline lg:hover:underline transition-all'>
+                {title}
             </Link>
           </div>
 
@@ -53,27 +56,15 @@ function SiteHeader () {
           <div className='hidden lg:block w-full lg:w-1/2 p-2'>
             <nav className='main-menu' aria-label='Main navigation'>
               <ul className='flex justify-end flex-wrap gap-2'>
-                <li>
-                  <Link
-                    href='/'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/about'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='/components'
-                    className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
-                    Components
-                  </Link>
-                </li>
+                {menuItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -83,33 +74,17 @@ function SiteHeader () {
         <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
           <nav className='mobile-menu' aria-label='Mobile navigation'>
             <ul className='flex flex-col gap-2 py-4'>
-              <li>
-                <Link
-                  href='/'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/about'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href='/components'
-                  className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Components
-                </Link>
-              </li>
+              {menuItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>

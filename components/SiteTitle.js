@@ -1,23 +1,40 @@
 import Link from 'next/link'
+import siteConfig from '../config/siteConfig'
 
 function SiteTitle() {
+  const { name } = siteConfig.site
+  const { greeting, introduction, description } = siteConfig.content.hero
+  const { position, company, companyUrl, location } = siteConfig.content.hero.currentRole
+  const previousRoles = siteConfig.content.hero.previousRoles
+
   return (
     <section>
       <div className='flex flex-wrap'>
         <div className='w-full p-2 border-black lg:border-b lg:border-t lg:border-t-0 lg:py-4 mx-4 lg:my-6 mt-6 lg:my-1'>
-          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>Steven Alan Wilson Limited</h1>
+          <h1 className='heading-1 font-bold text-3xl lg:text-6xl'>{name}</h1>
         </div>
       </div>
       <div className='hidden lg:flex'>
         <div className='flex flex-wrap w-full md:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <h2 className='heading-2 leading-tight text-4xl mr-40'>Hi, <strong>I&apos;m Steve, a digital and technical leader</strong> with a passion for technology and innovation, I help organizations deliver digital transformation at scale.</h2>
+            <h2 className='heading-2 leading-tight text-4xl mr-40'>
+              {greeting} <strong>{introduction}</strong> {description}
+            </h2>
           </div>
         </div>
 
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
-            <p className='text-xl'>Currently a <strong>Digital, Technical, and AI Leader at <Link href={`https://www.equalexperts.com`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Equal Experts</Link></strong> in Manchester. Previously held key technical leadership roles at <Link href={`https://www.aerlingus.com`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Aer Lingus</Link>, <Link href={`https://www.public.io`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>PUBLIC</Link>, <Link href={`https://hackney.gov.uk`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Hackney Council</Link>, and the <Link href={`https://mojdigital.blog.gov.uk`} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>Ministry of Justice Digital</Link>.</p>
+            <p className='text-xl'>
+              Currently a <strong>{position} at <Link href={companyUrl} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{company}</Link></strong> in {location}.
+              Previously held key technical leadership roles at {previousRoles.map((role, index) => (
+                <span key={index}>
+                  {index > 0 && index === previousRoles.length - 1 && ', and the '}
+                  {index > 0 && index < previousRoles.length - 1 && ', '}
+                  <Link href={role.url} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{role.company}</Link>
+                </span>
+              ))}.
+            </p>
           </div>
         </div>
       </div>
