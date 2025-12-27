@@ -46,7 +46,7 @@ describe('PostscriptItem Component', () => {
       'text-2xl',
       'lg:text-4xl',
       'border-b-2',
-      'text-white',
+      'text-theme-bg',
       'pb-2',
       'mb-6'
     )
@@ -56,7 +56,7 @@ describe('PostscriptItem Component', () => {
     const { container } = render(<PostscriptItem {...mockProps} />)
     const figure = container.querySelector('figure')
     expect(figure).toBeInTheDocument()
-    expect(figure).toHaveClass('border-b', 'text-white', 'pb-2', 'mb-4')
+    expect(figure).toHaveClass('border-b', 'text-theme-bg', 'pb-2', 'mb-4')
   })
 
   it('renders picture element with source tags', () => {
@@ -82,13 +82,13 @@ describe('PostscriptItem Component', () => {
   it('applies correct styling to description', () => {
     const { container } = render(<PostscriptItem {...mockProps} />)
     const description = container.querySelector('p')
-    expect(description).toHaveClass('text-white', 'leading-tight')
+    expect(description).toHaveClass('text-theme-bg', 'leading-tight')
   })
 
   it('figcaption has correct styling', () => {
     render(<PostscriptItem {...mockProps} />)
     const figcaption = screen.getByText('Test Title', { selector: 'figcaption' })
-    expect(figcaption).toHaveClass('italic', 'text-xs', 'text-gray-200', 'mb-2')
+    expect(figcaption).toHaveClass('italic', 'text-xs', 'text-theme-accent', 'mb-2')
   })
 
   it('root div has correct classes', () => {

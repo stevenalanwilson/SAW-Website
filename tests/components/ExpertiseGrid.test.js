@@ -38,19 +38,25 @@ describe('ExpertiseGrid Component', () => {
 
   it('renders correct number of items', () => {
     const { container } = render(<ExpertiseGrid items={mockItems} />)
-    const items = container.querySelectorAll('.bg-gray-50')
+    const items = container.querySelectorAll('.bg-theme-bg')
     expect(items).toHaveLength(3)
   })
 
   it('renders with correct item styling', () => {
     const { container } = render(<ExpertiseGrid items={mockItems} />)
-    const firstItem = container.querySelector('.bg-gray-50')
-    expect(firstItem).toHaveClass('p-4', 'border-l-2', 'border-gray-900')
+    const firstItem = container.querySelector('.bg-theme-bg')
+    expect(firstItem).toHaveClass(
+      'bg-theme-bg',
+      'p-4',
+      'border-l-2',
+      'border-theme-primary',
+      'text-theme-text'
+    )
   })
 
   it('handles empty items array', () => {
     const { container } = render(<ExpertiseGrid items={[]} />)
-    const items = container.querySelectorAll('.bg-gray-50')
+    const items = container.querySelectorAll('.bg-theme-bg')
     expect(items).toHaveLength(0)
   })
 

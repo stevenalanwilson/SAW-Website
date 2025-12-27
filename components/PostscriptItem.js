@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 function PostscriptItem({ title, image, _caption, description }) {
   return (
     <div className='w-full md:w-1/4 p-2 my-6 postscript-item'>
-      <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-2 mb-6'>{title}</h1>
-      <figure className='border-b text-white pb-2 mb-4'>
+      <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 border-theme-bg text-theme-bg pb-2 mb-6'>
+        {title}
+      </h1>
+      <figure className='border-b border-theme-bg text-theme-bg pb-2 mb-4'>
         <picture>
           <source
             media='(min-width: 800px)'
@@ -16,13 +18,14 @@ function PostscriptItem({ title, image, _caption, description }) {
           />
           <img
             src={image + '?fit=thumb&w=400&h=300&fm=webp&q=80'}
-            alt='Source sets are awesome!'
+            alt={title}
             className='my-4'
+            loading='lazy'
           />
         </picture>
-        <figcaption className='italic text-xs	text-gray-200 mb-2'>{title}</figcaption>
+        <figcaption className='italic text-xs text-theme-accent mb-2'>{title}</figcaption>
       </figure>
-      <p className='text-white leading-tight'>{description}</p>
+      <p className='text-theme-bg leading-tight'>{description}</p>
     </div>
   )
 }

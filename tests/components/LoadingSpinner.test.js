@@ -22,7 +22,7 @@ describe('LoadingSpinner Component', () => {
       'flex',
       'items-center',
       'justify-center',
-      'bg-gray-50',
+      'bg-theme-bg',
       'z-50'
     )
   })
@@ -37,13 +37,19 @@ describe('LoadingSpinner Component', () => {
     const { container } = render(<LoadingSpinner />)
     const spinner = container.querySelector('.animate-spin')
     expect(spinner).toBeInTheDocument()
-    expect(spinner).toHaveClass('rounded-full', 'h-12', 'w-12', 'border-b-2', 'border-gray-900')
+    expect(spinner).toHaveClass(
+      'rounded-full',
+      'h-12',
+      'w-12',
+      'border-b-2',
+      'border-theme-primary'
+    )
   })
 
   it('renders message with correct styling', () => {
     render(<LoadingSpinner message='Test message' />)
     const message = screen.getByText('Test message')
-    expect(message).toHaveClass('text-xl', 'text-gray-700')
+    expect(message).toHaveClass('text-xl', 'text-theme-text')
   })
 
   it('centers content', () => {

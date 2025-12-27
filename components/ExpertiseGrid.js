@@ -13,7 +13,10 @@ export default function ExpertiseGrid({ items = [], className = '' }) {
         if (!item) return null
 
         return (
-          <div key={index} className='bg-gray-50 p-4 border-l-2 border-gray-900'>
+          <div
+            key={index}
+            className='bg-theme-bg p-4 border-l-2 border-theme-primary text-theme-text'
+          >
             <h3 className='font-bold text-lg mb-2'>{item.title || ''}</h3>
             <p className='text-base'>{item.description || ''}</p>
           </div>

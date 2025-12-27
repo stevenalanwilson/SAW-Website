@@ -1,6 +1,6 @@
 const Postscript = () => {
   return (
-    <section className='postscript bg-gray-800'>
+    <section className='postscript bg-theme-primary'>
       <div className='container mx-auto'>
         <div className='flex flex-wrap' />
       </div>

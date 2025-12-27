@@ -24,7 +24,7 @@ describe('Postscript Component', () => {
   it('has bg-gray-800 background class', () => {
     const { container } = render(<Postscript />)
     const section = container.querySelector('section')
-    expect(section).toHaveClass('bg-gray-800')
+    expect(section).toHaveClass('bg-theme-primary')
   })
 
   it('contains container with mx-auto', () => {
