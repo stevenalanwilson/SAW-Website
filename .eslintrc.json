@@ -32,7 +32,22 @@
     "no-var": "error",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "function-declaration",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     "jsx-a11y/heading-has-content": "off",
     "jsx-a11y/anchor-has-content": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*.js", "**/*.test.js"],
+      "rules": {
+        "react/function-component-definition": "off"
+      }
+    }
+  ]
 }

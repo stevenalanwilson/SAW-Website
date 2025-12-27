@@ -46,10 +46,10 @@ export const tagThemeMap = {}
 
 /**
  * Determines the theme for an article based on its tags
- * @param {string[]} tags - Array of article tags from frontmatter
+ * @param {string[]} _tags - Array of article tags from frontmatter (unused with light/dark themes)
  * @returns {string} Theme name (key from articleThemes)
  */
-export function getThemeFromTags(tags = []) {
+export function getThemeFromTags(_tags = []) {
   // With light/dark themes, we default to light
   return DEFAULT_THEME
 }
@@ -57,10 +57,10 @@ export function getThemeFromTags(tags = []) {
 /**
  * Gets the theme object for a given theme name
  * @param {string} themeName - Name of the theme (or explicit theme object)
- * @param {string[]} tags - Fallback tags for auto-detection (not used with light/dark themes)
+ * @param {string[]} _tags - Fallback tags for auto-detection (unused with light/dark themes)
  * @returns {Object} Theme configuration object
  */
-export function getTheme(themeName, tags = []) {
+export function getTheme(themeName, _tags = []) {
   // If themeName is already an object with color properties, use it directly
   if (typeof themeName === 'object' && themeName !== null && themeName.primary) {
     return {
