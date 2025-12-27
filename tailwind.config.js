@@ -7,7 +7,11 @@ module.exports = {
     './public/**/*.{html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
