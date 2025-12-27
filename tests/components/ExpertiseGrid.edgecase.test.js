@@ -9,12 +9,12 @@ describe('ExpertiseGrid Edge Cases', () => {
     expect(container.querySelector('.grid')).toBeInTheDocument()
   })
 
-  it.skip('handles undefined items prop - COMPONENT BUG: needs default prop', () => {
+  it('handles undefined items prop', () => {
     const { container } = render(<ExpertiseGrid items={undefined} />)
     expect(container.querySelector('.grid')).toBeInTheDocument()
   })
 
-  it.skip('handles null items prop - COMPONENT BUG: needs null check', () => {
+  it('handles null items prop', () => {
     const { container } = render(<ExpertiseGrid items={null} />)
     expect(container.querySelector('.grid')).toBeInTheDocument()
   })
