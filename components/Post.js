@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Image from 'next/image'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -24,7 +25,17 @@ export default function Post({ content, className = '' }) {
         ol: (props) => <ol className='list-decimal list-inside mb-5' {...props} />,
         li: (props) => <li className='text-lg leading-relaxed mb-2' {...props} />,
         a: (props) => <a className='text-blue-600 hover:underline' {...props} />,
-        img: (props) => <img className='w-full h-auto mb-5' {...props} alt={props.alt || ''} />,
+        img: (props) => (
+          <span className='block mb-5 relative w-full' style={{ aspectRatio: '16/9' }}>
+            <Image
+              src={props.src || ''}
+              alt={props.alt || ''}
+              fill
+              className='object-contain'
+              sizes='100vw'
+            />
+          </span>
+        ),
         blockquote: (props) => <blockquote className='border-l-4 border-gray-300 pl-4 italic mb-5' {...props} />,
         code: (props) => <code className='bg-gray-100 px-2 py-1 rounded text-sm' {...props} />,
         pre: (props) => <pre className='bg-gray-100 p-4 rounded overflow-x-auto mb-5' {...props} />,
