@@ -5,6 +5,7 @@ This directory contains issue templates for future dependency upgrades that were
 ## How to Create Issues
 
 ### Option 1: Manual Creation (Web Interface)
+
 1. Go to https://github.com/stevenalanwilson/SAW-Website/issues/new
 2. Copy the content from one of the markdown files below
 3. Paste into the issue description
@@ -13,6 +14,7 @@ This directory contains issue templates for future dependency upgrades that were
 6. Add to project: https://github.com/users/stevenalanwilson/projects/2
 
 ### Option 2: Using GitHub CLI
+
 If you have `gh` authenticated, you can run:
 
 ```bash
@@ -57,6 +59,7 @@ gh issue create \
 ## After Creating Issues
 
 After creating these issues on GitHub:
+
 1. Add them to your project board: https://github.com/users/stevenwilson/projects/2
 2. Set appropriate milestones if needed
 3. Delete this `.github-issues` directory (or commit it for future reference)

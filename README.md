@@ -535,12 +535,14 @@ This application uses a simple, maintainable theming system powered by **CSS Var
 The application supports two themes configured in `config/articleThemes.js`:
 
 **Light Theme** (default)
+
 - Background: White (#ffffff)
 - Text: Black (#000000)
 - Primary elements: Black (#000000)
 - Accent/secondary: Dark grey (#666666)
 
 **Dark Theme**
+
 - Background: Black (#000000)
 - Text: White (#ffffff)
 - Primary elements: White (#ffffff)
@@ -561,6 +563,7 @@ Your blog post content here...
 ```
 
 **Options:**
+
 - `theme: 'light'` - White background with black text
 - `theme: 'dark'` - Black background with white text
 - No theme specified - Defaults to light theme
@@ -570,10 +573,12 @@ Your blog post content here...
 The theming system uses a CSS-variable-only approach for simplicity and maintainability:
 
 **1. Theme Configuration** (`config/articleThemes.js`)
+
 - Defines color values for each theme
 - Each theme has: `primary`, `accent`, `background`, and `text` colors
 
 **2. CSS Variables** (`pages/post/[slug].js`)
+
 - When a blog post loads, CSS variables are set based on the theme:
   ```javascript
   const themeStyles = {
@@ -587,6 +592,7 @@ The theming system uses a CSS-variable-only approach for simplicity and maintain
 - All child components inherit these CSS variables
 
 **3. Tailwind CSS Classes** (all components)
+
 - Components use Tailwind classes that reference CSS variables:
   - `bg-theme-bg` - Background color
   - `text-theme-text` - Text color
@@ -596,6 +602,7 @@ The theming system uses a CSS-variable-only approach for simplicity and maintain
   - `border-theme-primary` - Border color matching primary
 
 **4. Tailwind Configuration** (`tailwind.config.js`)
+
 - Maps Tailwind utilities to CSS variables:
   ```javascript
   colors: {
@@ -619,17 +626,22 @@ The theming system uses a CSS-variable-only approach for simplicity and maintain
 To add a new theme (e.g., "sepia"):
 
 1. **Add theme definition** to `config/articleThemes.js`:
+
    ```javascript
    export const articleThemes = {
-     light: { /* existing */ },
-     dark: { /* existing */ },
+     light: {
+       /* existing */
+     },
+     dark: {
+       /* existing */
+     },
      sepia: {
        name: 'Sepia',
        primary: '#704214',
        accent: '#8b6914',
        background: '#f4ecd8',
        text: '#3e2723',
-     }
+     },
    }
    ```
 
@@ -650,10 +662,10 @@ Edit `config/articleThemes.js` to change theme colors:
 export const articleThemes = {
   light: {
     name: 'Light',
-    primary: '#000000',      // Change to any hex color
-    accent: '#666666',       // Change to any hex color
-    background: '#ffffff',   // Change to any hex color
-    text: '#000000',         // Change to any hex color
+    primary: '#000000', // Change to any hex color
+    accent: '#666666', // Change to any hex color
+    background: '#ffffff', // Change to any hex color
+    text: '#000000', // Change to any hex color
   },
   // ... other themes
 }
