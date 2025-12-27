@@ -52,8 +52,8 @@ export default function Post({ content, className = '' }) {
               src={props.src || ''}
               alt={props.alt || ''}
               fill
-              className='object-contain'
-              sizes='100vw'
+              className='object-cover'
+              sizes='(max-width: 1024px) 100vw, 66vw'
             />
           </span>
         ),
