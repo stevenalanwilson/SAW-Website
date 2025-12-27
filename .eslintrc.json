@@ -5,7 +5,7 @@
     "node": true,
     "jest": true
   },
-  "plugins": ["jsx-a11y"],
+  "plugins": ["jsx-a11y", "react"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
@@ -20,9 +20,18 @@
   },
   "rules": {
     "no-console": ["warn", { "allow": ["warn", "error"] }],
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^React$|^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "prefer-const": "warn",
     "no-var": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "jsx-a11y/heading-has-content": "off",
     "jsx-a11y/anchor-has-content": "off"
   }
