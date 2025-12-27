@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import { Analytics } from '@vercel/analytics/react';
@@ -16,5 +17,9 @@ const Layout = props => (
   </>
 )
 
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  latestPosts: PropTypes.array
+}
 
 export default Layout

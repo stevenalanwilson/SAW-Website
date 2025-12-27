@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function PageHero({ title, subtitle, className = '' }) {
   return (
     <section className={`border-black border-b border-t lg:border-t-0 py-8 mx-4 my-6 ${className}`}>
@@ -9,4 +11,10 @@ export default function PageHero({ title, subtitle, className = '' }) {
       )}
     </section>
   )
+}
+
+PageHero.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.node,
+  className: PropTypes.string
 }

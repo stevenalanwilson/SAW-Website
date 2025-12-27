@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import config from '../config/siteConfig'
 
 const SEO = ({
@@ -54,6 +55,16 @@ const SEO = ({
       <link rel="icon" href="/favicon.ico" />
     </Head>
   )
+}
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  url: PropTypes.string,
+  type: PropTypes.oneOf(['website', 'article']),
+  publishedTime: PropTypes.string,
+  modifiedTime: PropTypes.string
 }
 
 export default SEO

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function StatsCard({ title, stats = [], className = '' }) {
   return (
     <div className={`bg-gray-50 p-6 border-l-4 border-gray-900 ${className}`}>
@@ -12,4 +14,15 @@ export default function StatsCard({ title, stats = [], className = '' }) {
       </div>
     </div>
   )
+}
+
+StatsCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    })
+  ),
+  className: PropTypes.string
 }

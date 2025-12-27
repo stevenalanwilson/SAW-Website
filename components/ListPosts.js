@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 export default function ListPosts({ posts = [] }) {
   // Handle null/undefined posts gracefully
@@ -58,4 +59,18 @@ export default function ListPosts({ posts = [] }) {
       }
     </div>
   );
+}
+
+ListPosts.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      postSlug: PropTypes.string,
+      postMetaData: PropTypes.shape({
+        title: PropTypes.string,
+        date: PropTypes.string,
+        summary: PropTypes.string,
+        thumbnail: PropTypes.string
+      })
+    })
+  )
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import theme from '../styles/theme'
 
 function PostscriptItem ({ title, image, caption, description }) {
@@ -15,6 +16,13 @@ function PostscriptItem ({ title, image, caption, description }) {
       <p className='text-white leading-tight'>{description}</p>
     </div>
   )
+}
+
+PostscriptItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+  description: PropTypes.string.isRequired
 }
 
 export default PostscriptItem

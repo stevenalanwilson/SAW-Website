@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import * as Sentry from '@sentry/nextjs'
 
 /**
@@ -67,6 +68,13 @@ class SectionErrorBoundary extends React.Component {
 
     return this.props.children
   }
+}
+
+SectionErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+  name: PropTypes.string,
+  errorMessage: PropTypes.string,
+  fallback: PropTypes.node
 }
 
 export default SectionErrorBoundary

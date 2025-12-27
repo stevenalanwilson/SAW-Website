@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 export default function ExperienceCard({
   company,
@@ -24,4 +25,13 @@ export default function ExperienceCard({
       )}
     </div>
   )
+}
+
+ExperienceCard.propTypes = {
+  company: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  highlighted: PropTypes.bool,
+  className: PropTypes.string
 }

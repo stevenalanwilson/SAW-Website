@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-solid-svg-icons'
 import footerCopyrightInfo from '../config/footerCopyrightInfo'
@@ -58,6 +59,10 @@ function Footer({ latestPosts = [] }) {
       </div>
     </footer>
   );
+}
+
+Footer.propTypes = {
+  latestPosts: PropTypes.array
 }
 
 export default Footer

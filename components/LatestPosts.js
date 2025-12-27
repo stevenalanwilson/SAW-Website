@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 function LatestPosts({ posts = [], limit = 2 }) {
   return (
@@ -28,6 +29,20 @@ function LatestPosts({ posts = [], limit = 2 }) {
       </ul>
     </div>
   )
+}
+
+LatestPosts.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      postSlug: PropTypes.string.isRequired,
+      postMetaData: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        summary: PropTypes.string.isRequired,
+        date: PropTypes.string
+      }).isRequired
+    })
+  ),
+  limit: PropTypes.number
 }
 
 export default LatestPosts

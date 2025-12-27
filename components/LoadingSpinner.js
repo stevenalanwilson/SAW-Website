@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function LoadingSpinner({ message = 'Loading...', className = '' }) {
   return (
     <div className={`fixed inset-0 flex items-center justify-center bg-gray-50 z-50 ${className}`}>
@@ -7,4 +9,9 @@ export default function LoadingSpinner({ message = 'Loading...', className = '' 
       </div>
     </div>
   )
+}
+
+LoadingSpinner.propTypes = {
+  message: PropTypes.string,
+  className: PropTypes.string
 }

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function ExpertiseGrid({ items = [], className = '' }) {
   // Handle null/undefined items gracefully
   if (!items || !Array.isArray(items)) {
@@ -19,4 +21,14 @@ export default function ExpertiseGrid({ items = [], className = '' }) {
       })}
     </div>
   )
+}
+
+ExpertiseGrid.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string
+    })
+  ),
+  className: PropTypes.string
 }

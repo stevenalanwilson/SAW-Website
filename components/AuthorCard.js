@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import siteConfig from '../config/siteConfig'
 
 export default function AuthorCard({ className = '' }) {
@@ -15,4 +16,8 @@ export default function AuthorCard({ className = '' }) {
       </p>
     </div>
   )
+}
+
+AuthorCard.propTypes = {
+  className: PropTypes.string
 }

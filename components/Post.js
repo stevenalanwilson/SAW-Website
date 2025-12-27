@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -37,4 +38,9 @@ export default function Post({ content, className = '' }) {
       {processedContent}
     </article>
   )
+}
+
+Post.propTypes = {
+  content: PropTypes.string.isRequired,
+  className: PropTypes.string
 }

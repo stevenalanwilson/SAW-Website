@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import ContactCard from './ContactCard'
 import StatsCard from './StatsCard'
 import SectionErrorBoundary from './SectionErrorBoundary'
@@ -18,4 +19,8 @@ export default function Sidebar({ className = '' }) {
       </SectionErrorBoundary>
     </aside>
   )
+}
+
+Sidebar.propTypes = {
+  className: PropTypes.string
 }
