@@ -2,7 +2,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 import config from '../config/siteConfig'
 
-const SEO = ({
+export default function SEO({
   title = config.site.title,
   description = config.site.description,
   image = '/static/og-image.jpg',
@@ -10,7 +10,7 @@ const SEO = ({
   type = 'website',
   publishedTime,
   modifiedTime,
-}) => {
+}) {
   const fullTitle = title.includes(config.owner.name) ? title : `${title} | ${config.site.name}`
   const fullImageUrl = image.startsWith('http') ? image : `${config.site.url}${image}`
 
@@ -66,5 +66,3 @@ SEO.propTypes = {
   publishedTime: PropTypes.string,
   modifiedTime: PropTypes.string,
 }
-
-export default SEO

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function Tagline({
+export default function Tagline({
   text = 'Helping organizations build resilient technical teams and accelerate digital transformation',
 }) {
   return (
@@ -13,5 +13,3 @@ function Tagline({
 Tagline.propTypes = {
   text: PropTypes.string,
 }
-
-export default Tagline

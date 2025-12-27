@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-function LatestPosts({ posts = [], limit = 2 }) {
+export default function LatestPosts({ posts = [], limit = 2 }) {
   return (
     <div>
       <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'>
@@ -53,5 +53,3 @@ LatestPosts.propTypes = {
   ),
   limit: PropTypes.number,
 }
-
-export default LatestPosts

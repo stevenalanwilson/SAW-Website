@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import siteConfig from '../config/siteConfig'
 
-function SiteTitle() {
+export default function SiteTitle() {
   const { name } = siteConfig.site
   const { greeting, introduction, description } = siteConfig.content.hero
   const { position, company, companyUrl, location } = siteConfig.content.hero.currentRole
@@ -63,5 +63,3 @@ function SiteTitle() {
     </section>
   )
 }
-
-export default SiteTitle

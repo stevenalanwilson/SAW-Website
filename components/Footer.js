@@ -9,7 +9,7 @@ import LatestPosts from './LatestPosts'
 import WorkWithMe from './WorkWithMe'
 import SectionErrorBoundary from './SectionErrorBoundary'
 
-function Footer({ latestPosts = [] }) {
+export default function Footer({ latestPosts = [] }) {
   return (
     <footer className='bg-theme-primary text-theme-bg footer'>
       <div className='container mx-auto'>
@@ -69,5 +69,3 @@ function Footer({ latestPosts = [] }) {
 Footer.propTypes = {
   latestPosts: PropTypes.array,
 }
-
-export default Footer

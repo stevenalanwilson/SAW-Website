@@ -3,7 +3,7 @@ import { useState } from 'react'
 import siteConfig from '../config/siteConfig'
 import NavigationMenu from './NavigationMenu'
 
-function SiteHeader() {
+export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = siteConfig.navigation.main
   const { title, name } = siteConfig.site
@@ -74,5 +74,3 @@ function SiteHeader() {
     </header>
   )
 }
-
-export default SiteHeader

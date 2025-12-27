@@ -4,7 +4,7 @@ import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import { Analytics } from '@vercel/analytics/react'
 
-const Layout = (props) => {
+export default function Layout(props) {
   return (
     <div className='bg-theme-bg text-theme-text' style={props.themeStyles}>
       <Head />
@@ -21,5 +21,3 @@ Layout.propTypes = {
   latestPosts: PropTypes.array,
   themeStyles: PropTypes.object,
 }
-
-export default Layout

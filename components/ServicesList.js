@@ -1,6 +1,6 @@
 import footerServices from '../config/footerServices'
 
-function ServicesList() {
+export default function ServicesList() {
   return (
     <div>
       <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'>
@@ -17,5 +17,3 @@ function ServicesList() {
     </div>
   )
 }
-
-export default ServicesList

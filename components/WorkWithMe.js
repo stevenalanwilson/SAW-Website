@@ -1,7 +1,5 @@
 import ContactCard from './ContactCard'
 
-function WorkWithMe() {
+export default function WorkWithMe() {
   return <ContactCard variant='footer' />
 }
-
-export default WorkWithMe

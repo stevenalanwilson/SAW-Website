@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-function NavigationMenu({ items, mobile = false, onItemClick }) {
+export default function NavigationMenu({ items, mobile = false, onItemClick }) {
   const baseClasses =
     'text-theme-bg py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
   const desktopClasses = `${baseClasses} py-4 hover:scale-105`
@@ -37,5 +37,3 @@ NavigationMenu.propTypes = {
   mobile: PropTypes.bool,
   onItemClick: PropTypes.func,
 }
-
-export default NavigationMenu
