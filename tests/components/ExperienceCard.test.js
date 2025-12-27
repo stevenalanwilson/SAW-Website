@@ -29,20 +29,18 @@ describe('ExperienceCard Component', () => {
   })
 
   it('does not render description paragraph when description is not provided', () => {
-    const { container } = render(
-      <ExperienceCard company='Test' url='https://test.com' title='Developer' />
-    )
+    render(<ExperienceCard company='Test' url='https://test.com' title='Developer' />)
     expect(screen.queryByText('Led development of major features')).not.toBeInTheDocument()
   })
 
   it('applies bold styling when highlighted is true', () => {
-    const { container } = render(<ExperienceCard {...mockProps} highlighted={true} />)
+    render(<ExperienceCard {...mockProps} highlighted={true} />)
     const heading = screen.getByRole('heading', { level: 3 })
     expect(heading).toHaveClass('font-bold')
   })
 
   it('does not apply bold styling when highlighted is false', () => {
-    const { container } = render(<ExperienceCard {...mockProps} highlighted={false} />)
+    render(<ExperienceCard {...mockProps} highlighted={false} />)
     const heading = screen.getByRole('heading', { level: 3 })
     expect(heading).not.toHaveClass('font-bold')
   })
@@ -72,7 +70,7 @@ describe('ExperienceCard Component', () => {
   })
 
   it('renders description with correct styling', () => {
-    const { container } = render(<ExperienceCard {...mockProps} />)
+    render(<ExperienceCard {...mockProps} />)
     const description = screen.getByText('Led development of major features')
     expect(description).toHaveClass('text-xl', 'leading-relaxed')
   })

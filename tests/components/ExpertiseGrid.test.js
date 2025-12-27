@@ -55,7 +55,7 @@ describe('ExpertiseGrid Component', () => {
   })
 
   it('renders titles with correct styling', () => {
-    const { container } = render(<ExpertiseGrid items={mockItems} />)
+    render(<ExpertiseGrid items={mockItems} />)
     const firstTitle = screen.getByText('Item 1')
     expect(firstTitle).toHaveClass('font-bold', 'text-lg', 'mb-2')
     expect(firstTitle.tagName).toBe('H3')

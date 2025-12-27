@@ -60,13 +60,13 @@ describe('StatsCard Component', () => {
   })
 
   it('renders stat values with bold styling', () => {
-    const { container } = render(<StatsCard title='Stats' stats={mockStats} />)
+    render(<StatsCard title='Stats' stats={mockStats} />)
     const value = screen.getByText('500+')
     expect(value).toHaveClass('text-2xl', 'font-bold')
   })
 
   it('renders stat labels with correct styling', () => {
-    const { container } = render(<StatsCard title='Stats' stats={mockStats} />)
+    render(<StatsCard title='Stats' stats={mockStats} />)
     const label = screen.getByText('Connections')
     expect(label).toHaveClass('text-lg')
   })
