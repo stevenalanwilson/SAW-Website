@@ -58,4 +58,47 @@ describe('PageHero Component', () => {
     expect(screen.getByText(/This is/)).toBeInTheDocument()
     expect(screen.getByText(/text/)).toBeInTheDocument()
   })
+
+  // Edge cases
+  it('handles empty string title', () => {
+    const { container } = render(<PageHero title="" />)
+    const heading = container.querySelector('h1')
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent('')
+  })
+
+  it('handles very long title', () => {
+    const longTitle = 'This is a very long title that spans multiple lines and should still render correctly with proper text wrapping and styling'
+    render(<PageHero title={longTitle} />)
+    expect(screen.getByText(longTitle)).toBeInTheDocument()
+  })
+
+  it('handles title with special characters', () => {
+    const specialTitle = 'Title with & symbols, "quotes", and \'apostrophes\''
+    render(<PageHero title={specialTitle} />)
+    expect(screen.getByText(specialTitle)).toBeInTheDocument()
+  })
+
+  it('handles empty string subtitle', () => {
+    const { container } = render(<PageHero title="Test" subtitle="" />)
+    // Empty string is falsy, so subtitle div should not render
+    const subtitleDiv = container.querySelector('section > div')
+    expect(subtitleDiv).not.toBeInTheDocument()
+  })
+
+  it('handles subtitle as React element', () => {
+    render(<PageHero title="Test" subtitle={<span>Element</span>} />)
+    expect(screen.getByText('Element')).toBeInTheDocument()
+  })
+
+  it('handles className with multiple classes', () => {
+    const { container } = render(<PageHero title="Test" className="class1 class2 class3" />)
+    const section = container.querySelector('section')
+    expect(section).toHaveClass('class1', 'class2', 'class3')
+  })
+
+  it('handles undefined className', () => {
+    const { container } = render(<PageHero title="Test" className={undefined} />)
+    expect(container.querySelector('section')).toBeInTheDocument()
+  })
 })

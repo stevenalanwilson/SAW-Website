@@ -32,4 +32,30 @@ describe('Tagline Component', () => {
     const paragraph = container.querySelector('p')
     expect(paragraph).toHaveClass('text-center')
   })
+
+  // Edge cases
+  it('handles empty string text', () => {
+    render(<Tagline text="" />)
+    const { container } = render(<Tagline text="" />)
+    expect(container.querySelector('p')).toBeInTheDocument()
+  })
+
+  it('handles very long text', () => {
+    const longText = 'This is a very long tagline that spans multiple lines and should still render correctly with proper text wrapping and styling applied to ensure good user experience across all device sizes'
+    render(<Tagline text={longText} />)
+    expect(screen.getByText(longText)).toBeInTheDocument()
+  })
+
+  it('handles special characters in text', () => {
+    const specialText = 'Text with & symbols, "quotes", and \'apostrophes\''
+    render(<Tagline text={specialText} />)
+    expect(screen.getByText(specialText)).toBeInTheDocument()
+  })
+
+  it('handles HTML-like strings (should be escaped)', () => {
+    const htmlText = '<script>alert("test")</script>'
+    const { container } = render(<Tagline text={htmlText} />)
+    // React should escape HTML by default
+    expect(container.textContent).toContain('<script>')
+  })
 })
