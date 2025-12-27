@@ -1,3 +1,25 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:jsx-a11y/recommended"],
+  "rules": {
+    // React best practices
+    "react/prop-types": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/self-closing-comp": "warn",
+    "react/jsx-no-target-blank": "error",
+
+    // Accessibility
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+
+    // Code quality
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "prefer-const": "warn",
+    "no-var": "error",
+
+    // Next.js specific
+    "@next/next/no-img-element": "error"
+  }
 }

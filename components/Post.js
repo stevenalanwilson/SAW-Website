@@ -15,6 +15,7 @@ export default function Post({ content, className = '' }) {
     .use(rehypeReact, {
       ...prod,
       components: {
+        /* eslint-disable jsx-a11y/heading-has-content, jsx-a11y/anchor-has-content */
         p: (props) => <p className='text-lg leading-relaxed mb-5' {...props} />,
         h1: (props) => <h1 className='text-3xl font-bold leading-relaxed mb-5' {...props} />,
         h2: (props) => <h2 className='text-2xl font-bold leading-relaxed mb-5' {...props} />,
@@ -25,6 +26,7 @@ export default function Post({ content, className = '' }) {
         ol: (props) => <ol className='list-decimal list-inside mb-5' {...props} />,
         li: (props) => <li className='text-lg leading-relaxed mb-2' {...props} />,
         a: (props) => <a className='text-blue-600 hover:underline' {...props} />,
+        /* eslint-enable jsx-a11y/heading-has-content, jsx-a11y/anchor-has-content */
         img: (props) => (
           <span className='block mb-5 relative w-full' style={{ aspectRatio: '16/9' }}>
             <Image
@@ -36,22 +38,20 @@ export default function Post({ content, className = '' }) {
             />
           </span>
         ),
-        blockquote: (props) => <blockquote className='border-l-4 border-gray-300 pl-4 italic mb-5' {...props} />,
+        blockquote: (props) => (
+          <blockquote className='border-l-4 border-gray-300 pl-4 italic mb-5' {...props} />
+        ),
         code: (props) => <code className='bg-gray-100 px-2 py-1 rounded text-sm' {...props} />,
         pre: (props) => <pre className='bg-gray-100 p-4 rounded overflow-x-auto mb-5' {...props} />,
-      }
+      },
     })
 
   const processedContent = processor.processSync(content).result
 
-  return (
-    <article className={className}>
-      {processedContent}
-    </article>
-  )
+  return <article className={className}>{processedContent}</article>
 }
 
 Post.propTypes = {
   content: PropTypes.string.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 }

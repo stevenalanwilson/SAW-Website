@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 export default function ExpertiseGrid({ items = [], className = '' }) {
   // Handle null/undefined items gracefully
   if (!items || !Array.isArray(items)) {
-    return <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`}></div>
+    return <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`} />
   }
 
   return (
@@ -27,8 +27,8 @@ ExpertiseGrid.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
-      description: PropTypes.string
+      description: PropTypes.string,
     })
   ),
-  className: PropTypes.string
+  className: PropTypes.string,
 }
