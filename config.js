@@ -3,6 +3,7 @@
 const siteConfig = require('./config/siteConfig').default
 
 module.exports = {
+  // Legacy flat structure
   appVersion: siteConfig.app.version,
   appName: siteConfig.app.name,
   dev: siteConfig.app.dev,
@@ -12,5 +13,8 @@ module.exports = {
   siteName: siteConfig.site.name,
   siteDescription: siteConfig.site.description,
   author: siteConfig.owner.name,
-  twitterHandle: siteConfig.social.twitter.handle
+  twitterHandle: siteConfig.social.twitter.handle,
+
+  // Export all new structured properties
+  ...siteConfig
 }

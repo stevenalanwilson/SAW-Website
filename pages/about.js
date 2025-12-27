@@ -16,45 +16,18 @@ export async function getStaticProps() {
 }
 
 function About({ posts = [] }) {
-  const expertiseItems = [
-    {
-      title: 'Technical Leadership',
-      description: 'Leading multidisciplinary engineering teams to deliver complex digital products'
-    },
-    {
-      title: 'Digital Transformation',
-      description: 'Driving organizational change through modern technology and practices'
-    },
-    {
-      title: 'AI & Innovation',
-      description: 'Leveraging artificial intelligence to solve business challenges'
-    },
-    {
-      title: 'Government Digital Services',
-      description: 'Building user-centered services for the public sector'
-    },
-    {
-      title: 'Engineering Excellence',
-      description: 'Modern development practices, DevOps, and continuous delivery'
-    },
-    {
-      title: 'Team Building',
-      description: 'Growing high-performing, collaborative engineering cultures'
-    }
-  ]
-
   return (
     <>
       <SEO
-        title="About Steven Alan Wilson"
-        description="Seasoned Digital, Technical, and AI Leader with over 20 years of experience in designing and developing digital products and services for government and commercial organizations."
+        title={config.content.about.title}
+        description={config.content.about.description}
         url={`${config.siteUrl}/about`}
       />
       <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
             title="About Me"
-            subtitle={<>Hi, I&apos;m <strong>Steven Alan Wilson</strong> — a seasoned Digital, Technical, and AI Leader based in Derby, England.</>}
+            subtitle={<>{config.content.about.subtitle.text} <strong>{config.content.about.subtitle.name}</strong>{config.content.about.subtitle.role}</>}
           />
 
           {/* Main Content */}
@@ -64,12 +37,17 @@ function About({ posts = [] }) {
               {/* Overview */}
               <section className='mb-12'>
                 <SectionHeading>Overview</SectionHeading>
-                <p className='text-xl leading-relaxed mb-4'>
-                  I am a seasoned technologist and leader with over <strong>20 years of experience</strong> in designing and developing digital products and services. I have successfully led multidisciplinary teams, including designers, developers, content strategists, delivery managers, and product managers, to create impactful services for both the UK Government and various commercial organizations.
-                </p>
-                <p className='text-xl leading-relaxed'>
-                  With a passion for technology and innovation, I help organizations deliver digital transformation at scale, focusing on user-centered design, modern engineering practices, and strategic leadership.
-                </p>
+                {config.content.about.overview.map((paragraph, index) => (
+                  <p key={index} className='text-xl leading-relaxed mb-4'>
+                    {index === 0 ? (
+                      <>
+                        I am a seasoned technologist and leader with over <strong>20 years of experience</strong> in designing and developing digital products and services. I have successfully led multidisciplinary teams, including designers, developers, content strategists, delivery managers, and product managers, to create impactful services for both the UK Government and various commercial organizations.
+                      </>
+                    ) : (
+                      paragraph
+                    )}
+                  </p>
+                ))}
               </section>
 
               {/* Current Role */}
@@ -77,20 +55,20 @@ function About({ posts = [] }) {
                 <SectionHeading>Current Role</SectionHeading>
                 <div className='bg-gray-50 p-6 border-l-4 border-gray-900'>
                   <h3 className='text-2xl font-bold mb-2'>
-                    Digital, Technical, and AI Leader
+                    {config.content.about.currentRole.title}
                   </h3>
                   <p className='text-xl mb-4'>
                     <Link
-                      href='https://www.equalexperts.com'
+                      href={config.content.about.currentRole.companyUrl}
                       className='font-bold underline decoration-2 underline-offset-4 hover:no-underline'
                       target='_blank'
                       rel='noopener noreferrer'
                     >
-                      Equal Experts
-                    </Link> | Manchester, United Kingdom
+                      {config.content.about.currentRole.company}
+                    </Link> | {config.content.about.currentRole.location}
                   </p>
                   <p className='text-lg leading-relaxed'>
-                    Leading digital transformation initiatives, providing strategic technical guidance, and helping organizations leverage AI and modern technologies to solve complex business challenges.
+                    {config.content.about.currentRole.description}
                   </p>
                 </div>
               </section>
@@ -99,88 +77,39 @@ function About({ posts = [] }) {
               <section className='mb-12'>
                 <SectionHeading>Experience Highlights</SectionHeading>
                 <div className='space-y-6'>
-                  <div className='border-l-4 border-gray-300 pl-6 py-2'>
-                    <h3 className='text-2xl font-bold mb-2'>
-                      <Link
-                        href='https://www.aerlingus.com'
-                        className='underline decoration-2 underline-offset-4 hover:no-underline'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        Aer Lingus
-                      </Link>
-                    </h3>
-                    <p className='text-lg mb-2'>Technical Leadership Team Member</p>
-                    <p className='text-base leading-relaxed'>
-                      Contributed to technical strategy and digital transformation initiatives for Ireland&apos;s leading airline.
-                    </p>
-                  </div>
-
-                  <div className='border-l-4 border-gray-300 pl-6 py-2'>
-                    <h3 className='text-2xl font-bold mb-2'>
-                      <Link
-                        href='https://www.public.io'
-                        className='underline decoration-2 underline-offset-4 hover:no-underline'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        PUBLIC
-                      </Link>
-                    </h3>
-                    <p className='text-lg mb-2'>Key Technical Leadership Role</p>
-                    <p className='text-base leading-relaxed'>
-                      Led technical teams in building modern digital products and services.
-                    </p>
-                  </div>
-
-                  <div className='border-l-4 border-gray-300 pl-6 py-2'>
-                    <h3 className='text-2xl font-bold mb-2'>
-                      <Link
-                        href='https://hackney.gov.uk'
-                        className='underline decoration-2 underline-offset-4 hover:no-underline'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        Hackney Council
-                      </Link>
-                    </h3>
-                    <p className='text-lg mb-2'>Technical Leadership Position</p>
-                    <p className='text-base leading-relaxed'>
-                      Delivered digital services for one of London&apos;s most innovative local authorities.
-                    </p>
-                  </div>
-
-                  <div className='border-l-4 border-gray-300 pl-6 py-2'>
-                    <h3 className='text-2xl font-bold mb-2'>
-                      <Link
-                        href='https://mojdigital.blog.gov.uk'
-                        className='underline decoration-2 underline-offset-4 hover:no-underline'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        Ministry of Justice Digital
-                      </Link>
-                    </h3>
-                    <p className='text-lg mb-2'>Technical Leadership Role</p>
-                    <p className='text-base leading-relaxed'>
-                      Helped transform digital services across the justice system, working on critical government infrastructure.
-                    </p>
-                  </div>
+                  {config.experience.map((exp, index) => (
+                    <div key={index} className='border-l-4 border-gray-300 pl-6 py-2'>
+                      <h3 className='text-2xl font-bold mb-2'>
+                        <Link
+                          href={exp.companyUrl}
+                          className='underline decoration-2 underline-offset-4 hover:no-underline'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          {exp.company}
+                        </Link>
+                      </h3>
+                      <p className='text-lg mb-2'>{exp.title}</p>
+                      <p className='text-base leading-relaxed'>
+                        {exp.description}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </section>
 
               {/* Expertise */}
               <section className='mb-12'>
                 <SectionHeading>Areas of Expertise</SectionHeading>
-                <ExpertiseGrid items={expertiseItems} />
+                <ExpertiseGrid items={config.expertise} />
               </section>
 
               {/* Education */}
               <section className='mb-12'>
                 <SectionHeading>Education</SectionHeading>
                 <div className='border-l-4 border-gray-300 pl-6 py-2'>
-                  <h3 className='text-2xl font-bold mb-2'>University of Derby</h3>
-                  <p className='text-lg'>1998 - 2002</p>
+                  <h3 className='text-2xl font-bold mb-2'>{config.education.institution}</h3>
+                  <p className='text-lg'>{config.education.period}</p>
                 </div>
               </section>
             </div>

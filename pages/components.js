@@ -25,19 +25,6 @@ export async function getStaticProps() {
 }
 
 function Components({ posts = [] }) {
-  const sampleExpertiseItems = [
-    { title: 'Skill 1', description: 'Description of skill 1' },
-    { title: 'Skill 2', description: 'Description of skill 2' },
-    { title: 'Skill 3', description: 'Description of skill 3' },
-    { title: 'Skill 4', description: 'Description of skill 4' }
-  ]
-
-  const sampleStats = [
-    { label: 'Metric 1', value: '100+' },
-    { label: 'Metric 2', value: '50+' },
-    { label: 'Metric 3', value: '25+' }
-  ]
-
   return (
     <>
       <SEO
@@ -92,7 +79,7 @@ function Components({ posts = [] }) {
               <SectionHeading>ExpertiseGrid Component</SectionHeading>
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
-                <ExpertiseGrid items={sampleExpertiseItems} />
+                <ExpertiseGrid items={config.samples.expertise} />
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
@@ -185,7 +172,7 @@ function Components({ posts = [] }) {
                 <div className='max-w-md'>
                   <StatsCard
                     title="Sample Statistics"
-                    stats={sampleStats}
+                    stats={config.samples.stats}
                   />
                 </div>
               </div>
