@@ -60,17 +60,6 @@
       }
     ]
   },
-  "include": [
-    "**/*.js",
-    "**/*.jsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out",
-    "coverage",
-    "dist",
-    "build"
-  ]
+  "include": ["**/*.js", "**/*.jsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next", "out", "coverage", "dist", "build"]
 }

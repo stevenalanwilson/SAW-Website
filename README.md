@@ -214,11 +214,13 @@ The project includes a `jsconfig.json` file that configures:
 ### Using JSDoc in Your IDE
 
 **VS Code:**
+
 - Hover over any function/component to see full documentation
 - Get autocomplete suggestions for props and parameters
 - See inline errors for type mismatches
 
 **WebStorm/IntelliJ:**
+
 - Full JSDoc support built-in
 - Quick documentation popup (Ctrl+Q / ⌘J)
 - Type checking in JavaScript files
