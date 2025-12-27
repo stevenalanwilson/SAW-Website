@@ -1,6 +1,22 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
+/**
+ * @typedef {Object} NavigationItem
+ * @property {string} href - Link URL
+ * @property {string} label - Link text
+ * @property {string} [title] - Optional link title attribute
+ */
+
+/**
+ * Navigation menu component with responsive styling for desktop and mobile.
+ *
+ * @param {Object} props - Component props
+ * @param {NavigationItem[]} props.items - Array of navigation items
+ * @param {boolean} [props.mobile=false] - Whether to apply mobile styling
+ * @param {Function} [props.onItemClick] - Callback fired when a navigation item is clicked
+ * @returns {JSX.Element} Rendered navigation menu
+ */
 export default function NavigationMenu({ items, mobile = false, onItemClick }) {
   const baseClasses =
     'text-theme-bg py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'

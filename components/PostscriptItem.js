@@ -1,5 +1,16 @@
 import PropTypes from 'prop-types'
 
+/**
+ * Postscript item component displaying a themed content block with responsive image.
+ * Uses responsive images with WebP format optimization.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.title - Item title
+ * @param {string} props.image - Image URL (will be optimized with query parameters)
+ * @param {string} [props._caption] - Image caption (currently unused, prefixed with _ to indicate)
+ * @param {string} props.description - Item description text
+ * @returns {JSX.Element} Rendered postscript item with image and description
+ */
 export default function PostscriptItem({ title, image, _caption, description }) {
   return (
     <div className='w-full md:w-1/4 p-2 my-6 postscript-item'>

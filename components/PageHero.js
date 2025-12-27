@@ -1,5 +1,15 @@
 import PropTypes from 'prop-types'
 
+/**
+ * Page hero component displaying a large title and optional subtitle.
+ * Provides consistent hero section styling across pages.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.title - Hero title text
+ * @param {React.ReactNode} [props.subtitle] - Optional subtitle content
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered page hero section
+ */
 export default function PageHero({ title, subtitle, className = '' }) {
   return (
     <section

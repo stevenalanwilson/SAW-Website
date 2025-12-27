@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import siteConfig from '../config/siteConfig'
 
+/**
+ * Site title component displaying the hero section with introduction.
+ * Shows site name, greeting, current role, and previous company roles.
+ *
+ * @returns {JSX.Element} Rendered site title and hero section
+ */
 export default function SiteTitle() {
   const { name } = siteConfig.site
   const { greeting, introduction, description } = siteConfig.content.hero

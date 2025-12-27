@@ -5,6 +5,15 @@ import PropTypes from 'prop-types'
 import footerContactInfo from '../config/footerContactInfo'
 import siteConfig from '../config/siteConfig'
 
+/**
+ * Contact card component displaying contact information with different visual variants.
+ * Shows operating areas, LinkedIn profile, and email contact methods.
+ *
+ * @param {Object} props - Component props
+ * @param {'card' | 'inline'} [props.variant='card'] - Visual variant of the contact card
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered contact card component
+ */
 export default function ContactCard({ variant = 'card', className = '' }) {
   // Construct email address from obfuscated parts (helps prevent spam bot scraping)
   const emailAddress = footerContactInfo.email

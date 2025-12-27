@@ -1,3 +1,17 @@
+/**
+ * @fileoverview Footer services configuration containing service offerings.
+ */
+
+/**
+ * @typedef {Object} FooterService
+ * @property {string} title - Service title
+ * @property {string} description - Service description
+ */
+
+/**
+ * Array of services displayed in the footer.
+ * @type {FooterService[]}
+ */
 const footerServices = [
   {
     title: 'Technical Leadership Coaching',

@@ -4,6 +4,14 @@ import StatsCard from './StatsCard'
 import SectionErrorBoundary from './SectionErrorBoundary'
 import sidebarData from '../config/sidebarData'
 
+/**
+ * Sidebar component containing contact card and professional statistics.
+ * Wraps each section in error boundaries for graceful failure handling.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered sidebar with contact and stats cards
+ */
 export default function Sidebar({ className = '' }) {
   return (
     <aside className={className}>

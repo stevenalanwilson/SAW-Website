@@ -1,5 +1,11 @@
 import footerServices from '../config/footerServices'
 
+/**
+ * Services list component displaying available services with descriptions.
+ * Loads service data from footer services configuration.
+ *
+ * @returns {JSX.Element} Rendered services list
+ */
 export default function ServicesList() {
   return (
     <div>

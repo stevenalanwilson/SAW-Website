@@ -3,6 +3,28 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 import PropTypes from 'prop-types'
 
+/**
+ * @typedef {Object} PostMetaData
+ * @property {string} [title] - Post title
+ * @property {string} [date] - Post publication date (ISO 8601 format)
+ * @property {string} [summary] - Post summary/excerpt
+ * @property {string} [thumbnail] - Post thumbnail image URL
+ */
+
+/**
+ * @typedef {Object} Post
+ * @property {string} postSlug - URL slug for the post
+ * @property {PostMetaData} postMetaData - Post metadata
+ */
+
+/**
+ * List posts component that displays a grid of blog post previews.
+ * Handles null/undefined posts gracefully and provides fallback values.
+ *
+ * @param {Object} props - Component props
+ * @param {Post[]} [props.posts=[]] - Array of post objects to display
+ * @returns {JSX.Element} Rendered list of posts
+ */
 export default function ListPosts({ posts = [] }) {
   // Handle null/undefined posts gracefully
   if (!posts || !Array.isArray(posts)) {

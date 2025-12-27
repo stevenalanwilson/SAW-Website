@@ -1,6 +1,15 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
+/**
+ * Latest posts component displaying a limited list of recent blog posts.
+ * Shows post title, summary, and publication date with links to full articles.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} [props.posts=[]] - Array of post objects with postSlug and postMetaData
+ * @param {number} [props.limit=2] - Maximum number of posts to display
+ * @returns {JSX.Element} Rendered list of latest posts
+ */
 export default function LatestPosts({ posts = [], limit = 2 }) {
   return (
     <div>

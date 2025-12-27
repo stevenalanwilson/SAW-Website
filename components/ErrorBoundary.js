@@ -2,6 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as Sentry from '@sentry/nextjs'
 
+/**
+ * Global error boundary component that catches React errors and displays fallback UI.
+ * Integrates with Sentry for error tracking and shows detailed error info in development.
+ *
+ * @class ErrorBoundary
+ * @extends {React.Component}
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components to wrap with error boundary
+ */
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)

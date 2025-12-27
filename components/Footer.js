@@ -9,6 +9,14 @@ import LatestPosts from './LatestPosts'
 import WorkWithMe from './WorkWithMe'
 import SectionErrorBoundary from './SectionErrorBoundary'
 
+/**
+ * Footer component with three-column layout displaying services, latest posts, and contact.
+ * Includes error boundaries for each section to prevent cascading failures.
+ *
+ * @param {Object} props - Component props
+ * @param {Array} [props.latestPosts=[]] - Array of latest posts to display
+ * @returns {JSX.Element} Rendered footer with tagline, services, posts, contact, and copyright
+ */
 export default function Footer({ latestPosts = [] }) {
   return (
     <footer className='bg-theme-primary text-theme-bg footer'>

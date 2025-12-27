@@ -2,6 +2,20 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 import config from '../config/siteConfig'
 
+/**
+ * SEO component that manages meta tags for improved search engine optimization.
+ * Handles Open Graph, Twitter Cards, and article-specific metadata.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.title] - Page title (defaults to site title from config)
+ * @param {string} [props.description] - Page description (defaults to site description)
+ * @param {string} [props.image='/static/og-image.jpg'] - Social media preview image URL
+ * @param {string} [props.url] - Canonical URL (defaults to site URL from config)
+ * @param {'website' | 'article'} [props.type='website'] - Page type for Open Graph
+ * @param {string} [props.publishedTime] - ISO 8601 date string for article publish date
+ * @param {string} [props.modifiedTime] - ISO 8601 date string for article modified date
+ * @returns {JSX.Element} Head component with meta tags
+ */
 export default function SEO({
   title = config.site.title,
   description = config.site.description,

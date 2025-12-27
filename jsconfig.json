@@ -1,0 +1,76 @@
+{
+  "compilerOptions": {
+    // Enable type checking for JavaScript files
+    "checkJs": false,
+    // Allow JavaScript files to be compiled
+    "allowJs": true,
+    // Specify module resolution strategy
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    // Target modern JavaScript
+    "target": "es2017",
+    // Enable all strict type-checking options
+    "strict": false,
+    // Parse in strict mode and emit "use strict" for each source file
+    "alwaysStrict": true,
+    // Import non-ES modules as default imports
+    "esModuleInterop": true,
+    // Skip type checking of declaration files
+    "skipLibCheck": true,
+    // Allow default imports from modules with no default export
+    "allowSyntheticDefaultImports": true,
+    // Resolve JSON modules
+    "resolveJsonModule": true,
+    // Support JSX in .js files
+    "jsx": "preserve",
+    // Specify library files to include
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // Disable emitting files
+    "noEmit": true,
+    // Enable incremental compilation
+    "incremental": true,
+    // Specify base directory for resolving non-relative module names
+    "baseUrl": ".",
+    // Path mapping for module resolution
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/config/*": ["config/*"],
+      "@/services/*": ["services/*"],
+      "@/utils/*": ["utils/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"]
+    },
+    // Ensure that casing is correct in imports
+    "forceConsistentCasingInFileNames": true,
+    // Report errors on unused locals
+    "noUnusedLocals": false,
+    // Report errors on unused parameters
+    "noUnusedParameters": false,
+    // Report error when not all code paths in function return a value
+    "noImplicitReturns": false,
+    // Enable importing .json files
+    "allowImportingTsExtensions": false,
+    // Interop constraints
+    "isolatedModules": true,
+    // Plugins for Next.js
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "coverage",
+    "dist",
+    "build"
+  ]
+}

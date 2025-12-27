@@ -1,5 +1,20 @@
 import PropTypes from 'prop-types'
 
+/**
+ * @typedef {Object} ExpertiseItem
+ * @property {string} [title] - Expertise area title
+ * @property {string} [description] - Expertise area description
+ */
+
+/**
+ * Expertise grid component displaying areas of expertise in a responsive grid layout.
+ * Handles null/undefined items gracefully.
+ *
+ * @param {Object} props - Component props
+ * @param {ExpertiseItem[]} [props.items=[]] - Array of expertise items to display
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered expertise grid
+ */
 export default function ExpertiseGrid({ items = [], className = '' }) {
   // Handle null/undefined items gracefully
   if (!items || !Array.isArray(items)) {

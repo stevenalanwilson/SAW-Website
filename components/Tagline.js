@@ -1,5 +1,12 @@
 import PropTypes from 'prop-types'
 
+/**
+ * Tagline component displaying a centered promotional message.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.text] - Tagline text to display
+ * @returns {JSX.Element} Rendered tagline component
+ */
 export default function Tagline({
   text = 'Helping organizations build resilient technical teams and accelerate digital transformation',
 }) {

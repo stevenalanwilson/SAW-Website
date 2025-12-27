@@ -3,6 +3,12 @@ import { useState } from 'react'
 import siteConfig from '../config/siteConfig'
 import NavigationMenu from './NavigationMenu'
 
+/**
+ * Site header component with responsive navigation menu.
+ * Displays site title and navigation with mobile burger menu toggle.
+ *
+ * @returns {JSX.Element} Rendered header with navigation
+ */
 export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = siteConfig.navigation.main

@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types'
 import siteConfig from '../config/siteConfig'
 
+/**
+ * Author card component displaying author bio information.
+ * Loads author details from site configuration.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered author card with bio information
+ */
 export default function AuthorCard({ className = '' }) {
   const { greeting, introduction, tagline } = siteConfig.content.authorBio
   const { name } = siteConfig.owner

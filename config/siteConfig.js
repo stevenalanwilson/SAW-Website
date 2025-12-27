@@ -1,6 +1,42 @@
-// Single source of truth for all site configuration
+/**
+ * @fileoverview Single source of truth for all site configuration.
+ * Centralized configuration object containing app metadata, site information,
+ * owner details, contact information, social media links, and content.
+ */
+
+/**
+ * Determines if the application is running in production mode.
+ * @type {boolean}
+ */
 const isProduction = process.env.NODE_ENV === 'production'
 
+/**
+ * Site configuration object containing all application settings.
+ * @type {Object}
+ * @property {Object} app - Application metadata
+ * @property {string} app.version - Application version number
+ * @property {string} app.name - Application name
+ * @property {string} app.environment - Current environment (development/production)
+ * @property {boolean} app.dev - Whether running in development mode
+ * @property {boolean} app.production - Whether running in production mode
+ * @property {Object} site - Site metadata
+ * @property {string} site.name - Full site name
+ * @property {string} site.title - Site title for SEO
+ * @property {string} site.tagline - Site tagline
+ * @property {string} site.url - Canonical site URL
+ * @property {string} site.description - Site description for SEO
+ * @property {Object} owner - Site owner information
+ * @property {string} owner.name - Owner full name
+ * @property {string} owner.firstName - Owner first name
+ * @property {string} owner.title - Owner professional title
+ * @property {string} owner.experience - Years of experience
+ * @property {Object} contact - Contact information
+ * @property {Object} social - Social media links
+ * @property {Object} navigation - Navigation menu items
+ * @property {Object} content - Site content sections
+ * @property {Object} stats - Professional statistics
+ * @property {Object} theme - Theme configuration
+ */
 const siteConfig = {
   // Application metadata
   app: {

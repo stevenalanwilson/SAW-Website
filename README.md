@@ -82,7 +82,7 @@ SENTRY_AUTH_TOKEN=your_auth_token
 
 ## Testing
 
-This project has comprehensive test coverage with **262 tests** across components, services, and edge cases.
+This project has comprehensive test coverage with **256 tests** across components, services, and edge cases.
 
 ### Running Tests
 
@@ -109,8 +109,8 @@ npm run test:upSnap
 
 ### Test Statistics
 
-- **262 total tests** - All passing
-- **31 test suites** - Organized by component/service
+- **256 total tests** - All passing
+- **30 test suites** - Organized by component/service
 - **4 snapshot tests** - UI consistency checks
 
 ## Code Quality & Linting
@@ -163,6 +163,65 @@ npm run format
 # Check formatting without making changes
 npm run format:check
 ```
+
+## Type Safety with JSDoc
+
+This project uses **JSDoc annotations** to provide type safety and improve developer experience without the overhead of TypeScript. JSDoc enables IDE autocomplete, inline documentation, and compile-time type checking in compatible editors.
+
+### Benefits
+
+✅ **IntelliSense & Autocomplete** - VS Code and other IDEs provide better suggestions
+✅ **Inline Documentation** - Hover over functions to see parameters and return types
+✅ **Type Safety** - Catch type errors during development
+✅ **No Build Step** - Unlike TypeScript, no compilation required
+✅ **Self-Documenting Code** - Function signatures are clear and explicit
+
+### Coverage
+
+All code has comprehensive JSDoc annotations:
+
+- ✅ **25+ React Components** - Full prop type documentation
+- ✅ **Services & Utilities** - Function signatures with examples
+- ✅ **Configuration Files** - Type definitions for config objects
+- ✅ **Complex Types** - Custom `@typedef` declarations for data structures
+
+### Example
+
+```javascript
+/**
+ * Contact card component displaying contact information with different visual variants.
+ * Shows operating areas, LinkedIn profile, and email contact methods.
+ *
+ * @param {Object} props - Component props
+ * @param {'card' | 'inline'} [props.variant='card'] - Visual variant of the contact card
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered contact card component
+ */
+export default function ContactCard({ variant = 'card', className = '' }) {
+  // Component implementation...
+}
+```
+
+### IDE Configuration
+
+The project includes a `jsconfig.json` file that configures:
+
+- Module resolution (import aliases with `@/` prefix)
+- JSX support in `.js` files
+- Type checking options
+- Path mappings for cleaner imports
+
+### Using JSDoc in Your IDE
+
+**VS Code:**
+- Hover over any function/component to see full documentation
+- Get autocomplete suggestions for props and parameters
+- See inline errors for type mismatches
+
+**WebStorm/IntelliJ:**
+- Full JSDoc support built-in
+- Quick documentation popup (Ctrl+Q / ⌘J)
+- Type checking in JavaScript files
 
 ## Pre-commit Hooks
 

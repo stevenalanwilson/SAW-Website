@@ -1,6 +1,19 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
+/**
+ * Experience card component displaying professional experience information.
+ * Shows job title, company name with link, and optional description.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.company - Company name
+ * @param {string} props.url - Company website URL
+ * @param {string} props.title - Job title
+ * @param {string} [props.description] - Job description or responsibilities
+ * @param {boolean} [props.highlighted=false] - Whether to highlight this experience
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered experience card component
+ */
 export default function ExperienceCard({
   company,
   url,

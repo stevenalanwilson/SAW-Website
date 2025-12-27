@@ -1,5 +1,21 @@
 import PropTypes from 'prop-types'
 
+/**
+ * @typedef {Object} Stat
+ * @property {string} label - Statistic label
+ * @property {string | number} value - Statistic value
+ */
+
+/**
+ * Stats card component displaying a titled list of statistics.
+ * Shows label-value pairs in a vertical layout.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.title - Card title
+ * @param {Stat[]} [props.stats=[]] - Array of statistics to display
+ * @param {string} [props.className=''] - Additional CSS classes to apply
+ * @returns {JSX.Element} Rendered stats card
+ */
 export default function StatsCard({ title, stats = [], className = '' }) {
   return (
     <div className={`bg-theme-bg border-l-4 border-theme-text text-theme-text p-6 ${className}`}>

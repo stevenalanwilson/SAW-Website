@@ -7,6 +7,15 @@ import remarkRehype from 'remark-rehype'
 import rehypeReact from 'rehype-react'
 import * as prod from 'react/jsx-runtime'
 
+/**
+ * Post component that renders markdown content as styled React components.
+ * Processes markdown using unified/remark/rehype pipeline and applies theme-aware styling.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.content - Markdown content to render
+ * @param {string} [props.className=''] - Additional CSS classes to apply to the article wrapper
+ * @returns {JSX.Element} Rendered article with processed markdown content
+ */
 export default function Post({ content, className = '' }) {
   // Process markdown content safely using rehype-react
   // Components now use CSS custom properties for theming
