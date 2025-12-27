@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import theme from '../styles/theme'
 
-function PostscriptItem({ title, image, caption, description }) {
+function PostscriptItem({ title, image, _caption, description }) {
   return (
     <div className='w-full md:w-1/4 p-2 my-6 postscript-item'>
       <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 text-white pb-2 mb-6'>{title}</h1>
@@ -31,7 +30,7 @@ function PostscriptItem({ title, image, caption, description }) {
 PostscriptItem.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  caption: PropTypes.string,
+  _caption: PropTypes.string,
   description: PropTypes.string.isRequired,
 }
 

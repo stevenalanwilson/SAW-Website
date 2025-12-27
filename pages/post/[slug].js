@@ -1,6 +1,7 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import validator from 'validator'
 
@@ -21,14 +22,14 @@ export async function getStaticPaths() {
   const paths = markdownService.loadMarkdownStaticPaths(postsFolder)
   return {
     paths,
-    fallback: true
+    fallback: true,
   }
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const sanitizedSlug = validator.escape(slug);
+  const sanitizedSlug = validator.escape(slug)
   const MarkdownfileName = markdownService.loadMarkdownFileUsingSlug(sanitizedSlug)
-  const { data: frontmatter, content } = matter(MarkdownfileName);
+  const { data: frontmatter, content } = matter(MarkdownfileName)
 
   if (!content || !frontmatter) {
     return {
@@ -43,18 +44,16 @@ export async function getStaticProps({ params: { slug } }) {
       frontmatter,
       content,
       slug,
-      posts
-    }
+      posts,
+    },
   }
-
-
 }
 
 function PostPage({ frontmatter, content, slug, posts = [] }) {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <LoadingSpinner message="Loading post..." />
+    return <LoadingSpinner message='Loading post...' />
   }
 
   return (
@@ -64,7 +63,7 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
         description={frontmatter.summary}
         url={`${config.site.url}/post/${slug}`}
         image={frontmatter.thumbnail || '/static/og-image.jpg'}
-        type="article"
+        type='article'
         publishedTime={frontmatter.date}
       />
       <Layout latestPosts={posts}>
@@ -73,9 +72,7 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
             title={frontmatter.title}
             subtitle={
               <>
-                <p className='text-2xl lg:text-3xl leading-relaxed mb-4'>
-                  {frontmatter.summary}
-                </p>
+                <p className='text-2xl lg:text-3xl leading-relaxed mb-4'>{frontmatter.summary}</p>
                 {/* Post metadata */}
                 <div className='mt-4'>
                   {frontmatter.author && (
@@ -110,13 +107,16 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
           <div className='flex flex-wrap mx-4 my-8'>
             <div className='w-full lg:w-2/3 pr-0 lg:pr-8'>
               {/* Post content */}
-              <SectionErrorBoundary name="Post" errorMessage="Post content failed to load">
+              <SectionErrorBoundary name='Post' errorMessage='Post content failed to load'>
                 <Post content={content} />
               </SectionErrorBoundary>
             </div>
 
             <div className='w-full lg:w-1/3 mt-8 lg:mt-0'>
-              <SectionErrorBoundary name="AuthorCard" errorMessage="Author information failed to load">
+              <SectionErrorBoundary
+                name='AuthorCard'
+                errorMessage='Author information failed to load'
+              >
                 <AuthorCard />
               </SectionErrorBoundary>
               <Sidebar />
@@ -126,6 +126,20 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
       </Layout>
     </>
   )
+}
+
+PostPage.propTypes = {
+  frontmatter: PropTypes.shape({
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    thumbnail: PropTypes.string,
+    date: PropTypes.string,
+    author: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+  }),
+  content: PropTypes.string,
+  slug: PropTypes.string,
+  posts: PropTypes.array,
 }
 
 export default PostPage

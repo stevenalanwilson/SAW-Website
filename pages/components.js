@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import config from '../config/siteConfig'
@@ -9,7 +10,6 @@ import StatsCard from '../components/StatsCard'
 import ExperienceCard from '../components/ExperienceCard'
 import Sidebar from '../components/Sidebar'
 import Post from '../components/Post'
-import LoadingSpinner from '../components/LoadingSpinner'
 import AuthorCard from '../components/AuthorCard'
 import Tagline from '../components/Tagline'
 import ServicesList from '../components/ServicesList'
@@ -20,7 +20,7 @@ import markdownService from '../services/getMarkdownService'
 export async function getStaticProps() {
   const posts = markdownService.getAllMarkdownPosts()
   return {
-    props: { posts }
+    props: { posts },
   }
 }
 
@@ -28,15 +28,15 @@ function Components({ posts = [] }) {
   return (
     <>
       <SEO
-        title="Component Showcase"
-        description="A showcase of all reusable components available in the application"
+        title='Component Showcase'
+        description='A showcase of all reusable components available in the application'
         url={`${config.site.url}/components`}
       />
       <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
-            title="Component Showcase"
-            subtitle="A collection of all reusable components available in this application"
+            title='Component Showcase'
+            subtitle='A collection of all reusable components available in this application'
           />
 
           <div className='mx-4 my-8'>
@@ -46,13 +46,13 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <PageHero
-                  title="Sample Page Title"
-                  subtitle="This is a sample subtitle for the page hero component"
+                  title='Sample Page Title'
+                  subtitle='This is a sample subtitle for the page hero component'
                 />
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<PageHero
+                  {`<PageHero
   title="Sample Page Title"
   subtitle="This is a sample subtitle"
 />`}
@@ -69,7 +69,7 @@ function Components({ posts = [] }) {
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<SectionHeading>Sample Section Heading</SectionHeading>`}
+                  {`<SectionHeading>Sample Section Heading</SectionHeading>`}
                 </pre>
               </div>
             </section>
@@ -83,7 +83,7 @@ function Components({ posts = [] }) {
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<ExpertiseGrid items={[
+                  {`<ExpertiseGrid items={[
   { title: 'Skill 1', description: 'Description of skill 1' },
   { title: 'Skill 2', description: 'Description of skill 2' }
 ]} />`}
@@ -97,23 +97,23 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example (Normal):</h3>
                 <ExperienceCard
-                  company="Sample Company"
-                  url="https://example.com"
-                  title="Senior Developer"
-                  description="Led development of major features and mentored junior developers"
+                  company='Sample Company'
+                  url='https://example.com'
+                  title='Senior Developer'
+                  description='Led development of major features and mentored junior developers'
                 />
                 <h3 className='text-xl font-bold mb-2 mt-6'>Example (Highlighted):</h3>
                 <ExperienceCard
-                  company="Current Company"
-                  url="https://example.com"
-                  title="Lead Developer"
-                  description="Currently leading the engineering team"
+                  company='Current Company'
+                  url='https://example.com'
+                  title='Lead Developer'
+                  description='Currently leading the engineering team'
                   highlighted={true}
                 />
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<ExperienceCard
+                  {`<ExperienceCard
   company="Sample Company"
   url="https://example.com"
   title="Senior Developer"
@@ -138,9 +138,7 @@ function Components({ posts = [] }) {
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<AuthorCard />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<AuthorCard />`}</pre>
               </div>
             </section>
 
@@ -150,17 +148,16 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  The ContactCard displays a call-to-action for working together, including operating areas and contact methods.
-                  It uses the same content as the Work With Me footer component.
+                  The ContactCard displays a call-to-action for working together, including
+                  operating areas and contact methods. It uses the same content as the Work With Me
+                  footer component.
                 </p>
                 <div className='max-w-md'>
                   <ContactCard />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<ContactCard />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<ContactCard />`}</pre>
               </div>
             </section>
 
@@ -170,15 +167,12 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <div className='max-w-md'>
-                  <StatsCard
-                    title="Sample Statistics"
-                    stats={config.samples.stats}
-                  />
+                  <StatsCard title='Sample Statistics' stats={config.samples.stats} />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<StatsCard
+                  {`<StatsCard
   title="Sample Statistics"
   stats={[
     { label: 'Metric 1', value: '100+' },
@@ -195,16 +189,15 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  The Sidebar component combines ContactCard and StatsCard with predefined data from the config.
+                  The Sidebar component combines ContactCard and StatsCard with predefined data from
+                  the config.
                 </p>
                 <div className='max-w-md'>
                   <Sidebar />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<Sidebar />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<Sidebar />`}</pre>
               </div>
             </section>
 
@@ -216,12 +209,10 @@ function Components({ posts = [] }) {
                 <p className='mb-4 text-gray-700'>
                   The Post component renders markdown content as styled HTML.
                 </p>
-                <Post content="# Sample Heading\n\nThis is a paragraph with **bold** text.\n\n## Another Heading\n\nMore content here." />
+                <Post content='# Sample Heading\n\nThis is a paragraph with **bold** text.\n\n## Another Heading\n\nMore content here.' />
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<Post content={markdownString} />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<Post content={markdownString} />`}</pre>
               </div>
             </section>
 
@@ -231,18 +222,20 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  Full-screen fixed position loading indicator that covers the entire viewport with a semi-transparent overlay.
+                  Full-screen fixed position loading indicator that covers the entire viewport with
+                  a semi-transparent overlay.
                 </p>
                 <div className='bg-gray-200 p-4 rounded text-center'>
                   <p className='text-gray-600 italic'>
                     Note: The LoadingSpinner uses fixed positioning and covers the entire screen.
-                    It&apos;s used for page transitions and is displayed in the post page when loading.
+                    It&apos;s used for page transitions and is displayed in the post page when
+                    loading.
                   </p>
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<LoadingSpinner message="Loading post..." />`}
+                  {`<LoadingSpinner message="Loading post..." />`}
                 </pre>
               </div>
             </section>
@@ -261,7 +254,7 @@ function Components({ posts = [] }) {
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<Tagline text="Your custom tagline here" />`}
+                  {`<Tagline text="Your custom tagline here" />`}
                 </pre>
               </div>
             </section>
@@ -272,16 +265,15 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  Displays the consultancy services from the footer. Pulls data from footerServices config.
+                  Displays the consultancy services from the footer. Pulls data from footerServices
+                  config.
                 </p>
                 <div className='bg-gray-900 p-6'>
                   <ServicesList />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<ServicesList />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<ServicesList />`}</pre>
               </div>
             </section>
 
@@ -291,7 +283,8 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  Displays recent blog posts dynamically. Used in the footer and can be reused elsewhere.
+                  Displays recent blog posts dynamically. Used in the footer and can be reused
+                  elsewhere.
                 </p>
                 <div className='bg-gray-900 p-6'>
                   <LatestPosts posts={posts} limit={2} />
@@ -299,7 +292,7 @@ function Components({ posts = [] }) {
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>
-{`<LatestPosts posts={posts} limit={2} />`}
+                  {`<LatestPosts posts={posts} limit={2} />`}
                 </pre>
               </div>
             </section>
@@ -310,16 +303,15 @@ function Components({ posts = [] }) {
               <div className='bg-gray-50 p-6 mb-4 border-l-4 border-blue-500'>
                 <h3 className='text-xl font-bold mb-2'>Example:</h3>
                 <p className='mb-4 text-gray-700'>
-                  Call-to-action component with operating areas and contact methods. Used in footer and sidebar.
+                  Call-to-action component with operating areas and contact methods. Used in footer
+                  and sidebar.
                 </p>
                 <div className='bg-gray-900 p-6'>
                   <WorkWithMe />
                 </div>
               </div>
               <div className='bg-gray-100 p-4 rounded'>
-                <pre className='text-sm overflow-x-auto'>
-{`<WorkWithMe />`}
-                </pre>
+                <pre className='text-sm overflow-x-auto'>{`<WorkWithMe />`}</pre>
               </div>
             </section>
           </div>
@@ -327,6 +319,10 @@ function Components({ posts = [] }) {
       </Layout>
     </>
   )
+}
+
+Components.propTypes = {
+  posts: PropTypes.array,
 }
 
 export default Components

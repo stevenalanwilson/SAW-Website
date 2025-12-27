@@ -29,9 +29,10 @@ Sentry.init({
   // Only enable Sentry if DSN is provided
   enabled: !!SENTRY_DSN,
 
-  beforeSend(event, hint) {
+  beforeSend(event, _hint) {
     // Filter out development errors or sensitive information
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.log('Sentry Event (dev):', event)
     }
     return event

@@ -8,14 +8,14 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false, error: null, errorInfo: null }
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true }
   }
 
   componentDidCatch(error, errorInfo) {
     this.setState({
       error: error,
-      errorInfo: errorInfo
+      errorInfo: errorInfo,
     })
 
     // Log error to console in development
@@ -38,9 +38,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div className='min-h-screen bg-gray-100 flex items-center justify-center p-4'>
           <div className='max-w-2xl w-full bg-white rounded-lg shadow-lg p-8'>
-            <h1 className='text-4xl font-bold text-red-600 mb-4'>
-              Oops! Something went wrong
-            </h1>
+            <h1 className='text-4xl font-bold text-red-600 mb-4'>Oops! Something went wrong</h1>
             <p className='text-xl text-gray-700 mb-6'>
               We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
             </p>
@@ -71,7 +69,7 @@ class ErrorBoundary extends React.Component {
 }
 
 ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default ErrorBoundary

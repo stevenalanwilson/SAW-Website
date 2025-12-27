@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import Layout from '../components/Layout.js'
 import SEO from '../components/SEO'
 import config from '../config/siteConfig'
@@ -11,7 +12,7 @@ import markdownService from '../services/getMarkdownService'
 export async function getStaticProps() {
   const posts = markdownService.getAllMarkdownPosts()
   return {
-    props: { posts }
+    props: { posts },
   }
 }
 
@@ -26,8 +27,14 @@ function About({ posts = [] }) {
       <Layout latestPosts={posts}>
         <div className='container mx-auto'>
           <PageHero
-            title="About Me"
-            subtitle={<>{config.content.about.subtitle.text} <strong>{config.content.about.subtitle.name}</strong>{config.content.about.subtitle.role}</>}
+            title='About Me'
+            subtitle={
+              <>
+                {config.content.about.subtitle.text}{' '}
+                <strong>{config.content.about.subtitle.name}</strong>
+                {config.content.about.subtitle.role}
+              </>
+            }
           />
 
           {/* Main Content */}
@@ -41,7 +48,12 @@ function About({ posts = [] }) {
                   <p key={index} className='text-xl leading-relaxed mb-4'>
                     {index === 0 ? (
                       <>
-                        I am a seasoned technologist and leader with over <strong>20 years of experience</strong> in designing and developing digital products and services. I have successfully led multidisciplinary teams, including designers, developers, content strategists, delivery managers, and product managers, to create impactful services for both the UK Government and various commercial organizations.
+                        I am a seasoned technologist and leader with over{' '}
+                        <strong>20 years of experience</strong> in designing and developing digital
+                        products and services. I have successfully led multidisciplinary teams,
+                        including designers, developers, content strategists, delivery managers, and
+                        product managers, to create impactful services for both the UK Government
+                        and various commercial organizations.
                       </>
                     ) : (
                       paragraph
@@ -65,7 +77,8 @@ function About({ posts = [] }) {
                       rel='noopener noreferrer'
                     >
                       {config.content.about.currentRole.company}
-                    </Link> | {config.content.about.currentRole.location}
+                    </Link>{' '}
+                    | {config.content.about.currentRole.location}
                   </p>
                   <p className='text-lg leading-relaxed'>
                     {config.content.about.currentRole.description}
@@ -90,9 +103,7 @@ function About({ posts = [] }) {
                         </Link>
                       </h3>
                       <p className='text-lg mb-2'>{exp.title}</p>
-                      <p className='text-base leading-relaxed'>
-                        {exp.description}
-                      </p>
+                      <p className='text-base leading-relaxed'>{exp.description}</p>
                     </div>
                   ))}
                 </div>
@@ -123,6 +134,10 @@ function About({ posts = [] }) {
       </Layout>
     </>
   )
+}
+
+About.propTypes = {
+  posts: PropTypes.array,
 }
 
 export default About

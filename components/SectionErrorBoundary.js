@@ -12,7 +12,7 @@ class SectionErrorBoundary extends React.Component {
     this.state = { hasError: false, error: null }
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true }
   }
 
@@ -74,7 +74,7 @@ SectionErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string,
   errorMessage: PropTypes.string,
-  fallback: PropTypes.node
+  fallback: PropTypes.node,
 }
 
 export default SectionErrorBoundary
