@@ -415,12 +415,3 @@ For backward compatibility, the following files still exist but now import from 
 - `config/footerCopyrightInfo.js` - Copyright data
 - `config/sidebarData.js` - Sidebar data
 
-**You should update `config/siteConfig.js` directly** rather than editing these files.
-
-### Benefits
-
-✅ **Update once, reflect everywhere** - Change your job title in one place
-✅ **No more hunting** - All content in one organized file
-✅ **Type-safe** - Clear structure prevents errors
-✅ **Easy maintenance** - New developers know exactly where to find config
-✅ **Version control friendly** - See all content changes in one file
