@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Layout from '../components/Layout.js'
 import SEO from '../components/SEO'
-import config from '../config'
+import config from '../config/siteConfig'
 import PageHero from '../components/PageHero'
 import SectionHeading from '../components/SectionHeading'
 import ExpertiseGrid from '../components/ExpertiseGrid'
@@ -21,7 +21,7 @@ function About({ posts = [] }) {
       <SEO
         title={config.content.about.title}
         description={config.content.about.description}
-        url={`${config.siteUrl}/about`}
+        url={`${config.site.url}/about`}
       />
       <Layout latestPosts={posts}>
         <div className='container mx-auto'>

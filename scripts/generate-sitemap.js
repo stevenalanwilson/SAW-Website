@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const config = require('../config');
+const config = require('../config/siteConfig').default;
 
-const DOMAIN = config.siteUrl;
+const DOMAIN = config.site.url;
 
 function generateSitemap() {
   const postsDirectory = path.join(process.cwd(), 'posts');

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import validator from 'validator'
 
 import markdownService from '../../services/getMarkdownService'
-import config from '../../config'
+import config from '../../config/siteConfig'
 
 import Layout from '../../components/Layout'
 import PageHero from '../../components/PageHero'
@@ -62,7 +62,7 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
       <SEO
         title={frontmatter.title}
         description={frontmatter.summary}
-        url={`${config.siteUrl}/post/${slug}`}
+        url={`${config.site.url}/post/${slug}`}
         image={frontmatter.thumbnail || '/static/og-image.jpg'}
         type="article"
         publishedTime={frontmatter.date}

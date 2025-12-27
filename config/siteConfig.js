@@ -213,6 +213,11 @@ const siteConfig = {
       { label: 'About', href: '/about', title: 'About' },
       { label: 'Components', href: '/components', title: 'Components' }
     ]
+  },
+
+  // Sentry configuration (optional)
+  sentry: {
+    dsn: process.env.SENTRY_DSN || ''
   }
 }
 

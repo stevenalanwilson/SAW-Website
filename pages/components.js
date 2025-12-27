@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import config from '../config'
+import config from '../config/siteConfig'
 import PageHero from '../components/PageHero'
 import SectionHeading from '../components/SectionHeading'
 import ExpertiseGrid from '../components/ExpertiseGrid'
@@ -30,7 +30,7 @@ function Components({ posts = [] }) {
       <SEO
         title="Component Showcase"
         description="A showcase of all reusable components available in the application"
-        url={`${config.siteUrl}/components`}
+        url={`${config.site.url}/components`}
       />
       <Layout latestPosts={posts}>
         <div className='container mx-auto'>
