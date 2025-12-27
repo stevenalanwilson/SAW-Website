@@ -70,9 +70,9 @@ describe('WorkWithMe Component', () => {
     const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
     expect(emailButton).toHaveClass(
       'border',
-      'border-white',
-      'hover:bg-white',
-      'hover:text-gray-900'
+      'border-theme-bg',
+      'hover:bg-theme-bg',
+      'hover:text-theme-primary'
     )
   })
 

@@ -9,6 +9,7 @@ tags:
   - Psychological Safety
   - Leadership
   - Culture
+theme: 'dark' 
 ---
 
 ![Building Resilient Teams Through Psychological Safety](/image/resilient-teams.jpg)

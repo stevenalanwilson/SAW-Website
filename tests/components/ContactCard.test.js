@@ -62,7 +62,13 @@ describe('ContactCard Component', () => {
   it('applies default styling', () => {
     const { container } = render(<ContactCard />)
     const card = container.querySelector('div')
-    expect(card).toHaveClass('bg-gray-900', 'text-white', 'p-6', 'border-t-4', 'border-white')
+    expect(card).toHaveClass(
+      'bg-theme-primary',
+      'text-theme-bg',
+      'p-6',
+      'border-t-4',
+      'border-theme-bg'
+    )
   })
 
   it('applies custom className', () => {
@@ -82,9 +88,9 @@ describe('ContactCard Component', () => {
     const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
     expect(emailButton).toHaveClass(
       'border',
-      'border-white',
-      'hover:bg-white',
-      'hover:text-gray-900'
+      'border-theme-bg',
+      'hover:bg-theme-bg',
+      'hover:text-theme-primary'
     )
   })
 

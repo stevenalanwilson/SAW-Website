@@ -525,3 +525,138 @@ For backward compatibility, the following files still exist but now import from 
 - `config/footerContactInfo.js` - Footer contact data
 - `config/footerCopyrightInfo.js` - Copyright data
 - `config/sidebarData.js` - Sidebar data
+
+## Theming System
+
+This application uses a simple, maintainable theming system powered by **CSS Variables** and **Tailwind CSS**. Each blog post can have its own theme (light or dark) specified in the markdown frontmatter.
+
+### Available Themes
+
+The application supports two themes configured in `config/articleThemes.js`:
+
+**Light Theme** (default)
+- Background: White (#ffffff)
+- Text: Black (#000000)
+- Primary elements: Black (#000000)
+- Accent/secondary: Dark grey (#666666)
+
+**Dark Theme**
+- Background: Black (#000000)
+- Text: White (#ffffff)
+- Primary elements: White (#ffffff)
+- Accent/secondary: Medium grey (#999999)
+
+### How to Set a Theme on a Blog Post
+
+Add the `theme` property to your markdown file's frontmatter:
+
+```markdown
+---
+title: Your Blog Post Title
+date: 2024-01-15
+theme: dark
+---
+
+Your blog post content here...
+```
+
+**Options:**
+- `theme: 'light'` - White background with black text
+- `theme: 'dark'` - Black background with white text
+- No theme specified - Defaults to light theme
+
+### How the Theming System Works
+
+The theming system uses a CSS-variable-only approach for simplicity and maintainability:
+
+**1. Theme Configuration** (`config/articleThemes.js`)
+- Defines color values for each theme
+- Each theme has: `primary`, `accent`, `background`, and `text` colors
+
+**2. CSS Variables** (`pages/post/[slug].js`)
+- When a blog post loads, CSS variables are set based on the theme:
+  ```javascript
+  const themeStyles = {
+    '--theme-primary': theme.primary,
+    '--theme-accent': theme.accent,
+    '--theme-bg': theme.background,
+    '--theme-text': theme.text,
+  }
+  ```
+- These variables are applied to the Layout root element
+- All child components inherit these CSS variables
+
+**3. Tailwind CSS Classes** (all components)
+- Components use Tailwind classes that reference CSS variables:
+  - `bg-theme-bg` - Background color
+  - `text-theme-text` - Text color
+  - `bg-theme-primary` - Primary color (inverted from background)
+  - `text-theme-accent` - Accent/secondary text color
+  - `border-theme-text` - Border color matching text
+  - `border-theme-primary` - Border color matching primary
+
+**4. Tailwind Configuration** (`tailwind.config.js`)
+- Maps Tailwind utilities to CSS variables:
+  ```javascript
+  colors: {
+    'theme-primary': 'var(--theme-primary, #000000)',
+    'theme-accent': 'var(--theme-accent, #666666)',
+    'theme-bg': 'var(--theme-bg, #ffffff)',
+    'theme-text': 'var(--theme-text, #000000)',
+  }
+  ```
+
+### Architecture Benefits
+
+✅ **No prop drilling** - Theme is set once at the Layout level via CSS variables
+✅ **Simple components** - Components just use Tailwind classes, no theme logic
+✅ **Automatic inheritance** - All children inherit CSS variables via normal CSS cascade
+✅ **Easy to maintain** - Change theme colors in one place (`articleThemes.js`)
+✅ **Type-safe** - Tailwind provides autocomplete for theme classes
+
+### Adding a New Theme
+
+To add a new theme (e.g., "sepia"):
+
+1. **Add theme definition** to `config/articleThemes.js`:
+   ```javascript
+   export const articleThemes = {
+     light: { /* existing */ },
+     dark: { /* existing */ },
+     sepia: {
+       name: 'Sepia',
+       primary: '#704214',
+       accent: '#8b6914',
+       background: '#f4ecd8',
+       text: '#3e2723',
+     }
+   }
+   ```
+
+2. **Use in markdown frontmatter**:
+   ```markdown
+   ---
+   theme: sepia
+   ---
+   ```
+
+That's it! No component changes needed. The CSS variable system automatically applies the new theme.
+
+### Customizing Theme Colors
+
+Edit `config/articleThemes.js` to change theme colors:
+
+```javascript
+export const articleThemes = {
+  light: {
+    name: 'Light',
+    primary: '#000000',      // Change to any hex color
+    accent: '#666666',       // Change to any hex color
+    background: '#ffffff',   // Change to any hex color
+    text: '#000000',         // Change to any hex color
+  },
+  // ... other themes
+}
+```
+
+Changes apply immediately to all pages using that theme.

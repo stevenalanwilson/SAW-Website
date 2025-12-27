@@ -28,7 +28,14 @@ describe('AuthorCard Component', () => {
   it('applies default styling', () => {
     const { container } = render(<AuthorCard />)
     const card = container.firstChild
-    expect(card).toHaveClass('bg-white', 'border-2', 'border-gray-900', 'p-6', 'mb-6')
+    expect(card).toHaveClass(
+      'bg-theme-bg',
+      'border-2',
+      'border-theme-text',
+      'text-theme-text',
+      'p-6',
+      'mb-6'
+    )
   })
 
   it('applies custom className', () => {

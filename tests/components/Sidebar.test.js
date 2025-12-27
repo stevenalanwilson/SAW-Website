@@ -49,8 +49,8 @@ describe('Sidebar Component', () => {
 
   it('ContactCard has margin bottom class', () => {
     const { container } = render(<Sidebar />)
-    // ContactCard should be the first child with bg-gray-900
-    const contactCard = container.querySelector('.bg-gray-900')
+    // ContactCard should be the first child with bg-theme-primary
+    const contactCard = container.querySelector('.bg-theme-primary')
     expect(contactCard).toHaveClass('mb-6')
   })
 })

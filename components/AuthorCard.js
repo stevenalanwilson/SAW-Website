@@ -6,7 +6,7 @@ export default function AuthorCard({ className = '' }) {
   const { name } = siteConfig.owner
 
   return (
-    <div className={`bg-white border-2 border-gray-900 p-6 mb-6 ${className}`}>
+    <div className={`bg-theme-bg border-2 border-theme-text text-theme-text p-6 mb-6 ${className}`}>
       <h2 className='text-2xl font-bold mb-3'>About the Author</h2>
       <p className='text-base leading-relaxed mb-4'>
         {greeting} <strong>{name}</strong>, {introduction}

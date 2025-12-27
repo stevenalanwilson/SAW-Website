@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 export default function StatsCard({ title, stats = [], className = '' }) {
   return (
-    <div className={`bg-gray-50 p-6 border-l-4 border-gray-900 ${className}`}>
+    <div className={`bg-theme-bg border-l-4 border-theme-text text-theme-text p-6 ${className}`}>
       <h2 className='text-2xl font-bold mb-4'>{title}</h2>
       <div className='space-y-3'>
         {stats.map((stat, index) => (

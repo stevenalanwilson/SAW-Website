@@ -22,7 +22,7 @@ describe('Tagline Component', () => {
     const taglineDiv = container.querySelector('div')
     expect(taglineDiv).toHaveClass(
       'w-full',
-      'border-white',
+      'border-theme-bg',
       'border-t-2',
       'border-b-2',
       'mx-4',
@@ -38,7 +38,7 @@ describe('Tagline Component', () => {
       'text-center',
       'text-xl',
       'md:text-2xl',
-      'text-white',
+      'text-theme-bg',
       'font-light'
     )
   })

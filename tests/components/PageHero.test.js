@@ -25,7 +25,7 @@ describe('PageHero Component', () => {
     const { container } = render(<PageHero title='Test Title' />)
     const section = container.querySelector('section')
     expect(section).toHaveClass(
-      'border-black',
+      'border-theme-text',
       'border-b',
       'border-t',
       'lg:border-t-0',

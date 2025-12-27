@@ -4,22 +4,25 @@ import PropTypes from 'prop-types'
 function LatestPosts({ posts = [], limit = 2 }) {
   return (
     <div>
-      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 text-white pb-4 mb-4'>
+      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'>
         Latest Thinking
       </h2>
       <ul className='menu'>
         {posts.slice(0, limit).map((post) => (
-          <li key={post.postSlug} className='mb-4 pb-4 border-b border-gray-700 last:border-b-0'>
+          <li
+            key={post.postSlug}
+            className='mb-4 pb-4 border-b border-theme-accent last:border-b-0'
+          >
             <Link
               href={`/post/${post.postSlug}`}
-              className='text-white hover:underline transition-all'
+              className='hover:underline transition-all text-theme-bg'
               title={post.postMetaData.title}
             >
               <h3 className='font-semibold mb-1'>{post.postMetaData.title}</h3>
             </Link>
-            <p className='text-gray-400 text-sm'>{post.postMetaData.summary}</p>
+            <p className='text-sm text-theme-accent'>{post.postMetaData.summary}</p>
             {post.postMetaData.date && (
-              <p className='text-gray-500 text-xs mt-2'>
+              <p className='text-xs mt-2 text-theme-accent'>
                 {new Date(post.postMetaData.date).toLocaleDateString('en-GB', {
                   year: 'numeric',
                   month: 'long',
@@ -29,7 +32,9 @@ function LatestPosts({ posts = [], limit = 2 }) {
             )}
           </li>
         ))}
-        {posts.length === 0 && <li className='text-gray-400 text-sm'>No posts available yet</li>}
+        {posts.length === 0 && (
+          <li className='text-sm text-theme-accent'>No posts available yet</li>
+        )}
       </ul>
     </div>
   )

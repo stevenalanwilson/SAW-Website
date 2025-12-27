@@ -7,6 +7,7 @@ import validator from 'validator'
 
 import markdownService from '../../services/getMarkdownService'
 import config from '../../config/siteConfig'
+import { getTheme } from '../../config/articleThemes'
 
 import Layout from '../../components/Layout'
 import PageHero from '../../components/PageHero'
@@ -56,6 +57,18 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
     return <LoadingSpinner message='Loading post...' />
   }
 
+  // Get theme configuration
+  // Priority: explicit theme in frontmatter > auto-detect from tags > default
+  const theme = getTheme(frontmatter.theme, frontmatter.tags)
+
+  // Create CSS custom properties for this article's theme
+  const themeStyles = {
+    '--theme-primary': theme.primary,
+    '--theme-accent': theme.accent,
+    '--theme-bg': theme.background,
+    '--theme-text': theme.text,
+  }
+
   return (
     <>
       <SEO
@@ -66,7 +79,8 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
         type='article'
         publishedTime={frontmatter.date}
       />
-      <Layout latestPosts={posts}>
+      <Layout latestPosts={posts} themeStyles={themeStyles}>
+        {/* CSS variables are set at Layout level */}
         <div className='container mx-auto'>
           <PageHero
             title={frontmatter.title}
@@ -76,17 +90,17 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
                 {/* Post metadata */}
                 <div className='mt-4'>
                   {frontmatter.author && (
-                    <p className='text-gray-600 text-base mb-2'>
+                    <p className='text-base mb-2 text-theme-text'>
                       <span className='font-semibold'>Authored by:</span> {frontmatter.author}
                     </p>
                   )}
                   {frontmatter.tags && frontmatter.tags.length > 0 && (
                     <div className='flex flex-wrap gap-2 items-center mb-4'>
-                      <span className='text-gray-600 text-base font-semibold'>Tags:</span>
+                      <span className='text-base font-semibold text-theme-text'>Tags:</span>
                       {frontmatter.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className='inline-block bg-gray-900 text-white px-3 py-1 text-xs'
+                          className='inline-block px-3 py-1 text-xs bg-theme-primary text-theme-bg'
                         >
                           {tag}
                         </span>
@@ -95,7 +109,7 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
                   )}
                   <Link
                     href='/'
-                    className='inline-block text-gray-900 hover:text-gray-600 font-semibold text-base'
+                    className='inline-block font-semibold text-base hover:underline text-theme-primary'
                   >
                     ← Back to Posts
                   </Link>
@@ -136,6 +150,16 @@ PostPage.propTypes = {
     date: PropTypes.string,
     author: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
+    theme: PropTypes.oneOfType([
+      PropTypes.string, // Theme preset name (e.g., 'leadership')
+      PropTypes.shape({
+        // Or custom theme object
+        primary: PropTypes.string,
+        accent: PropTypes.string,
+        background: PropTypes.string,
+        text: PropTypes.string,
+      }),
+    ]),
   }),
   content: PropTypes.string,
   slug: PropTypes.string,

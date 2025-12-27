@@ -32,7 +32,13 @@ describe('StatsCard Component', () => {
   it('applies default styling', () => {
     const { container } = render(<StatsCard title='Stats' />)
     const card = container.querySelector('div')
-    expect(card).toHaveClass('bg-gray-50', 'p-6', 'border-l-4', 'border-gray-900')
+    expect(card).toHaveClass(
+      'bg-theme-bg',
+      'border-l-4',
+      'border-theme-text',
+      'text-theme-text',
+      'p-6'
+    )
   })
 
   it('applies custom className', () => {

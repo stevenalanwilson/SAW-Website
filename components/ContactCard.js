@@ -16,15 +16,15 @@ export default function ContactCard({ variant = 'card', className = '' }) {
   // Variant-specific styling
   const containerClasses =
     variant === 'card'
-      ? `bg-gray-900 text-white p-6 border-t-4 border-white ${className}`
+      ? `bg-theme-primary text-theme-bg p-6 border-t-4 border-theme-bg ${className}`
       : className
 
   const headingClasses =
     variant === 'card'
-      ? 'text-2xl font-bold mb-4 border-b-2 border-white pb-2'
-      : 'heading-3 text-2xl lg:text-3xl border-b-2 text-white pb-4 mb-4'
+      ? 'text-2xl font-bold mb-4 border-b-2 border-theme-bg pb-2'
+      : 'heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'
 
-  const contentClasses = variant === 'card' ? 'space-y-4' : ''
+  const contentClasses = variant === 'card' ? 'space-y-4' : 'text-theme-bg'
 
   const paragraphClasses = variant === 'card' ? 'leading-relaxed' : 'mb-4 leading-relaxed'
 
@@ -33,16 +33,16 @@ export default function ContactCard({ variant = 'card', className = '' }) {
   return (
     <div className={containerClasses}>
       <h2 className={headingClasses}>{heading}</h2>
-      <div className={`text-white ${contentClasses}`}>
+      <div className={contentClasses}>
         <p className={paragraphClasses}>{message}</p>
 
         {/* Locations */}
         <div className={locationsContainerClasses}>
-          <p className='text-sm font-semibold text-gray-300 mb-2'>
+          <p className='text-sm font-semibold mb-2 text-theme-accent'>
             <FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2' aria-hidden='true' />
             Operating Areas
           </p>
-          <p className='text-sm text-gray-400'>{footerContactInfo.locations.join(' • ')}</p>
+          <p className='text-sm text-theme-accent'>{footerContactInfo.locations.join(' • ')}</p>
         </div>
 
         {/* Contact Methods */}
@@ -61,7 +61,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
           {emailAddress && (
             <a
               href={`mailto:${emailAddress}`}
-              className='block border border-white hover:bg-white hover:text-gray-900 text-white py-3 px-4 text-center transition-colors'
+              className='block border border-theme-bg text-theme-bg hover:bg-theme-bg hover:text-theme-primary py-3 px-4 text-center transition-colors'
               aria-label={`Send email to ${emailAddress}`}
             >
               <FontAwesomeIcon icon={faEnvelope} className='mr-2' aria-hidden='true' />

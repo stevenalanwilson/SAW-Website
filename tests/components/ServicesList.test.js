@@ -62,7 +62,7 @@ describe('ServicesList Component', () => {
     const { container } = render(<ServicesList />)
     const titles = container.querySelectorAll('h3')
     titles.forEach((title) => {
-      expect(title).toHaveClass('text-white', 'font-semibold', 'mb-1')
+      expect(title).toHaveClass('text-theme-bg', 'font-semibold', 'mb-1')
     })
   })
 
@@ -70,7 +70,7 @@ describe('ServicesList Component', () => {
     const { container } = render(<ServicesList />)
     const descriptions = container.querySelectorAll('p')
     descriptions.forEach((description) => {
-      expect(description).toHaveClass('text-gray-400', 'text-sm')
+      expect(description).toHaveClass('text-theme-accent', 'text-sm')
     })
   })
 })

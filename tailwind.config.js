@@ -7,7 +7,21 @@ module.exports = {
     './public/**/*.{html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Support for CSS custom properties (CSS variables) in Tailwind classes
+      colors: {
+        'theme-primary': 'var(--theme-primary, #000000)',
+        'theme-accent': 'var(--theme-accent, #666666)',
+        'theme-bg': 'var(--theme-bg, #ffffff)',
+        'theme-text': 'var(--theme-text, #000000)',
+      },
+      borderColor: {
+        'theme-primary': 'var(--theme-primary, #000000)',
+        'theme-accent': 'var(--theme-accent, #666666)',
+        'theme-bg': 'var(--theme-bg, #ffffff)',
+        'theme-text': 'var(--theme-text, #000000)',
+      },
+    },
   },
   plugins: [],
 }
