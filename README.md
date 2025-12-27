@@ -1,9 +1,11 @@
 # Saw-Front-End-App
+
 The front end application for stevenalanwilson.com
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 22.x
 - npm
 
@@ -25,6 +27,7 @@ The front end application for stevenalanwilson.com
 See `.env.example` for all available environment variables.
 
 ### Required
+
 - `NEXT_PUBLIC_SITE_URL` - Your site URL (defaults to https://stevenalanwilson.com)
 
 ### Optional - Sentry Error Tracking
@@ -41,6 +44,7 @@ Sentry integration is optional. To enable error tracking:
    ```
 
 For source map uploading (optional):
+
 ```
 SENTRY_ORG=your_org
 SENTRY_PROJECT=your_project
@@ -52,23 +56,27 @@ SENTRY_AUTH_TOKEN=your_auth_token
 ## Scripts
 
 ### Development
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
 
 ### Testing
+
 - `npm test` - Run all tests
 - `npm run test:watch` - Run tests in watch mode
 - `npm run test:coverage` - Run tests with coverage report
 - `npm run test:upSnap` - Update test snapshots
 
 ### Code Quality
+
 - `npm run lint` - Check for linting issues
 - `npm run lint:fix` - Auto-fix linting issues
 - `npm run format` - Format all code with Prettier
 - `npm run format:check` - Check if code is formatted
 
 ### Performance & Analysis
+
 - `npm run analyze` - Analyze bundle size with interactive visualizations
 - `npm run sitemap` - Generate sitemap
 
@@ -100,6 +108,7 @@ npm run test:upSnap
 - **Snapshot Tests** - UI regression testing
 
 ### Test Statistics
+
 - **262 total tests** - All passing
 - **31 test suites** - Organized by component/service
 - **4 snapshot tests** - UI consistency checks
@@ -109,6 +118,7 @@ npm run test:upSnap
 ### ESLint Configuration
 
 Enhanced ESLint setup with:
+
 - **Accessibility rules** (jsx-a11y) - Catch accessibility issues early
 - **React best practices** - PropTypes validation, self-closing components
 - **Code quality rules** - Unused variables, prefer const, no var
@@ -125,6 +135,7 @@ npm run lint:fix
 ```
 
 ### Current Status
+
 - ✅ **0 errors**
 - ⚠️ **11 warnings** (acceptable - mostly dynamic props and test files)
 - 76% reduction in warnings from enhanced linting rules
@@ -136,6 +147,7 @@ npm run lint:fix
 Automatic code formatting with Prettier ensures consistent style across the entire codebase.
 
 **Configuration:**
+
 - Single quotes for strings
 - No semicolons
 - 2 space indentation
@@ -161,6 +173,7 @@ This project uses **Husky** and **lint-staged** to automatically run quality che
 When you run `git commit`, the following checks run automatically on staged files:
 
 **For JavaScript/JSX files (`.js`, `.jsx`):**
+
 1. **Prettier** - Automatically formats code
 2. **ESLint** - Automatically fixes linting issues
 3. **Jest** - Runs tests related to the changed files
@@ -188,6 +201,7 @@ git commit -m "Your commit message"
 ### Skipping Hooks (Not Recommended)
 
 In rare cases where you need to skip the hooks:
+
 ```bash
 git commit --no-verify -m "Your message"
 ```
@@ -197,10 +211,89 @@ git commit --no-verify -m "Your message"
 ### Configuration
 
 Pre-commit hooks are configured in:
+
 - `.husky/pre-commit` - Hook entry point
 - `package.json` - `lint-staged` configuration
 
 To modify what runs on commit, edit the `lint-staged` section in `package.json`.
+
+## Continuous Integration (CI)
+
+This project uses **GitHub Actions** to automatically run quality checks on every push and pull request. This ensures code quality and catches issues before they reach production.
+
+### CI Workflow
+
+The CI pipeline runs three parallel jobs:
+
+**1. Quality Checks**
+
+- ✅ **Code Formatting** - Verifies all code is formatted with Prettier
+- ✅ **ESLint** - Checks for linting issues (0 errors required to pass)
+- ✅ **Tests** - Runs all 262 tests with coverage reporting
+- ✅ **Coverage Upload** - Optionally uploads coverage to Codecov
+
+**2. Build Verification**
+
+- ✅ **Production Build** - Ensures the app builds successfully
+- ✅ **Build Output Check** - Verifies .next directory exists
+- ✅ **Dependency on Quality** - Only runs if quality checks pass
+
+**3. Bundle Analysis (PR only)**
+
+- ✅ **Bundle Size Analysis** - Generates bundle reports for PRs
+- ✅ **Artifact Upload** - Uploads analysis to GitHub artifacts
+- ✅ **7-day Retention** - Reports available for review
+
+### Viewing CI Results
+
+**On GitHub:**
+
+1. Navigate to your repository
+2. Click the "Actions" tab
+3. Select a workflow run to see detailed results
+4. Download bundle analysis artifacts from PR checks
+
+**Status Badges:**
+
+Add to your README to show CI status:
+
+```markdown
+![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/workflows/CI/badge.svg)
+```
+
+### CI Configuration
+
+The CI workflow is configured in `.github/workflows/ci.yml`:
+
+- **Node Version:** 22.x
+- **Triggers:** Push to master/main, Pull requests
+- **Cache:** npm dependencies cached for faster runs
+- **Environment:** Ubuntu latest
+
+### Optional: Codecov Integration
+
+To enable code coverage tracking:
+
+1. Sign up at [codecov.io](https://codecov.io)
+2. Connect your GitHub repository
+3. Add `CODECOV_TOKEN` to your GitHub repository secrets
+4. Coverage reports will automatically upload on each CI run
+
+**Note:** CI runs successfully without Codecov - it's completely optional.
+
+### Local CI Simulation
+
+Test the CI pipeline locally before pushing:
+
+```bash
+# Run all CI checks locally
+npm run format:check  # Check formatting
+npm run lint          # Check linting
+npm test              # Run tests
+npm run build         # Build production bundle
+```
+
+All checks must pass for CI to succeed!
 
 ## Performance - Caching Strategy
 
@@ -209,11 +302,13 @@ This project uses aggressive caching strategies to optimize performance and redu
 ### Caching Rules
 
 **Static Assets (1 year cache):**
+
 - `/static/*` - Your static files (images, fonts, etc.)
 - `/_next/static/*` - Next.js JavaScript/CSS bundles
 - `/_next/image/*` - Optimized images
 
 **Dynamic Pages:**
+
 - **Homepage** (`/`) - 5 minutes cache, revalidate in background for 1 hour
 - **Blog Posts** (`/post/*`) - 1 hour cache, revalidate in background for 24 hours
 - **Other Pages** - 10 minutes cache, revalidate in background for 1 hour
@@ -238,6 +333,7 @@ Cache-Control: public, max-age=X, stale-while-revalidate=Y
 ### Clearing Cache
 
 If you need to clear the cache after a deployment:
+
 1. Static assets auto-bust via Next.js build hash
 2. Pages refresh automatically after `max-age` expires
 3. Force refresh: Hold Shift and click reload in browser
@@ -254,6 +350,7 @@ npm run analyze
 ```
 
 This will:
+
 1. Build your production bundle
 2. Generate three interactive HTML reports in `.next/analyze/`:
    - `client.html` - Client-side JavaScript bundle breakdown
@@ -264,12 +361,14 @@ This will:
 ### Current Bundle Performance
 
 **Shared Bundles:**
+
 - Framework: 59.7 kB (React 19 + Next.js 15)
 - Main: 36.7 kB (Application code)
 - Other shared: 9.05 kB
 - **Total shared: 105 kB**
 
 **Page Bundles (including shared):**
+
 - Homepage: 139 kB (4.93 kB page-specific)
 - About: 132 kB (2.06 kB page-specific)
 - Blog posts: 170 kB (2.45 kB page-specific)
@@ -282,6 +381,7 @@ This will:
 ✅ **Shared code extraction** - Common code properly extracted to shared bundles
 
 **Future optimization opportunities:**
+
 - Dynamic imports for heavy page-specific components
 - Tree-shake unused FontAwesome icons
 - Optimize markdown parser imports
@@ -297,6 +397,7 @@ All components include **PropTypes** for runtime type validation in development:
 - ✅ **Comprehensive validation** including nested object shapes
 
 **Benefits:**
+
 - Catch prop type errors in development
 - Self-documenting component APIs
 - Better IDE autocomplete
@@ -310,10 +411,10 @@ Component.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      url: PropTypes.string
+      url: PropTypes.string,
     })
   ),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 }
 ```
 
@@ -342,18 +443,23 @@ siteConfig
 ### How to Update Site Content
 
 #### Update Your Job Title
+
 Edit one line in `config/siteConfig.js`:
+
 ```javascript
 owner: {
   title: 'Your New Title Here'
 }
 ```
+
 This automatically updates:
+
 - SiteTitle component (homepage hero)
 - AuthorCard component (blog posts)
 - All SEO metadata
 
 #### Update Your Company/Role
+
 ```javascript
 content: {
   hero: {
@@ -368,6 +474,7 @@ content: {
 ```
 
 #### Add/Remove Previous Companies
+
 ```javascript
 previousRoles: [
   { company: 'Company Name', url: 'https://company.com' },
@@ -376,6 +483,7 @@ previousRoles: [
 ```
 
 #### Update Navigation Menu
+
 ```javascript
 navigation: {
   main: [
@@ -387,6 +495,7 @@ navigation: {
 ```
 
 #### Update Contact Information
+
 ```javascript
 contact: {
   email: {
@@ -398,6 +507,7 @@ contact: {
 ```
 
 #### Update Social Media Links
+
 ```javascript
 social: {
   linkedin: {
@@ -410,8 +520,8 @@ social: {
 ### Legacy Configuration Files
 
 For backward compatibility, the following files still exist but now import from `siteConfig.js`:
+
 - `config.js` - Legacy config wrapper
 - `config/footerContactInfo.js` - Footer contact data
 - `config/footerCopyrightInfo.js` - Copyright data
 - `config/sidebarData.js` - Sidebar data
-

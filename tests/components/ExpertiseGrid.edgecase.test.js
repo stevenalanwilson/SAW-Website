@@ -26,19 +26,24 @@ describe('ExpertiseGrid Edge Cases', () => {
   })
 
   it('handles items with very long titles', () => {
-    const longTitleItems = [{
-      title: 'This is a very long title that might cause layout issues if not handled properly',
-      description: 'Short description'
-    }]
+    const longTitleItems = [
+      {
+        title: 'This is a very long title that might cause layout issues if not handled properly',
+        description: 'Short description',
+      },
+    ]
     render(<ExpertiseGrid items={longTitleItems} />)
     expect(screen.getByText(/very long title/i)).toBeInTheDocument()
   })
 
   it('handles items with very long descriptions', () => {
-    const longDescItems = [{
-      title: 'Title',
-      description: 'This is a very long description that spans multiple lines and contains lots of text to test how the component handles overflow and wrapping of text content in the description area'
-    }]
+    const longDescItems = [
+      {
+        title: 'Title',
+        description:
+          'This is a very long description that spans multiple lines and contains lots of text to test how the component handles overflow and wrapping of text content in the description area',
+      },
+    ]
     render(<ExpertiseGrid items={longDescItems} />)
     expect(screen.getByText(/very long description/i)).toBeInTheDocument()
   })
@@ -64,7 +69,7 @@ describe('ExpertiseGrid Edge Cases', () => {
   it('handles large number of items (10+)', () => {
     const manyItems = Array.from({ length: 15 }, (_, i) => ({
       title: `Item ${i + 1}`,
-      description: `Description ${i + 1}`
+      description: `Description ${i + 1}`,
     }))
     render(<ExpertiseGrid items={manyItems} />)
     expect(screen.getByText('Item 1')).toBeInTheDocument()
@@ -72,19 +77,23 @@ describe('ExpertiseGrid Edge Cases', () => {
   })
 
   it('handles items with special characters in title', () => {
-    const specialCharItems = [{
-      title: 'Title with & symbols, "quotes", and \'apostrophes\'',
-      description: 'Normal description'
-    }]
+    const specialCharItems = [
+      {
+        title: 'Title with & symbols, "quotes", and \'apostrophes\'',
+        description: 'Normal description',
+      },
+    ]
     render(<ExpertiseGrid items={specialCharItems} />)
     expect(screen.getByText(/symbols.*quotes.*apostrophes/i)).toBeInTheDocument()
   })
 
   it('handles items with HTML-like strings (should be escaped)', () => {
-    const htmlItems = [{
-      title: '<script>alert("test")</script>',
-      description: '<div>HTML content</div>'
-    }]
+    const htmlItems = [
+      {
+        title: '<script>alert("test")</script>',
+        description: '<div>HTML content</div>',
+      },
+    ]
     const { container } = render(<ExpertiseGrid items={htmlItems} />)
     // React should escape HTML by default
     expect(container.textContent).toContain('<script>')

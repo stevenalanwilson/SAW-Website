@@ -7,13 +7,13 @@ import ContactCard from '../../components/ContactCard'
 jest.mock('../../config/footerContactInfo', () => ({
   email: {
     user: 'hello',
-    domain: 'stevenalanwilson.com'
+    domain: 'stevenalanwilson.com',
   },
   linkedin: {
     title: 'Connect on LinkedIn',
-    link: 'https://www.linkedin.com/in/stevenalanwilson/'
+    link: 'https://www.linkedin.com/in/stevenalanwilson/',
   },
-  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham']
+  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],
 }))
 
 describe('ContactCard Component', () => {
@@ -66,7 +66,7 @@ describe('ContactCard Component', () => {
   })
 
   it('applies custom className', () => {
-    const { container } = render(<ContactCard className="custom-class" />)
+    const { container } = render(<ContactCard className='custom-class' />)
     const card = container.querySelector('div')
     expect(card).toHaveClass('custom-class')
   })
@@ -80,7 +80,12 @@ describe('ContactCard Component', () => {
   it('applies correct styling to email button', () => {
     render(<ContactCard />)
     const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
-    expect(emailButton).toHaveClass('border', 'border-white', 'hover:bg-white', 'hover:text-gray-900')
+    expect(emailButton).toHaveClass(
+      'border',
+      'border-white',
+      'hover:bg-white',
+      'hover:text-gray-900'
+    )
   })
 
   it('constructs email from obfuscated parts to prevent scraping', () => {

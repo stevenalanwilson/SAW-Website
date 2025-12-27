@@ -6,20 +6,18 @@ import ListPosts from '../components/ListPosts'
 import SEO from '../components/SEO'
 import Sidebar from '../components/Sidebar'
 
-
 export async function getStaticProps() {
   const posts = markdownService.getAllMarkdownPosts()
   return {
-    props: { posts }
+    props: { posts },
   }
 }
 
-const index = props => {
+const index = (props) => {
   return (
     <>
       <SEO />
       <Layout latestPosts={props.posts}>
-
         <header>
           <div className='container mx-auto'>
             <SiteTitle />
@@ -44,11 +42,8 @@ const index = props => {
           </div>
         </main>
       </Layout>
-
     </>
   )
 }
-
-
 
 export default index

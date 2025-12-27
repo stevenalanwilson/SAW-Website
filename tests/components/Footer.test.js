@@ -31,7 +31,9 @@ jest.mock('../../components/WorkWithMe', () => {
 describe('Footer Component', () => {
   it('renders the tagline component', () => {
     render(<Footer />)
-    expect(screen.getByText(/Helping organizations build resilient technical teams/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Helping organizations build resilient technical teams/i)
+    ).toBeInTheDocument()
   })
 
   it('renders the services section', () => {
@@ -56,7 +58,10 @@ describe('Footer Component', () => {
 
   it('passes latestPosts prop to LatestPosts component', () => {
     const mockPosts = [
-      { postSlug: 'test', postMetaData: { title: 'Test', summary: 'Test summary', date: '2024-01-01' } }
+      {
+        postSlug: 'test',
+        postMetaData: { title: 'Test', summary: 'Test summary', date: '2024-01-01' },
+      },
     ]
     render(<Footer latestPosts={mockPosts} />)
     // Component should render without errors

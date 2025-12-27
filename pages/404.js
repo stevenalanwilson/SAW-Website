@@ -6,7 +6,7 @@ export default function Custom404() {
   return (
     <>
       <SEO
-        title="404 - Page Not Found"
+        title='404 - Page Not Found'
         description="The page you're looking for could not be found."
       />
       <Layout>
@@ -15,7 +15,8 @@ export default function Custom404() {
             <h1 className='text-9xl font-bold text-gray-900 mb-4'>404</h1>
             <h2 className='text-4xl font-bold text-gray-800 mb-6'>Page Not Found</h2>
             <p className='text-xl text-gray-600 mb-8 max-w-md mx-auto'>
-              Sorry, we couldn&apos;t find the page you&apos;re looking for. It might have been moved or deleted.
+              Sorry, we couldn&apos;t find the page you&apos;re looking for. It might have been
+              moved or deleted.
             </p>
             <div className='flex gap-4 justify-center flex-wrap'>
               <Link

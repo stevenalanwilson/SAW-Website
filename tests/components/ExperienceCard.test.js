@@ -8,7 +8,7 @@ describe('ExperienceCard Component', () => {
     company: 'Test Company',
     url: 'https://testcompany.com',
     title: 'Senior Developer',
-    description: 'Led development of major features'
+    description: 'Led development of major features',
   }
 
   it('renders the job title', () => {
@@ -29,7 +29,9 @@ describe('ExperienceCard Component', () => {
   })
 
   it('does not render description paragraph when description is not provided', () => {
-    const { container } = render(<ExperienceCard company="Test" url="https://test.com" title="Developer" />)
+    const { container } = render(
+      <ExperienceCard company='Test' url='https://test.com' title='Developer' />
+    )
     expect(screen.queryByText('Led development of major features')).not.toBeInTheDocument()
   })
 
@@ -46,7 +48,7 @@ describe('ExperienceCard Component', () => {
   })
 
   it('applies custom className', () => {
-    const { container } = render(<ExperienceCard {...mockProps} className="custom-class" />)
+    const { container } = render(<ExperienceCard {...mockProps} className='custom-class' />)
     const div = container.querySelector('div')
     expect(div).toHaveClass('custom-class')
   })
@@ -54,7 +56,13 @@ describe('ExperienceCard Component', () => {
   it('renders company link with correct styling', () => {
     render(<ExperienceCard {...mockProps} />)
     const link = screen.getByRole('link')
-    expect(link).toHaveClass('font-bold', 'underline', 'decoration-3', 'underline-offset-8', 'hover:no-underline')
+    expect(link).toHaveClass(
+      'font-bold',
+      'underline',
+      'decoration-3',
+      'underline-offset-8',
+      'hover:no-underline'
+    )
   })
 
   it('renders heading as h3', () => {

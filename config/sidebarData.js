@@ -8,11 +8,11 @@ module.exports = {
     links: [
       { label: 'LinkedIn Profile', url: siteConfig.social.linkedin.link },
       { label: 'Twitter', url: siteConfig.social.twitter.link },
-      { label: 'Facebook', url: siteConfig.social.facebook.link }
-    ]
+      { label: 'Facebook', url: siteConfig.social.facebook.link },
+    ],
   },
   professionalStats: {
     title: siteConfig.stats.title,
-    stats: siteConfig.stats.items
-  }
+    stats: siteConfig.stats.items,
+  },
 }

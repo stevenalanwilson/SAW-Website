@@ -7,11 +7,11 @@ import sidebarData from '../config/sidebarData'
 export default function Sidebar({ className = '' }) {
   return (
     <aside className={className}>
-      <SectionErrorBoundary name="ContactCard" errorMessage="Contact information failed to load">
-        <ContactCard className="mb-6" />
+      <SectionErrorBoundary name='ContactCard' errorMessage='Contact information failed to load'>
+        <ContactCard className='mb-6' />
       </SectionErrorBoundary>
 
-      <SectionErrorBoundary name="StatsCard" errorMessage="Statistics failed to load">
+      <SectionErrorBoundary name='StatsCard' errorMessage='Statistics failed to load'>
         <StatsCard
           title={sidebarData.professionalStats.title}
           stats={sidebarData.professionalStats.stats}
@@ -22,5 +22,5 @@ export default function Sidebar({ className = '' }) {
 }
 
 Sidebar.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 }

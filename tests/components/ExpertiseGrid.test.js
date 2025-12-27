@@ -7,7 +7,7 @@ describe('ExpertiseGrid Component', () => {
   const mockItems = [
     { title: 'Item 1', description: 'Description 1' },
     { title: 'Item 2', description: 'Description 2' },
-    { title: 'Item 3', description: 'Description 3' }
+    { title: 'Item 3', description: 'Description 3' },
   ]
 
   it('renders all items', () => {
@@ -31,7 +31,7 @@ describe('ExpertiseGrid Component', () => {
   })
 
   it('applies custom className', () => {
-    const { container } = render(<ExpertiseGrid items={mockItems} className="custom-class" />)
+    const { container } = render(<ExpertiseGrid items={mockItems} className='custom-class' />)
     const grid = container.querySelector('div')
     expect(grid).toHaveClass('custom-class')
   })

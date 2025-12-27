@@ -8,7 +8,7 @@ const footerContactInfo = {
   linkedin: siteConfig.social.linkedin,
   twitter: [siteConfig.social.twitter],
   facebook: [siteConfig.social.facebook],
-  locations: siteConfig.contact.locations
+  locations: siteConfig.contact.locations,
 }
 
 export default footerContactInfo

@@ -6,7 +6,9 @@ import SiteHeader from '../../components/SiteHeader'
 describe('SiteHeader Component', () => {
   it('renders site title/logo', () => {
     render(<SiteHeader />)
-    expect(screen.getByText('Steven Alan Wilson Limited - Technical Leadership Consultancy')).toBeInTheDocument()
+    expect(
+      screen.getByText('Steven Alan Wilson Limited - Technical Leadership Consultancy')
+    ).toBeInTheDocument()
   })
 
   it('renders navigation menu', () => {
@@ -37,7 +39,9 @@ describe('SiteHeader Component', () => {
 
   it('logo links to homepage', () => {
     render(<SiteHeader />)
-    const logoLink = screen.getByRole('link', { name: 'Steven Alan Wilson Limited - Technical Leadership Consultancy' })
+    const logoLink = screen.getByRole('link', {
+      name: 'Steven Alan Wilson Limited - Technical Leadership Consultancy',
+    })
     expect(logoLink).toHaveAttribute('href', '/')
   })
 })

@@ -4,7 +4,7 @@ import SectionErrorBoundary from '../../components/SectionErrorBoundary'
 
 // Mock Sentry
 jest.mock('@sentry/nextjs', () => ({
-  captureException: jest.fn()
+  captureException: jest.fn(),
 }))
 
 // Component that throws an error
@@ -27,7 +27,7 @@ describe('SectionErrorBoundary', () => {
 
   it('renders children when there is no error', () => {
     const component = renderer.create(
-      <SectionErrorBoundary name="TestSection">
+      <SectionErrorBoundary name='TestSection'>
         <WorkingComponent />
       </SectionErrorBoundary>
     )
@@ -37,7 +37,7 @@ describe('SectionErrorBoundary', () => {
 
   it('renders error UI when child component throws', () => {
     const component = renderer.create(
-      <SectionErrorBoundary name="TestSection" errorMessage="Custom error message">
+      <SectionErrorBoundary name='TestSection' errorMessage='Custom error message'>
         <ErrorComponent />
       </SectionErrorBoundary>
     )
@@ -48,7 +48,7 @@ describe('SectionErrorBoundary', () => {
   it('renders custom fallback when provided', () => {
     const customFallback = <div>Custom fallback UI</div>
     const component = renderer.create(
-      <SectionErrorBoundary name="TestSection" fallback={customFallback}>
+      <SectionErrorBoundary name='TestSection' fallback={customFallback}>
         <ErrorComponent />
       </SectionErrorBoundary>
     )
@@ -58,7 +58,7 @@ describe('SectionErrorBoundary', () => {
 
   it('renders default error message when none provided', () => {
     const component = renderer.create(
-      <SectionErrorBoundary name="TestSection">
+      <SectionErrorBoundary name='TestSection'>
         <ErrorComponent />
       </SectionErrorBoundary>
     )

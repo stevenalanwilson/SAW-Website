@@ -5,7 +5,7 @@ sentry.init({
   dsn: config.sentry.dsn,
   environment: 'development',
   debug: true,
-  release: config.app.version
+  release: config.app.version,
 })
 
 module.exports = sentry

@@ -6,7 +6,7 @@ import NavigationMenu from '../../components/NavigationMenu'
 const mockMenuItems = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' }
+  { href: '/contact', label: 'Contact' },
 ]
 
 describe('NavigationMenu Component', () => {
@@ -102,7 +102,7 @@ describe('NavigationMenu Component', () => {
     it('handles items with special characters in labels', () => {
       const specialItems = [
         { href: '/test', label: 'Test & More' },
-        { href: '/quotes', label: 'Item with "quotes"' }
+        { href: '/quotes', label: 'Item with "quotes"' },
       ]
       render(<NavigationMenu items={specialItems} />)
 
@@ -111,10 +111,12 @@ describe('NavigationMenu Component', () => {
     })
 
     it('handles long menu item labels', () => {
-      const longItems = [{
-        href: '/long',
-        label: 'This is a very long menu item label that might wrap'
-      }]
+      const longItems = [
+        {
+          href: '/long',
+          label: 'This is a very long menu item label that might wrap',
+        },
+      ]
       render(<NavigationMenu items={longItems} />)
 
       expect(screen.getByText(/very long menu item/i)).toBeInTheDocument()
@@ -133,7 +135,7 @@ describe('NavigationMenu Component', () => {
       render(<NavigationMenu items={mockMenuItems} />)
       const links = screen.getAllByRole('link')
 
-      links.forEach(link => {
+      links.forEach((link) => {
         expect(link).toHaveClass('text-white', 'py-3', 'px-5')
       })
     })
@@ -142,7 +144,7 @@ describe('NavigationMenu Component', () => {
       render(<NavigationMenu items={mockMenuItems} />)
       const links = screen.getAllByRole('link')
 
-      links.forEach(link => {
+      links.forEach((link) => {
         expect(link).toHaveClass('hover:text-black', 'hover:bg-white', 'rounded')
       })
     })

@@ -21,8 +21,8 @@ StatsCard.propTypes = {
   stats: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     })
   ),
-  className: PropTypes.string
+  className: PropTypes.string,
 }

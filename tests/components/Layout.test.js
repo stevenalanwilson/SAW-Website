@@ -6,18 +6,18 @@ import Layout from '../../components/Layout'
 // Mock the child components
 jest.mock('../../components/SiteHeader', () => {
   return function SiteHeader() {
-    return <div data-testid="site-header">Site Header</div>
+    return <div data-testid='site-header'>Site Header</div>
   }
 })
 
 jest.mock('../../components/Footer', () => {
   return function Footer() {
-    return <div data-testid="footer">Footer</div>
+    return <div data-testid='footer'>Footer</div>
   }
 })
 
 jest.mock('@vercel/analytics/react', () => ({
-  Analytics: () => <div data-testid="analytics">Analytics</div>
+  Analytics: () => <div data-testid='analytics'>Analytics</div>,
 }))
 
 describe('Layout Component', () => {

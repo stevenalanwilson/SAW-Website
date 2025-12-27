@@ -42,7 +42,7 @@ describe('Sidebar Component', () => {
   })
 
   it('applies custom className', () => {
-    const { container } = render(<Sidebar className="custom-class" />)
+    const { container } = render(<Sidebar className='custom-class' />)
     const aside = container.querySelector('aside')
     expect(aside).toHaveClass('custom-class')
   })

@@ -8,7 +8,7 @@ describe('PostscriptItem Component', () => {
     title: 'Test Title',
     image: 'https://example.com/image.jpg',
     caption: 'Test Caption',
-    description: 'Test description for the postscript item'
+    description: 'Test description for the postscript item',
   }
 
   it('renders without crashing', () => {
@@ -41,7 +41,15 @@ describe('PostscriptItem Component', () => {
   it('applies correct styling to title', () => {
     render(<PostscriptItem {...mockProps} />)
     const heading = screen.getByRole('heading', { level: 1 })
-    expect(heading).toHaveClass('heading-3', 'text-2xl', 'lg:text-4xl', 'border-b-2', 'text-white', 'pb-2', 'mb-6')
+    expect(heading).toHaveClass(
+      'heading-3',
+      'text-2xl',
+      'lg:text-4xl',
+      'border-b-2',
+      'text-white',
+      'pb-2',
+      'mb-6'
+    )
   })
 
   it('renders figure element', () => {

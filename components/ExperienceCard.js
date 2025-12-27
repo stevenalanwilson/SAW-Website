@@ -7,7 +7,7 @@ export default function ExperienceCard({
   title,
   description,
   highlighted = false,
-  className = ''
+  className = '',
 }) {
   return (
     <div className={`mb-6 ${className}`}>
@@ -20,9 +20,7 @@ export default function ExperienceCard({
           {company}
         </Link>
       </h3>
-      {description && (
-        <p className='text-xl leading-relaxed'>{description}</p>
-      )}
+      {description && <p className='text-xl leading-relaxed'>{description}</p>}
     </div>
   )
 }
@@ -33,5 +31,5 @@ ExperienceCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   highlighted: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
 }

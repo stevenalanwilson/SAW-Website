@@ -33,13 +33,29 @@ function SiteTitle() {
         <div className='flex flex-wrap w-full md:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
             <p className='text-xl'>
-              Currently a <strong>{position} at <Link href={companyUrl} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{company}</Link></strong> in {location}.
-              Previously held key technical leadership roles at {previousRoles.map((role, index) => (
+              Currently a{' '}
+              <strong>
+                {position} at{' '}
+                <Link
+                  href={companyUrl}
+                  className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'
+                >
+                  {company}
+                </Link>
+              </strong>{' '}
+              in {location}. Previously held key technical leadership roles at{' '}
+              {previousRoles.map((role, index) => (
                 <span key={index}>
                   {getCompanySeparator(index, previousRoles.length)}
-                  <Link href={role.url} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{role.company}</Link>
+                  <Link
+                    href={role.url}
+                    className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'
+                  >
+                    {role.company}
+                  </Link>
                 </span>
-              ))}.
+              ))}
+              .
             </p>
           </div>
         </div>
@@ -49,9 +65,3 @@ function SiteTitle() {
 }
 
 export default SiteTitle
-
-
-
-
-
-

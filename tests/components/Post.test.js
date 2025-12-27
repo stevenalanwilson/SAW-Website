@@ -6,8 +6,8 @@ import '@testing-library/jest-dom'
 jest.mock('unified', () => ({
   unified: () => ({
     use: jest.fn().mockReturnThis(),
-    processSync: (content) => ({ result: <div data-testid="processed-content">{content}</div> })
-  })
+    processSync: (content) => ({ result: <div data-testid='processed-content'>{content}</div> }),
+  }),
 }))
 jest.mock('remark-parse', () => jest.fn())
 jest.mock('remark-rehype', () => jest.fn())
@@ -17,30 +17,30 @@ import Post from '../../components/Post'
 
 describe('Post Component', () => {
   it('renders as an article element', () => {
-    const { container } = render(<Post content="Test content" />)
+    const { container } = render(<Post content='Test content' />)
     const article = container.querySelector('article')
     expect(article).toBeInTheDocument()
   })
 
   it('applies custom className', () => {
-    const { container } = render(<Post content="Test" className="custom-class" />)
+    const { container } = render(<Post content='Test' className='custom-class' />)
     const article = container.querySelector('article')
     expect(article).toHaveClass('custom-class')
   })
 
   it('processes markdown content', () => {
-    const { getByTestId } = render(<Post content="# Test Heading" />)
+    const { getByTestId } = render(<Post content='# Test Heading' />)
     expect(getByTestId('processed-content')).toBeInTheDocument()
   })
 
   it('handles empty content', () => {
-    const { container } = render(<Post content="" />)
+    const { container } = render(<Post content='' />)
     const article = container.querySelector('article')
     expect(article).toBeInTheDocument()
   })
 
   it('renders content inside article', () => {
-    const { container } = render(<Post content="Sample markdown" />)
+    const { container } = render(<Post content='Sample markdown' />)
     const article = container.querySelector('article')
     expect(article).toContainElement(article.querySelector('[data-testid="processed-content"]'))
   })

@@ -20,116 +20,136 @@ describe('ListPosts Edge Cases', () => {
   })
 
   it('handles post with missing postMetaData', () => {
-    const postsWithoutMetaData = [{
-      postSlug: 'test-post'
-    }]
+    const postsWithoutMetaData = [
+      {
+        postSlug: 'test-post',
+      },
+    ]
     const { container } = render(<ListPosts posts={postsWithoutMetaData} />)
     expect(container).toBeInTheDocument()
   })
 
   it('handles post with missing title', () => {
-    const postWithoutTitle = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        date: '2024-01-01',
-        summary: 'Test summary'
-      }
-    }]
+    const postWithoutTitle = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          date: '2024-01-01',
+          summary: 'Test summary',
+        },
+      },
+    ]
     const { container } = render(<ListPosts posts={postWithoutTitle} />)
     expect(container).toBeInTheDocument()
     expect(screen.getByText('Untitled')).toBeInTheDocument()
   })
 
   it('handles post with missing date', () => {
-    const postWithoutDate = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Test Post',
-        summary: 'Test summary'
-      }
-    }]
+    const postWithoutDate = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Test Post',
+          summary: 'Test summary',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithoutDate} />)
     expect(screen.getByText('Test Post')).toBeInTheDocument()
   })
 
   it('handles post with invalid date format', () => {
-    const postWithInvalidDate = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Test Post',
-        date: 'invalid-date',
-        summary: 'Test summary'
-      }
-    }]
+    const postWithInvalidDate = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Test Post',
+          date: 'invalid-date',
+          summary: 'Test summary',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithInvalidDate} />)
     expect(screen.getByText('Test Post')).toBeInTheDocument()
     expect(screen.getByText('Invalid Date')).toBeInTheDocument()
   })
 
   it('handles post with missing summary', () => {
-    const postWithoutSummary = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Test Post',
-        date: '2024-01-01',
-        thumbnail: '/test.jpg'
-      }
-    }]
+    const postWithoutSummary = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Test Post',
+          date: '2024-01-01',
+          thumbnail: '/test.jpg',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithoutSummary} />)
     expect(screen.getByText('Test Post')).toBeInTheDocument()
   })
 
   it('handles post with missing thumbnail', () => {
-    const postWithoutThumbnail = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Test Post',
-        date: '2024-01-01',
-        summary: 'Test summary'
-      }
-    }]
+    const postWithoutThumbnail = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Test Post',
+          date: '2024-01-01',
+          summary: 'Test summary',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithoutThumbnail} />)
     expect(screen.getByText('Test Post')).toBeInTheDocument()
   })
 
   it('handles post with very long title', () => {
-    const postWithLongTitle = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'This is a very long title that might span multiple lines and could potentially cause layout issues if not properly handled by the component',
-        date: '2024-01-01',
-        summary: 'Test summary',
-        thumbnail: '/test.jpg'
-      }
-    }]
+    const postWithLongTitle = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title:
+            'This is a very long title that might span multiple lines and could potentially cause layout issues if not properly handled by the component',
+          date: '2024-01-01',
+          summary: 'Test summary',
+          thumbnail: '/test.jpg',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithLongTitle} />)
     expect(screen.getByText(/very long title/i)).toBeInTheDocument()
   })
 
   it('handles post with very long summary', () => {
-    const postWithLongSummary = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Test Post',
-        date: '2024-01-01',
-        summary: 'This is a very long summary that contains a lot of text and might need to be truncated or wrapped appropriately to maintain good visual presentation and user experience on various screen sizes and devices',
-        thumbnail: '/test.jpg'
-      }
-    }]
+    const postWithLongSummary = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Test Post',
+          date: '2024-01-01',
+          summary:
+            'This is a very long summary that contains a lot of text and might need to be truncated or wrapped appropriately to maintain good visual presentation and user experience on various screen sizes and devices',
+          thumbnail: '/test.jpg',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithLongSummary} />)
     expect(screen.getByText(/very long summary/i)).toBeInTheDocument()
   })
 
   it('handles post with special characters in title', () => {
-    const postWithSpecialChars = [{
-      postSlug: 'test-post',
-      postMetaData: {
-        title: 'Title with & symbols, "quotes", and \'apostrophes\'',
-        date: '2024-01-01',
-        summary: 'Test summary',
-        thumbnail: '/test.jpg'
-      }
-    }]
+    const postWithSpecialChars = [
+      {
+        postSlug: 'test-post',
+        postMetaData: {
+          title: 'Title with & symbols, "quotes", and \'apostrophes\'',
+          date: '2024-01-01',
+          summary: 'Test summary',
+          thumbnail: '/test.jpg',
+        },
+      },
+    ]
     render(<ListPosts posts={postWithSpecialChars} />)
     expect(screen.getByText(/symbols.*quotes.*apostrophes/i)).toBeInTheDocument()
   })
@@ -141,8 +161,8 @@ describe('ListPosts Edge Cases', () => {
         title: `Post ${i + 1}`,
         date: '2024-01-01',
         summary: `Summary ${i + 1}`,
-        thumbnail: '/test.jpg'
-      }
+        thumbnail: '/test.jpg',
+      },
     }))
     render(<ListPosts posts={manyPosts} />)
     expect(screen.getByText('Post 1')).toBeInTheDocument()
@@ -150,14 +170,16 @@ describe('ListPosts Edge Cases', () => {
   })
 
   it('handles post with empty string values', () => {
-    const postWithEmptyStrings = [{
-      postSlug: '',
-      postMetaData: {
-        title: '',
-        date: '',
-        summary: ''
-      }
-    }]
+    const postWithEmptyStrings = [
+      {
+        postSlug: '',
+        postMetaData: {
+          title: '',
+          date: '',
+          summary: '',
+        },
+      },
+    ]
     const { container } = render(<ListPosts posts={postWithEmptyStrings} />)
     expect(container.querySelector('.grid')).toBeInTheDocument()
   })
@@ -170,18 +192,18 @@ describe('ListPosts Edge Cases', () => {
           title: 'Valid Post',
           date: '2024-01-01',
           summary: 'Valid summary',
-          thumbnail: '/test.jpg'
-        }
+          thumbnail: '/test.jpg',
+        },
       },
       {
-        postSlug: 'invalid-post'
+        postSlug: 'invalid-post',
       },
       {
         postSlug: 'partial-post',
         postMetaData: {
-          title: 'Partial Post'
-        }
-      }
+          title: 'Partial Post',
+        },
+      },
     ]
     render(<ListPosts posts={mixedPosts} />)
     expect(screen.getByText('Valid Post')).toBeInTheDocument()

@@ -23,7 +23,7 @@ function Footer({ latestPosts = [] }) {
           {/* Column 1: Services */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <SectionErrorBoundary name="ServicesList" errorMessage="Services list failed to load">
+              <SectionErrorBoundary name='ServicesList' errorMessage='Services list failed to load'>
                 <ServicesList />
               </SectionErrorBoundary>
             </div>
@@ -32,7 +32,7 @@ function Footer({ latestPosts = [] }) {
           {/* Column 2: Latest Thinking */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <SectionErrorBoundary name="LatestPosts" errorMessage="Latest posts failed to load">
+              <SectionErrorBoundary name='LatestPosts' errorMessage='Latest posts failed to load'>
                 <LatestPosts posts={latestPosts} limit={2} />
               </SectionErrorBoundary>
             </div>
@@ -41,7 +41,7 @@ function Footer({ latestPosts = [] }) {
           {/* Column 3: Work With Me */}
           <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
             <div className='border-white w-full border-b-2 md:border-b-0 mx-4 py-6'>
-              <SectionErrorBoundary name="WorkWithMe" errorMessage="Contact section failed to load">
+              <SectionErrorBoundary name='WorkWithMe' errorMessage='Contact section failed to load'>
                 <WorkWithMe />
               </SectionErrorBoundary>
             </div>
@@ -52,17 +52,22 @@ function Footer({ latestPosts = [] }) {
         <div className='flex flex-wrap'>
           <div className='w-full copyright mx-4 py-6'>
             <p className='text-center text-white text-sm'>
-              {footerCopyrightInfo.title} <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' /> {footerCopyrightInfo.date} | <Link href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>{footerCopyrightInfo.url}</Link>
+              {footerCopyrightInfo.title}{' '}
+              <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' />{' '}
+              {footerCopyrightInfo.date} |{' '}
+              <Link href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>
+                {footerCopyrightInfo.url}
+              </Link>
             </p>
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
 Footer.propTypes = {
-  latestPosts: PropTypes.array
+  latestPosts: PropTypes.array,
 }
 
 export default Footer

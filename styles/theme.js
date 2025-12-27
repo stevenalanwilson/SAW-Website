@@ -3,7 +3,7 @@ const theme = {
     primaryFont: '"Roboto", sans-serif',
     secondryFont: '"Roboto Mono", monospace',
     baseFontSize: '1.000em',
-    baseLineHeight: '1.75'
+    baseLineHeight: '1.75',
   },
   colours: {
     black: '#000000',
@@ -22,12 +22,12 @@ const theme = {
     transBlack: 'rgba(0, 0, 0, 0.6)',
     transBlackLight: 'rgba(0, 0, 0, 0.2)',
     transWhite: 'rgba(255, 255, 255, 0.5)',
-    transWhiteLight: 'rgba(255, 255, 255, 0.1)'
+    transWhiteLight: 'rgba(255, 255, 255, 0.1)',
   },
   spacing: {
     baseMargin: '1.000em',
-    basePadding: '1.000em'
-  }
+    basePadding: '1.000em',
+  },
 }
 
 export default theme

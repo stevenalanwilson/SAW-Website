@@ -6,7 +6,7 @@ const date = new Date()
 const footerCopyrightInfo = {
   title: siteConfig.owner.name,
   date: date.getFullYear(),
-  url: siteConfig.copyright.url
+  url: siteConfig.copyright.url,
 }
 
 export default footerCopyrightInfo

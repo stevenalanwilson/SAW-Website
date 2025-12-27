@@ -10,8 +10,8 @@ const mockPosts = [
       title: 'Test Post 1',
       summary: 'This is test post 1 summary',
       date: '2024-01-15',
-      thumbnail: '/images/test1.jpg'
-    }
+      thumbnail: '/images/test1.jpg',
+    },
   },
   {
     postSlug: 'test-post-2',
@@ -19,9 +19,9 @@ const mockPosts = [
       title: 'Test Post 2',
       summary: 'This is test post 2 summary',
       date: '2024-02-20',
-      thumbnail: '/images/test2.jpg'
-    }
-  }
+      thumbnail: '/images/test2.jpg',
+    },
+  },
 ]
 
 describe('ListPosts Component', () => {
@@ -48,8 +48,8 @@ describe('ListPosts Component', () => {
     const links = screen.getAllByRole('link')
 
     // Each post should have multiple links (title and read more)
-    const post1Links = links.filter(link => link.getAttribute('href') === '/post/test-post-1')
-    const post2Links = links.filter(link => link.getAttribute('href') === '/post/test-post-2')
+    const post1Links = links.filter((link) => link.getAttribute('href') === '/post/test-post-1')
+    const post2Links = links.filter((link) => link.getAttribute('href') === '/post/test-post-2')
 
     expect(post1Links.length).toBeGreaterThan(0)
     expect(post2Links.length).toBeGreaterThan(0)

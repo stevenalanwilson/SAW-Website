@@ -19,17 +19,24 @@ describe('SectionHeading Component', () => {
   it('applies default styling classes', () => {
     render(<SectionHeading>Test Heading</SectionHeading>)
     const heading = screen.getByText('Test Heading')
-    expect(heading).toHaveClass('text-3xl', 'font-bold', 'mb-6', 'border-b-2', 'border-black', 'pb-2')
+    expect(heading).toHaveClass(
+      'text-3xl',
+      'font-bold',
+      'mb-6',
+      'border-b-2',
+      'border-black',
+      'pb-2'
+    )
   })
 
   it('applies custom className', () => {
-    render(<SectionHeading className="custom-class">Test Heading</SectionHeading>)
+    render(<SectionHeading className='custom-class'>Test Heading</SectionHeading>)
     const heading = screen.getByText('Test Heading')
     expect(heading).toHaveClass('custom-class')
   })
 
   it('preserves default classes when custom className is added', () => {
-    render(<SectionHeading className="custom-class">Test Heading</SectionHeading>)
+    render(<SectionHeading className='custom-class'>Test Heading</SectionHeading>)
     const heading = screen.getByText('Test Heading')
     expect(heading).toHaveClass('text-3xl', 'font-bold', 'custom-class')
   })

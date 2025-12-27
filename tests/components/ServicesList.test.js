@@ -7,20 +7,20 @@ import ServicesList from '../../components/ServicesList'
 jest.mock('../../config/footerServices', () => [
   {
     title: 'Technical Leadership Coaching',
-    description: 'Develop effective technical leadership skills'
+    description: 'Develop effective technical leadership skills',
   },
   {
     title: 'Team Building & Culture',
-    description: 'Build resilient, high-performing teams'
+    description: 'Build resilient, high-performing teams',
   },
   {
     title: 'Digital Transformation',
-    description: 'Navigate organizational change successfully'
+    description: 'Navigate organizational change successfully',
   },
   {
     title: 'Professional Development',
-    description: 'Advance your career in technology'
-  }
+    description: 'Advance your career in technology',
+  },
 ])
 
 describe('ServicesList Component', () => {
@@ -61,7 +61,7 @@ describe('ServicesList Component', () => {
   it('applies correct styling to service titles', () => {
     const { container } = render(<ServicesList />)
     const titles = container.querySelectorAll('h3')
-    titles.forEach(title => {
+    titles.forEach((title) => {
       expect(title).toHaveClass('text-white', 'font-semibold', 'mb-1')
     })
   })
@@ -69,7 +69,7 @@ describe('ServicesList Component', () => {
   it('applies correct styling to service descriptions', () => {
     const { container } = render(<ServicesList />)
     const descriptions = container.querySelectorAll('p')
-    descriptions.forEach(description => {
+    descriptions.forEach((description) => {
       expect(description).toHaveClass('text-gray-400', 'text-sm')
     })
   })

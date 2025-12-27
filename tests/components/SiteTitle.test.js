@@ -6,7 +6,9 @@ import SiteTitle from '../../components/SiteTitle'
 describe('SiteTitle Component', () => {
   it('renders site name', () => {
     render(<SiteTitle />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Steven Alan Wilson Limited')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Steven Alan Wilson Limited'
+    )
   })
 
   it('renders hero greeting and introduction', () => {
@@ -66,6 +68,12 @@ describe('SiteTitle Component', () => {
   it('company links have proper styling classes', () => {
     render(<SiteTitle />)
     const companyLink = screen.getByRole('link', { name: /Equal Experts/i })
-    expect(companyLink).toHaveClass('font-bold', 'underline', 'decoration-3', 'underline-offset-8', 'hover:no-underline')
+    expect(companyLink).toHaveClass(
+      'font-bold',
+      'underline',
+      'decoration-3',
+      'underline-offset-8',
+      'hover:no-underline'
+    )
   })
 })

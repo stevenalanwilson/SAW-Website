@@ -1,9 +1,7 @@
 {
   "version": 2,
-  "env": {
-  }, 
+  "env": {},
   "build": {
-    "env": {
-    }
+    "env": {}
   }
 }

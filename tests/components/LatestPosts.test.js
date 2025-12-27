@@ -10,25 +10,25 @@ describe('LatestPosts Component', () => {
       postMetaData: {
         title: 'First Test Post',
         summary: 'This is the first test post summary',
-        date: '2024-01-15'
-      }
+        date: '2024-01-15',
+      },
     },
     {
       postSlug: 'test-post-2',
       postMetaData: {
         title: 'Second Test Post',
         summary: 'This is the second test post summary',
-        date: '2024-01-20'
-      }
+        date: '2024-01-20',
+      },
     },
     {
       postSlug: 'test-post-3',
       postMetaData: {
         title: 'Third Test Post',
         summary: 'This is the third test post summary',
-        date: '2024-01-25'
-      }
-    }
+        date: '2024-01-25',
+      },
+    },
   ]
 
   it('renders the Latest Thinking heading', () => {
@@ -56,8 +56,14 @@ describe('LatestPosts Component', () => {
 
   it('links to correct post URLs', () => {
     render(<LatestPosts posts={mockPosts} />)
-    expect(screen.getByRole('link', { name: 'First Test Post' })).toHaveAttribute('href', '/post/test-post-1')
-    expect(screen.getByRole('link', { name: 'Second Test Post' })).toHaveAttribute('href', '/post/test-post-2')
+    expect(screen.getByRole('link', { name: 'First Test Post' })).toHaveAttribute(
+      'href',
+      '/post/test-post-1'
+    )
+    expect(screen.getByRole('link', { name: 'Second Test Post' })).toHaveAttribute(
+      'href',
+      '/post/test-post-2'
+    )
   })
 
   it('respects the limit prop', () => {
@@ -84,9 +90,9 @@ describe('LatestPosts Component', () => {
         postSlug: 'no-date-post',
         postMetaData: {
           title: 'Post Without Date',
-          summary: 'Summary without date'
-        }
-      }
+          summary: 'Summary without date',
+        },
+      },
     ]
     render(<LatestPosts posts={postsWithoutDates} />)
     expect(screen.getByText('Post Without Date')).toBeInTheDocument()
@@ -96,7 +102,7 @@ describe('LatestPosts Component', () => {
   it('applies underline hover effect to links', () => {
     const { container } = render(<LatestPosts posts={mockPosts} />)
     const links = container.querySelectorAll('a')
-    links.forEach(link => {
+    links.forEach((link) => {
       expect(link).toHaveClass('hover:underline')
     })
   })

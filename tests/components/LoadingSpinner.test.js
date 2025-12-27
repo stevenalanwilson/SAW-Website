@@ -10,18 +10,25 @@ describe('LoadingSpinner Component', () => {
   })
 
   it('renders with custom message', () => {
-    render(<LoadingSpinner message="Loading post..." />)
+    render(<LoadingSpinner message='Loading post...' />)
     expect(screen.getByText('Loading post...')).toBeInTheDocument()
   })
 
   it('applies default styling', () => {
     const { container } = render(<LoadingSpinner />)
     const wrapper = container.querySelector('.fixed')
-    expect(wrapper).toHaveClass('inset-0', 'flex', 'items-center', 'justify-center', 'bg-gray-50', 'z-50')
+    expect(wrapper).toHaveClass(
+      'inset-0',
+      'flex',
+      'items-center',
+      'justify-center',
+      'bg-gray-50',
+      'z-50'
+    )
   })
 
   it('applies custom className', () => {
-    const { container } = render(<LoadingSpinner className="custom-class" />)
+    const { container } = render(<LoadingSpinner className='custom-class' />)
     const wrapper = container.querySelector('.fixed')
     expect(wrapper).toHaveClass('custom-class')
   })
@@ -34,7 +41,7 @@ describe('LoadingSpinner Component', () => {
   })
 
   it('renders message with correct styling', () => {
-    render(<LoadingSpinner message="Test message" />)
+    render(<LoadingSpinner message='Test message' />)
     const message = screen.getByText('Test message')
     expect(message).toHaveClass('text-xl', 'text-gray-700')
   })

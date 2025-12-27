@@ -3,7 +3,7 @@ import { useState } from 'react'
 import siteConfig from '../config/siteConfig'
 import NavigationMenu from './NavigationMenu'
 
-function SiteHeader () {
+function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = siteConfig.navigation.main
   const { title, name } = siteConfig.site
@@ -17,8 +17,12 @@ function SiteHeader () {
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
           <div className='w-full lg:w-1/2 p-0 lg:p-2 mx-4'>
-            <Link href='/' title={name} className='text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:underline hover:no-underline lg:hover:underline transition-all'>
-                {title}
+            <Link
+              href='/'
+              title={name}
+              className='text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white hover:underline hover:no-underline lg:hover:underline transition-all'
+            >
+              {title}
             </Link>
           </div>
 
@@ -29,12 +33,7 @@ function SiteHeader () {
             aria-label='Toggle menu'
             aria-expanded={isMenuOpen}
           >
-            <svg
-              className='w-6 h-6'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
+            <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               {isMenuOpen ? (
                 <path
                   strokeLinecap='round'
@@ -73,7 +72,7 @@ function SiteHeader () {
         </div>
       </div>
     </header>
-  );
+  )
 }
 
 export default SiteHeader

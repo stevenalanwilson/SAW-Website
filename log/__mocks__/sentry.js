@@ -1,5 +1,5 @@
 const sentry = {
-  captureMessage: jest.fn()
+  captureMessage: jest.fn(),
 }
 sentry.captureMessage.mockReturnValueOnce('Error getting article content type.')
 

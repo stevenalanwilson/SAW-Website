@@ -32,7 +32,7 @@ describe('AuthorCard Component', () => {
   })
 
   it('applies custom className', () => {
-    const { container } = render(<AuthorCard className="custom-class" />)
+    const { container } = render(<AuthorCard className='custom-class' />)
     const card = container.firstChild
     expect(card).toHaveClass('custom-class')
   })
