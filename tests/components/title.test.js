@@ -16,11 +16,26 @@ describe('SiteTitle Component', () => {
 
   it('renders links to companies', () => {
     render(<SiteTitle />)
-    expect(screen.getByRole('link', { name: /Equal Experts/i })).toHaveAttribute('href', 'https://www.equalexperts.com')
-    expect(screen.getByRole('link', { name: /Aer Lingus/i })).toHaveAttribute('href', 'https://www.aerlingus.com')
-    expect(screen.getByRole('link', { name: /PUBLIC/i })).toHaveAttribute('href', 'https://www.public.io')
-    expect(screen.getByRole('link', { name: /Hackney Council/i })).toHaveAttribute('href', 'https://hackney.gov.uk')
-    expect(screen.getByRole('link', { name: /Ministry of Justice Digital/i })).toHaveAttribute('href', 'https://mojdigital.blog.gov.uk')
+    expect(screen.getByRole('link', { name: /Equal Experts/i })).toHaveAttribute(
+      'href',
+      'https://www.equalexperts.com'
+    )
+    expect(screen.getByRole('link', { name: /Aer Lingus/i })).toHaveAttribute(
+      'href',
+      'https://www.aerlingus.com'
+    )
+    expect(screen.getByRole('link', { name: /PUBLIC/i })).toHaveAttribute(
+      'href',
+      'https://www.public.io'
+    )
+    expect(screen.getByRole('link', { name: /Hackney Council/i })).toHaveAttribute(
+      'href',
+      'https://hackney.gov.uk'
+    )
+    expect(screen.getByRole('link', { name: /Ministry of Justice Digital/i })).toHaveAttribute(
+      'href',
+      'https://mojdigital.blog.gov.uk'
+    )
   })
 
   it('renders the h2 heading with correct text', () => {
@@ -44,7 +59,9 @@ describe('SiteTitle Component', () => {
 
   it('renders the previous roles description', () => {
     render(<SiteTitle />)
-    expect(screen.getByText(/Previously held key technical leadership roles at/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Previously held key technical leadership roles at/i)
+    ).toBeInTheDocument()
   })
 
   it('has correct styling classes on main heading', () => {

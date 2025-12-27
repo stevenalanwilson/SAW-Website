@@ -1,5 +1,5 @@
-import fs from 'fs';
-import markdownServive  from '../../services/getMarkdownService'
+import fs from 'fs'
+import markdownServive from '../../services/getMarkdownService'
 
 describe('createPostSlug', () => {
   test('returns the slug without the .md extension', () => {

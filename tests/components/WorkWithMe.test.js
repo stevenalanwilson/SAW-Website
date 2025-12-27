@@ -7,13 +7,13 @@ import WorkWithMe from '../../components/WorkWithMe'
 jest.mock('../../config/footerContactInfo', () => ({
   email: {
     user: 'hello',
-    domain: 'stevenalanwilson.com'
+    domain: 'stevenalanwilson.com',
   },
   linkedin: {
     title: 'Connect on LinkedIn',
-    link: 'https://www.linkedin.com/in/stevenalanwilson/'
+    link: 'https://www.linkedin.com/in/stevenalanwilson/',
   },
-  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham']
+  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],
 }))
 
 describe('WorkWithMe Component', () => {
@@ -68,7 +68,12 @@ describe('WorkWithMe Component', () => {
   it('applies correct styling to email button', () => {
     render(<WorkWithMe />)
     const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
-    expect(emailButton).toHaveClass('border', 'border-white', 'hover:bg-white', 'hover:text-gray-900')
+    expect(emailButton).toHaveClass(
+      'border',
+      'border-white',
+      'hover:bg-white',
+      'hover:text-gray-900'
+    )
   })
 
   it('constructs email from obfuscated parts', () => {
