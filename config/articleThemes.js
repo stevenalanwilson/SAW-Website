@@ -5,6 +5,15 @@
  * Available theme presets
  * Each theme defines colors for primary elements, accents, and backgrounds
  */
+/**
+ * Brand colors used across all themes
+ * These remain consistent regardless of light/dark theme
+ */
+export const brandColors = {
+  linkedin: '#0077B5', // Official LinkedIn blue
+  linkedinHover: '#005885', // Darker shade for hover
+}
+
 export const articleThemes = {
   light: {
     name: 'Light',

@@ -62,7 +62,7 @@ describe('WorkWithMe Component', () => {
   it('applies correct styling to LinkedIn button', () => {
     render(<WorkWithMe />)
     const linkedInButton = screen.getByRole('link', { name: /Connect on LinkedIn/i })
-    expect(linkedInButton).toHaveClass('bg-blue-600', 'hover:bg-blue-700')
+    expect(linkedInButton).toHaveClass('bg-brand-linkedin', 'hover:bg-brand-linkedin-hover')
   })
 
   it('applies correct styling to email button', () => {

@@ -51,7 +51,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
             href={footerContactInfo.linkedin.link}
             target='_blank'
             rel='noopener noreferrer'
-            className='block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 text-center transition-colors'
+            className='block bg-brand-linkedin hover:bg-brand-linkedin-hover text-white font-semibold py-3 px-4 text-center transition-colors'
             aria-label={`${footerContactInfo.linkedin.title} (opens in new tab)`}
           >
             <FontAwesomeIcon icon={faLinkedin} className='mr-2' aria-hidden='true' />

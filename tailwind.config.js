@@ -14,6 +14,9 @@ module.exports = {
         'theme-accent': 'var(--theme-accent, #666666)',
         'theme-bg': 'var(--theme-bg, #ffffff)',
         'theme-text': 'var(--theme-text, #000000)',
+        // Brand colors (consistent across all themes)
+        'brand-linkedin': '#0077B5',
+        'brand-linkedin-hover': '#005885',
       },
       borderColor: {
         'theme-primary': 'var(--theme-primary, #000000)',
