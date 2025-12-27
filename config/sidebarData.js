@@ -2,7 +2,7 @@ import siteConfig from './siteConfig'
 
 // Legacy export for backward compatibility
 // This file now imports from siteConfig (single source of truth)
-module.exports = {
+const sidebarData = {
   contactInfo: {
     location: siteConfig.contact.location,
     links: [
@@ -16,3 +16,5 @@ module.exports = {
     stats: siteConfig.stats.items,
   },
 }
+
+export default sidebarData

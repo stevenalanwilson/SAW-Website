@@ -1,33 +1,11 @@
-# Dependencies
-node_modules
-
-# Build outputs
-.next
-out
-dist
-build
-
-# Test coverage
-coverage
-
-# Cache directories
-.cache
-
-# Environment files
-.env
-.env.*
-
-# Generated files
-public/sitemap.xml
-
-# IDE
-.vscode
-.idea
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
+node_modules/
+.next/
+out/
+coverage/
+testResults/
+public/
+.vercel/
+.swc/
+*.config.js
+*.config.mjs
+scripts/
