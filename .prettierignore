@@ -1,0 +1,36 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Build output
+.next
+out
+build
+dist
+
+# Cache
+.cache
+.turbo
+
+# Test coverage
+coverage
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Public assets
+public
+
+# Generated files
+*.min.js
+*.min.css

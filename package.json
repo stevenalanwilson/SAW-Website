@@ -75,6 +75,7 @@
     "lint-staged": "^16.2.7",
     "nock": "^13.5.4",
     "postcss-loader": "^8.1.1",
+    "prettier": "^3.7.4",
     "react-test-renderer": "^19.2.3",
     "regenerator-runtime": "^0.14.1"
   },
@@ -96,6 +97,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
+      "prettier --write",
       "eslint --fix",
       "jest --bail --findRelatedTests --passWithNoTests"
     ]
