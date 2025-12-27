@@ -29,6 +29,7 @@ export default function ListPosts({ posts = [] }) {
               <Link
                 href={`/post/${postSlug}`}
                 className='underline decoration-3 underline-offset-8 hover:no-underline'
+                title={title}
               >
                 {title}
               </Link>
@@ -38,7 +39,7 @@ export default function ListPosts({ posts = [] }) {
                 {dayjs(date).isValid() ? dayjs(date).format('D MMMM YYYY') : 'Invalid Date'}
               </time>
             </p>
-            <Link href={`/post/${postSlug}`} className='block mb-5'>
+            <Link href={`/post/${postSlug}`} className='block mb-5' title={title}>
               <Image width={1000} height={240} alt={title} src={thumbnail} className='w-full' />
             </Link>
             <p className='text-xl mb-4 w-5/6 leading-relaxed'>{summary}</p>

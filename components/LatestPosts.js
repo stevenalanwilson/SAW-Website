@@ -4,11 +4,17 @@ import PropTypes from 'prop-types'
 function LatestPosts({ posts = [], limit = 2 }) {
   return (
     <div>
-      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 text-white pb-4 mb-4'>Latest Thinking</h2>
+      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 text-white pb-4 mb-4'>
+        Latest Thinking
+      </h2>
       <ul className='menu'>
-        {posts.slice(0, limit).map((post, index) => (
-          <li key={index} className='mb-4 pb-4 border-b border-gray-700 last:border-b-0'>
-            <Link href={`/post/${post.postSlug}`} className='text-white hover:underline transition-all'>
+        {posts.slice(0, limit).map((post) => (
+          <li key={post.postSlug} className='mb-4 pb-4 border-b border-gray-700 last:border-b-0'>
+            <Link
+              href={`/post/${post.postSlug}`}
+              className='text-white hover:underline transition-all'
+              title={post.postMetaData.title}
+            >
               <h3 className='font-semibold mb-1'>{post.postMetaData.title}</h3>
             </Link>
             <p className='text-gray-400 text-sm'>{post.postMetaData.summary}</p>
@@ -17,15 +23,13 @@ function LatestPosts({ posts = [], limit = 2 }) {
                 {new Date(post.postMetaData.date).toLocaleDateString('en-GB', {
                   year: 'numeric',
                   month: 'long',
-                  day: 'numeric'
+                  day: 'numeric',
                 })}
               </p>
             )}
           </li>
         ))}
-        {posts.length === 0 && (
-          <li className='text-gray-400 text-sm'>No posts available yet</li>
-        )}
+        {posts.length === 0 && <li className='text-gray-400 text-sm'>No posts available yet</li>}
       </ul>
     </div>
   )
@@ -38,11 +42,11 @@ LatestPosts.propTypes = {
       postMetaData: PropTypes.shape({
         title: PropTypes.string.isRequired,
         summary: PropTypes.string.isRequired,
-        date: PropTypes.string
-      }).isRequired
+        date: PropTypes.string,
+      }).isRequired,
     })
   ),
-  limit: PropTypes.number
+  limit: PropTypes.number,
 }
 
 export default LatestPosts
