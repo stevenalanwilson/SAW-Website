@@ -1,18 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Inter } from 'next/font/google'
 import ErrorBoundary from '../components/ErrorBoundary'
 
 import '../public/static/screen.scss'
 
 const LANG = 'en'
-
-// Configure Inter font with optimal settings
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -21,9 +13,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ErrorBoundary>
-      <div className={inter.variable}>
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </ErrorBoundary>
   )
 }
