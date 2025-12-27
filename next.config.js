@@ -1,6 +1,9 @@
 require('dotenv').config()
 
 const { withSentryConfig } = require('@sentry/nextjs')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const nextConfig = {
   // Enable React strict mode for better development warnings
@@ -28,21 +31,21 @@ const nextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            value: 'on',
           },
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
-          }
-        ]
+            value: 'origin-when-cross-origin',
+          },
+        ],
       },
       {
         // Cache static assets (images, fonts, etc.) for 1 year
@@ -50,9 +53,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         // Cache Next.js static files for 1 year
@@ -60,9 +63,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         // Cache optimized images for 1 year
@@ -70,9 +73,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         // Cache blog posts for 1 hour, revalidate in background
@@ -80,9 +83,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400'
-          }
-        ]
+            value: 'public, max-age=3600, stale-while-revalidate=86400',
+          },
+        ],
       },
       {
         // Cache homepage for 5 minutes, revalidate in background
@@ -90,9 +93,9 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=300, stale-while-revalidate=3600'
-          }
-        ]
+            value: 'public, max-age=300, stale-while-revalidate=3600',
+          },
+        ],
       },
       {
         // Cache other pages for 10 minutes, revalidate in background
@@ -100,12 +103,12 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=600, stale-while-revalidate=3600'
-          }
-        ]
-      }
+            value: 'public, max-age=600, stale-while-revalidate=3600',
+          },
+        ],
+      },
     ]
-  }
+  },
 }
 
 // Sentry configuration options
@@ -116,7 +119,15 @@ const sentryWebpackPluginOptions = {
   project: process.env.SENTRY_PROJECT,
 }
 
+// Compose configuration with bundle analyzer and Sentry
+let config = nextConfig
+
+// Wrap with bundle analyzer
+config = withBundleAnalyzer(config)
+
 // Only wrap with Sentry if DSN is configured
-module.exports = process.env.NEXT_PUBLIC_SENTRY_DSN
-  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
-  : nextConfig
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  config = withSentryConfig(config, sentryWebpackPluginOptions)
+}
+
+module.exports = config

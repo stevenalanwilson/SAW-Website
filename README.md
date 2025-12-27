@@ -51,17 +51,105 @@ SENTRY_AUTH_TOKEN=your_auth_token
 
 ## Scripts
 
+### Development
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
-- `npm test` - Run tests
+
+### Testing
+- `npm test` - Run all tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:upSnap` - Update test snapshots
+
+### Code Quality
+- `npm run lint` - Check for linting issues
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run format` - Format all code with Prettier
+- `npm run format:check` - Check if code is formatted
+
+### Performance & Analysis
+- `npm run analyze` - Analyze bundle size with interactive visualizations
 - `npm run sitemap` - Generate sitemap
 
 ## Testing
 
-Run the test suite:
+This project has comprehensive test coverage with **262 tests** across components, services, and edge cases.
+
+### Running Tests
+
 ```bash
+# Run all tests
 npm test
+
+# Run tests in watch mode (reruns on file changes)
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Update snapshots
+npm run test:upSnap
+```
+
+### Test Structure
+
+- **Component Tests** - Unit tests for all React components
+- **Edge Case Tests** - Tests for null/undefined/empty values
+- **Service Tests** - Tests for utility functions and services
+- **Snapshot Tests** - UI regression testing
+
+### Test Statistics
+- **262 total tests** - All passing
+- **31 test suites** - Organized by component/service
+- **4 snapshot tests** - UI consistency checks
+
+## Code Quality & Linting
+
+### ESLint Configuration
+
+Enhanced ESLint setup with:
+- **Accessibility rules** (jsx-a11y) - Catch accessibility issues early
+- **React best practices** - PropTypes validation, self-closing components
+- **Code quality rules** - Unused variables, prefer const, no var
+- **Next.js specific rules** - Image optimization, security best practices
+
+### Running Linters
+
+```bash
+# Check for issues
+npm run lint
+
+# Auto-fix issues
+npm run lint:fix
+```
+
+### Current Status
+- ✅ **0 errors**
+- ⚠️ **11 warnings** (acceptable - mostly dynamic props and test files)
+- 76% reduction in warnings from enhanced linting rules
+
+## Code Formatting
+
+### Prettier Configuration
+
+Automatic code formatting with Prettier ensures consistent style across the entire codebase.
+
+**Configuration:**
+- Single quotes for strings
+- No semicolons
+- 2 space indentation
+- 100 character line width
+- Trailing commas (ES5)
+
+### Formatting Commands
+
+```bash
+# Format all files
+npm run format
+
+# Check formatting without making changes
+npm run format:check
 ```
 
 ## Pre-commit Hooks
@@ -73,8 +161,9 @@ This project uses **Husky** and **lint-staged** to automatically run quality che
 When you run `git commit`, the following checks run automatically on staged files:
 
 **For JavaScript/JSX files (`.js`, `.jsx`):**
-1. **ESLint** - Automatically fixes linting issues
-2. **Jest** - Runs tests related to the changed files
+1. **Prettier** - Automatically formats code
+2. **ESLint** - Automatically fixes linting issues
+3. **Jest** - Runs tests related to the changed files
 
 ### How It Works
 
@@ -152,6 +241,81 @@ If you need to clear the cache after a deployment:
 1. Static assets auto-bust via Next.js build hash
 2. Pages refresh automatically after `max-age` expires
 3. Force refresh: Hold Shift and click reload in browser
+
+## Bundle Analysis & Performance
+
+### Analyzing Your Bundle
+
+This project includes **@next/bundle-analyzer** for visualizing bundle composition and identifying optimization opportunities.
+
+```bash
+# Generate interactive bundle visualizations
+npm run analyze
+```
+
+This will:
+1. Build your production bundle
+2. Generate three interactive HTML reports in `.next/analyze/`:
+   - `client.html` - Client-side JavaScript bundle breakdown
+   - `server.html` - Server-side bundle analysis
+   - `edge.html` - Edge runtime bundle analysis
+3. Automatically open the reports in your browser
+
+### Current Bundle Performance
+
+**Shared Bundles:**
+- Framework: 59.7 kB (React 19 + Next.js 15)
+- Main: 36.7 kB (Application code)
+- Other shared: 9.05 kB
+- **Total shared: 105 kB**
+
+**Page Bundles (including shared):**
+- Homepage: 139 kB (4.93 kB page-specific)
+- About: 132 kB (2.06 kB page-specific)
+- Blog posts: 170 kB (2.45 kB page-specific)
+- Components: 171 kB (3.67 kB page-specific)
+
+### Optimization Insights
+
+✅ **Excellent code splitting** - Page-specific bundles are very small (< 5 kB)
+✅ **Good bundle sizes** - Total initial load is reasonable (130-171 kB)
+✅ **Shared code extraction** - Common code properly extracted to shared bundles
+
+**Future optimization opportunities:**
+- Dynamic imports for heavy page-specific components
+- Tree-shake unused FontAwesome icons
+- Optimize markdown parser imports
+
+## Type Safety
+
+### PropTypes Coverage
+
+All components include **PropTypes** for runtime type validation in development:
+
+- ✅ **25 components** with PropTypes
+- ✅ **4 page components** with PropTypes
+- ✅ **Comprehensive validation** including nested object shapes
+
+**Benefits:**
+- Catch prop type errors in development
+- Self-documenting component APIs
+- Better IDE autocomplete
+- Safer refactoring
+
+### Example PropTypes
+
+```javascript
+Component.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      url: PropTypes.string
+    })
+  ),
+  onClick: PropTypes.func
+}
+```
 
 ## Site Configuration - Single Source of Truth
 
