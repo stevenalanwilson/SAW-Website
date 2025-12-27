@@ -7,6 +7,13 @@ function SiteTitle() {
   const { position, company, companyUrl, location } = siteConfig.content.hero.currentRole
   const previousRoles = siteConfig.content.hero.previousRoles
 
+  // Helper function to format the separator between company names
+  const getCompanySeparator = (index, total) => {
+    if (index === 0) return ''
+    if (index === total - 1) return ', and the '
+    return ', '
+  }
+
   return (
     <section>
       <div className='flex flex-wrap'>
@@ -29,8 +36,7 @@ function SiteTitle() {
               Currently a <strong>{position} at <Link href={companyUrl} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{company}</Link></strong> in {location}.
               Previously held key technical leadership roles at {previousRoles.map((role, index) => (
                 <span key={index}>
-                  {index > 0 && index === previousRoles.length - 1 && ', and the '}
-                  {index > 0 && index < previousRoles.length - 1 && ', '}
+                  {getCompanySeparator(index, previousRoles.length)}
                   <Link href={role.url} className='font-bold underline decoration-3 underline-offset-8 hover:no-underline'>{role.company}</Link>
                 </span>
               ))}.

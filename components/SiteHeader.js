@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import siteConfig from '../config/siteConfig'
+import NavigationMenu from './NavigationMenu'
 
 function SiteHeader () {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -55,17 +56,7 @@ function SiteHeader () {
           {/* Desktop menu - hidden on mobile, visible on lg+ */}
           <div className='hidden lg:block w-full lg:w-1/2 p-2'>
             <nav className='main-menu' aria-label='Main navigation'>
-              <ul className='flex justify-end flex-wrap gap-2'>
-                {menuItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className='text-white py-4 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg'>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <NavigationMenu items={menuItems} />
             </nav>
           </div>
         </div>
@@ -73,19 +64,11 @@ function SiteHeader () {
         {/* Mobile menu - shown when burger menu is clicked */}
         <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
           <nav className='mobile-menu' aria-label='Mobile navigation'>
-            <ul className='flex flex-col gap-2 py-4'>
-              {menuItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className='block text-white py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <NavigationMenu
+              items={menuItems}
+              mobile={true}
+              onItemClick={() => setIsMenuOpen(false)}
+            />
           </nav>
         </div>
       </div>
