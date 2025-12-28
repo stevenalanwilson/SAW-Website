@@ -363,12 +363,14 @@ This application implements multiple layers of security to protect against commo
 ### Security Headers
 
 **HTTP Strict Transport Security (HSTS)**
+
 - Forces browsers to use HTTPS connections only
 - Prevents protocol downgrade attacks
 - Applies to all subdomains for 1 year
 - Header: `Strict-Transport-Security: max-age=31536000; includeSubDomains`
 
 **Content Security Policy (CSP)**
+
 - Prevents XSS attacks by controlling which resources can be loaded
 - Restricts script execution to trusted sources
 - Blocks inline scripts except where explicitly allowed
@@ -382,6 +384,7 @@ This application implements multiple layers of security to protect against commo
   - `upgrade-insecure-requests` - Automatically upgrades HTTP to HTTPS
 
 **Permissions Policy**
+
 - Restricts browser features to prevent abuse
 - Disabled features:
   - `camera=()` - No camera access
@@ -390,6 +393,7 @@ This application implements multiple layers of security to protect against commo
   - `interest-cohort=()` - Opts out of FLoC tracking
 
 **Additional Security Headers**
+
 - `X-Frame-Options: SAMEORIGIN` - Prevents clickjacking attacks
 - `X-Content-Type-Options: nosniff` - Prevents MIME-type sniffing
 - `Referrer-Policy: origin-when-cross-origin` - Controls referrer information
@@ -398,26 +402,31 @@ This application implements multiple layers of security to protect against commo
 ### Application Security Features
 
 **Input Validation & Sanitization**
+
 - All user inputs validated with `validator` library
 - Slug validation with regex whitelist: `/^[a-zA-Z0-9_-]+$/`
 - HTML escaping to prevent XSS attacks
 
 **Path Traversal Protection**
+
 - Markdown file paths validated against allowed directory
 - Prevents unauthorized file access
 - See `services/getMarkdownService.js:27-38`
 
 **Email Obfuscation**
+
 - Email addresses split into user/domain parts
 - Assembled at runtime to prevent bot scraping
 - See `config/siteConfig.js:8-11`
 
 **Dependency Security**
+
 - CodeQL scanning via GitHub Actions (weekly)
 - Automated vulnerability detection
 - No known security issues in dependencies
 
 **Environment Variable Protection**
+
 - `.env` files in `.gitignore`
 - `.env.example` provided as template
 - Sensitive keys never committed to repository
