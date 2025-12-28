@@ -3,25 +3,30 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import ServicesList from '../../components/features/ServicesList'
 
-// Mock the footerServices config
-jest.mock('../../config/footerServices', () => [
-  {
-    title: 'Technical Leadership Coaching',
-    description: 'Develop effective technical leadership skills',
+// Mock the siteConfig
+jest.mock('../../config/siteConfig', () => ({
+  __esModule: true,
+  default: {
+    services: [
+      {
+        title: 'Technical Leadership Coaching',
+        description: 'Develop effective technical leadership skills',
+      },
+      {
+        title: 'Team Building & Culture',
+        description: 'Build resilient, high-performing teams',
+      },
+      {
+        title: 'Digital Transformation',
+        description: 'Navigate organizational change successfully',
+      },
+      {
+        title: 'Professional Development',
+        description: 'Advance your career in technology',
+      },
+    ],
   },
-  {
-    title: 'Team Building & Culture',
-    description: 'Build resilient, high-performing teams',
-  },
-  {
-    title: 'Digital Transformation',
-    description: 'Navigate organizational change successfully',
-  },
-  {
-    title: 'Professional Development',
-    description: 'Advance your career in technology',
-  },
-])
+}))
 
 describe('ServicesList Component', () => {
   it('renders the Services heading', () => {

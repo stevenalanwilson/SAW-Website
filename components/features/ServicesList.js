@@ -1,8 +1,8 @@
-import footerServices from '../../config/footerServices'
+import siteConfig from '../../config/siteConfig'
 
 /**
  * Services list component displaying available services with descriptions.
- * Loads service data from footer services configuration.
+ * Loads service data from site configuration.
  *
  * @returns {JSX.Element} Rendered services list
  */
@@ -13,7 +13,7 @@ export default function ServicesList() {
         Services
       </h2>
       <ul className='menu'>
-        {footerServices.map((service, index) => (
+        {siteConfig.services.map((service, index) => (
           <li key={index} className='mb-4 pb-4 border-b border-theme-accent last:border-b-0'>
             <h3 className='font-semibold mb-1 text-theme-bg'>{service.title}</h3>
             <p className='text-sm text-theme-accent'>{service.description}</p>
