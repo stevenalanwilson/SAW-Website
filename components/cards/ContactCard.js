@@ -70,11 +70,11 @@ export default function ContactCard({ variant = 'card', className = '' }) {
           {emailAddress && (
             <a
               href={`mailto:${emailAddress}`}
-              className='block border border-theme-bg text-theme-bg hover:bg-theme-bg hover:text-theme-primary py-3 px-4 text-center transition-colors'
+              className='block border border-theme-bg text-theme-bg hover:bg-theme-bg hover:text-theme-primary py-3 px-4 text-center transition-colors overflow-hidden'
               aria-label={`Send email to ${emailAddress}`}
             >
               <FontAwesomeIcon icon={faEnvelope} className='mr-2' aria-hidden='true' />
-              {emailAddress}
+              Send me an Email
             </a>
           )}
         </div>

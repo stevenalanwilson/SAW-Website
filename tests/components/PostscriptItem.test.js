@@ -94,6 +94,6 @@ describe('PostscriptItem Component', () => {
   it('root div has correct classes', () => {
     const { container } = render(<PostscriptItem {...mockProps} />)
     const rootDiv = container.firstChild
-    expect(rootDiv).toHaveClass('w-full', 'md:w-1/4', 'p-2', 'my-6', 'postscript-item')
+    expect(rootDiv).toHaveClass('w-full', 'lg:w-1/4', 'p-2', 'my-6', 'postscript-item')
   })
 })

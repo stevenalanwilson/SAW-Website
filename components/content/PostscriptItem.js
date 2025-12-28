@@ -13,7 +13,7 @@ import PropTypes from 'prop-types'
  */
 export default function PostscriptItem({ title, image, _caption, description }) {
   return (
-    <div className='w-full md:w-1/4 p-2 my-6 postscript-item'>
+    <div className='w-full lg:w-1/4 p-2 my-6 postscript-item'>
       <h1 className='heading-3 text-2xl lg:text-4xl border-b-2 border-theme-bg text-theme-bg pb-2 mb-6'>
         {title}
       </h1>

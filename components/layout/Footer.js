@@ -29,8 +29,8 @@ export default function Footer({ latestPosts = [] }) {
         {/* Three Column Layout */}
         <div className='flex flex-wrap'>
           {/* Column 1: Services */}
-          <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg md:border-b-0 mx-4 py-6'>
+          <div className='flex w-full lg:w-1/3 p-2'>
+            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='ServicesList' errorMessage='Services list failed to load'>
                 <ServicesList />
               </SectionErrorBoundary>
@@ -38,8 +38,8 @@ export default function Footer({ latestPosts = [] }) {
           </div>
 
           {/* Column 2: Latest Thinking */}
-          <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg md:border-b-0 mx-4 py-6'>
+          <div className='flex w-full lg:w-1/3 p-2'>
+            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='LatestPosts' errorMessage='Latest posts failed to load'>
                 <LatestPosts posts={latestPosts} limit={2} />
               </SectionErrorBoundary>
@@ -47,8 +47,8 @@ export default function Footer({ latestPosts = [] }) {
           </div>
 
           {/* Column 3: Work With Me */}
-          <div className='flex w-full md:w-1/2 lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg md:border-b-0 mx-4 py-6'>
+          <div className='flex w-full lg:w-1/3 p-2'>
+            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='WorkWithMe' errorMessage='Contact section failed to load'>
                 <WorkWithMe />
               </SectionErrorBoundary>

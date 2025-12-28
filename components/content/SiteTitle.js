@@ -28,7 +28,7 @@ export default function SiteTitle() {
         </div>
       </div>
       <div className='hidden lg:flex'>
-        <div className='flex flex-wrap w-full md:w-3/4'>
+        <div className='flex flex-wrap w-full lg:w-3/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
             <h2 className='heading-2 leading-tight text-4xl mr-40'>
               {greeting} <strong>{introduction}</strong> {description}
@@ -36,7 +36,7 @@ export default function SiteTitle() {
           </div>
         </div>
 
-        <div className='flex flex-wrap w-full md:w-1/4'>
+        <div className='flex flex-wrap w-full lg:w-1/4'>
           <div className='border-black border-b-4 pb-6 my-6 mx-4 flex'>
             <p className='text-xl'>
               Currently a{' '}

@@ -24,6 +24,9 @@ module.exports = {
         'theme-bg': 'var(--theme-bg, #ffffff)',
         'theme-text': 'var(--theme-text, #000000)',
       },
+      screens: {
+        xlg: '1366px',
+      },
     },
   },
   plugins: [],

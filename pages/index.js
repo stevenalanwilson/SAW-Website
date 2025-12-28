@@ -27,13 +27,13 @@ const index = (props) => {
         <main>
           <div className='container mx-auto'>
             <div className='flex flex-wrap'>
-              <div className='w-full md:w-3/4'>
+              <div className='w-full lg:w-3/4'>
                 <div className='mx-4 my-6'>
                   <ListPosts posts={props.posts} />
                 </div>
               </div>
 
-              <div className='w-full md:w-1/4'>
+              <div className='w-full lg:w-1/4'>
                 <div className='mx-4 my-6'>
                   <Sidebar />
                 </div>
