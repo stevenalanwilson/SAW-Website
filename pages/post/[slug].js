@@ -16,6 +16,7 @@ import Post from '../../components/content/Post'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
 import Sidebar from '../../components/layout/Sidebar'
 import AuthorCard from '../../components/cards/AuthorCard'
+import Breadcrumbs from '../../components/ui/Breadcrumbs'
 import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
 
 export async function getStaticPaths() {
@@ -69,6 +70,13 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
     '--theme-text': theme.text,
   }
 
+  // Create breadcrumb trail
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Articles', url: '/' },
+    { name: frontmatter.title, url: `/post/${slug}` },
+  ]
+
   return (
     <>
       <SEO
@@ -78,10 +86,16 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
         image={frontmatter.thumbnail || '/static/og-image.jpg'}
         type='article'
         publishedTime={frontmatter.date}
+        author={frontmatter.author}
+        keywords={frontmatter.tags || []}
+        breadcrumbs={breadcrumbs}
       />
       <Layout latestPosts={posts} themeStyles={themeStyles}>
         {/* CSS variables are set at Layout level */}
         <div className='container mx-auto'>
+          <div className='mx-4 mt-6 hidden lg:block'>
+            <Breadcrumbs items={breadcrumbs} />
+          </div>
           <PageHero
             title={frontmatter.title}
             subtitle={
@@ -107,12 +121,6 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
                       ))}
                     </div>
                   )}
-                  <Link
-                    href='/'
-                    className='inline-block font-semibold text-base hover:underline text-theme-primary'
-                  >
-                    ← Back to Posts
-                  </Link>
                 </div>
               </>
             }
