@@ -1,88 +1,274 @@
-# Saw-Front-End-App
+# Steven Alan Wilson - Personal Website
 
-The front end application for stevenalanwilson.com
+A high-performance, well-tested Next.js application for [stevenalanwilson.com](https://stevenalanwilson.com).
 
-## Getting Started
+[![Tests](https://img.shields.io/badge/tests-256%20passing-brightgreen)]() [![Coverage](https://img.shields.io/badge/coverage-comprehensive-brightgreen)]() [![Node](https://img.shields.io/badge/node-22.x-brightgreen)]() [![Next.js](https://img.shields.io/badge/next.js-16.1.1-black)]()
+
+---
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Architecture & Features](#architecture--features)
+- [Configuration](#configuration)
+- [Development](#development)
+- [Testing](#testing)
+- [Code Quality](#code-quality)
+- [Deployment](#deployment)
+- [Performance](#performance)
+- [Security](#security)
+- [Theming](#theming)
+- [Monorepo Setup](#monorepo-setup)
+
+---
+
+## Quick Start
 
 ### Prerequisites
 
-- Node.js 22.x
-- npm
+- **Node.js** 22.x or higher
+- **npm** (comes with Node.js)
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Copy `.env.example` to `.env.local` and configure environment variables
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/Saw-Limited.git
+cd Saw-Limited
 
-## Environment Variables
+# 2. Install dependencies
+npm install
 
-See `.env.example` for all available environment variables.
+# 3. Configure environment variables
+cp .env.example .env.local
+# Edit .env.local with your values
 
-### Required
-
-- `NEXT_PUBLIC_SITE_URL` - Your site URL (defaults to https://stevenalanwilson.com)
-
-### Optional - Sentry Error Tracking
-
-Sentry integration is optional. To enable error tracking:
-
-1. Create a free account at [sentry.io](https://sentry.io)
-2. Create a new Next.js project in Sentry
-3. Copy your DSN from Project Settings → Client Keys
-4. Add to your `.env.local`:
-   ```
-   NEXT_PUBLIC_SENTRY_DSN=your_dsn_here
-   NEXT_PUBLIC_SENTRY_ENVIRONMENT=production
-   ```
-
-For source map uploading (optional):
-
-```
-SENTRY_ORG=your_org
-SENTRY_PROJECT=your_project
-SENTRY_AUTH_TOKEN=your_auth_token
+# 4. Start development server
+npm run dev
 ```
 
-**Note:** The application works perfectly fine without Sentry configured. Error tracking is completely optional.
+Visit [http://localhost:3000](http://localhost:3000) to see your site.
 
-## Scripts
+### Environment Variables
 
-### Development
+**Required:**
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
+- `NEXT_PUBLIC_SITE_URL` - Your site URL (default: `https://stevenalanwilson.com`)
 
-### Testing
+**Optional (Sentry Error Tracking):**
 
-- `npm test` - Run all tests
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:coverage` - Run tests with coverage report
-- `npm run test:upSnap` - Update test snapshots
+- `NEXT_PUBLIC_SENTRY_DSN` - Sentry DSN for error tracking
+- `NEXT_PUBLIC_SENTRY_ENVIRONMENT` - Environment (e.g., `production`)
+- `SENTRY_ORG` - Sentry organization
+- `SENTRY_PROJECT` - Sentry project name
+- `SENTRY_AUTH_TOKEN` - Sentry auth token
 
-### Code Quality
+The application works perfectly without Sentry configured.
 
-- `npm run lint` - Check for linting issues
-- `npm run lint:fix` - Auto-fix linting issues
-- `npm run format` - Format all code with Prettier
-- `npm run format:check` - Check if code is formatted
+---
 
-### Performance & Analysis
+## Architecture & Features
 
-- `npm run analyze` - Analyze bundle size with interactive visualizations
-- `npm run sitemap` - Generate sitemap
+### Technology Stack
+
+**Core Framework:**
+
+- **Next.js 16.1.1** - React framework with SSG/SSR
+- **React 19.2.3** - Latest React with enhanced features
+- **Node.js 22.x** - Runtime environment
+
+**Styling:**
+
+- **Tailwind CSS 3.4.6** - Utility-first CSS framework
+- **CSS Custom Properties** - Dynamic theming system
+- **PostCSS** - CSS processing pipeline
+
+**Content Management:**
+
+- **Gray-matter** - YAML frontmatter parsing
+- **Unified/Remark/Rehype** - Markdown processing pipeline
+- **Security-hardened** - Slug validation and path traversal protection
+
+**Quality & Monitoring:**
+
+- **Jest 30.2.0** - Testing framework with 256 tests
+- **ESLint** - Code linting with accessibility rules
+- **Prettier** - Code formatting
+- **Vercel Analytics** - Performance monitoring
+- **Sentry** - Error tracking (optional)
+
+### Project Structure
+
+```
+Saw-Limited/
+├── components/          # React components
+│   ├── layout/         # Header, Footer, Sidebar, Layout
+│   ├── cards/          # Contact, Stats, Experience, Author
+│   ├── content/        # Post, ListPosts, PageHero
+│   ├── features/       # ExpertiseGrid, ServicesList
+│   ├── ui/             # SEO, NavigationMenu, Breadcrumbs
+│   └── error/          # ErrorBoundary
+├── config/             # Configuration files
+│   ├── siteConfig.js   # Single source of truth for site content
+│   ├── articleThemes.js # Theme system (light/dark)
+│   └── icons.js        # FontAwesome imports (tree-shakeable)
+├── pages/              # Next.js file-based routing
+│   ├── _app.js        # App wrapper
+│   ├── index.js       # Homepage
+│   ├── about.js       # About page
+│   ├── 404.js         # Custom 404
+│   └── post/[slug].js # Dynamic blog posts
+├── posts/              # Blog post markdown files
+├── public/             # Static assets
+│   ├── image/         # Images
+│   └── static/        # CSS, fonts, etc.
+├── services/           # Utility services
+│   └── getMarkdownService.js # Markdown loading
+├── tests/              # 256 tests (all passing)
+└── scripts/            # Build scripts
+    └── generate-sitemap.js
+```
+
+### Key Features
+
+- **Static Site Generation (SSG)** - Blazing fast page loads
+- **Dynamic Theming** - Light/dark themes per blog post
+- **Markdown Blog** - Write posts in markdown with frontmatter
+- **SEO Optimized** - Automatic sitemap, meta tags, Open Graph
+- **Fully Tested** - 256 tests with comprehensive coverage
+- **Type Safe** - JSDoc annotations for IntelliSense
+- **Security Hardened** - CSP, HSTS, input validation
+- **Performance Optimized** - Aggressive caching, code splitting
+- **Accessible** - WCAG compliant with a11y linting
+
+---
+
+## Configuration
+
+### Site Configuration - Single Source of Truth
+
+All site content is centralized in **`config/siteConfig.js`**. Update this file to change site-wide content.
+
+**Configuration Sections:**
+
+- `app` - Application metadata (version, environment)
+- `site` - Site metadata (name, title, URL, description)
+- `owner` - Owner information (name, title, experience)
+- `contact` - Contact details (phone, email, locations)
+- `social` - Social media links (LinkedIn, Twitter, Facebook)
+- `stats` - Professional statistics
+- `content` - Site content sections (hero, CTA, bio)
+- `expertise` - Expertise areas
+- `experience` - Work experience
+- `services` - Services offered
+- `navigation` - Menu items
+
+**Quick Updates:**
+
+```javascript
+// config/siteConfig.js
+
+// Update your job title
+owner: {
+  title: 'Your New Title'
+}
+
+// Update contact email
+contact: {
+  email: {
+    user: 'hello',
+    domain: 'yoursite.com'
+  }
+}
+
+// Add navigation menu items
+navigation: {
+  main: [
+    { label: 'Home', href: '/', title: 'Home' },
+    { label: 'New Page', href: '/new', title: 'New Page' }
+  ]
+}
+```
+
+Changes automatically propagate to all components using the config.
+
+---
+
+## Development
+
+### Available Scripts
+
+**Development:**
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm start            # Start production server
+```
+
+**Testing:**
+
+```bash
+npm test             # Run all tests
+npm run test:watch   # Run tests in watch mode
+npm run test:coverage # Generate coverage report
+npm run test:upSnap  # Update test snapshots
+```
+
+**Code Quality:**
+
+```bash
+npm run lint         # Check for linting issues
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Format all code with Prettier
+npm run format:check # Check if code is formatted
+```
+
+**Performance & Analysis:**
+
+```bash
+npm run analyze      # Analyze bundle size
+npm run sitemap      # Generate sitemap
+```
+
+### Local Development Workflow
+
+1. **Make changes** to components, pages, or config
+2. **Test locally** with `npm run dev`
+3. **Run tests** with `npm test`
+4. **Check linting** with `npm run lint`
+5. **Format code** with `npm run format`
+6. **Commit** - Pre-commit hooks run automatically
+7. **Push** - CI runs all quality checks
+
+### Pre-commit Hooks
+
+Automatic quality checks run on every commit using **Husky** and **lint-staged**:
+
+**On `git commit`, the following run automatically:**
+
+1. **Prettier** - Formats code
+2. **ESLint** - Fixes linting issues
+3. **Jest** - Runs tests for changed files
+
+If checks fail, the commit is blocked until issues are resolved.
+
+**Skip hooks (not recommended):**
+
+```bash
+git commit --no-verify -m "Emergency fix"
+```
+
+---
 
 ## Testing
 
-This project has comprehensive test coverage with **256 tests** across components, services, and edge cases.
+### Test Coverage
+
+- **256 tests** - All passing
+- **30 test suites** - Organized by component/service
+- **4 snapshot tests** - UI consistency checks
+- **Comprehensive coverage** - Components, services, edge cases
 
 ### Running Tests
 
@@ -107,46 +293,43 @@ npm run test:upSnap
 - **Service Tests** - Tests for utility functions and services
 - **Snapshot Tests** - UI regression testing
 
-### Test Statistics
+### Type Safety
 
-- **256 total tests** - All passing
-- **30 test suites** - Organized by component/service
-- **4 snapshot tests** - UI consistency checks
+**JSDoc Annotations:**
+All code includes comprehensive JSDoc annotations for type safety without TypeScript overhead.
 
-## Code Quality & Linting
+**Benefits:**
+
+- IntelliSense & autocomplete in VS Code
+- Inline documentation on hover
+- Type checking during development
+- No build step required
+
+**PropTypes:**
+All 25+ components include PropTypes for runtime validation in development.
+
+---
+
+## Code Quality
 
 ### ESLint Configuration
 
-Enhanced ESLint setup with:
+Enhanced linting with:
 
-- **Accessibility rules** (jsx-a11y) - Catch accessibility issues early
-- **React best practices** - PropTypes validation, self-closing components
-- **Code quality rules** - Unused variables, prefer const, no var
-- **Next.js specific rules** - Image optimization, security best practices
+- **Accessibility rules** (jsx-a11y)
+- **React best practices** - PropTypes, self-closing components
+- **Code quality rules** - No unused variables, prefer const
+- **Next.js specific rules** - Image optimization, security
 
-### Running Linters
+**Current Status:**
 
-```bash
-# Check for issues
-npm run lint
-
-# Auto-fix issues
-npm run lint:fix
-```
-
-### Current Status
-
-- ✅ **0 errors**
-- ⚠️ **11 warnings** (acceptable - mostly dynamic props and test files)
-- 76% reduction in warnings from enhanced linting rules
-
-## Code Formatting
+- 0 errors
+- 11 warnings (acceptable - mostly dynamic props and test files)
+- 76% reduction in warnings from enhanced rules
 
 ### Prettier Configuration
 
-Automatic code formatting with Prettier ensures consistent style across the entire codebase.
-
-**Configuration:**
+Automatic code formatting ensures consistency:
 
 - Single quotes for strings
 - No semicolons
@@ -154,296 +337,202 @@ Automatic code formatting with Prettier ensures consistent style across the enti
 - 100 character line width
 - Trailing commas (ES5)
 
-### Formatting Commands
-
-```bash
-# Format all files
-npm run format
-
-# Check formatting without making changes
-npm run format:check
-```
-
-## Type Safety with JSDoc
-
-This project uses **JSDoc annotations** to provide type safety and improve developer experience without the overhead of TypeScript. JSDoc enables IDE autocomplete, inline documentation, and compile-time type checking in compatible editors.
-
-### Benefits
-
-✅ **IntelliSense & Autocomplete** - VS Code and other IDEs provide better suggestions
-✅ **Inline Documentation** - Hover over functions to see parameters and return types
-✅ **Type Safety** - Catch type errors during development
-✅ **No Build Step** - Unlike TypeScript, no compilation required
-✅ **Self-Documenting Code** - Function signatures are clear and explicit
-
-### Coverage
-
-All code has comprehensive JSDoc annotations:
-
-- ✅ **25+ React Components** - Full prop type documentation
-- ✅ **Services & Utilities** - Function signatures with examples
-- ✅ **Configuration Files** - Type definitions for config objects
-- ✅ **Complex Types** - Custom `@typedef` declarations for data structures
-
-### Example
-
-```javascript
-/**
- * Contact card component displaying contact information with different visual variants.
- * Shows operating areas, LinkedIn profile, and email contact methods.
- *
- * @param {Object} props - Component props
- * @param {'card' | 'inline'} [props.variant='card'] - Visual variant of the contact card
- * @param {string} [props.className=''] - Additional CSS classes to apply
- * @returns {JSX.Element} Rendered contact card component
- */
-export default function ContactCard({ variant = 'card', className = '' }) {
-  // Component implementation...
-}
-```
-
 ### IDE Configuration
 
-The project includes a `jsconfig.json` file that configures:
+The project includes `jsconfig.json` for:
 
-- Module resolution (import aliases with `@/` prefix)
+- Module resolution with `@/` prefix
 - JSX support in `.js` files
 - Type checking options
 - Path mappings for cleaner imports
 
-### Using JSDoc in Your IDE
+---
 
-**VS Code:**
+## Deployment
 
-- Hover over any function/component to see full documentation
-- Get autocomplete suggestions for props and parameters
-- See inline errors for type mismatches
+### Vercel Deployment (Recommended)
 
-**WebStorm/IntelliJ:**
+This project is optimized for Vercel:
 
-- Full JSDoc support built-in
-- Quick documentation popup (Ctrl+Q / ⌘J)
-- Type checking in JavaScript files
+1. **Import repository** to Vercel
+2. **Set environment variables** in Vercel dashboard
+3. **Deploy** - Automatic on push to `master`
 
-## Pre-commit Hooks
+**Configuration:**
 
-This project uses **Husky** and **lint-staged** to automatically run quality checks before each commit. This ensures code quality and prevents broken code from being committed.
+- Framework: Next.js
+- Node.js: 22.x
+- Build command: `npm run build`
+- Output directory: `.next`
 
-### What Runs Automatically
+### Continuous Integration (CI)
 
-When you run `git commit`, the following checks run automatically on staged files:
+GitHub Actions runs on every push and PR:
 
-**For JavaScript/JSX files (`.js`, `.jsx`):**
+**Quality Checks:**
 
-1. **Prettier** - Automatically formats code
-2. **ESLint** - Automatically fixes linting issues
-3. **Jest** - Runs tests related to the changed files
+- Code formatting (Prettier)
+- ESLint (0 errors required)
+- Tests (256 tests)
+- Coverage reporting (optional Codecov)
 
-### How It Works
+**Build Verification:**
 
-```bash
-# Stage your changes
-git add .
+- Production build
+- Build output validation
+- Only runs if quality checks pass
 
-# Commit (hooks run automatically)
-git commit -m "Your commit message"
+**Bundle Analysis (PR only):**
 
-# If checks pass, commit succeeds
-# If checks fail, commit is blocked and you see the errors
-```
+- Bundle size analysis
+- Artifact upload (7-day retention)
 
-### Benefits
-
-✅ **Catch errors early** - Find bugs before they reach the repository
-✅ **Consistent code style** - Auto-format code on commit
-✅ **Faster CI/CD** - Fewer failed builds in CI
-✅ **No manual steps** - Quality checks happen automatically
-
-### Skipping Hooks (Not Recommended)
-
-In rare cases where you need to skip the hooks:
+**Local CI Simulation:**
 
 ```bash
-git commit --no-verify -m "Your message"
-```
-
-**Note:** Only use `--no-verify` in emergencies. The hooks are there to help maintain code quality.
-
-### Configuration
-
-Pre-commit hooks are configured in:
-
-- `.husky/pre-commit` - Hook entry point
-- `package.json` - `lint-staged` configuration
-
-To modify what runs on commit, edit the `lint-staged` section in `package.json`.
-
-## Continuous Integration (CI)
-
-This project uses **GitHub Actions** to automatically run quality checks on every push and pull request. This ensures code quality and catches issues before they reach production.
-
-### CI Workflow
-
-The CI pipeline runs three parallel jobs:
-
-**1. Quality Checks**
-
-- ✅ **Code Formatting** - Verifies all code is formatted with Prettier
-- ✅ **ESLint** - Checks for linting issues (0 errors required to pass)
-- ✅ **Tests** - Runs all 262 tests with coverage reporting
-- ✅ **Coverage Upload** - Optionally uploads coverage to Codecov
-
-**2. Build Verification**
-
-- ✅ **Production Build** - Ensures the app builds successfully
-- ✅ **Build Output Check** - Verifies .next directory exists
-- ✅ **Dependency on Quality** - Only runs if quality checks pass
-
-**3. Bundle Analysis (PR only)**
-
-- ✅ **Bundle Size Analysis** - Generates bundle reports for PRs
-- ✅ **Artifact Upload** - Uploads analysis to GitHub artifacts
-- ✅ **7-day Retention** - Reports available for review
-
-### Viewing CI Results
-
-**On GitHub:**
-
-1. Navigate to your repository
-2. Click the "Actions" tab
-3. Select a workflow run to see detailed results
-4. Download bundle analysis artifacts from PR checks
-
-**Status Badges:**
-
-Add to your README to show CI status:
-
-```markdown
-![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/workflows/CI/badge.svg)
-```
-
-### CI Configuration
-
-The CI workflow is configured in `.github/workflows/ci.yml`:
-
-- **Node Version:** 22.x
-- **Triggers:** Push to master/main, Pull requests
-- **Cache:** npm dependencies cached for faster runs
-- **Environment:** Ubuntu latest
-
-### Optional: Codecov Integration
-
-To enable code coverage tracking:
-
-1. Sign up at [codecov.io](https://codecov.io)
-2. Connect your GitHub repository
-3. Add `CODECOV_TOKEN` to your GitHub repository secrets
-4. Coverage reports will automatically upload on each CI run
-
-**Note:** CI runs successfully without Codecov - it's completely optional.
-
-### Local CI Simulation
-
-Test the CI pipeline locally before pushing:
-
-```bash
-# Run all CI checks locally
 npm run format:check  # Check formatting
 npm run lint          # Check linting
 npm test              # Run tests
 npm run build         # Build production bundle
 ```
 
-All checks must pass for CI to succeed!
+### Monorepo Deployment
+
+See [MONOREPO-SETUP.md](./MONOREPO-SETUP.md) for deploying multiple sites from a single repository.
+
+---
+
+## Performance
+
+### Bundle Analysis
+
+Analyze bundle composition and identify optimization opportunities:
+
+```bash
+npm run analyze
+```
+
+Generates interactive HTML reports:
+
+- `client.html` - Client-side JavaScript breakdown
+- `server.html` - Server-side bundle analysis
+- `edge.html` - Edge runtime bundle analysis
+
+**Current Performance:**
+
+- **Shared bundles:** 105 kB (Framework + Main)
+- **Homepage:** 139 kB total (4.93 kB page-specific)
+- **About:** 132 kB total (2.06 kB page-specific)
+- **Blog posts:** 170 kB total (2.45 kB page-specific)
+
+**Optimization Status:**
+
+- Excellent code splitting (page-specific bundles < 5 kB)
+- Good overall bundle sizes (130-171 kB)
+- Shared code properly extracted
+
+### Caching Strategy
+
+Aggressive caching optimizes performance and reduces server load:
+
+**Static Assets (1 year cache):**
+
+- `/static/*` - Static files
+- `/_next/static/*` - Next.js bundles
+- `/_next/image/*` - Optimized images
+
+**Dynamic Pages:**
+
+- Homepage (`/`) - 5 min cache, revalidate 1 hour
+- Blog posts (`/post/*`) - 1 hour cache, revalidate 24 hours
+- Other pages - 10 min cache, revalidate 1 hour
+
+**How it works:**
+
+```
+Cache-Control: public, max-age=X, stale-while-revalidate=Y
+```
+
+Serve stale content while revalidating in background for instant page loads.
+
+### Image Optimization
+
+Next.js automatic image optimization:
+
+- AVIF and WebP formats
+- Lazy loading
+- Responsive images
+- Automatic size optimization
+
+---
 
 ## Security
 
-This application implements multiple layers of security to protect against common web vulnerabilities. Security headers are configured in `next.config.js` and applied to all routes.
-
 ### Security Headers
+
+Configured in `next.config.js` and applied to all routes:
 
 **HTTP Strict Transport Security (HSTS)**
 
-- Forces browsers to use HTTPS connections only
+- Forces HTTPS connections
 - Prevents protocol downgrade attacks
-- Applies to all subdomains for 1 year
-- Header: `Strict-Transport-Security: max-age=31536000; includeSubDomains`
+- 1 year duration, includes subdomains
 
 **Content Security Policy (CSP)**
 
-- Prevents XSS attacks by controlling which resources can be loaded
+- Prevents XSS attacks
 - Restricts script execution to trusted sources
-- Blocks inline scripts except where explicitly allowed
-- Configured for Vercel Analytics and Sentry integration
+- Configured for Vercel Analytics and Sentry
 - Key directives:
-  - `default-src 'self'` - Only load resources from same origin by default
-  - `script-src` - Allows scripts from self, Vercel, and required inline scripts
-  - `style-src 'self' 'unsafe-inline'` - Allows styles (Tailwind requires inline)
-  - `img-src 'self' data: blob: https:` - Allows images from various sources
-  - `object-src 'none'` - Blocks plugins like Flash
-  - `upgrade-insecure-requests` - Automatically upgrades HTTP to HTTPS
+  - `default-src 'self'`
+  - `script-src` - Allows trusted scripts
+  - `style-src 'self' 'unsafe-inline'` - Tailwind requires inline styles
+  - `img-src 'self' data: blob: https:`
+  - `object-src 'none'` - Blocks plugins
+  - `upgrade-insecure-requests`
 
 **Permissions Policy**
 
-- Restricts browser features to prevent abuse
-- Disabled features:
-  - `camera=()` - No camera access
-  - `microphone=()` - No microphone access
-  - `geolocation=()` - No location tracking
-  - `interest-cohort=()` - Opts out of FLoC tracking
+- Disables camera, microphone, geolocation
+- Opts out of FLoC tracking
 
-**Additional Security Headers**
+**Additional Headers**
 
-- `X-Frame-Options: SAMEORIGIN` - Prevents clickjacking attacks
+- `X-Frame-Options: SAMEORIGIN` - Prevents clickjacking
 - `X-Content-Type-Options: nosniff` - Prevents MIME-type sniffing
-- `Referrer-Policy: origin-when-cross-origin` - Controls referrer information
-- `X-Powered-By` header removed - Hides server technology
+- `Referrer-Policy: origin-when-cross-origin`
+- `X-Powered-By` removed - Hides server technology
 
-### Application Security Features
+### Application Security
 
-**Input Validation & Sanitization**
+**Input Validation & Sanitization:**
 
 - All user inputs validated with `validator` library
-- Slug validation with regex whitelist: `/^[a-zA-Z0-9_-]+$/`
-- HTML escaping to prevent XSS attacks
+- Slug validation: `/^[a-zA-Z0-9_-]+$/`
+- HTML escaping to prevent XSS
 
-**Path Traversal Protection**
+**Path Traversal Protection:**
 
-- Markdown file paths validated against allowed directory
+- Markdown file paths validated (see `services/getMarkdownService.js:27-38`)
 - Prevents unauthorized file access
-- See `services/getMarkdownService.js:27-38`
 
-**Email Obfuscation**
+**Email Obfuscation:**
 
 - Email addresses split into user/domain parts
 - Assembled at runtime to prevent bot scraping
-- See `config/siteConfig.js:8-11`
 
-**Dependency Security**
+**Dependency Security:**
 
 - CodeQL scanning via GitHub Actions (weekly)
 - Automated vulnerability detection
-- No known security issues in dependencies
 
-**Environment Variable Protection**
+**Environment Variable Protection:**
 
 - `.env` files in `.gitignore`
 - `.env.example` provided as template
-- Sensitive keys never committed to repository
+- Sensitive keys never committed
 
-### Security Best Practices
-
-When extending this application:
-
-1. Never disable CSP or security headers
-2. Validate and sanitize all user inputs
-3. Use parameterized queries for databases (if added)
-4. Keep dependencies updated regularly
-5. Review security advisories via `npm audit`
-6. Never commit secrets or API keys
-7. Use environment variables for sensitive configuration
-
-### Testing Security
+### Security Testing
 
 ```bash
 # Audit dependencies for vulnerabilities
@@ -451,271 +540,26 @@ npm audit
 
 # Check security headers in production
 curl -I https://yourdomain.com | grep -E "Content-Security-Policy|Strict-Transport"
-
-# Run CodeQL analysis (via GitHub Actions)
-# Triggered automatically on push to master
 ```
 
 ### Reporting Security Issues
 
-If you discover a security vulnerability, please report it privately rather than opening a public issue.
+Please report security vulnerabilities privately rather than opening public issues.
 
-## Performance - Caching Strategy
+---
 
-This project uses aggressive caching strategies to optimize performance and reduce server load. Caching headers are configured in `next.config.js`.
+## Theming
 
-### Caching Rules
+### Theme System
 
-**Static Assets (1 year cache):**
+Dynamic theming using **CSS Custom Properties** and **Tailwind CSS**. Each blog post can have its own theme.
 
-- `/static/*` - Your static files (images, fonts, etc.)
-- `/_next/static/*` - Next.js JavaScript/CSS bundles
-- `/_next/image/*` - Optimized images
+**Available Themes:**
 
-**Dynamic Pages:**
+- `light` - White background, black text (default)
+- `dark` - Black background, white text
 
-- **Homepage** (`/`) - 5 minutes cache, revalidate in background for 1 hour
-- **Blog Posts** (`/post/*`) - 1 hour cache, revalidate in background for 24 hours
-- **Other Pages** - 10 minutes cache, revalidate in background for 1 hour
-
-### How It Works
-
-```
-Cache-Control: public, max-age=X, stale-while-revalidate=Y
-```
-
-- `max-age=X` - Content is fresh for X seconds
-- `stale-while-revalidate=Y` - Serve stale content while revalidating in background for Y seconds
-- `immutable` - Content never changes (static assets only)
-
-### Benefits
-
-✅ **Faster page loads** - Assets cached in browser and CDN
-✅ **Reduced bandwidth** - Static files served from cache
-✅ **Better UX** - Background revalidation keeps content fresh without waiting
-✅ **Lower server costs** - Fewer requests hit your server
-
-### Clearing Cache
-
-If you need to clear the cache after a deployment:
-
-1. Static assets auto-bust via Next.js build hash
-2. Pages refresh automatically after `max-age` expires
-3. Force refresh: Hold Shift and click reload in browser
-
-## Bundle Analysis & Performance
-
-### Analyzing Your Bundle
-
-This project includes **@next/bundle-analyzer** for visualizing bundle composition and identifying optimization opportunities.
-
-```bash
-# Generate interactive bundle visualizations
-npm run analyze
-```
-
-This will:
-
-1. Build your production bundle
-2. Generate three interactive HTML reports in `.next/analyze/`:
-   - `client.html` - Client-side JavaScript bundle breakdown
-   - `server.html` - Server-side bundle analysis
-   - `edge.html` - Edge runtime bundle analysis
-3. Automatically open the reports in your browser
-
-### Current Bundle Performance
-
-**Shared Bundles:**
-
-- Framework: 59.7 kB (React 19 + Next.js 15)
-- Main: 36.7 kB (Application code)
-- Other shared: 9.05 kB
-- **Total shared: 105 kB**
-
-**Page Bundles (including shared):**
-
-- Homepage: 139 kB (4.93 kB page-specific)
-- About: 132 kB (2.06 kB page-specific)
-- Blog posts: 170 kB (2.45 kB page-specific)
-- Components: 171 kB (3.67 kB page-specific)
-
-### Optimization Insights
-
-✅ **Excellent code splitting** - Page-specific bundles are very small (< 5 kB)
-✅ **Good bundle sizes** - Total initial load is reasonable (130-171 kB)
-✅ **Shared code extraction** - Common code properly extracted to shared bundles
-
-**Future optimization opportunities:**
-
-- Dynamic imports for heavy page-specific components
-- Tree-shake unused FontAwesome icons
-- Optimize markdown parser imports
-
-## Type Safety
-
-### PropTypes Coverage
-
-All components include **PropTypes** for runtime type validation in development:
-
-- ✅ **25 components** with PropTypes
-- ✅ **4 page components** with PropTypes
-- ✅ **Comprehensive validation** including nested object shapes
-
-**Benefits:**
-
-- Catch prop type errors in development
-- Self-documenting component APIs
-- Better IDE autocomplete
-- Safer refactoring
-
-### Example PropTypes
-
-```javascript
-Component.propTypes = {
-  title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      url: PropTypes.string,
-    })
-  ),
-  onClick: PropTypes.func,
-}
-```
-
-## Site Configuration - Single Source of Truth
-
-All site content, metadata, and configuration is centralized in `config/siteConfig.js`. This provides a **single source of truth** for your entire site, making updates quick and consistent across all components.
-
-### Configuration Structure
-
-```javascript
-siteConfig
-├── app              // Application metadata
-├── site             // Site metadata (name, title, url, description)
-├── owner            // Owner information (name, title, experience)
-├── contact          // Contact details (phone, email, locations)
-├── social           // Social media links (LinkedIn, Twitter, Facebook)
-├── stats            // Professional statistics
-├── copyright        // Copyright information
-├── content          // Site content sections
-│   ├── authorBio    // Author bio for blog posts
-│   ├── hero         // Homepage hero content
-│   └── cta          // Call-to-action messaging
-└── navigation       // Menu items
-```
-
-### How to Update Site Content
-
-#### Update Your Job Title
-
-Edit one line in `config/siteConfig.js`:
-
-```javascript
-owner: {
-  title: 'Your New Title Here'
-}
-```
-
-This automatically updates:
-
-- SiteTitle component (homepage hero)
-- AuthorCard component (blog posts)
-- All SEO metadata
-
-#### Update Your Company/Role
-
-```javascript
-content: {
-  hero: {
-    currentRole: {
-      position: 'Your Position',
-      company: 'Company Name',
-      companyUrl: 'https://company.com',
-      location: 'City'
-    }
-  }
-}
-```
-
-#### Add/Remove Previous Companies
-
-```javascript
-previousRoles: [
-  { company: 'Company Name', url: 'https://company.com' },
-  // Add more companies here
-]
-```
-
-#### Update Navigation Menu
-
-```javascript
-navigation: {
-  main: [
-    { label: 'Home', href: '/', title: 'Home' },
-    { label: 'New Page', href: '/new-page', title: 'New Page' },
-    // Add more menu items here
-  ]
-}
-```
-
-#### Update Contact Information
-
-```javascript
-contact: {
-  email: {
-    user: 'hello',
-    domain: 'yoursite.com'
-  },
-  locations: ['London', 'Manchester', 'Leeds']
-}
-```
-
-#### Update Social Media Links
-
-```javascript
-social: {
-  linkedin: {
-    title: 'Connect on LinkedIn',
-    link: 'https://www.linkedin.com/in/yourprofile/'
-  }
-}
-```
-
-### Legacy Configuration Files
-
-For backward compatibility, the following files still exist but now import from `siteConfig.js`:
-
-- `config.js` - Legacy config wrapper
-- `config/footerContactInfo.js` - Footer contact data
-- `config/footerCopyrightInfo.js` - Copyright data
-- `config/sidebarData.js` - Sidebar data
-
-## Theming System
-
-This application uses a simple, maintainable theming system powered by **CSS Variables** and **Tailwind CSS**. Each blog post can have its own theme (light or dark) specified in the markdown frontmatter.
-
-### Available Themes
-
-The application supports two themes configured in `config/articleThemes.js`:
-
-**Light Theme** (default)
-
-- Background: White (#ffffff)
-- Text: Black (#000000)
-- Primary elements: Black (#000000)
-- Accent/secondary: Dark grey (#666666)
-
-**Dark Theme**
-
-- Background: Black (#000000)
-- Text: White (#ffffff)
-- Primary elements: White (#ffffff)
-- Accent/secondary: Medium grey (#999999)
-
-### How to Set a Theme on a Blog Post
-
-Add the `theme` property to your markdown file's frontmatter:
+**Set theme in markdown frontmatter:**
 
 ```markdown
 ---
@@ -724,27 +568,19 @@ date: 2024-01-15
 theme: dark
 ---
 
-Your blog post content here...
+Your blog post content...
 ```
 
-**Options:**
-
-- `theme: 'light'` - White background with black text
-- `theme: 'dark'` - Black background with white text
-- No theme specified - Defaults to light theme
-
-### How the Theming System Works
-
-The theming system uses a CSS-variable-only approach for simplicity and maintainability:
+### How It Works
 
 **1. Theme Configuration** (`config/articleThemes.js`)
 
 - Defines color values for each theme
-- Each theme has: `primary`, `accent`, `background`, and `text` colors
+- Each theme: `primary`, `accent`, `background`, `text`
 
 **2. CSS Variables** (`pages/post/[slug].js`)
 
-- When a blog post loads, CSS variables are set based on the theme:
+- Sets CSS variables based on theme:
   ```javascript
   const themeStyles = {
     '--theme-primary': theme.primary,
@@ -753,22 +589,18 @@ The theming system uses a CSS-variable-only approach for simplicity and maintain
     '--theme-text': theme.text,
   }
   ```
-- These variables are applied to the Layout root element
-- All child components inherit these CSS variables
 
-**3. Tailwind CSS Classes** (all components)
+**3. Tailwind Classes** (all components)
 
-- Components use Tailwind classes that reference CSS variables:
+- Components use theme-aware classes:
   - `bg-theme-bg` - Background color
   - `text-theme-text` - Text color
-  - `bg-theme-primary` - Primary color (inverted from background)
-  - `text-theme-accent` - Accent/secondary text color
-  - `border-theme-text` - Border color matching text
-  - `border-theme-primary` - Border color matching primary
+  - `bg-theme-primary` - Primary color
+  - `text-theme-accent` - Accent color
 
 **4. Tailwind Configuration** (`tailwind.config.js`)
 
-- Maps Tailwind utilities to CSS variables:
+- Maps utilities to CSS variables:
   ```javascript
   colors: {
     'theme-primary': 'var(--theme-primary, #000000)',
@@ -778,62 +610,90 @@ The theming system uses a CSS-variable-only approach for simplicity and maintain
   }
   ```
 
-### Architecture Benefits
-
-✅ **No prop drilling** - Theme is set once at the Layout level via CSS variables
-✅ **Simple components** - Components just use Tailwind classes, no theme logic
-✅ **Automatic inheritance** - All children inherit CSS variables via normal CSS cascade
-✅ **Easy to maintain** - Change theme colors in one place (`articleThemes.js`)
-✅ **Type-safe** - Tailwind provides autocomplete for theme classes
-
 ### Adding a New Theme
 
-To add a new theme (e.g., "sepia"):
-
-1. **Add theme definition** to `config/articleThemes.js`:
-
-   ```javascript
-   export const articleThemes = {
-     light: {
-       /* existing */
-     },
-     dark: {
-       /* existing */
-     },
-     sepia: {
-       name: 'Sepia',
-       primary: '#704214',
-       accent: '#8b6914',
-       background: '#f4ecd8',
-       text: '#3e2723',
-     },
-   }
-   ```
-
-2. **Use in markdown frontmatter**:
-   ```markdown
-   ---
-   theme: sepia
-   ---
-   ```
-
-That's it! No component changes needed. The CSS variable system automatically applies the new theme.
-
-### Customizing Theme Colors
-
-Edit `config/articleThemes.js` to change theme colors:
-
 ```javascript
+// config/articleThemes.js
 export const articleThemes = {
   light: {
-    name: 'Light',
-    primary: '#000000', // Change to any hex color
-    accent: '#666666', // Change to any hex color
-    background: '#ffffff', // Change to any hex color
-    text: '#000000', // Change to any hex color
+    /* existing */
   },
-  // ... other themes
+  dark: {
+    /* existing */
+  },
+  sepia: {
+    name: 'Sepia',
+    primary: '#704214',
+    accent: '#8b6914',
+    background: '#f4ecd8',
+    text: '#3e2723',
+  },
 }
 ```
 
-Changes apply immediately to all pages using that theme.
+Use in markdown:
+
+```markdown
+---
+theme: sepia
+---
+```
+
+No component changes needed - the CSS variable system handles everything automatically.
+
+---
+
+## Monorepo Setup
+
+This repository can be converted to a monorepo supporting multiple sites with a shared master theme.
+
+See **[MONOREPO-SETUP.md](./MONOREPO-SETUP.md)** for complete documentation on:
+
+- Architecture strategy
+- Repository structure
+- NPM workspaces configuration
+- Vercel deployment for multiple projects
+- Development workflow
+- Migration checklist
+
+**Quick Overview:**
+
+- **Master theme** cascades updates to child sites
+- **90% code sharing** with site-specific customization
+- **Independent deployments** to different domains
+- **Shared testing** maintains quality across sites
+- **Vercel native support** for monorepo deployments
+
+---
+
+## Project Stats
+
+- **256 tests** - Comprehensive test coverage
+- **25+ components** - All with PropTypes and JSDoc
+- **0 linting errors** - High code quality
+- **Node.js 22.x** - Latest LTS
+- **Next.js 16.1.1** - Latest framework version
+- **React 19.2.3** - Latest React
+
+---
+
+## License
+
+Private repository - All rights reserved.
+
+---
+
+## Support
+
+For questions or issues:
+
+1. Review this documentation
+2. Check [MONOREPO-SETUP.md](./MONOREPO-SETUP.md) for multi-site setup
+3. Review GitHub issues
+4. Check deployment logs (Vercel dashboard)
+
+---
+
+**Built with Next.js, React, and Tailwind CSS**
+
+Last updated: 2025-12-28
