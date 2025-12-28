@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopyright } from '@fortawesome/free-solid-svg-icons'
+import { faCopyright } from '../../config/icons'
 import footerCopyrightInfo from '../../config/footerCopyrightInfo'
 import Tagline from '../ui/Tagline'
 import ServicesList from '../features/ServicesList'
