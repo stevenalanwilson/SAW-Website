@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Tagline from '../../components/Tagline'
+import Tagline from '../../components/ui/Tagline'
 
 describe('Tagline Component', () => {
   it('renders the default tagline text', () => {

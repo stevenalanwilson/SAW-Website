@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import SiteHeader from '../../components/SiteHeader'
+import SiteHeader from '../../components/layout/SiteHeader'
 
 describe('SiteHeader Component', () => {
   it('renders site title/logo', () => {

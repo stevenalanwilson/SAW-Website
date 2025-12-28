@@ -1,10 +1,10 @@
 import markdownService from '../services/getMarkdownService'
 
-import Layout from '../components/Layout'
-import SiteTitle from '../components/SiteTitle'
-import ListPosts from '../components/ListPosts'
-import SEO from '../components/SEO'
-import Sidebar from '../components/Sidebar'
+import Layout from '../components/layout/Layout'
+import SiteTitle from '../components/content/SiteTitle'
+import ListPosts from '../components/content/ListPosts'
+import SEO from '../components/ui/SEO'
+import Sidebar from '../components/layout/Sidebar'
 
 export async function getStaticProps() {
   const posts = markdownService.getAllMarkdownPosts()

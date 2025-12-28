@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import PageHero from '../../components/PageHero'
+import PageHero from '../../components/content/PageHero'
 
 describe('PageHero Component', () => {
   it('renders the title', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import SectionHeading from '../../components/SectionHeading'
+import SectionHeading from '../../components/content/SectionHeading'
 
 describe('SectionHeading Component', () => {
   it('renders the heading text', () => {

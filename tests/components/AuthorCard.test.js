@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import AuthorCard from '../../components/AuthorCard'
+import AuthorCard from '../../components/cards/AuthorCard'
 
 describe('AuthorCard Component', () => {
   it('renders the component', () => {

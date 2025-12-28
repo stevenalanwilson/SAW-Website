@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ExpertiseGrid from '../../components/ExpertiseGrid'
+import ExpertiseGrid from '../../components/features/ExpertiseGrid'
 
 describe('ExpertiseGrid Component', () => {
   const mockItems = [

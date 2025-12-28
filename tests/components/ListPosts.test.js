@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ListPosts from '../../components/ListPosts'
+import ListPosts from '../../components/content/ListPosts'
 
 const mockPosts = [
   {

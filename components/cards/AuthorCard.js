@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import siteConfig from '../config/siteConfig'
+import siteConfig from '../../config/siteConfig'
 
 /**
  * Author card component displaying author bio information.

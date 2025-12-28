@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ExperienceCard from '../../components/ExperienceCard'
+import ExperienceCard from '../../components/cards/ExperienceCard'
 
 describe('ExperienceCard Component', () => {
   const mockProps = {

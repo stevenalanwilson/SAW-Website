@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import PostscriptItem from '../../components/PostscriptItem'
+import PostscriptItem from '../../components/content/PostscriptItem'
 
 describe('PostscriptItem Component', () => {
   const mockProps = {

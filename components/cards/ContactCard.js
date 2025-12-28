@@ -2,8 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import PropTypes from 'prop-types'
-import footerContactInfo from '../config/footerContactInfo'
-import siteConfig from '../config/siteConfig'
+import footerContactInfo from '../../config/footerContactInfo'
+import siteConfig from '../../config/siteConfig'
 
 /**
  * Contact card component displaying contact information with different visual variants.

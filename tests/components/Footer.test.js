@@ -1,28 +1,28 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Footer from '../../components/Footer'
+import Footer from '../../components/layout/Footer'
 
 // Mock the child components
-jest.mock('../../components/Tagline', () => {
+jest.mock('../../components/ui/Tagline', () => {
   return function Tagline() {
     return <div>Helping organizations build resilient technical teams</div>
   }
 })
 
-jest.mock('../../components/ServicesList', () => {
+jest.mock('../../components/features/ServicesList', () => {
   return function ServicesList() {
     return <div>Services</div>
   }
 })
 
-jest.mock('../../components/LatestPosts', () => {
+jest.mock('../../components/content/LatestPosts', () => {
   return function LatestPosts() {
     return <div>Latest Thinking</div>
   }
 })
 
-jest.mock('../../components/WorkWithMe', () => {
+jest.mock('../../components/features/WorkWithMe', () => {
   return function WorkWithMe() {
     return <div>Work With Me</div>
   }

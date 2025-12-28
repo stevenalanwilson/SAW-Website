@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import LatestPosts from '../../components/LatestPosts'
+import LatestPosts from '../../components/content/LatestPosts'
 
 describe('LatestPosts Component', () => {
   const mockPosts = [

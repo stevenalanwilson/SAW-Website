@@ -1,4 +1,4 @@
-import ContactCard from './ContactCard'
+import ContactCard from '../cards/ContactCard'
 
 /**
  * Work with me component wrapper for the footer contact card.

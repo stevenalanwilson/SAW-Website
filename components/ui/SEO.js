@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import config from '../config/siteConfig'
+import config from '../../config/siteConfig'
 
 /**
  * SEO component that manages meta tags for improved search engine optimization.

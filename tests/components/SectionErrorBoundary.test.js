@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import SectionErrorBoundary from '../../components/SectionErrorBoundary'
+import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
 
 // Mock Sentry
 jest.mock('@sentry/nextjs', () => ({

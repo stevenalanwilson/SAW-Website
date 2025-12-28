@@ -13,7 +13,7 @@ jest.mock('remark-parse', () => jest.fn())
 jest.mock('remark-rehype', () => jest.fn())
 jest.mock('rehype-react', () => jest.fn())
 
-import Post from '../../components/Post'
+import Post from '../../components/content/Post'
 
 describe('Post Component', () => {
   it('renders as an article element', () => {

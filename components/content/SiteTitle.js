@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import siteConfig from '../config/siteConfig'
+import siteConfig from '../../config/siteConfig'
 
 /**
  * Site title component displaying the hero section with introduction.

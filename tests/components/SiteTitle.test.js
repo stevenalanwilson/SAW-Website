@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import SiteTitle from '../../components/SiteTitle'
+import SiteTitle from '../../components/content/SiteTitle'
 
 describe('SiteTitle Component', () => {
   it('renders site name', () => {

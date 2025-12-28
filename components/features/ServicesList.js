@@ -1,4 +1,4 @@
-import footerServices from '../config/footerServices'
+import footerServices from '../../config/footerServices'
 
 /**
  * Services list component displaying available services with descriptions.

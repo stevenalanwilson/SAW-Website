@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ServicesList from '../../components/ServicesList'
+import ServicesList from '../../components/features/ServicesList'
 
 // Mock the footerServices config
 jest.mock('../../config/footerServices', () => [

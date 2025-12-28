@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-import ContactCard from './ContactCard'
-import StatsCard from './StatsCard'
-import SectionErrorBoundary from './SectionErrorBoundary'
-import sidebarData from '../config/sidebarData'
+import ContactCard from '../cards/ContactCard'
+import StatsCard from '../cards/StatsCard'
+import SectionErrorBoundary from '../error/SectionErrorBoundary'
+import sidebarData from '../../config/sidebarData'
 
 /**
  * Sidebar component containing contact card and professional statistics.

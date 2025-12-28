@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import Layout from '../components/Layout.js'
-import SEO from '../components/SEO'
+import Layout from '../components/layout/Layout'
+import SEO from '../components/ui/SEO'
 import config from '../config/siteConfig'
-import PageHero from '../components/PageHero'
-import SectionHeading from '../components/SectionHeading'
-import ExpertiseGrid from '../components/ExpertiseGrid'
-import Sidebar from '../components/Sidebar'
+import PageHero from '../components/content/PageHero'
+import SectionHeading from '../components/content/SectionHeading'
+import ExpertiseGrid from '../components/features/ExpertiseGrid'
+import Sidebar from '../components/layout/Sidebar'
 import markdownService from '../services/getMarkdownService'
 
 export async function getStaticProps() {

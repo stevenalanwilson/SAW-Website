@@ -9,14 +9,14 @@ import markdownService from '../../services/getMarkdownService'
 import config from '../../config/siteConfig'
 import { getTheme } from '../../config/articleThemes'
 
-import Layout from '../../components/Layout'
-import PageHero from '../../components/PageHero'
-import SEO from '../../components/SEO'
-import Post from '../../components/Post'
-import LoadingSpinner from '../../components/LoadingSpinner'
-import Sidebar from '../../components/Sidebar'
-import AuthorCard from '../../components/AuthorCard'
-import SectionErrorBoundary from '../../components/SectionErrorBoundary'
+import Layout from '../../components/layout/Layout'
+import PageHero from '../../components/content/PageHero'
+import SEO from '../../components/ui/SEO'
+import Post from '../../components/content/Post'
+import LoadingSpinner from '../../components/ui/LoadingSpinner'
+import Sidebar from '../../components/layout/Sidebar'
+import AuthorCard from '../../components/cards/AuthorCard'
+import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
 
 export async function getStaticPaths() {
   const postsFolder = fs.readdirSync('posts')

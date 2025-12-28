@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import siteConfig from '../config/siteConfig'
-import NavigationMenu from './NavigationMenu'
+import siteConfig from '../../config/siteConfig'
+import NavigationMenu from '../ui/NavigationMenu'
 
 /**
  * Site header component with responsive navigation menu.

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ContactCard from '../../components/ContactCard'
+import ContactCard from '../../components/cards/ContactCard'
 
 // Mock the footerContactInfo config
 jest.mock('../../config/footerContactInfo', () => ({

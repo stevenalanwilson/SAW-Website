@@ -1,16 +1,16 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Layout from '../../components/Layout'
+import Layout from '../../components/layout/Layout'
 
 // Mock the child components
-jest.mock('../../components/SiteHeader', () => {
+jest.mock('../../components/layout/SiteHeader', () => {
   return function SiteHeader() {
     return <div data-testid='site-header'>Site Header</div>
   }
 })
 
-jest.mock('../../components/Footer', () => {
+jest.mock('../../components/layout/Footer', () => {
   return function Footer() {
     return <div data-testid='footer'>Footer</div>
   }

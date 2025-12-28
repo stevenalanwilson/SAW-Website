@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import SEO from '../../components/SEO'
+import SEO from '../../components/ui/SEO'
 
 // Mock Next.js Head component
 jest.mock('next/head', () => {

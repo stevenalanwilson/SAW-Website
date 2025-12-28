@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import NavigationMenu from '../../components/NavigationMenu'
+import NavigationMenu from '../../components/ui/NavigationMenu'
 
 const mockMenuItems = [
   { href: '/', label: 'Home' },

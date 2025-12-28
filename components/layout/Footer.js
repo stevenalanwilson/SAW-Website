@@ -2,12 +2,12 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-solid-svg-icons'
-import footerCopyrightInfo from '../config/footerCopyrightInfo'
-import Tagline from './Tagline'
-import ServicesList from './ServicesList'
-import LatestPosts from './LatestPosts'
-import WorkWithMe from './WorkWithMe'
-import SectionErrorBoundary from './SectionErrorBoundary'
+import footerCopyrightInfo from '../../config/footerCopyrightInfo'
+import Tagline from '../ui/Tagline'
+import ServicesList from '../features/ServicesList'
+import LatestPosts from '../content/LatestPosts'
+import WorkWithMe from '../features/WorkWithMe'
+import SectionErrorBoundary from '../error/SectionErrorBoundary'
 
 /**
  * Footer component with three-column layout displaying services, latest posts, and contact.
