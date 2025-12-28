@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '../../config/icons'
-import footerCopyrightInfo from '../../config/footerCopyrightInfo'
+import siteConfig from '../../config/siteConfig'
 import Tagline from '../ui/Tagline'
 import ServicesList from '../features/ServicesList'
 import LatestPosts from '../content/LatestPosts'
@@ -60,11 +60,10 @@ export default function Footer({ latestPosts = [] }) {
         <div className='flex flex-wrap'>
           <div className='w-full copyright mx-4 py-6'>
             <p className='text-center text-sm text-theme-bg'>
-              {footerCopyrightInfo.title}{' '}
-              <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' />{' '}
-              {footerCopyrightInfo.date} |{' '}
-              <Link href={footerCopyrightInfo.url} title={footerCopyrightInfo.url}>
-                {footerCopyrightInfo.url}
+              {siteConfig.owner.name} <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' />{' '}
+              {new Date().getFullYear()} |{' '}
+              <Link href={siteConfig.copyright.url} title={siteConfig.copyright.url}>
+                {siteConfig.copyright.url}
               </Link>
             </p>
           </div>

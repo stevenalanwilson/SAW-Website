@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import ContactCard from '../cards/ContactCard'
 import StatsCard from '../cards/StatsCard'
 import SectionErrorBoundary from '../error/SectionErrorBoundary'
-import sidebarData from '../../config/sidebarData'
+import siteConfig from '../../config/siteConfig'
 
 /**
  * Sidebar component containing contact card and professional statistics.
@@ -20,10 +20,7 @@ export default function Sidebar({ className = '' }) {
       </SectionErrorBoundary>
 
       <SectionErrorBoundary name='StatsCard' errorMessage='Statistics failed to load'>
-        <StatsCard
-          title={sidebarData.professionalStats.title}
-          stats={sidebarData.professionalStats.stats}
-        />
+        <StatsCard title={siteConfig.stats.title} stats={siteConfig.stats.items} />
       </SectionErrorBoundary>
     </aside>
   )

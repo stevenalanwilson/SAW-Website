@@ -3,17 +3,30 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import ContactCard from '../../components/cards/ContactCard'
 
-// Mock the footerContactInfo config
-jest.mock('../../config/footerContactInfo', () => ({
-  email: {
-    user: 'hello',
-    domain: 'stevenalanwilson.com',
+// Mock the siteConfig
+jest.mock('../../config/siteConfig', () => ({
+  __esModule: true,
+  default: {
+    contact: {
+      email: {
+        user: 'hello',
+        domain: 'stevenalanwilson.com',
+      },
+      locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],
+    },
+    social: {
+      linkedin: {
+        title: 'Connect on LinkedIn',
+        link: 'https://www.linkedin.com/in/stevenalanwilson/',
+      },
+    },
+    content: {
+      cta: {
+        heading: 'Work With Me',
+        message: 'Ready to transform your technical leadership and delivery?',
+      },
+    },
   },
-  linkedin: {
-    title: 'Connect on LinkedIn',
-    link: 'https://www.linkedin.com/in/stevenalanwilson/',
-  },
-  locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],
 }))
 
 describe('ContactCard Component', () => {

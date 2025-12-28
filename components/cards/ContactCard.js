@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faMapMarkerAlt, faLinkedin } from '../../config/icons'
 import PropTypes from 'prop-types'
-import footerContactInfo from '../../config/footerContactInfo'
 import siteConfig from '../../config/siteConfig'
 
 /**
@@ -15,8 +14,8 @@ import siteConfig from '../../config/siteConfig'
  */
 export default function ContactCard({ variant = 'card', className = '' }) {
   // Construct email address from obfuscated parts (helps prevent spam bot scraping)
-  const emailAddress = footerContactInfo.email
-    ? `${footerContactInfo.email.user}@${footerContactInfo.email.domain}`
+  const emailAddress = siteConfig.contact.email
+    ? `${siteConfig.contact.email.user}@${siteConfig.contact.email.domain}`
     : null
 
   const { heading, message } = siteConfig.content.cta
@@ -50,20 +49,20 @@ export default function ContactCard({ variant = 'card', className = '' }) {
             <FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2' aria-hidden='true' />
             Operating Areas
           </p>
-          <p className='text-sm text-theme-accent'>{footerContactInfo.locations.join(' • ')}</p>
+          <p className='text-sm text-theme-accent'>{siteConfig.contact.locations.join(' • ')}</p>
         </div>
 
         {/* Contact Methods */}
         <div className='space-y-3'>
           <a
-            href={footerContactInfo.linkedin.link}
+            href={siteConfig.social.linkedin.link}
             target='_blank'
             rel='noopener noreferrer'
             className='block bg-brand-linkedin hover:bg-brand-linkedin-hover text-white font-semibold py-3 px-4 text-center transition-colors'
-            aria-label={`${footerContactInfo.linkedin.title} (opens in new tab)`}
+            aria-label={`${siteConfig.social.linkedin.title} (opens in new tab)`}
           >
             <FontAwesomeIcon icon={faLinkedin} className='mr-2' aria-hidden='true' />
-            {footerContactInfo.linkedin.title}
+            {siteConfig.social.linkedin.title}
           </a>
 
           {emailAddress && (
