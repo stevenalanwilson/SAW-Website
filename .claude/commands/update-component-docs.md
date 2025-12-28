@@ -29,6 +29,7 @@ For each component, use this format:
 **Location:** `components/ComponentName.js`
 
 **Props:**
+
 - `propName` (type, required/optional) - Description
 - `propName` (type, default: value) - Description
 
@@ -41,12 +42,14 @@ For each component, use this format:
 \`\`\`
 
 **Notes:**
+
 - Any special considerations
 - Dependencies on other components
 - Error handling behavior
 ```
 
 ## Important
+
 - Keep the existing introduction and structure
 - Maintain alphabetical order
 - Include all 25+ components

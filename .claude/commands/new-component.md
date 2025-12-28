@@ -23,11 +23,7 @@ import PropTypes from 'prop-types'
  * @returns {JSX.Element} Rendered component description
  */
 export default function ComponentName({ propName, optionalProp = 'default' }) {
-  return (
-    <div className="theme-aware-classes">
-      {/* Implementation */}
-    </div>
-  )
+  return <div className='theme-aware-classes'>{/* Implementation */}</div>
 }
 
 ComponentName.propTypes = {
@@ -39,6 +35,7 @@ ComponentName.propTypes = {
 ### 2. Standards to Follow
 
 **Styling:**
+
 - Use Tailwind CSS classes exclusively
 - Use theme CSS variables: `bg-theme-bg`, `text-theme-text`, `bg-theme-primary`, `text-theme-accent`
 - Follow mobile-first responsive design with `lg:` breakpoints
@@ -46,11 +43,13 @@ ComponentName.propTypes = {
 - Use semantic HTML elements
 
 **JSDoc:**
+
 - Full function documentation with `@param` and `@returns`
 - Use `@typedef` for complex prop types
 - Include usage examples for complex components
 
 **PropTypes:**
+
 - Validate all props
 - Mark required props with `.isRequired`
 - Use specific types (string, number, bool, func, node, etc.)
@@ -58,6 +57,7 @@ ComponentName.propTypes = {
 - Use `PropTypes.arrayOf` for arrays
 
 **Accessibility:**
+
 - Use semantic HTML (header, nav, main, section, article)
 - Add ARIA labels to interactive elements
 - Include alt text for images
@@ -75,17 +75,17 @@ import ComponentName from '../../components/ComponentName'
 
 describe('ComponentName', () => {
   it('renders without crashing', () => {
-    render(<ComponentName propName="value" />)
+    render(<ComponentName propName='value' />)
     expect(screen.getByText(/expected text/i)).toBeInTheDocument()
   })
 
   it('accepts and displays all required props', () => {
-    render(<ComponentName propName="test value" />)
+    render(<ComponentName propName='test value' />)
     expect(screen.getByText('test value')).toBeInTheDocument()
   })
 
   it('uses default values for optional props', () => {
-    render(<ComponentName propName="value" />)
+    render(<ComponentName propName='value' />)
     // Test default behavior
   })
 
@@ -98,12 +98,14 @@ describe('ComponentName', () => {
 ### 4. Update Documentation
 
 After creating the component:
+
 1. Run `/update-component-docs` to update COMPONENTS.md
 2. Verify the component is listed with full documentation
 
 ### 5. Verification Checklist
 
 Before considering the component complete:
+
 - [ ] Component file created with JSDoc annotations
 - [ ] PropTypes validation added
 - [ ] Theme-aware styling using CSS variables
@@ -119,6 +121,7 @@ Before considering the component complete:
 ### 6. Ask User
 
 Before creating the component, ask the user:
+
 1. Component name (PascalCase)
 2. Component purpose/description
 3. Required props and their types
@@ -129,6 +132,7 @@ Before creating the component, ask the user:
 ### 7. Follow-up
 
 After creation:
+
 1. Show the user where the files were created
 2. Provide usage example
 3. Mention if any additional setup is needed

@@ -6,17 +6,19 @@ This project includes custom Claude Code commands to enforce coding standards au
 
 Type these commands when working with Claude Code:
 
-| Command | Purpose | When to Use |
-|---------|---------|-------------|
-| `/check-standards` | Full standards verification | Before PR, weekly reviews |
-| `/pre-commit` | Quick commit check | Before every commit |
-| `/new-component` | Create new component | Adding new components |
-| `/update-component-docs` | Update COMPONENTS.md | After component changes |
+| Command                  | Purpose                     | When to Use               |
+| ------------------------ | --------------------------- | ------------------------- |
+| `/check-standards`       | Full standards verification | Before PR, weekly reviews |
+| `/pre-commit`            | Quick commit check          | Before every commit       |
+| `/new-component`         | Create new component        | Adding new components     |
+| `/update-component-docs` | Update COMPONENTS.md        | After component changes   |
 
 ## 📋 Command Details
 
 ### `/check-standards` (3-5 min)
+
 Comprehensive verification of:
+
 - ✅ Linting & code quality (ESLint)
 - ✅ Code formatting (Prettier)
 - ✅ Design & styling standards (Tailwind, theme variables)
@@ -34,7 +36,9 @@ Comprehensive verification of:
 ---
 
 ### `/pre-commit` (1-2 min)
+
 Quick check before committing:
+
 - ✅ Format check (auto-fixes if needed)
 - ✅ Lint (0 errors required)
 - ✅ Tests (all passing)
@@ -46,7 +50,9 @@ Quick check before committing:
 ---
 
 ### `/new-component` (5-10 min)
+
 Guided component creation:
+
 1. Asks for component details (name, props, purpose)
 2. Creates component file with JSDoc
 3. Adds PropTypes validation
@@ -60,7 +66,9 @@ Guided component creation:
 ---
 
 ### `/update-component-docs` (1-2 min)
+
 Automatically updates COMPONENTS.md:
+
 - Scans all components in `/components`
 - Extracts props from PropTypes and JSDoc
 - Updates component count
@@ -74,6 +82,7 @@ Automatically updates COMPONENTS.md:
 ## 📖 Standards Reference
 
 Full documentation in `.claude/STANDARDS.md`:
+
 - Code quality rules
 - Component architecture
 - Styling guidelines
@@ -86,6 +95,7 @@ Full documentation in `.claude/STANDARDS.md`:
 ## 🔄 Workflow Examples
 
 ### Creating a New Feature
+
 ```
 1. /new-component
    → Follow prompts to create component
@@ -107,6 +117,7 @@ Full documentation in `.claude/STANDARDS.md`:
 ```
 
 ### Making Changes
+
 ```
 1. Edit existing components
    → Follow existing patterns
@@ -122,6 +133,7 @@ Full documentation in `.claude/STANDARDS.md`:
 ```
 
 ### Weekly Code Review
+
 ```
 /check-standards
 → Comprehensive health check
@@ -140,6 +152,7 @@ Full documentation in `.claude/STANDARDS.md`:
 ## 🛠️ Customization
 
 To modify or add commands:
+
 1. Edit files in `.claude/commands/`
 2. Follow the format of existing commands
 3. Changes take effect immediately
@@ -166,16 +179,19 @@ To modify or add commands:
 ## 🐛 Troubleshooting
 
 **Command not working?**
+
 - Check you're in project root directory
 - Verify `.claude/commands/` directory exists
 - Check file has `.md` extension
 
 **Tests failing?**
+
 - Run `npm test` manually to see errors
 - Check for missing dependencies
 - Verify test files are up to date
 
 **Build failing?**
+
 - Run `npm run build` manually
 - Check for TypeScript/JSDoc errors
 - Verify all imports are correct
@@ -183,6 +199,7 @@ To modify or add commands:
 ## 🎯 Success Criteria
 
 Your code is ready to commit when:
+
 - ✅ `/pre-commit` passes all checks
 - ✅ All tests passing (256/256)
 - ✅ 0 ESLint errors
@@ -191,6 +208,7 @@ Your code is ready to commit when:
 - ✅ COMPONENTS.md is up to date (if applicable)
 
 Your code is ready for PR when:
+
 - ✅ `/check-standards` shows no failures
 - ✅ All warnings addressed or documented
 - ✅ Documentation updated

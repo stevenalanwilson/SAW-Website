@@ -5,9 +5,11 @@ This directory contains custom commands for Claude Code to help maintain coding 
 ## Available Commands
 
 ### `/check-standards`
+
 **Comprehensive standards verification**
 
 Performs a complete check of the codebase against all project standards including:
+
 - Linting & code quality
 - Code formatting
 - Design & styling standards
@@ -26,9 +28,11 @@ Performs a complete check of the codebase against all project standards includin
 ---
 
 ### `/pre-commit`
+
 **Quick pre-commit verification**
 
 Fast, focused check of critical items before committing code:
+
 - Formatting (with auto-fix)
 - Linting
 - Tests
@@ -42,9 +46,11 @@ Fast, focused check of critical items before committing code:
 ---
 
 ### `/new-component`
+
 **Create a new component following all standards**
 
 Guides you through creating a new component with:
+
 - Proper file structure
 - JSDoc annotations
 - PropTypes validation
@@ -60,9 +66,11 @@ Guides you through creating a new component with:
 ---
 
 ### `/update-component-docs`
+
 **Update COMPONENTS.md documentation**
 
 Automatically scans all components and updates COMPONENTS.md with:
+
 - Current component count
 - Complete prop documentation
 - Usage examples
@@ -77,21 +85,27 @@ Automatically scans all components and updates COMPONENTS.md with:
 ## Quick Start
 
 1. **During development:**
+
    ```
    /new-component
    ```
+
    Follow the prompts to create a properly structured component.
 
 2. **Before committing:**
+
    ```
    /pre-commit
    ```
+
    Verify all critical checks pass.
 
 3. **Before pull request:**
+
    ```
    /check-standards
    ```
+
    Run comprehensive verification.
 
 4. **After component changes:**
@@ -103,6 +117,7 @@ Automatically scans all components and updates COMPONENTS.md with:
 ## Standards Reference
 
 See `.claude/STANDARDS.md` for complete coding standards documentation including:
+
 - Code quality guidelines
 - Component architecture patterns
 - Styling standards
@@ -118,11 +133,13 @@ See `.claude/STANDARDS.md` for complete coding standards documentation including
 These commands complement (not replace) the automated Husky pre-commit hooks:
 
 **Husky runs automatically:**
+
 - Prettier formatting
 - ESLint fixes
 - Jest tests (related to changes)
 
 **Claude commands provide:**
+
 - Comprehensive manual checks
 - Guided component creation
 - Documentation updates
@@ -131,6 +148,7 @@ These commands complement (not replace) the automated Husky pre-commit hooks:
 ## Usage Examples
 
 ### Example 1: Creating a New Component
+
 ```
 User: "I need a new component to display user notifications"
 
@@ -147,6 +165,7 @@ Claude: "I'll help you create a new notification component following all project
 ```
 
 ### Example 2: Pre-commit Check
+
 ```
 User: "I'm ready to commit my changes"
 
@@ -163,6 +182,7 @@ Claude: "Running pre-commit verification...
 ```
 
 ### Example 3: Standards Check Before PR
+
 ```
 User: "Can you verify everything is good before I create a PR?"
 
@@ -182,6 +202,7 @@ Claude: "Running comprehensive standards check...
 ## Customization
 
 To modify these commands:
+
 1. Edit the markdown files in `.claude/commands/`
 2. Each file contains instructions for Claude
 3. Changes take effect immediately (no restart needed)
@@ -189,22 +210,26 @@ To modify these commands:
 ## Troubleshooting
 
 **Command not found:**
+
 - Ensure the file is in `.claude/commands/` directory
 - Check that the file has `.md` extension
 - Try typing the full command name
 
 **Command runs but gives errors:**
+
 - Check that you're in the project root directory
 - Ensure all npm dependencies are installed (`npm install`)
 - Verify git repository is initialized
 
 **Updates not reflecting:**
+
 - Claude Code should automatically detect changes
 - If not, try restarting Claude Code or re-opening the project
 
 ## Contributing
 
 When adding new commands:
+
 1. Create a new `.md` file in `.claude/commands/`
 2. Use a descriptive, kebab-case name (e.g., `check-security.md`)
 3. Start with clear instructions for Claude
@@ -224,6 +249,7 @@ When adding new commands:
 ## Support
 
 For issues with these commands:
+
 1. Check the STANDARDS.md file for current standards
 2. Review the command file to understand what it's checking
 3. Run the checks manually to debug

@@ -3,6 +3,7 @@
 This document defines the coding standards, architectural patterns, and best practices for the Saw-Front-End-App project.
 
 ## Table of Contents
+
 1. [Code Quality](#code-quality)
 2. [Component Architecture](#component-architecture)
 3. [Styling Standards](#styling-standards)
@@ -19,11 +20,13 @@ This document defines the coding standards, architectural patterns, and best pra
 ## Code Quality
 
 ### Linting
+
 - **ESLint**: Zero errors required, max 11 acceptable warnings
 - **Run**: `npm run lint` before committing
 - **Auto-fix**: `npm run lint:fix` for automatic corrections
 
 ### Formatting
+
 - **Tool**: Prettier (automatically applied via pre-commit hooks)
 - **Configuration**:
   - Single quotes (`'string'`)
@@ -34,6 +37,7 @@ This document defines the coding standards, architectural patterns, and best pra
 - **Run**: `npm run format` or `npm run format:check`
 
 ### Code Style
+
 - **Variables**: Use `const` by default, `let` only when reassignment needed, never `var`
 - **Functions**: Prefer arrow functions for callbacks, named functions for components
 - **Destructuring**: Use destructuring for props and state
@@ -61,11 +65,7 @@ export default function ComponentName({ prop1, prop2 = 'default' }) {
   // Event handlers
   // Derived state
 
-  return (
-    <div>
-      {/* JSX */}
-    </div>
-  )
+  return <div>{/* JSX */}</div>
 }
 
 ComponentName.propTypes = {
@@ -88,6 +88,7 @@ ComponentName.propTypes = {
 ```
 
 ### Naming Conventions
+
 - **Components**: PascalCase (`ContactCard.js`)
 - **Utilities**: camelCase (`randomQuote.js`)
 - **Config**: camelCase (`siteConfig.js`)
@@ -95,6 +96,7 @@ ComponentName.propTypes = {
 - **CSS Classes**: kebab-case (Tailwind utilities)
 
 ### Component Patterns
+
 1. **Functional Components**: Always use function components, not class components (except ErrorBoundary)
 2. **Props Destructuring**: Destructure props in function signature with defaults
 3. **PropTypes**: Always validate props
@@ -102,6 +104,7 @@ ComponentName.propTypes = {
 5. **Single Responsibility**: Each component should do one thing well
 
 ### Configuration Management
+
 - **Single Source of Truth**: All site config in `config/siteConfig.js`
 - **Legacy Exports**: Use legacy config files only for backward compatibility
 - **Import Pattern**: Always import from `siteConfig.js` when possible
@@ -111,6 +114,7 @@ ComponentName.propTypes = {
 ## Styling Standards
 
 ### Tailwind CSS
+
 - **Primary Tool**: Use Tailwind utility classes exclusively
 - **No inline styles**: Except for dynamic CSS custom properties
 - **Theme Variables**: Use CSS custom properties for theming
@@ -125,14 +129,16 @@ ComponentName.propTypes = {
 ```
 
 **Usage in Tailwind**:
+
 ```jsx
-<div className="bg-theme-bg text-theme-text">
-  <h1 className="text-theme-primary">Title</h1>
-  <p className="text-theme-accent">Accent text</p>
+<div className='bg-theme-bg text-theme-text'>
+  <h1 className='text-theme-primary'>Title</h1>
+  <p className='text-theme-accent'>Accent text</p>
 </div>
 ```
 
 ### Responsive Design
+
 - **Mobile-First**: Design for mobile, enhance for desktop
 - **Breakpoints**: Use `lg:` prefix for desktop (1024px+)
 - **Pattern**:
@@ -143,18 +149,22 @@ ComponentName.propTypes = {
   ```
 
 ### Spacing Patterns
+
 - **Padding**: `p-2` (small), `p-4` (medium), `p-6` (large)
 - **Margins**: `mx-4` (horizontal), `my-6` (vertical)
 - **Consistent**: Use same spacing values throughout app
 
 ### Borders & Accents
+
 - **Bottom border**: `border-b` or `border-b-2`
 - **Top border**: `border-t` or `border-t-2`
 - **Left accent**: `border-l-4` for highlight/emphasis
 - **Theme aware**: `border-theme-bg`, `border-theme-primary`
 
 ### Semantic HTML
+
 Always use semantic elements:
+
 - `<header>` for site header
 - `<nav>` for navigation
 - `<main>` for main content
@@ -168,9 +178,11 @@ Always use semantic elements:
 ## Type Safety
 
 ### JSDoc Annotations
+
 All functions and components must have JSDoc comments.
 
 #### Component Example:
+
 ```javascript
 /**
  * Contact card component displaying contact information.
@@ -186,6 +198,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
 ```
 
 #### Utility Function Example:
+
 ```javascript
 /**
  * Selects a random quote from an array.
@@ -201,6 +214,7 @@ const randomQuote = (quotes) => {
 ```
 
 #### Type Definitions:
+
 ```javascript
 /**
  * @typedef {Object} Post
@@ -210,6 +224,7 @@ const randomQuote = (quotes) => {
 ```
 
 ### PropTypes
+
 Always validate props with PropTypes:
 
 ```javascript
@@ -244,6 +259,7 @@ ComponentName.propTypes = {
 ## Testing Requirements
 
 ### Test Coverage
+
 - **All components** must have test files
 - **Location**: `tests/components/[ComponentName].test.js`
 - **Minimum tests**:
@@ -253,6 +269,7 @@ ComponentName.propTypes = {
   4. Handles edge cases (null, undefined, empty)
 
 ### Test Structure
+
 ```javascript
 import React from 'react'
 import { render, screen } from '@testing-library/react'
@@ -260,11 +277,11 @@ import ComponentName from '../../components/ComponentName'
 
 describe('ComponentName', () => {
   it('renders without crashing', () => {
-    render(<ComponentName requiredProp="value" />)
+    render(<ComponentName requiredProp='value' />)
   })
 
   it('displays required props correctly', () => {
-    render(<ComponentName title="Test Title" />)
+    render(<ComponentName title='Test Title' />)
     expect(screen.getByText('Test Title')).toBeInTheDocument()
   })
 
@@ -276,12 +293,14 @@ describe('ComponentName', () => {
 ```
 
 ### Testing Commands
+
 - `npm test` - Run all tests
 - `npm run test:watch` - Watch mode
 - `npm run test:coverage` - Coverage report
 - `npm run test:upSnap` - Update snapshots
 
 ### Test Quality
+
 - **Descriptive names**: Use clear test descriptions
 - **Arrange-Act-Assert**: Follow AAA pattern
 - **Clean up**: Use `afterEach` to clean up
@@ -293,6 +312,7 @@ describe('ComponentName', () => {
 ## Accessibility
 
 ### Requirements
+
 All components must be accessible:
 
 1. **Semantic HTML**: Use proper elements (`<button>` not `<div onClick>`)
@@ -303,6 +323,7 @@ All components must be accessible:
 6. **Color Contrast**: WCAG AA minimum (4.5:1 for text)
 
 ### Examples
+
 ```jsx
 // Good: Semantic button with aria-label
 <button
@@ -331,6 +352,7 @@ All components must be accessible:
 ```
 
 ### Accessibility Linting
+
 - ESLint `jsx-a11y` plugin catches common issues
 - Run `npm run lint` to check
 
@@ -339,6 +361,7 @@ All components must be accessible:
 ## Performance
 
 ### Image Optimization
+
 - **Use Next.js Image**: Always use `next/image`, never `<img>`
 - **Required props**: `width`, `height`, or `fill`
 - **Formats**: WebP with fallback (automatic)
@@ -366,12 +389,14 @@ import Image from 'next/image'
 ```
 
 ### Bundle Optimization
+
 - **Tree-shaking**: Import only what's needed
 - **Dynamic imports**: Use `React.lazy()` for heavy components
 - **Code splitting**: Automatic with Next.js page-based routing
 - **Bundle analysis**: Run `npm run analyze` to check sizes
 
 ### React Performance
+
 - **Avoid inline functions**: Define handlers outside render when possible
 - **Memoization**: Use `useMemo` and `useCallback` judiciously
 - **Key props**: Always provide stable keys for lists
@@ -382,29 +407,30 @@ import Image from 'next/image'
 ## Security
 
 ### Input Validation
+
 - **Sanitize user input**: Use validator library
 - **Escape HTML**: Prevent XSS attacks
 - **Path traversal protection**: Validate file paths (see `loadMarkdownFileUsingSlug`)
 
 ### Secrets Management
+
 - **No hardcoded secrets**: Use environment variables
 - **`.env.local`**: Store sensitive values (gitignored)
 - **`.env.example`**: Document required variables (committed)
 
 ### External Links
+
 ```jsx
 // Always include rel attribute for external links
-<a
-  href="https://external-site.com"
-  target="_blank"
-  rel="noopener noreferrer"
->
+<a href='https://external-site.com' target='_blank' rel='noopener noreferrer'>
   External Link
 </a>
 ```
 
 ### Security Headers
+
 Configured in `next.config.js`:
+
 - X-Frame-Options
 - X-Content-Type-Options
 - Content Security Policy (if applicable)
@@ -414,17 +440,20 @@ Configured in `next.config.js`:
 ## Documentation
 
 ### Component Documentation
+
 - **COMPONENTS.md**: Keep updated with all components
 - **Update when**: Adding, removing, or modifying components
 - **Run**: `/update-component-docs` after changes
 
 ### Code Comments
+
 - **JSDoc**: Required for all functions
 - **Inline comments**: Use sparingly, prefer self-documenting code
 - **TODO comments**: Include ticket number or issue link
 - **Complex logic**: Explain "why", not "what"
 
 ### README Updates
+
 - Update README.md when:
   - Adding new scripts
   - Changing build process
@@ -436,12 +465,15 @@ Configured in `next.config.js`:
 ## Git Workflow
 
 ### Pre-commit Hooks
+
 Husky automatically runs on `git commit`:
+
 1. **Prettier**: Formats staged files
 2. **ESLint**: Fixes linting issues
 3. **Jest**: Runs tests for changed files
 
 ### Commit Messages
+
 - **Format**: `[Type] Brief description`
 - **Types**: feat, fix, docs, style, refactor, test, chore
 - **Examples**:
@@ -450,6 +482,7 @@ Husky automatically runs on `git commit`:
   - `docs: Update JSDoc for ContactCard component`
 
 ### Pull Requests
+
 - Run `/check-standards` before creating PR
 - Ensure all tests pass
 - Build succeeds
@@ -461,6 +494,7 @@ Husky automatically runs on `git commit`:
 ## Quick Reference Checklist
 
 Before committing code:
+
 - [ ] JSDoc annotations added
 - [ ] PropTypes validation included
 - [ ] Tests created and passing
@@ -479,6 +513,7 @@ Before committing code:
 ## Automated Checks
 
 Use these Claude Code commands:
+
 - `/check-standards` - Comprehensive standards verification
 - `/new-component` - Create component following all standards
 - `/update-component-docs` - Update COMPONENTS.md
@@ -486,6 +521,7 @@ Use these Claude Code commands:
 ## Questions?
 
 Refer to:
+
 - This document for standards
 - README.md for setup and scripts
 - COMPONENTS.md for component reference
