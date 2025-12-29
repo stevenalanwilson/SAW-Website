@@ -4,6 +4,9 @@
   "description": "Shared configuration files for SAW monorepo",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "test": "echo 'No tests for config package'"
+  },
   "files": [
     "*.js",
     "*.mjs",
