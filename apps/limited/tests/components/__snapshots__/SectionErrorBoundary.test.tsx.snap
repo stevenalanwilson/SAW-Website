@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SectionErrorBoundary renders children when there is no error 1`] = `
+<DocumentFragment>
+  <div>
+    Working content
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SectionErrorBoundary renders custom fallback when provided 1`] = `
+<DocumentFragment>
+  <div>
+    Custom fallback UI
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SectionErrorBoundary renders default error message when none provided 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-red-50 border border-red-200 rounded p-4 my-4"
+  >
+    <p
+      class="text-red-800 font-semibold mb-2"
+    >
+      This section failed to load
+    </p>
+    <p
+      class="text-red-600 text-sm"
+    >
+      Please try refreshing the page. If the problem persists, contact support.
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SectionErrorBoundary renders error UI when child component throws 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-red-50 border border-red-200 rounded p-4 my-4"
+  >
+    <p
+      class="text-red-800 font-semibold mb-2"
+    >
+      Custom error message
+    </p>
+    <p
+      class="text-red-600 text-sm"
+    >
+      Please try refreshing the page. If the problem persists, contact support.
+    </p>
+  </div>
+</DocumentFragment>
+`;

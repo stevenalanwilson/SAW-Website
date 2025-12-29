@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Breadcrumbs renders breadcrumb navigation with all items 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Breadcrumb navigation"
+    class="text-sm mb-4 pb-4 border-b-2 border-theme-text "
+    role="navigation"
+  >
+    <ol
+      class="flex flex-wrap items-center space-x-2"
+    >
+      <li
+        class="flex items-center"
+      >
+        <a
+          class="text-theme-primary hover:underline transition-all"
+          href="/"
+          title="Navigate to Home"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="flex items-center"
+      >
+        <span
+          class="mr-2 text-theme-text opacity-50"
+        >
+          /
+        </span>
+        <a
+          class="text-theme-primary hover:underline transition-all"
+          href="/blog"
+          title="Navigate to Blog"
+        >
+          Blog
+        </a>
+      </li>
+      <li
+        aria-current="page"
+        class="flex items-center"
+      >
+        <span
+          class="mr-2 text-theme-text opacity-50"
+        >
+          /
+        </span>
+        <span
+          class="text-theme-text font-semibold"
+        >
+          Article Title
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
+`;
