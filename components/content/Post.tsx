@@ -24,7 +24,6 @@ export default function Post({ content, className = '' }: PostProps) {
     .use(rehypeReact, {
       ...prod,
       components: {
-        /* eslint-disable jsx-a11y/heading-has-content, jsx-a11y/anchor-has-content */
         p: (props: ComponentPropsWithoutRef<'p'>) => (
           <p className='text-lg leading-relaxed mb-5 text-theme-text' {...props} />
         ),
@@ -61,7 +60,7 @@ export default function Post({ content, className = '' }: PostProps) {
             {...props}
           />
         ),
-        /* eslint-enable jsx-a11y/heading-has-content, jsx-a11y/anchor-has-content */
+
         img: (props: ComponentPropsWithoutRef<'img'>) => (
           <span className='block mb-5 relative w-full' style={{ aspectRatio: '16/9' }}>
             <Image

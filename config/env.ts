@@ -71,7 +71,7 @@ export function validateEnv(): EnvConfig {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     try {
       new URL(siteUrl)
-    } catch (error) {
+    } catch (_error) {
       throw new Error(
         `Invalid NEXT_PUBLIC_SITE_URL: "${siteUrl}"\n` +
           'Must be a valid URL (e.g., https://example.com)'

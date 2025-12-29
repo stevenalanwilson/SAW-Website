@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import React from 'react'
 import SEO from '../../components/ui/SEO'
 
 // Mock Next.js Head component

@@ -7,9 +7,11 @@ import '../public/static/screen.css'
 
 const LANG = 'en'
 
-// Validate environment variables at startup
+// Validate environment variables at startup (server-side only)
 // This will throw an error if required variables are missing
-validateEnv()
+if (typeof window === 'undefined') {
+  validateEnv()
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

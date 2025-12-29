@@ -9,7 +9,7 @@ import ContactCard from '../components/cards/ContactCard'
 import StatsCard from '../components/cards/StatsCard'
 import ExperienceCard from '../components/cards/ExperienceCard'
 import Sidebar from '../components/layout/Sidebar'
-import Post from '../components/content/Post'
+import PostComponent from '../components/content/Post'
 import AuthorCard from '../components/cards/AuthorCard'
 import Tagline from '../components/ui/Tagline'
 import ServicesList from '../components/features/ServicesList'
@@ -225,7 +225,7 @@ export default function Components({ posts = [] }: ComponentsPageProps) {
                 <p className='mb-4 text-gray-700'>
                   The Post component renders markdown content as styled HTML.
                 </p>
-                <Post content='# Sample Heading\n\nThis is a paragraph with **bold** text.\n\n## Another Heading\n\nMore content here.' />
+                <PostComponent content='# Sample Heading\n\nThis is a paragraph with **bold** text.\n\n## Another Heading\n\nMore content here.' />
               </div>
               <div className='bg-gray-100 p-4 rounded'>
                 <pre className='text-sm overflow-x-auto'>{`<Post content={markdownString} />`}</pre>
