@@ -1,4 +1,3 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import SEO from '../../components/ui/SEO'
 
@@ -6,7 +5,7 @@ import SEO from '../../components/ui/SEO'
 jest.mock('next/head', () => {
   return {
     __esModule: true,
-    default: ({ children }) => {
+    default: ({ children }: { children: React.ReactNode }) => {
       return <>{children}</>
     },
   }

@@ -1,4 +1,3 @@
-import React from 'react'
 import renderer from 'react-test-renderer'
 import { render } from '@testing-library/react'
 import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
@@ -18,7 +17,7 @@ const ErrorComponent = () => {
 const WorkingComponent = () => <div>Working content</div>
 
 // Component that throws error with specific message
-const ErrorComponentWithMessage = ({ message }) => {
+const ErrorComponentWithMessage = ({ message }: { message: string }) => {
   throw new Error(message)
 }
 
@@ -150,7 +149,7 @@ describe('SectionErrorBoundary', () => {
     // In development mode, error details should be in a <details> element
     // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'development'
-    const devComponent = renderer.create(
+    void renderer.create(
       <SectionErrorBoundary name='TestSection'>
         <ErrorComponent />
       </SectionErrorBoundary>

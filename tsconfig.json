@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
-    // Enable type checking for JavaScript files during migration
-    "checkJs": false,
-    // Allow JavaScript files to be compiled (important during migration)
+    // Allow JavaScript files in config (postcss, tailwind, jest, next, sentry configs)
     "allowJs": true,
     // Specify module system
     "module": "esnext",
     "moduleResolution": "bundler",
     // Target modern JavaScript
     "target": "es2017",
-    // Strict mode - disabled during migration, will enable gradually
-    "strict": false,
-    // Parse in strict mode and emit "use strict" for each source file
-    "alwaysStrict": true,
+    // Strict mode - enabled after TypeScript migration
+    "strict": true,
+    // Allow null and undefined to be assigned to any type (reduces test boilerplate)
+    "strictNullChecks": false,
     // Import non-ES modules as default imports
     "esModuleInterop": true,
     // Skip type checking of declaration files for faster compilation
@@ -61,12 +59,12 @@
     },
     // Ensure that casing is correct in imports
     "forceConsistentCasingInFileNames": true,
-    // Report errors on unused locals (disabled during migration)
-    "noUnusedLocals": false,
-    // Report errors on unused parameters (disabled during migration)
-    "noUnusedParameters": false,
+    // Report errors on unused locals
+    "noUnusedLocals": true,
+    // Report errors on unused parameters
+    "noUnusedParameters": true,
     // Report error when not all code paths in function return a value
-    "noImplicitReturns": false,
+    "noImplicitReturns": true,
     // Interop constraints required by Next.js
     "isolatedModules": true,
     // Plugins for Next.js

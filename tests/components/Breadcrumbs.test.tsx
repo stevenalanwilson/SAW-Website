@@ -1,4 +1,3 @@
-import React from 'react'
 import renderer from 'react-test-renderer'
 import { render } from '@testing-library/react'
 import Breadcrumbs from '../../components/ui/Breadcrumbs'
@@ -22,6 +21,7 @@ describe('Breadcrumbs', () => {
   })
 
   it('renders null when items is undefined', () => {
+    // @ts-expect-error Testing edge case with undefined items
     const { container } = render(<Breadcrumbs items={undefined} />)
     expect(container.firstChild).toBeNull()
   })
@@ -35,7 +35,7 @@ describe('Breadcrumbs', () => {
   it('applies custom className when provided', () => {
     const { container } = render(<Breadcrumbs items={mockItems} className='custom-class' />)
     const nav = container.querySelector('nav')
-    expect(nav.className).toContain('custom-class')
+    expect(nav!.className).toContain('custom-class')
   })
 
   it('marks last item with aria-current="page"', () => {

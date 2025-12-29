@@ -47,8 +47,8 @@ summary: Test summary
   })
 
   test('returns an empty array if no files are provided', () => {
-    const files = []
-    const expectedPosts = []
+    const files: string[] = []
+    const expectedPosts: unknown[] = []
     const actualPosts = markdownServive.loadAllMarkdownFilesAndCreatePosts(files)
     expect(actualPosts).toEqual(expectedPosts)
   })

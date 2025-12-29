@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react'
+import { Component, ErrorInfo, ReactNode } from 'react'
 import * as Sentry from '@sentry/nextjs'
 
 interface SectionErrorBoundaryProps {

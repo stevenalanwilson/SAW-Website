@@ -2,7 +2,6 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 import type { CSSProperties } from 'react'
 import fs from 'fs'
 import matter from 'gray-matter'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import validator from 'validator'
 

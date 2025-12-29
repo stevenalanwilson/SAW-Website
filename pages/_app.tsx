@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import ErrorBoundary from '../components/error/ErrorBoundary'
 
