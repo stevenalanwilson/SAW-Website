@@ -1,4 +1,3 @@
-import renderer from 'react-test-renderer'
 import { render } from '@testing-library/react'
 import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
 import * as Sentry from '@sentry/nextjs'
@@ -44,44 +43,40 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('renders children when there is no error', () => {
-    const component = renderer.create(
+    const { asFragment } = render(
       <SectionErrorBoundary name='TestSection'>
         <WorkingComponent />
       </SectionErrorBoundary>
     )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders error UI when child component throws', () => {
-    const component = renderer.create(
+    const { asFragment } = render(
       <SectionErrorBoundary name='TestSection' errorMessage='Custom error message'>
         <ErrorComponent />
       </SectionErrorBoundary>
     )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders custom fallback when provided', () => {
     const customFallback = <div>Custom fallback UI</div>
-    const component = renderer.create(
+    const { asFragment } = render(
       <SectionErrorBoundary name='TestSection' fallback={customFallback}>
         <ErrorComponent />
       </SectionErrorBoundary>
     )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders default error message when none provided', () => {
-    const component = renderer.create(
+    const { asFragment } = render(
       <SectionErrorBoundary name='TestSection'>
         <ErrorComponent />
       </SectionErrorBoundary>
     )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('calls Sentry.captureException when error occurs', () => {
@@ -149,7 +144,7 @@ describe('SectionErrorBoundary', () => {
     // In development mode, error details should be in a <details> element
     // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'development'
-    void renderer.create(
+    render(
       <SectionErrorBoundary name='TestSection'>
         <ErrorComponent />
       </SectionErrorBoundary>

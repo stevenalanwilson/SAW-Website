@@ -1,4 +1,3 @@
-import renderer from 'react-test-renderer'
 import { render } from '@testing-library/react'
 import Breadcrumbs from '../../components/ui/Breadcrumbs'
 
@@ -10,9 +9,8 @@ describe('Breadcrumbs', () => {
   ]
 
   it('renders breadcrumb navigation with all items', () => {
-    const component = renderer.create(<Breadcrumbs items={mockItems} />)
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    const { asFragment } = render(<Breadcrumbs items={mockItems} />)
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders null when no items provided', () => {
