@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
+    "build": "echo 'No build needed for UI package'",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
