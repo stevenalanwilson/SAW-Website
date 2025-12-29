@@ -16,7 +16,7 @@ describe('PageHero Component', () => {
   it('does not render subtitle div when subtitle is not provided', () => {
     const { container } = render(<PageHero title='Test Title' />)
     const section = container.querySelector('section')
-    const divs = section.querySelectorAll('div')
+    const divs = section?.querySelectorAll('div')
     expect(divs).toHaveLength(0)
   })
 

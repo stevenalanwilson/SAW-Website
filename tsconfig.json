@@ -9,8 +9,8 @@
     "target": "es2017",
     // Strict mode - enabled after TypeScript migration
     "strict": true,
-    // Allow null and undefined to be assigned to any type (reduces test boilerplate)
-    "strictNullChecks": false,
+    // Enable strict null checks for better type safety
+    "strictNullChecks": true,
     // Import non-ES modules as default imports
     "esModuleInterop": true,
     // Skip type checking of declaration files for faster compilation

@@ -2,7 +2,7 @@
 
 A high-performance, well-tested Next.js application for [stevenalanwilson.com](https://stevenalanwilson.com).
 
-[![Tests](https://img.shields.io/badge/tests-256%20passing-brightgreen)]() [![Coverage](https://img.shields.io/badge/coverage-comprehensive-brightgreen)]() [![Node](https://img.shields.io/badge/node-22.x-brightgreen)]() [![Next.js](https://img.shields.io/badge/next.js-16.1.1-black)]()
+[![Tests](https://img.shields.io/badge/tests-264%20passing-brightgreen)]() [![Coverage](https://img.shields.io/badge/coverage-96.52%25-brightgreen)]() [![Node](https://img.shields.io/badge/node-22.x-brightgreen)]() [![Next.js](https://img.shields.io/badge/next.js-16.1.1-black)]()
 
 ---
 
@@ -265,10 +265,14 @@ git commit --no-verify -m "Emergency fix"
 
 ### Test Coverage
 
-- **256 tests** - All passing
-- **30 test suites** - Organized by component/service
-- **4 snapshot tests** - UI consistency checks
-- **Comprehensive coverage** - Components, services, edge cases
+- **264 tests** - All passing
+- **29 test suites** - Organized by component/service
+- **5 snapshot tests** - UI consistency checks
+- **Coverage Metrics:**
+  - **Statements:** 96.52%
+  - **Branches:** 90.75%
+  - **Functions:** 87.5%
+  - **Lines:** 96.52%
 
 ### Running Tests
 
@@ -668,12 +672,13 @@ See **[MONOREPO-SETUP.md](./MONOREPO-SETUP.md)** for complete documentation on:
 
 ## Project Stats
 
-- **256 tests** - Comprehensive test coverage
-- **25+ components** - All with PropTypes and JSDoc
+- **264 tests** - 96.52% code coverage
+- **24 TypeScript components** - Fully type-safe with strict null checks
 - **0 linting errors** - High code quality
 - **Node.js 22.x** - Latest LTS
 - **Next.js 16.1.1** - Latest framework version
 - **React 19.2.3** - Latest React
+- **TypeScript 5.9.3** - Full strict mode enabled
 
 ---
 

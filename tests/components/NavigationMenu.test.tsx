@@ -95,7 +95,7 @@ describe('NavigationMenu Component', () => {
       const list = container.querySelector('ul')
 
       expect(list).toBeInTheDocument()
-      expect(list.children).toHaveLength(0)
+      expect(list?.children).toHaveLength(0)
     })
 
     it('handles items with special characters in labels', () => {

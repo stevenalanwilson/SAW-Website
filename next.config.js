@@ -49,10 +49,15 @@ const nextConfig = {
       })
     }
 
-    // Build CSP value - only include upgrade-insecure-requests in production
+    // Build CSP value - stricter in production, more permissive in development
+    const isDev = process.env.NODE_ENV !== 'production'
     const cspValue =
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' vercel.live *.vercel-scripts.com vitals.vercel-insights.com; " +
+      // In development, allow unsafe-eval and unsafe-inline for hot reloading and debugging
+      // In production, restrict to specific trusted sources only
+      (isDev
+        ? "script-src 'self' 'unsafe-eval' 'unsafe-inline' vercel.live *.vercel-scripts.com vitals.vercel-insights.com; "
+        : "script-src 'self' vercel.live *.vercel-scripts.com vitals.vercel-insights.com; ") +
       "style-src 'self' 'unsafe-inline'; " +
       "img-src 'self' data: blob: https:; " +
       "font-src 'self' data:; " +
@@ -62,7 +67,7 @@ const nextConfig = {
       "base-uri 'self'; " +
       "form-action 'self'; " +
       "frame-ancestors 'self';" +
-      (process.env.NODE_ENV === 'production' ? ' upgrade-insecure-requests;' : '')
+      (isDev ? '' : ' upgrade-insecure-requests;')
 
     securityHeaders.push(
       {

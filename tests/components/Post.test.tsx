@@ -43,6 +43,9 @@ describe('Post Component', () => {
   it('renders content inside article', () => {
     const { container } = render(<Post content='Sample markdown' />)
     const article = container.querySelector('article')
-    expect(article).toContainElement(article.querySelector('[data-testid="processed-content"]'))
+    const content = article?.querySelector(
+      '[data-testid="processed-content"]'
+    ) as HTMLElement | null
+    expect(article).toContainElement(content)
   })
 })

@@ -15,7 +15,7 @@ interface Post {
 }
 
 interface ListPostsProps {
-  posts?: Post[]
+  posts?: Post[] | null
 }
 
 /**

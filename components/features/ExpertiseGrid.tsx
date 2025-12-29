@@ -4,7 +4,7 @@ interface ExpertiseItem {
 }
 
 interface ExpertiseGridProps {
-  items?: ExpertiseItem[]
+  items?: ExpertiseItem[] | null
   className?: string
 }
 

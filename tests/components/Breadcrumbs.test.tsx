@@ -71,16 +71,16 @@ describe('Breadcrumbs', () => {
     const secondItem = container.querySelectorAll('li')[1]
 
     expect(firstItem.querySelector('a')).toBeTruthy()
-    expect(firstItem.querySelector('a').getAttribute('href')).toBe('/')
+    expect(firstItem.querySelector('a')?.getAttribute('href')).toBe('/')
     expect(secondItem.querySelector('a')).toBeTruthy()
-    expect(secondItem.querySelector('a').getAttribute('href')).toBe('/blog')
+    expect(secondItem.querySelector('a')?.getAttribute('href')).toBe('/blog')
   })
 
   it('includes proper ARIA label on nav element', () => {
     const { container } = render(<Breadcrumbs items={mockItems} />)
     const nav = container.querySelector('nav')
-    expect(nav.getAttribute('aria-label')).toBe('Breadcrumb navigation')
-    expect(nav.getAttribute('role')).toBe('navigation')
+    expect(nav?.getAttribute('aria-label')).toBe('Breadcrumb navigation')
+    expect(nav?.getAttribute('role')).toBe('navigation')
   })
 
   it('renders separators between items', () => {
@@ -100,6 +100,6 @@ describe('Breadcrumbs', () => {
   it('renders with correct title attribute on links', () => {
     const { container } = render(<Breadcrumbs items={mockItems} />)
     const firstLink = container.querySelector('a')
-    expect(firstLink.getAttribute('title')).toBe('Navigate to Home')
+    expect(firstLink?.getAttribute('title')).toBe('Navigate to Home')
   })
 })
