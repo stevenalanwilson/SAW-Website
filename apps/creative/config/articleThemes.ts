@@ -25,6 +25,7 @@ export const articleThemes: ArticleThemes = {
     accent: '#666666', // Medium gray for subtle text
     background: '#ffffff', // White
     text: '#000000', // Black
+    navText: '#000000', // Black navigation text
   },
 
   dark: {
@@ -33,6 +34,7 @@ export const articleThemes: ArticleThemes = {
     accent: '#999999', // Medium-light gray for better contrast on black
     background: '#000000', // Black
     text: '#ffffff', // White
+    navText: '#ffffff', // White navigation text
   },
 
   green: {
@@ -40,7 +42,8 @@ export const articleThemes: ArticleThemes = {
     primary: '#05c964ff', // White
     accent: '#999999', // Medium-light gray for better contrast on black
     background: '#edf4f1ff', // Black
-    text: '#000000ff', // White
+    text: '#000000ff', // Black text
+    navText: '#000000ff', // Black navigation text
   },
 }
 

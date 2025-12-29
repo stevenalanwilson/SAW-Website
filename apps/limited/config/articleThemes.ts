@@ -25,6 +25,7 @@ export const articleThemes: ArticleThemes = {
     accent: '#666666', // Medium gray for subtle text
     background: '#ffffff', // White
     text: '#000000', // Black
+    navText: '#000000', // Black navigation text
   },
 
   dark: {
@@ -33,6 +34,7 @@ export const articleThemes: ArticleThemes = {
     accent: '#999999', // Medium-light gray for better contrast on black
     background: '#000000', // Black
     text: '#ffffff', // White
+    navText: '#ffffff', // White navigation text
   },
 }
 
