@@ -37,6 +37,7 @@ This checklist should be completed before every production deployment. Mark each
 - [ ] Fix any ESLint warnings (optional but recommended)
 
 **Commands:**
+
 ```bash
 npm run lint
 npm run format:check
@@ -52,12 +53,14 @@ npm run type-check
 - [ ] Snapshot tests updated if UI changed
 
 **Commands:**
+
 ```bash
 npm test
 npm run test:coverage
 ```
 
 **Coverage Thresholds:**
+
 - Statements: >90%
 - Branches: >85%
 - Functions: >85%
@@ -83,6 +86,7 @@ npm run test:coverage
 - [ ] Verify CSP with: https://csp-evaluator.withgoogle.com/
 
 **Check CSP Configuration:**
+
 ```javascript
 // Verify in next.config.js that production CSP is strict
 const isDev = process.env.NODE_ENV !== 'production'
@@ -97,11 +101,13 @@ const isDev = process.env.NODE_ENV !== 'production'
 - [ ] Sentry DSN configured (if using error tracking)
 
 **Required Environment Variables:**
+
 ```
 NEXT_PUBLIC_SITE_URL=https://stevenalanwilson.com
 ```
 
 **Optional Environment Variables:**
+
 ```
 NEXT_PUBLIC_SENTRY_DSN=
 NEXT_PUBLIC_SENTRY_ENVIRONMENT=production
@@ -118,6 +124,7 @@ SENTRY_AUTH_TOKEN=
 - [ ] Verify lockfile is committed (package-lock.json)
 
 **Commands:**
+
 ```bash
 npm audit
 npm outdated
@@ -131,6 +138,7 @@ npm outdated
 - [ ] URL validation requires HTTPS in production
 
 **Key Security Files to Review:**
+
 - `utils/validation.ts`
 - `utils/security.ts`
 - `services/getMarkdownService.ts`
@@ -148,6 +156,7 @@ npm outdated
 - [ ] Sitemap generated: `public/sitemap.xml`
 
 **Commands:**
+
 ```bash
 npm run build
 ```
@@ -161,11 +170,13 @@ npm run build
 - [ ] Images optimized (WebP, correct sizes)
 
 **Commands:**
+
 ```bash
 npm run analyze
 ```
 
 **Bundle Size Targets:**
+
 - First Load JS: < 250KB
 - Total JS: < 500KB (all routes)
 
@@ -200,11 +211,13 @@ npm run analyze
 - [ ] 404 page customized
 
 **Test URLs:**
+
 - `/sitemap.xml` - accessible
 - `/robots.txt` - accessible
 - Test Open Graph: https://www.opengraph.xyz/
 
 **Key SEO Files:**
+
 - `components/seo/SEO.tsx`
 - `public/sitemap.xml`
 - `public/robots.txt`
@@ -221,11 +234,13 @@ npm run analyze
 - [ ] Page language set: `<html lang="en">`
 
 **Testing Tools:**
+
 - Chrome DevTools Lighthouse
 - WAVE browser extension
 - axe DevTools
 
 **Accessibility Targets:**
+
 - Lighthouse Accessibility Score: >95
 - No WAVE errors
 - Keyboard navigation: 100% functional
@@ -274,6 +289,7 @@ npm run analyze
 - [ ] All static assets load correctly
 
 **Commands:**
+
 ```bash
 # Clean build test
 rm -rf .next
@@ -308,6 +324,7 @@ Run Lighthouse audit in production mode (incognito):
 - [ ] SEO: >95
 
 **Command:**
+
 ```bash
 # In Chrome DevTools > Lighthouse
 # Select: Performance, Accessibility, Best Practices, SEO
@@ -346,6 +363,7 @@ Run Lighthouse audit in production mode (incognito):
 - [ ] No uncommitted changes: `git status`
 
 **Commands:**
+
 ```bash
 git status
 git log --oneline -5
@@ -385,12 +403,12 @@ git log --oneline -5
 
 Document baseline metrics for future comparison:
 
-- [ ] Lighthouse Performance score: ____
-- [ ] First Contentful Paint (FCP): ____ ms
-- [ ] Largest Contentful Paint (LCP): ____ ms
-- [ ] Time to Interactive (TTI): ____ ms
-- [ ] Cumulative Layout Shift (CLS): ____
-- [ ] Total Blocking Time (TBT): ____ ms
+- [ ] Lighthouse Performance score: \_\_\_\_
+- [ ] First Contentful Paint (FCP): \_\_\_\_ ms
+- [ ] Largest Contentful Paint (LCP): \_\_\_\_ ms
+- [ ] Time to Interactive (TTI): \_\_\_\_ ms
+- [ ] Cumulative Layout Shift (CLS): \_\_\_\_
+- [ ] Total Blocking Time (TBT): \_\_\_\_ ms
 
 ### Rollback Plan
 
@@ -404,6 +422,7 @@ Document baseline metrics for future comparison:
 ## Quick Reference Commands
 
 ### Pre-Deployment Commands
+
 ```bash
 # Full quality check
 npm run lint && npm run format:check && npm run type-check && npm test
@@ -419,6 +438,7 @@ npm run analyze
 ```
 
 ### Deployment Checklist Commands
+
 ```bash
 # 1. Code Quality
 npm run lint
@@ -452,9 +472,9 @@ npm start
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2025-12-29 | Initial deployment checklist |
+| Version | Date       | Changes                      |
+| ------- | ---------- | ---------------------------- |
+| 1.0.0   | 2025-12-29 | Initial deployment checklist |
 
 ---
 
