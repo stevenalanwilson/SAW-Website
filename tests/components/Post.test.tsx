@@ -5,7 +5,9 @@ import '@testing-library/jest-dom'
 jest.mock('unified', () => ({
   unified: () => ({
     use: jest.fn().mockReturnThis(),
-    processSync: (content: string) => ({ result: <div data-testid='processed-content'>{content}</div> }),
+    processSync: (content: string) => ({
+      result: <div data-testid='processed-content'>{content}</div>,
+    }),
   }),
 }))
 jest.mock('remark-parse', () => jest.fn())

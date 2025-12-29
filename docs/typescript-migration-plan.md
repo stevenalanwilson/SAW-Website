@@ -5,6 +5,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 ## Current State Analysis
 
 **Project Overview:**
+
 - Next.js 16.1.1 with React 19.2.3
 - 76 JavaScript files (.js/.jsx) excluding node_modules
 - TypeScript already installed (v5.9.3) as dev dependency
@@ -12,6 +13,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 - Well-organized structure: components, pages, services, config, tests
 
 **File Breakdown:**
+
 - **Components:** 24 files (ui, layout, cards, features, content, error)
 - **Pages:** 6 files (Next.js pages including dynamic routes)
 - **Tests:** 37 test files (comprehensive test coverage)
@@ -34,6 +36,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
    - Configure for Next.js with proper types
 
 2. **Update Dependencies**
+
    ```bash
    npm install --save-dev @types/react @types/react-dom @types/node
    ```
@@ -54,6 +57,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 **Goal:** Migrate files with minimal dependencies first
 
 **Priority Order:**
+
 1. **Config files** (3-5 files)
    - `config/siteConfig.js` → `siteConfig.ts`
    - `config/icons.js` → `icons.ts`
@@ -114,6 +118,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 **Goal:** Migrate Next.js pages after components are typed
 
 **Order:**
+
 1. `pages/404.js`
 2. `pages/components.js`
 3. `pages/about.js`
@@ -141,6 +146,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 **Goal:** Convert test files to TypeScript
 
 **Strategy:**
+
 - Migrate tests alongside their corresponding components
 - Install `@types/jest` and `@jest/types`
 - Update test utilities and setup files
@@ -175,6 +181,7 @@ Based on my analysis, here's a comprehensive migration plan for your Next.js app
 ## Type Definitions Needed
 
 Create `types/` directory with:
+
 - `types/site.ts` - Site configuration types
 - `types/post.ts` - Blog post and markdown types
 - `types/components.ts` - Shared component prop types
@@ -204,6 +211,7 @@ Create `types/` directory with:
 ## Next Steps
 
 Options to proceed:
+
 1. Start with Phase 1 (Foundation Setup) - creating tsconfig.json and installing type definitions
 2. Provide more details on a specific phase
 3. Begin migrating specific files you'd like to prioritize
@@ -211,6 +219,7 @@ Options to proceed:
 ## Progress Tracking
 
 ### Phase 1: Foundation Setup ✅ COMPLETED
+
 - [x] Create tsconfig.json
 - [x] Install type dependencies (@types/react, @types/react-dom, @types/node, @types/jest, @jest/types)
 - [x] Install TypeScript ESLint packages (@typescript-eslint/parser, @typescript-eslint/eslint-plugin)
@@ -222,6 +231,7 @@ Options to proceed:
 - [x] Verify setup (type-check passes, all 264 tests pass)
 
 ### Phase 2: Low-Risk Files ✅ COMPLETED
+
 - [x] config/siteConfig.js → siteConfig.ts
 - [x] config/icons.js → icons.ts
 - [x] config/articleThemes.js → articleThemes.ts
@@ -229,7 +239,9 @@ Options to proceed:
 - [ ] scripts/generate-sitemap.js → generate-sitemap.ts (optional, build script)
 
 ### Phase 3: React Components
+
 **UI Components:**
+
 - [ ] components/ui/LoadingSpinner.js → LoadingSpinner.tsx
 - [ ] components/ui/Tagline.js → Tagline.tsx
 - [ ] components/ui/Breadcrumbs.js → Breadcrumbs.tsx
@@ -237,12 +249,14 @@ Options to proceed:
 - [ ] components/ui/NavigationMenu.js → NavigationMenu.tsx
 
 **Card Components:**
+
 - [ ] components/cards/StatsCard.js → StatsCard.tsx
 - [ ] components/cards/AuthorCard.js → AuthorCard.tsx
 - [ ] components/cards/ExperienceCard.js → ExperienceCard.tsx
 - [ ] components/cards/ContactCard.js → ContactCard.tsx
 
 **Content Components:**
+
 - [ ] components/content/SectionHeading.js → SectionHeading.tsx
 - [ ] components/content/SiteTitle.js → SiteTitle.tsx
 - [ ] components/content/PageHero.js → PageHero.tsx
@@ -251,31 +265,36 @@ Options to proceed:
 - [ ] components/content/LatestPosts.js → LatestPosts.tsx
 
 **Feature Components:**
+
 - [ ] components/features/ExpertiseGrid.js → ExpertiseGrid.tsx
 - [ ] components/features/ServicesList.js → ServicesList.tsx
 - [ ] components/features/WorkWithMe.js → WorkWithMe.tsx
 
 **Error Boundary Components:**
+
 - [ ] components/error/ErrorBoundary.js → ErrorBoundary.tsx
 - [ ] components/error/SectionErrorBoundary.js → SectionErrorBoundary.tsx
 
 **Layout Components:**
+
 - [ ] components/layout/Footer.js → Footer.tsx
 - [ ] components/layout/Sidebar.js → Sidebar.tsx
 - [ ] components/layout/SiteHeader.js → SiteHeader.tsx
 - [ ] components/layout/Layout.js → Layout.tsx
 
 ### Phase 4: Pages
+
 - [ ] pages/404.js → 404.tsx
 - [ ] pages/components.js → components.tsx
 - [ ] pages/about.js → about.tsx
 - [ ] pages/index.js → index.tsx
 - [ ] pages/post/[slug].js → [slug].tsx
-- [ ] pages/_app.js → _app.tsx
+- [ ] pages/\_app.js → \_app.tsx
 
 ### Phase 5: Infrastructure
+
 - [ ] log/sentry.js → sentry.ts
-- [ ] log/__mocks__/sentry.js → sentry.ts
+- [ ] log/**mocks**/sentry.js → sentry.ts
 - [ ] postcss.config.js (keep as .js or migrate)
 - [ ] tailwind.config.js (keep as .js or migrate)
 - [ ] jest.config.js (keep as .js or migrate)
@@ -285,10 +304,12 @@ Options to proceed:
 - [ ] sentry.server.config.js
 
 ### Phase 6: Tests
+
 - [ ] Migrate all 37 test files to TypeScript
 - [ ] Update test setup and utilities
 
 ### Phase 7: Strict Mode
+
 - [ ] Enable noImplicitAny
 - [ ] Enable strictNullChecks
 - [ ] Enable strictFunctionTypes

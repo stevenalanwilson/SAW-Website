@@ -22,11 +22,7 @@
     // Support JSX in React - preserve lets Next.js handle JSX transformation
     "jsx": "react-jsx",
     // Specify library files to include
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     // Disable emitting files (Next.js handles compilation)
     "noEmit": true,
     // Enable incremental compilation for faster builds
@@ -35,27 +31,13 @@
     "baseUrl": ".",
     // Path mapping for module resolution
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/config/*": [
-        "config/*"
-      ],
-      "@/services/*": [
-        "services/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/public/*": [
-        "public/*"
-      ]
+      "@/components/*": ["components/*"],
+      "@/config/*": ["config/*"],
+      "@/services/*": ["services/*"],
+      "@/utils/*": ["utils/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"]
     },
     // Ensure that casing is correct in imports
     "forceConsistentCasingInFileNames": true,
@@ -74,19 +56,6 @@
       }
     ]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out",
-    "coverage",
-    "dist",
-    "build"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next", "out", "coverage", "dist", "build"]
 }
