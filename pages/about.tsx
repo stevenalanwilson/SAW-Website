@@ -1,5 +1,5 @@
+import type { GetStaticProps } from 'next'
 import Link from 'next/link'
-import PropTypes from 'prop-types'
 import Layout from '../components/layout/Layout'
 import SEO from '../components/ui/SEO'
 import config from '../config/siteConfig'
@@ -9,14 +9,30 @@ import ExpertiseGrid from '../components/features/ExpertiseGrid'
 import Sidebar from '../components/layout/Sidebar'
 import markdownService from '../services/getMarkdownService'
 
-export async function getStaticProps() {
+interface PostMetaData {
+  title: string
+  date: string
+  summary: string
+  thumbnail?: string
+}
+
+interface Post {
+  postSlug: string
+  postMetaData: PostMetaData
+}
+
+interface AboutPageProps {
+  posts: Post[]
+}
+
+export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
   const posts = markdownService.getAllMarkdownPosts()
   return {
     props: { posts },
   }
 }
 
-function About({ posts = [] }) {
+export default function About({ posts = [] }: AboutPageProps) {
   return (
     <>
       <SEO
@@ -135,9 +151,3 @@ function About({ posts = [] }) {
     </>
   )
 }
-
-About.propTypes = {
-  posts: PropTypes.array,
-}
-
-export default About

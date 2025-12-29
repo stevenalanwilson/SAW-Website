@@ -1,7 +1,8 @@
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { CSSProperties } from 'react'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Link from 'next/link'
-import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import validator from 'validator'
 
@@ -19,7 +20,43 @@ import AuthorCard from '../../components/cards/AuthorCard'
 import Breadcrumbs from '../../components/ui/Breadcrumbs'
 import SectionErrorBoundary from '../../components/error/SectionErrorBoundary'
 
-export async function getStaticPaths() {
+interface PostMetaData {
+  title: string
+  date: string
+  summary: string
+  thumbnail?: string
+}
+
+interface PostData {
+  postSlug: string
+  postMetaData: PostMetaData
+}
+
+interface Frontmatter {
+  title: string
+  summary: string
+  thumbnail?: string
+  date: string
+  author?: string
+  tags?: string[]
+  theme?:
+    | string
+    | {
+        primary: string
+        accent: string
+        background: string
+        text: string
+      }
+}
+
+interface PostPageProps {
+  frontmatter: Frontmatter
+  content: string
+  slug: string
+  posts: PostData[]
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
   const postsFolder = fs.readdirSync('posts')
   const paths = markdownService.loadMarkdownStaticPaths(postsFolder)
   return {
@@ -28,7 +65,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params }) => {
+  const slug = params?.slug as string
   const sanitizedSlug = validator.escape(slug)
   const MarkdownfileName = markdownService.loadMarkdownFileUsingSlug(sanitizedSlug)
   const { data: frontmatter, content } = matter(MarkdownfileName)
@@ -43,7 +81,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: {
-      frontmatter,
+      frontmatter: frontmatter as Frontmatter,
       content,
       slug,
       posts,
@@ -51,7 +89,7 @@ export async function getStaticProps({ params: { slug } }) {
   }
 }
 
-function PostPage({ frontmatter, content, slug, posts = [] }) {
+export default function PostPage({ frontmatter, content, slug, posts = [] }: PostPageProps) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -63,12 +101,12 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
   const theme = getTheme(frontmatter.theme, frontmatter.tags)
 
   // Create CSS custom properties for this article's theme
-  const themeStyles = {
+  const themeStyles: CSSProperties = {
     '--theme-primary': theme.primary,
     '--theme-accent': theme.accent,
     '--theme-bg': theme.background,
     '--theme-text': theme.text,
-  }
+  } as CSSProperties
 
   // Create breadcrumb trail
   const breadcrumbs = [
@@ -149,29 +187,3 @@ function PostPage({ frontmatter, content, slug, posts = [] }) {
     </>
   )
 }
-
-PostPage.propTypes = {
-  frontmatter: PropTypes.shape({
-    title: PropTypes.string,
-    summary: PropTypes.string,
-    thumbnail: PropTypes.string,
-    date: PropTypes.string,
-    author: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string),
-    theme: PropTypes.oneOfType([
-      PropTypes.string, // Theme preset name (e.g., 'leadership')
-      PropTypes.shape({
-        // Or custom theme object
-        primary: PropTypes.string,
-        accent: PropTypes.string,
-        background: PropTypes.string,
-        text: PropTypes.string,
-      }),
-    ]),
-  }),
-  content: PropTypes.string,
-  slug: PropTypes.string,
-  posts: PropTypes.array,
-}
-
-export default PostPage

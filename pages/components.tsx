@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import type { GetStaticProps } from 'next'
 import Layout from '../components/layout/Layout'
 import SEO from '../components/ui/SEO'
 import config from '../config/siteConfig'
@@ -17,14 +17,30 @@ import LatestPosts from '../components/content/LatestPosts'
 import WorkWithMe from '../components/features/WorkWithMe'
 import markdownService from '../services/getMarkdownService'
 
-export async function getStaticProps() {
+interface PostMetaData {
+  title: string
+  date: string
+  summary: string
+  thumbnail?: string
+}
+
+interface Post {
+  postSlug: string
+  postMetaData: PostMetaData
+}
+
+interface ComponentsPageProps {
+  posts: Post[]
+}
+
+export const getStaticProps: GetStaticProps<ComponentsPageProps> = async () => {
   const posts = markdownService.getAllMarkdownPosts()
   return {
     props: { posts },
   }
 }
 
-function Components({ posts = [] }) {
+export default function Components({ posts = [] }: ComponentsPageProps) {
   return (
     <>
       <SEO
@@ -320,9 +336,3 @@ function Components({ posts = [] }) {
     </>
   )
 }
-
-Components.propTypes = {
-  posts: PropTypes.array,
-}
-
-export default Components

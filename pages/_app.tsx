@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import type { AppProps } from 'next/app'
 import ErrorBoundary from '../components/error/ErrorBoundary'
 
 import '../public/static/screen.css'
 
 const LANG = 'en'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.documentElement.lang = LANG
   }, [])
@@ -29,10 +29,5 @@ function MyApp({ Component, pageProps }) {
 //
 //   return { ...appProps }
 // }
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
-}
 
 export default MyApp
