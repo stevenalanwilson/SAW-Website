@@ -1,22 +1,29 @@
-const fs = require('fs')
-const path = require('path')
-const config = require('../config/siteConfig').default
+import fs from 'fs'
+import path from 'path'
+import config from '../config/siteConfig'
 
 const DOMAIN = config.site.url
 
-function generateSitemap() {
+interface SitemapPage {
+  url: string
+  priority: string
+  changefreq: string
+  lastmod?: string
+}
+
+function generateSitemap(): void {
   const postsDirectory = path.join(process.cwd(), 'posts')
   const postFiles = fs.readdirSync(postsDirectory)
 
   // Static pages
-  const staticPages = [
+  const staticPages: SitemapPage[] = [
     { url: '', priority: '1.0', changefreq: 'weekly' },
     { url: '/about', priority: '0.8', changefreq: 'monthly' },
     { url: '/components', priority: '0.6', changefreq: 'monthly' },
   ]
 
   // Dynamic blog post pages
-  const postPages = postFiles
+  const postPages: SitemapPage[] = postFiles
     .filter((file) => file.endsWith('.md'))
     .map((file) => {
       const slug = file.replace('.md', '')

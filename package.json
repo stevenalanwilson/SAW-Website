@@ -13,7 +13,7 @@
     "build": "npm run sitemap && next build",
     "dev": "next",
     "start": "next start",
-    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap": "tsx scripts/generate-sitemap.ts",
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -99,6 +99,7 @@
     "react-test-renderer": "^19.2.3",
     "regenerator-runtime": "^0.14.1",
     "ts-jest": "^29.4.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "standard": {

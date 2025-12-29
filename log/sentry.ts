@@ -1,11 +1,11 @@
 import config from '../config/siteConfig'
-import * as sentry from '@sentry/browser'
+import * as Sentry from '@sentry/browser'
 
-sentry.init({
+Sentry.init({
   dsn: config.sentry.dsn,
   environment: 'development',
   debug: true,
   release: config.app.version,
 })
 
-module.exports = sentry
+export default Sentry
