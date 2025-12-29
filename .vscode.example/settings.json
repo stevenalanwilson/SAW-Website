@@ -1,10 +1,7 @@
 {
   "jest.disabledWorkspaceFolders": [],
-  "jest.rootPath": "",
-  "jest.jestCommandLine": "npm test --",
-  "jest.autoRun": {
-    "watch": false,
-    "onSave": "test-file"
-  },
-  "testing.automaticallyOpenPeekView": "failureInVisibleDocument"
+  "jest.jestCommandLine": "",
+  "jest.nodeEnv": null,
+  "jest.rootPath": "apps/limited",
+  "jest.autoRun": "off"
 }

@@ -2,43 +2,74 @@
 
 ## Issue
 
-VS Code Jest extension may not recognize tests in the monorepo structure.
+VS Code Jest extension doesn't work well with npm workspaces monorepos.
 
-## Solution
+## Solutions
 
-1. **Copy the example VS Code settings:**
+### Option 1: Run Tests from Terminal (Recommended)
 
-   ```bash
-   cp -r .vscode.example .vscode
-   ```
-
-2. **Reload VS Code window:**
-   - Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
-   - Type "Reload Window" and press Enter
-
-3. **Verify tests appear in Testing sidebar:**
-   - Click the beaker/flask icon in the sidebar
-   - You should see all test suites organized by workspace
-
-## What This Does
-
-The configuration tells VS Code's Jest extension:
-
-- Use `npm test` command for running tests
-- Understand the monorepo project structure
-- Auto-run tests only when files are saved
-- Show test failures in peek view
-
-## Alternative: Run Tests from Terminal
-
-If VS Code integration doesn't work, you can always run tests from the terminal:
+The most reliable way is to use the integrated terminal:
 
 ```bash
-# All tests
+# All tests across all workspaces
 npm test
 
 # Specific workspace
 npm test --workspace=@saw/ui
 npm test --workspace=@saw/limited
 npm test --workspace=@saw/creative
+
+# Watch mode for a workspace
+cd apps/limited && npm test -- --watch
 ```
+
+### Option 2: Configure VS Code Jest Extension (Limited Support)
+
+If you want VS Code test integration, you can configure it to work with one workspace at a time:
+
+1. **Copy the example settings:**
+
+   ```bash
+   cp -r .vscode.example .vscode
+   ```
+
+2. **Edit `.vscode/settings.json`** to change `jest.rootPath`:
+   - For limited app: `"jest.rootPath": "apps/limited"`
+   - For creative app: `"jest.rootPath": "apps/creative"`
+   - For UI package: `"jest.rootPath": "packages/ui"`
+
+3. **Reload VS Code:** `Cmd+Shift+P` → "Reload Window"
+
+**Limitations:**
+
+- Can only show tests from one workspace at a time
+- Need to manually change `jest.rootPath` to switch workspaces
+- Test sidebar will only show the selected workspace
+
+### Option 3: Use VS Code Multi-Root Workspaces
+
+1. **Create a VS Code workspace file** (`.code-workspace`):
+
+   ```json
+   {
+     "folders": [
+       { "path": "apps/limited", "name": "Limited App" },
+       { "path": "apps/creative", "name": "Creative App" },
+       { "path": "packages/ui", "name": "UI Package" }
+     ]
+   }
+   ```
+
+2. **Open the workspace:** File → Open Workspace from File
+
+3. Each folder will have its own Jest integration
+
+## Why This is Complicated
+
+VS Code's Jest extension was designed for single-project repositories. In a monorepo:
+
+- Each workspace has its own `jest.config.js` using `next/jest`
+- Tests can't run from the monorepo root (Next.js config conflicts)
+- The extension doesn't understand npm workspaces natively
+
+**Bottom line:** Terminal testing works perfectly. VS Code integration is limited but optional.
