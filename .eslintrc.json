@@ -1,11 +1,12 @@
 {
+  "extends": ["next/core-web-vitals"],
   "env": {
     "browser": true,
     "es2021": true,
     "node": true,
     "jest": true
   },
-  "plugins": ["jsx-a11y", "react"],
+  "plugins": ["jsx-a11y", "react", "@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
@@ -47,6 +48,32 @@
       "files": ["tests/**/*.js", "**/*.test.js"],
       "rules": {
         "react/function-component-definition": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "ignoreRestSiblings": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["tests/**/*.ts", "tests/**/*.tsx", "**/*.test.ts", "**/*.test.tsx"],
+      "rules": {
+        "react/function-component-definition": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ]

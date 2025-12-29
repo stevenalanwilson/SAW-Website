@@ -17,8 +17,9 @@
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true npm run build"
   },
   "repository": {
@@ -29,7 +30,8 @@
     "Nextjs",
     "Node",
     "React",
-    "Javascript"
+    "Javascript",
+    "TypeScript"
   ],
   "author": "Steven Wilson",
   "license": "MIT",
@@ -69,10 +71,17 @@
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.2",
+    "@jest/types": "^30.2.0",
     "@next/bundle-analyzer": "^16.1.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.3.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.50.1",
+    "@typescript-eslint/parser": "^8.50.1",
     "autoprefixer": "^10.4.19",
     "babel-jest": "^30.2.0",
     "eslint": "^8.57.1",
@@ -89,6 +98,7 @@
     "prettier": "^3.7.4",
     "react-test-renderer": "^19.2.3",
     "regenerator-runtime": "^0.14.1",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.9.3"
   },
   "standard": {
@@ -108,7 +118,7 @@
     "path": false
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint --fix",
       "jest --bail --findRelatedTests --passWithNoTests"

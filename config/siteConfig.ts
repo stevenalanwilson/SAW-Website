@@ -6,60 +6,9 @@
  *
  * @version 1.0.0
  * @author Steven Alan Wilson
- *
- * TABLE OF CONTENTS
- * =================================================================================
- *
- * SECTION 1: APPLICATION METADATA ................................................ 50
- *   - Version, environment, and runtime flags
- *
- * SECTION 2: SITE METADATA ....................................................... 65
- *   - Site name, title, tagline, URL, and description
- *
- * SECTION 3: OWNER INFORMATION ................................................... 80
- *   - Personal information about the site owner
- *
- * SECTION 4: CONTACT INFORMATION ................................................. 95
- *   - Phone, email (obfuscated), location, and service areas
- *
- * SECTION 5: SOCIAL MEDIA LINKS ................................................. 115
- *   - LinkedIn, Twitter, Facebook profiles
- *
- * SECTION 6: PROFESSIONAL STATISTICS ............................................ 135
- *   - Network stats, experience metrics
- *
- * SECTION 7: COPYRIGHT & LEGAL .................................................. 150
- *   - Copyright information and legal details
- *
- * SECTION 8: CONTENT SECTIONS ................................................... 165
- *   8.1 Author Bio (for blog posts) ............................................ 170
- *   8.2 Hero Section (homepage) ................................................ 185
- *   8.3 CTA (Call-to-Action) ................................................... 220
- *   8.4 About Page Content ..................................................... 235
- *
- * SECTION 9: EXPERTISE AREAS .................................................... 265
- *   - Areas of professional expertise
- *
- * SECTION 10: EXPERIENCE HIGHLIGHTS ............................................. 295
- *   - Key roles and companies worked with
- *
- * SECTION 11: EDUCATION ......................................................... 330
- *   - Academic background
- *
- * SECTION 12: SERVICES OFFERED .................................................. 345
- *   - Services displayed in footer
- *
- * SECTION 13: SAMPLE DATA ....................................................... 370
- *   - Demo data for component showcase page
- *
- * SECTION 14: NAVIGATION ........................................................ 390
- *   - Site navigation menu items
- *
- * SECTION 15: INTEGRATIONS ...................................................... 405
- *   - Third-party service configurations (Sentry, etc.)
- *
- * =================================================================================
  */
+
+import type { SiteConfig } from '../types/site'
 
 // =================================================================================
 // SECTION 1: APPLICATION METADATA
@@ -67,28 +16,16 @@
 
 /**
  * Determines if the application is running in production mode.
- * @type {boolean}
- * @private
  */
 const isProduction = process.env.NODE_ENV === 'production'
 
 /**
  * Site configuration object - single source of truth for all application settings.
- * @type {Object}
  */
-const siteConfig = {
+const siteConfig: SiteConfig = {
   // =================================================================================
   // SECTION 1: APPLICATION METADATA
   // =================================================================================
-
-  /**
-   * Application metadata and environment settings.
-   * @property {string} version - Semantic version number
-   * @property {string} name - Short application name/identifier
-   * @property {string} environment - Current Node environment (development/production/test)
-   * @property {boolean} dev - True when running in development mode
-   * @property {boolean} production - True when running in production mode
-   */
   app: {
     version: '0.1.0',
     name: 'SAW',
@@ -100,15 +37,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 2: SITE METADATA
   // =================================================================================
-
-  /**
-   * Core site metadata used for SEO, Open Graph, and branding.
-   * @property {string} name - Full legal/business name
-   * @property {string} title - HTML title tag (appears in browser tabs)
-   * @property {string} tagline - Short descriptive tagline
-   * @property {string} url - Canonical site URL (from env var or default)
-   * @property {string} description - Meta description for SEO (max 155-160 chars)
-   */
   site: {
     name: 'Steven Alan Wilson Limited',
     title: 'Steven Alan Wilson Limited - Technical Leadership Consultancy',
@@ -121,14 +49,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 3: OWNER INFORMATION
   // =================================================================================
-
-  /**
-   * Personal information about the site owner/author.
-   * @property {string} name - Full legal name
-   * @property {string} firstName - First name / preferred name
-   * @property {string} title - Professional title/role
-   * @property {string} experience - Years of professional experience
-   */
   owner: {
     name: 'Steven Alan Wilson',
     firstName: 'Steve',
@@ -139,16 +59,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 4: CONTACT INFORMATION
   // =================================================================================
-
-  /**
-   * Contact methods and service locations.
-   * @property {string} phone - Contact phone number
-   * @property {Object} email - Email address (obfuscated to prevent spam scraping)
-   * @property {string} email.user - Username part before @
-   * @property {string} email.domain - Domain part after @
-   * @property {string} location - Primary location
-   * @property {string[]} locations - All service areas/operating locations
-   */
   contact: {
     phone: '07720846954',
     email: {
@@ -162,14 +72,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 5: SOCIAL MEDIA LINKS
   // =================================================================================
-
-  /**
-   * Social media profiles and links.
-   * Each platform includes title (for aria-labels) and link URL.
-   * @property {Object} linkedin - LinkedIn profile
-   * @property {Object} twitter - Twitter/X profile
-   * @property {Object} facebook - Facebook profile
-   */
   social: {
     linkedin: {
       title: 'Connect on LinkedIn',
@@ -189,13 +91,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 6: PROFESSIONAL STATISTICS
   // =================================================================================
-
-  /**
-   * Professional network and achievement statistics.
-   * Displayed in the sidebar StatsCard component.
-   * @property {string} title - Section heading
-   * @property {Array<{label: string, value: string}>} items - Individual stats
-   */
   stats: {
     title: 'Professional Network',
     items: [
@@ -208,11 +103,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 7: COPYRIGHT & LEGAL
   // =================================================================================
-
-  /**
-   * Copyright and legal information.
-   * @property {string} url - URL displayed in copyright notice
-   */
   copyright: {
     url: 'www.stevenalanwilson.com',
   },
@@ -220,21 +110,8 @@ const siteConfig = {
   // =================================================================================
   // SECTION 8: CONTENT SECTIONS
   // =================================================================================
-
-  /**
-   * Content for various page sections and components.
-   */
   content: {
-    // ---------------------------------------------------------------------------
     // 8.1 Author Bio (Blog Posts)
-    // ---------------------------------------------------------------------------
-
-    /**
-     * Author bio displayed at the bottom of blog posts.
-     * @property {string} greeting - Opening greeting
-     * @property {string} introduction - Brief introduction
-     * @property {string} tagline - Closing tagline
-     */
     authorBio: {
       greeting: "Hi, I'm",
       introduction:
@@ -243,18 +120,7 @@ const siteConfig = {
         'I share insights on leadership, technical strategy, and building great teams. Welcome to my corner of the internet.',
     },
 
-    // ---------------------------------------------------------------------------
     // 8.2 Hero Section (Homepage)
-    // ---------------------------------------------------------------------------
-
-    /**
-     * Homepage hero section content.
-     * @property {string} greeting - Opening greeting
-     * @property {string} introduction - Main introduction text
-     * @property {string} description - Supporting description
-     * @property {Object} currentRole - Current employment details
-     * @property {Array<Object>} previousRoles - Previous companies worked with
-     */
     hero: {
       greeting: 'Hi,',
       introduction: "I'm Steve, a digital and technical leader",
@@ -274,33 +140,13 @@ const siteConfig = {
       ],
     },
 
-    // ---------------------------------------------------------------------------
     // 8.3 CTA (Call-to-Action)
-    // ---------------------------------------------------------------------------
-
-    /**
-     * Call-to-action section content.
-     * Used in ContactCard and WorkWithMe components.
-     * @property {string} heading - CTA heading
-     * @property {string} message - CTA message/pitch
-     */
     cta: {
       heading: 'Work With Me',
       message: 'Ready to transform your technical leadership and build high-performing teams?',
     },
 
-    // ---------------------------------------------------------------------------
     // 8.4 About Page Content
-    // ---------------------------------------------------------------------------
-
-    /**
-     * About page content and structure.
-     * @property {string} title - Page title
-     * @property {string} description - Meta description
-     * @property {Object} subtitle - Page subtitle configuration
-     * @property {string[]} overview - Paragraphs of overview text
-     * @property {Object} currentRole - Current position details
-     */
     about: {
       title: 'About Steven Alan Wilson',
       description:
@@ -315,6 +161,7 @@ const siteConfig = {
         'With a passion for technology and innovation, I help organizations deliver digital transformation at scale, focusing on user-centered design, modern engineering practices, and strategic leadership.',
       ],
       currentRole: {
+        position: 'Digital, Technical, and AI Leader',
         title: 'Digital, Technical, and AI Leader',
         company: 'Equal Experts',
         companyUrl: 'https://www.equalexperts.com',
@@ -328,12 +175,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 9: EXPERTISE AREAS
   // =================================================================================
-
-  /**
-   * Areas of professional expertise.
-   * Displayed in the ExpertiseGrid component.
-   * @type {Array<{title: string, description: string}>}
-   */
   expertise: [
     {
       title: 'Technical Leadership',
@@ -365,12 +206,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 10: EXPERIENCE HIGHLIGHTS
   // =================================================================================
-
-  /**
-   * Key professional experience and career highlights.
-   * Displayed in the ExperienceCard component.
-   * @type {Array<{company: string, companyUrl: string, title: string, description: string}>}
-   */
   experience: [
     {
       company: 'Aer Lingus',
@@ -404,12 +239,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 11: EDUCATION
   // =================================================================================
-
-  /**
-   * Educational background.
-   * @property {string} institution - Name of institution
-   * @property {string} period - Years attended
-   */
   education: {
     institution: 'University of Derby',
     period: '1998 - 2002',
@@ -418,12 +247,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 12: SERVICES OFFERED
   // =================================================================================
-
-  /**
-   * Services and offerings.
-   * Displayed in the ServicesList component (footer).
-   * @type {Array<{title: string, description: string}>}
-   */
   services: [
     {
       title: 'Technical Leadership Coaching',
@@ -446,13 +269,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 13: SAMPLE DATA
   // =================================================================================
-
-  /**
-   * Sample/demo data for the component showcase page.
-   * Only used on /components page for demonstration purposes.
-   * @property {Array<Object>} expertise - Sample expertise items
-   * @property {Array<Object>} stats - Sample statistics
-   */
   samples: {
     expertise: [
       { title: 'Skill 1', description: 'Description of skill 1' },
@@ -470,11 +286,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 14: NAVIGATION
   // =================================================================================
-
-  /**
-   * Site navigation structure.
-   * @property {Array<{label: string, href: string, title: string}>} main - Main nav items
-   */
   navigation: {
     main: [
       { label: 'Home', href: '/', title: 'Home' },
@@ -486,11 +297,6 @@ const siteConfig = {
   // =================================================================================
   // SECTION 15: INTEGRATIONS
   // =================================================================================
-
-  /**
-   * Third-party service integrations.
-   * @property {Object} sentry - Sentry error tracking configuration
-   */
   sentry: {
     dsn: process.env.SENTRY_DSN || '',
   },
