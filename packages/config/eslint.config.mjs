@@ -187,16 +187,23 @@ export const baseEslintConfig = [
  * @returns {object[]} Complete ESLint config array
  */
 export function createEslintConfig(tsconfigPath = './tsconfig.json', customConfig = []) {
-  // Clone the base config
-  const config = JSON.parse(JSON.stringify(baseEslintConfig))
-
-  // Update TypeScript parser options with correct tsconfig path
-  const tsConfigIndex = config.findIndex(
-    (c) => c.files && c.files.includes('**/*.ts') && c.languageOptions?.parser
-  )
-  if (tsConfigIndex !== -1 && config[tsConfigIndex].languageOptions.parserOptions) {
-    config[tsConfigIndex].languageOptions.parserOptions.project = tsconfigPath
-  }
+  // Create a shallow copy and update the TypeScript config
+  const config = baseEslintConfig.map((item, index) => {
+    // Find the TypeScript config entry and update the project path
+    if (item.files && item.files.includes('**/*.ts') && item.languageOptions?.parser) {
+      return {
+        ...item,
+        languageOptions: {
+          ...item.languageOptions,
+          parserOptions: {
+            ...item.languageOptions.parserOptions,
+            project: tsconfigPath,
+          },
+        },
+      }
+    }
+    return item
+  })
 
   // Merge with custom config
   return [...config, ...customConfig]

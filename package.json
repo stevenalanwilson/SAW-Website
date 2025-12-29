@@ -16,6 +16,7 @@
     "start": "npm run start --workspaces",
     "start:limited": "npm run start --workspace=@saw/limited",
     "start:creative": "npm run start --workspace=@saw/creative",
+    "lint": "npm run lint --workspaces",
     "test": "npm run test --workspaces",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\""
