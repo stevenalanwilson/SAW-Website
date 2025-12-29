@@ -60,8 +60,13 @@ typings/
 
 # next.js build output
 .next
+.turbo
 
-# sonarcube 
+# TypeScript build cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# sonarcube
 
 .sonar
 .scannerwork

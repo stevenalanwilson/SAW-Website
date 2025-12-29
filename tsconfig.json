@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    // Allow JavaScript files in config (postcss, tailwind, jest, next, sentry configs)
+    "allowJs": true,
+    // Specify module system
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    // Target modern JavaScript
+    "target": "es2017",
+    // Strict mode - enabled after TypeScript migration
+    "strict": true,
+    // Allow null and undefined to be assigned to any type (reduces test boilerplate)
+    "strictNullChecks": false,
+    // Import non-ES modules as default imports
+    "esModuleInterop": true,
+    // Skip type checking of declaration files for faster compilation
+    "skipLibCheck": true,
+    // Allow default imports from modules with no default export
+    "allowSyntheticDefaultImports": true,
+    // Resolve JSON modules
+    "resolveJsonModule": true,
+    // Support JSX in React - preserve lets Next.js handle JSX transformation
+    "jsx": "react-jsx",
+    // Specify library files to include
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // Disable emitting files (Next.js handles compilation)
+    "noEmit": true,
+    // Enable incremental compilation for faster builds
+    "incremental": true,
+    // Specify base directory for resolving non-relative module names
+    "baseUrl": ".",
+    // Path mapping for module resolution
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/config/*": ["config/*"],
+      "@/services/*": ["services/*"],
+      "@/utils/*": ["utils/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"]
+    },
+    // Ensure that casing is correct in imports
+    "forceConsistentCasingInFileNames": true,
+    // Report errors on unused locals
+    "noUnusedLocals": true,
+    // Report errors on unused parameters
+    "noUnusedParameters": true,
+    // Report error when not all code paths in function return a value
+    "noImplicitReturns": true,
+    // Interop constraints required by Next.js
+    "isolatedModules": true,
+    // Plugins for Next.js
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next", "out", "coverage", "dist", "build"]
+}

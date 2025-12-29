@@ -13,6 +13,10 @@ const config = {
   transformIgnorePatterns: [
     'node_modules/(?!(unified|remark-parse|remark-rehype|rehype-react|unist-.*|bail|is-plain-obj|trough|vfile|vfile-message|micromark.*|mdast-.*|hast-.*|trim-lines|property-information|space-separated-tokens|comma-separated-tokens|html-void-elements|web-namespaces)/)',
   ],
+  // Support for TypeScript files
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+  // Test file patterns
+  testMatch: ['**/__tests__/**/*.{ts,tsx,js,jsx}', '**/?(*.)+(spec|test).{ts,tsx,js,jsx}'],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 }
