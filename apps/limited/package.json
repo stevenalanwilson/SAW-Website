@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "The front end app for stevenalanwilson.com",
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "scripts": {
     "test": "jest",
