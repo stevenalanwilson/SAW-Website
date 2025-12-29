@@ -15,7 +15,11 @@
 // Solid Icons (free-solid-svg-icons)
 export { faCopyright } from '@fortawesome/free-solid-svg-icons'
 export { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-export { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+export { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+
+// Legacy icon alias for backward compatibility
+// faMapMarkerAlt was renamed to faLocationDot in FontAwesome 6/7
+export { faLocationDot as faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 // Brand Icons (free-brands-svg-icons)
 export { faLinkedin } from '@fortawesome/free-brands-svg-icons'
