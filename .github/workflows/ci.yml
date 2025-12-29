@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     steps:
       - name: Checkout code
@@ -55,7 +55,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     steps:
       - name: Checkout code
@@ -77,11 +77,15 @@ jobs:
 
       - name: Check build output
         run: |
-          if [ ! -d ".next" ]; then
-            echo "Build failed: .next directory not found"
+          if [ ! -d "apps/limited/.next" ]; then
+            echo "Build failed: apps/limited/.next directory not found"
             exit 1
           fi
-          echo "Build successful!"
+          if [ ! -d "apps/creative/.next" ]; then
+            echo "Build failed: apps/creative/.next directory not found"
+            exit 1
+          fi
+          echo "Build successful for both apps!"
 
   bundle-analysis:
     name: Bundle Size Analysis
@@ -91,7 +95,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     steps:
       - name: Checkout code
@@ -111,9 +115,18 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Upload bundle analysis
+      - name: Upload bundle analysis (Limited)
         uses: actions/upload-artifact@v4
         with:
-          name: bundle-analysis
-          path: .next/analyze/
+          name: bundle-analysis-limited
+          path: apps/limited/.next/analyze/
           retention-days: 7
+        continue-on-error: true
+
+      - name: Upload bundle analysis (Creative)
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analysis-creative
+          path: apps/creative/.next/analyze/
+          retention-days: 7
+        continue-on-error: true
