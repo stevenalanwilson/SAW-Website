@@ -25,6 +25,7 @@ describe('ListPosts Edge Cases', () => {
         postSlug: 'test-post',
       },
     ]
+    // @ts-expect-error Testing edge case with incomplete post data
     const { container } = render(<ListPosts posts={postsWithoutMetaData} />)
     expect(container).toBeInTheDocument()
   })
@@ -205,6 +206,7 @@ describe('ListPosts Edge Cases', () => {
         },
       },
     ]
+    // @ts-expect-error Testing edge case with incomplete post data
     render(<ListPosts posts={mixedPosts} />)
     expect(screen.getByText('Valid Post')).toBeInTheDocument()
   })

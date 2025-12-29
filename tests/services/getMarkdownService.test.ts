@@ -20,16 +20,18 @@ describe('createPostSlug', () => {
 describe('loadAllMarkdownFilesAndCreatePosts', () => {
   beforeEach(() => {
     // Mock fs.readFileSync to return mock markdown content
-    jest.spyOn(fs, 'readFileSync').mockReturnValue(`---
+    jest.spyOn(fs, 'readFileSync').mockReturnValue(
+      Buffer.from(`---
 title: Test Post
 date: 2024-01-15
 summary: Test summary
 ---
 # Test content`)
+    )
   })
 
   afterEach(() => {
-    fs.readFileSync.mockRestore()
+    jest.restoreAllMocks()
   })
 
   test('returns an array of posts with postSlug and postMetaData', () => {
@@ -55,15 +57,18 @@ summary: Test summary
 describe('getAllMarkdownPosts', () => {
   test('returns an array of markdown posts', () => {
     // Mocking fs.readdirSync to return an array of markdown files
+    // @ts-expect-error Mocking fs method with simplified return type for test
     jest.spyOn(fs, 'readdirSync').mockReturnValue(['post1.md', 'post2.md', 'post3.md'])
 
     // Mock fs.readFileSync for the markdown content
-    jest.spyOn(fs, 'readFileSync').mockReturnValue(`---
+    jest.spyOn(fs, 'readFileSync').mockReturnValue(
+      Buffer.from(`---
 title: Test Post
 date: 2024-01-15
 summary: Test summary
 ---
 # Test content`)
+    )
 
     const actualPosts = markdownServive.getAllMarkdownPosts()
 
@@ -73,8 +78,7 @@ summary: Test summary
     expect(fs.readdirSync).toHaveBeenCalledWith('posts')
 
     // Restoring the original implementations
-    fs.readdirSync.mockRestore()
-    fs.readFileSync.mockRestore()
+    jest.restoreAllMocks()
   })
 
   test('throws an error if there is an error while retrieving the markdown posts', () => {
@@ -90,6 +94,6 @@ summary: Test summary
     expect(fs.readdirSync).toHaveBeenCalledWith('posts')
 
     // Restoring the original implementation
-    fs.readdirSync.mockRestore()
+    jest.restoreAllMocks()
   })
 })

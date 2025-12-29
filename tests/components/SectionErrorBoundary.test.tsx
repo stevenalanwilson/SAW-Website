@@ -40,6 +40,7 @@ describe('SectionErrorBoundary', () => {
   })
 
   afterEach(() => {
+    // @ts-expect-error Restoring original NODE_ENV for test isolation
     process.env.NODE_ENV = originalEnv
   })
 
@@ -108,6 +109,7 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('logs to console in development mode when error occurs', () => {
+    // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'development'
 
     render(
@@ -146,6 +148,7 @@ describe('SectionErrorBoundary', () => {
     )
 
     // In development mode, error details should be in a <details> element
+    // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'development'
     const devComponent = renderer.create(
       <SectionErrorBoundary name='TestSection'>
@@ -158,6 +161,7 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('renders error details in development mode', () => {
+    // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'development'
 
     const { container } = render(
@@ -172,6 +176,7 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('does not render error details in production mode', () => {
+    // @ts-expect-error Setting NODE_ENV for test environment
     process.env.NODE_ENV = 'production'
 
     const { container } = render(
