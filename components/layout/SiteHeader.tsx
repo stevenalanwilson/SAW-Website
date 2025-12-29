@@ -7,7 +7,7 @@ import NavigationMenu from '../ui/NavigationMenu'
  * Site header component with responsive navigation menu.
  * Displays site title and navigation with mobile burger menu toggle.
  *
- * @returns {JSX.Element} Rendered header with navigation
+ * @returns Rendered header with navigation
  */
 export default function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

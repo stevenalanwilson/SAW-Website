@@ -1,17 +1,12 @@
 import Link from 'next/link'
-import PropTypes from 'prop-types'
+import type { BreadcrumbsProps } from '../../types/components'
 
 /**
  * Breadcrumb navigation component for hierarchical site navigation.
  * Displays a trail of links showing the user's location in the site hierarchy.
  * Includes proper ARIA labels for accessibility.
- *
- * @param {Object} props - Component props
- * @param {Array<{name: string, url: string}>} props.items - Breadcrumb trail items
- * @param {string} [props.className=''] - Additional CSS classes
- * @returns {JSX.Element} Breadcrumb navigation
  */
-export default function Breadcrumbs({ items, className = '' }) {
+export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps) {
   if (!items || items.length === 0) {
     return null
   }
@@ -51,14 +46,4 @@ export default function Breadcrumbs({ items, className = '' }) {
       </ol>
     </nav>
   )
-}
-
-Breadcrumbs.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  className: PropTypes.string,
 }

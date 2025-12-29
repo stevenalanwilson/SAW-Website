@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types'
 import ContactCard from '../cards/ContactCard'
 import StatsCard from '../cards/StatsCard'
 import SectionErrorBoundary from '../error/SectionErrorBoundary'
 import siteConfig from '../../config/siteConfig'
+import type { SidebarProps } from '../../types/components'
 
 /**
  * Sidebar component containing contact card and professional statistics.
  * Wraps each section in error boundaries for graceful failure handling.
  *
- * @param {Object} props - Component props
- * @param {string} [props.className=''] - Additional CSS classes to apply
- * @returns {JSX.Element} Rendered sidebar with contact and stats cards
+ * @param props - Component props
+ * @param props.className - Additional CSS classes to apply
+ * @returns Rendered sidebar with contact and stats cards
  */
-export default function Sidebar({ className = '' }) {
+export default function Sidebar({ className = '' }: SidebarProps) {
   return (
     <aside className={className}>
       <SectionErrorBoundary name='ContactCard' errorMessage='Contact information failed to load'>
@@ -24,8 +24,4 @@ export default function Sidebar({ className = '' }) {
       </SectionErrorBoundary>
     </aside>
   )
-}
-
-Sidebar.propTypes = {
-  className: PropTypes.string,
 }

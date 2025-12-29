@@ -1,27 +1,31 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, ErrorInfo, ReactNode } from 'react'
 import * as Sentry from '@sentry/nextjs'
+
+interface ErrorBoundaryProps {
+  children: ReactNode
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean
+  error: Error | null
+  errorInfo: ErrorInfo | null
+}
 
 /**
  * Global error boundary component that catches React errors and displays fallback UI.
  * Integrates with Sentry for error tracking and shows detailed error info in development.
- *
- * @class ErrorBoundary
- * @extends {React.Component}
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Child components to wrap with error boundary
  */
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false, error: null, errorInfo: null }
   }
 
-  static getDerivedStateFromError(_error) {
+  static getDerivedStateFromError(_error: Error): Partial<ErrorBoundaryState> {
     return { hasError: true }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({
       error: error,
       errorInfo: errorInfo,
@@ -42,7 +46,7 @@ class ErrorBoundary extends React.Component {
     })
   }
 
-  render() {
+  render(): ReactNode {
     if (this.state.hasError) {
       return (
         <div className='min-h-screen bg-gray-100 flex items-center justify-center p-4'>
@@ -75,10 +79,6 @@ class ErrorBoundary extends React.Component {
 
     return this.props.children
   }
-}
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default ErrorBoundary

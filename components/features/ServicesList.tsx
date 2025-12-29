@@ -3,8 +3,6 @@ import siteConfig from '../../config/siteConfig'
 /**
  * Services list component displaying available services with descriptions.
  * Loads service data from site configuration.
- *
- * @returns {JSX.Element} Rendered services list
  */
 export default function ServicesList() {
   return (

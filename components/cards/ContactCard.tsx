@@ -1,18 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faMapMarkerAlt, faLinkedin } from '../../config/icons'
-import PropTypes from 'prop-types'
 import siteConfig from '../../config/siteConfig'
+import type { ContactCardProps } from '../../types/components'
+
+type ContactVariant = 'card' | 'inline'
+
+interface ExtendedContactCardProps extends Omit<ContactCardProps, 'variant'> {
+  variant?: ContactVariant
+}
 
 /**
  * Contact card component displaying contact information with different visual variants.
  * Shows operating areas, LinkedIn profile, and email contact methods.
- *
- * @param {Object} props - Component props
- * @param {'card' | 'inline'} [props.variant='card'] - Visual variant of the contact card
- * @param {string} [props.className=''] - Additional CSS classes to apply
- * @returns {JSX.Element} Rendered contact card component
  */
-export default function ContactCard({ variant = 'card', className = '' }) {
+export default function ContactCard({
+  variant = 'card',
+  className = '',
+}: ExtendedContactCardProps) {
   // Construct email address from obfuscated parts (helps prevent spam bot scraping)
   const emailAddress = siteConfig.contact.email
     ? `${siteConfig.contact.email.user}@${siteConfig.contact.email.domain}`
@@ -32,9 +37,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
       : 'heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'
 
   const contentClasses = variant === 'card' ? 'space-y-4' : 'text-theme-bg'
-
   const paragraphClasses = variant === 'card' ? 'leading-relaxed' : 'mb-4 leading-relaxed'
-
   const locationsContainerClasses = variant === 'card' ? '' : 'mb-4'
 
   return (
@@ -46,7 +49,11 @@ export default function ContactCard({ variant = 'card', className = '' }) {
         {/* Locations */}
         <div className={locationsContainerClasses}>
           <p className='text-sm font-semibold mb-2 text-theme-accent'>
-            <FontAwesomeIcon icon={faMapMarkerAlt} className='mr-2' aria-hidden='true' />
+            <FontAwesomeIcon
+              icon={faMapMarkerAlt as IconProp}
+              className='mr-2'
+              aria-hidden='true'
+            />
             Operating Areas
           </p>
           <p className='text-sm text-theme-accent'>{siteConfig.contact.locations.join(' • ')}</p>
@@ -61,7 +68,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
             className='block bg-brand-linkedin hover:bg-brand-linkedin-hover text-white font-semibold py-3 px-4 text-center transition-colors'
             aria-label={`${siteConfig.social.linkedin.title} (opens in new tab)`}
           >
-            <FontAwesomeIcon icon={faLinkedin} className='mr-2' aria-hidden='true' />
+            <FontAwesomeIcon icon={faLinkedin as IconProp} className='mr-2' aria-hidden='true' />
             {siteConfig.social.linkedin.title}
           </a>
 
@@ -71,7 +78,7 @@ export default function ContactCard({ variant = 'card', className = '' }) {
               className='block border border-theme-bg text-theme-bg hover:bg-theme-bg hover:text-theme-primary py-3 px-4 text-center transition-colors overflow-hidden'
               aria-label={`Send email to ${emailAddress}`}
             >
-              <FontAwesomeIcon icon={faEnvelope} className='mr-2' aria-hidden='true' />
+              <FontAwesomeIcon icon={faEnvelope as IconProp} className='mr-2' aria-hidden='true' />
               Send me an Email
             </a>
           )}
@@ -79,9 +86,4 @@ export default function ContactCard({ variant = 'card', className = '' }) {
       </div>
     </div>
   )
-}
-
-ContactCard.propTypes = {
-  variant: PropTypes.oneOf(['card', 'inline']),
-  className: PropTypes.string,
 }

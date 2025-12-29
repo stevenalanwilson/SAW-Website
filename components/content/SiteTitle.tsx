@@ -4,8 +4,6 @@ import siteConfig from '../../config/siteConfig'
 /**
  * Site title component displaying the hero section with introduction.
  * Shows site name, greeting, current role, and previous company roles.
- *
- * @returns {JSX.Element} Rendered site title and hero section
  */
 export default function SiteTitle() {
   const { name } = siteConfig.site
@@ -14,7 +12,7 @@ export default function SiteTitle() {
   const previousRoles = siteConfig.content.hero.previousRoles
 
   // Helper function to format the separator between company names
-  const getCompanySeparator = (index, total) => {
+  const getCompanySeparator = (index: number, total: number): string => {
     if (index === 0) return ''
     if (index === total - 1) return ', and the '
     return ', '

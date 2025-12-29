@@ -1,23 +1,16 @@
 import Head from 'next/head'
-import PropTypes from 'prop-types'
 import config from '../../config/siteConfig'
+import type { SEOProps } from '../../types/components'
+
+interface SchemaOrg {
+  '@context': string
+  '@type': string
+  [key: string]: unknown
+}
 
 /**
  * SEO component that manages meta tags for improved search engine optimization.
  * Handles Open Graph, Twitter Cards, schema.org structured data, and article-specific metadata.
- *
- * @param {Object} props - Component props
- * @param {string} [props.title] - Page title (defaults to site title from config)
- * @param {string} [props.description] - Page description (defaults to site description)
- * @param {string} [props.image='/static/og-image.jpg'] - Social media preview image URL
- * @param {string} [props.url] - Canonical URL (defaults to site URL from config)
- * @param {'website' | 'article'} [props.type='website'] - Page type for Open Graph
- * @param {string} [props.publishedTime] - ISO 8601 date string for article publish date
- * @param {string} [props.modifiedTime] - ISO 8601 date string for article modified date
- * @param {string} [props.author] - Article author name
- * @param {Array<string>} [props.keywords] - SEO keywords/tags
- * @param {Array<{position: number, name: string, url: string}>} [props.breadcrumbs] - Breadcrumb trail for navigation
- * @returns {JSX.Element} Head component with meta tags and structured data
  */
 export default function SEO({
   title = config.site.title,
@@ -30,16 +23,16 @@ export default function SEO({
   author = config.owner.name,
   keywords = [],
   breadcrumbs = [],
-}) {
+}: SEOProps) {
   const fullTitle = title.includes(config.owner.name) ? title : `${title} | ${config.site.name}`
   const fullImageUrl = image.startsWith('http') ? image : `${config.site.url}${image}`
 
   // Generate schema.org structured data
-  const generateStructuredData = () => {
-    const schemas = []
+  const generateStructuredData = (): SchemaOrg[] => {
+    const schemas: SchemaOrg[] = []
 
     // Organization/Person schema (for all pages)
-    const personSchema = {
+    const personSchema: SchemaOrg = {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: config.owner.name,
@@ -56,7 +49,7 @@ export default function SEO({
 
     // Article schema (for blog posts)
     if (type === 'article' && publishedTime) {
-      const articleSchema = {
+      const articleSchema: SchemaOrg = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: fullTitle,
@@ -84,7 +77,7 @@ export default function SEO({
 
     // Breadcrumb schema (if breadcrumbs provided)
     if (breadcrumbs.length > 0) {
-      const breadcrumbSchema = {
+      const breadcrumbSchema: SchemaOrg = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: breadcrumbs.map((crumb, index) => ({
@@ -99,7 +92,7 @@ export default function SEO({
 
     // Website schema (for homepage)
     if (type === 'website' && url === config.site.url) {
-      const websiteSchema = {
+      const websiteSchema: SchemaOrg = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: config.site.name,
@@ -177,22 +170,4 @@ export default function SEO({
       <link rel='icon' href='/favicon.ico' />
     </Head>
   )
-}
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  url: PropTypes.string,
-  type: PropTypes.oneOf(['website', 'article']),
-  publishedTime: PropTypes.string,
-  modifiedTime: PropTypes.string,
-  author: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  breadcrumbs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    })
-  ),
 }

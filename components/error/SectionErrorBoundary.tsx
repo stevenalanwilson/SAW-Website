@@ -1,31 +1,34 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, ErrorInfo, ReactNode } from 'react'
 import * as Sentry from '@sentry/nextjs'
+
+interface SectionErrorBoundaryProps {
+  children: ReactNode
+  name?: string
+  errorMessage?: string
+  fallback?: ReactNode
+}
+
+interface SectionErrorBoundaryState {
+  hasError: boolean
+  error: Error | null
+}
 
 /**
  * Lightweight error boundary for wrapping individual sections/components.
  * Falls back to a localized error message instead of crashing the entire page.
  * Integrates with Sentry for error tracking with section context.
- *
- * @class SectionErrorBoundary
- * @extends {React.Component}
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Child components to wrap with error boundary
- * @param {string} [props.name] - Name of the section for error logging context
- * @param {string} [props.errorMessage] - Custom error message to display on failure
- * @param {React.ReactNode} [props.fallback] - Custom fallback UI to render on error
  */
-class SectionErrorBoundary extends React.Component {
-  constructor(props) {
+class SectionErrorBoundary extends Component<SectionErrorBoundaryProps, SectionErrorBoundaryState> {
+  constructor(props: SectionErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false, error: null }
   }
 
-  static getDerivedStateFromError(_error) {
+  static getDerivedStateFromError(_error: Error): Partial<SectionErrorBoundaryState> {
     return { hasError: true }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({ error })
 
     // Log error to console in development
@@ -46,7 +49,7 @@ class SectionErrorBoundary extends React.Component {
     })
   }
 
-  render() {
+  render(): ReactNode {
     if (this.state.hasError) {
       // Use custom fallback if provided, otherwise use default
       if (this.props.fallback) {
@@ -77,13 +80,6 @@ class SectionErrorBoundary extends React.Component {
 
     return this.props.children
   }
-}
-
-SectionErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
-  name: PropTypes.string,
-  errorMessage: PropTypes.string,
-  fallback: PropTypes.node,
 }
 
 export default SectionErrorBoundary

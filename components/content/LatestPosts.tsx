@@ -1,16 +1,26 @@
 import Link from 'next/link'
-import PropTypes from 'prop-types'
+
+interface PostMetaData {
+  title: string
+  summary: string
+  date?: string
+}
+
+interface Post {
+  postSlug: string
+  postMetaData: PostMetaData
+}
+
+interface LatestPostsProps {
+  posts?: Post[]
+  limit?: number
+}
 
 /**
  * Latest posts component displaying a limited list of recent blog posts.
  * Shows post title, summary, and publication date with links to full articles.
- *
- * @param {Object} props - Component props
- * @param {Array} [props.posts=[]] - Array of post objects with postSlug and postMetaData
- * @param {number} [props.limit=2] - Maximum number of posts to display
- * @returns {JSX.Element} Rendered list of latest posts
  */
-export default function LatestPosts({ posts = [], limit = 2 }) {
+export default function LatestPosts({ posts = [], limit = 2 }: LatestPostsProps) {
   return (
     <div>
       <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'>
@@ -47,18 +57,4 @@ export default function LatestPosts({ posts = [], limit = 2 }) {
       </ul>
     </div>
   )
-}
-
-LatestPosts.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      postSlug: PropTypes.string.isRequired,
-      postMetaData: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        summary: PropTypes.string.isRequired,
-        date: PropTypes.string,
-      }).isRequired,
-    })
-  ),
-  limit: PropTypes.number,
 }

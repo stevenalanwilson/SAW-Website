@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '../../config/icons'
 import siteConfig from '../../config/siteConfig'
@@ -8,16 +7,17 @@ import ServicesList from '../features/ServicesList'
 import LatestPosts from '../content/LatestPosts'
 import WorkWithMe from '../features/WorkWithMe'
 import SectionErrorBoundary from '../error/SectionErrorBoundary'
+import type { FooterProps } from '../../types/components'
 
 /**
  * Footer component with three-column layout displaying services, latest posts, and contact.
  * Includes error boundaries for each section to prevent cascading failures.
  *
- * @param {Object} props - Component props
- * @param {Array} [props.latestPosts=[]] - Array of latest posts to display
- * @returns {JSX.Element} Rendered footer with tagline, services, posts, contact, and copyright
+ * @param props - Component props
+ * @param props.latestPosts - Array of latest posts to display
+ * @returns Rendered footer with tagline, services, posts, contact, and copyright
  */
-export default function Footer({ latestPosts = [] }) {
+export default function Footer({ latestPosts = [] }: FooterProps) {
   return (
     <footer className='bg-theme-primary text-theme-bg footer'>
       <div className='container mx-auto'>
@@ -71,8 +71,4 @@ export default function Footer({ latestPosts = [] }) {
       </div>
     </footer>
   )
-}
-
-Footer.propTypes = {
-  latestPosts: PropTypes.array,
 }

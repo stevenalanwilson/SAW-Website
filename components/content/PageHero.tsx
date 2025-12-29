@@ -1,0 +1,22 @@
+import type { ReactNode } from 'react'
+
+interface PageHeroProps {
+  title: string
+  subtitle?: ReactNode
+  className?: string
+}
+
+/**
+ * Page hero component displaying a large title and optional subtitle.
+ * Provides consistent hero section styling across pages.
+ */
+export default function PageHero({ title, subtitle, className = '' }: PageHeroProps) {
+  return (
+    <section
+      className={`border-b border-t border-theme-text lg:border-t-0 py-8 mx-4 my-6 ${className}`}
+    >
+      <h1 className='heading-1 font-bold text-4xl lg:text-6xl mb-4'>{title}</h1>
+      {subtitle && <div className='text-2xl lg:text-3xl leading-relaxed'>{subtitle}</div>}
+    </section>
+  )
+}

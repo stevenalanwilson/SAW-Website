@@ -1,21 +1,18 @@
-import PropTypes from 'prop-types'
+interface ExpertiseItem {
+  title?: string
+  description?: string
+}
 
-/**
- * @typedef {Object} ExpertiseItem
- * @property {string} [title] - Expertise area title
- * @property {string} [description] - Expertise area description
- */
+interface ExpertiseGridProps {
+  items?: ExpertiseItem[]
+  className?: string
+}
 
 /**
  * Expertise grid component displaying areas of expertise in a responsive grid layout.
  * Handles null/undefined items gracefully.
- *
- * @param {Object} props - Component props
- * @param {ExpertiseItem[]} [props.items=[]] - Array of expertise items to display
- * @param {string} [props.className=''] - Additional CSS classes to apply
- * @returns {JSX.Element} Rendered expertise grid
  */
-export default function ExpertiseGrid({ items = [], className = '' }) {
+export default function ExpertiseGrid({ items = [], className = '' }: ExpertiseGridProps) {
   // Handle null/undefined items gracefully
   if (!items || !Array.isArray(items)) {
     return <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${className}`} />
@@ -39,14 +36,4 @@ export default function ExpertiseGrid({ items = [], className = '' }) {
       })}
     </div>
   )
-}
-
-ExpertiseGrid.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ),
-  className: PropTypes.string,
 }

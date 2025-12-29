@@ -1,31 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import PropTypes from 'prop-types'
 
-/**
- * @typedef {Object} PostMetaData
- * @property {string} [title] - Post title
- * @property {string} [date] - Post publication date (ISO 8601 format)
- * @property {string} [summary] - Post summary/excerpt
- * @property {string} [thumbnail] - Post thumbnail image URL
- */
+interface PostMetaData {
+  title?: string
+  date?: string
+  summary?: string
+  thumbnail?: string
+}
 
-/**
- * @typedef {Object} Post
- * @property {string} postSlug - URL slug for the post
- * @property {PostMetaData} postMetaData - Post metadata
- */
+interface Post {
+  postSlug: string
+  postMetaData: PostMetaData
+}
+
+interface ListPostsProps {
+  posts?: Post[]
+}
 
 /**
  * List posts component that displays a grid of blog post previews.
  * Handles null/undefined posts gracefully and provides fallback values.
- *
- * @param {Object} props - Component props
- * @param {Post[]} [props.posts=[]] - Array of post objects to display
- * @returns {JSX.Element} Rendered list of posts
  */
-export default function ListPosts({ posts = [] }) {
+export default function ListPosts({ posts = [] }: ListPostsProps) {
   // Handle null/undefined posts gracefully
   if (!posts || !Array.isArray(posts)) {
     return <div className='grid grid-cols-1 gap-1' />
@@ -77,18 +74,4 @@ export default function ListPosts({ posts = [] }) {
       })}
     </div>
   )
-}
-
-ListPosts.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      postSlug: PropTypes.string,
-      postMetaData: PropTypes.shape({
-        title: PropTypes.string,
-        date: PropTypes.string,
-        summary: PropTypes.string,
-        thumbnail: PropTypes.string,
-      }),
-    })
-  ),
 }
