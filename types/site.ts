@@ -41,13 +41,21 @@ export interface OwnerInfo {
 // Contact Types
 // =============================================================================
 
+export interface PhoneConfig {
+  prefix: string
+  number: string
+  full: string
+  display: string
+}
+
 export interface EmailConfig {
   user: string
   domain: string
+  full: string
 }
 
 export interface ContactInfo {
-  phone: string
+  phone: PhoneConfig
   email: EmailConfig
   location: string
   locations: string[]

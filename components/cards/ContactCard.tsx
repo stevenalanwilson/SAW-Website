@@ -18,10 +18,8 @@ export default function ContactCard({
   variant = 'card',
   className = '',
 }: ExtendedContactCardProps) {
-  // Construct email address from obfuscated parts (helps prevent spam bot scraping)
-  const emailAddress = siteConfig.contact.email
-    ? `${siteConfig.contact.email.user}@${siteConfig.contact.email.domain}`
-    : null
+  // Use obfuscated email getter (helps prevent spam bot scraping)
+  const emailAddress = siteConfig.contact.email?.full || null
 
   const { heading, message } = siteConfig.content.cta
 

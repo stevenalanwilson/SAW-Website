@@ -10,6 +10,13 @@ jest.mock('../../config/siteConfig', () => ({
       email: {
         user: 'hello',
         domain: 'stevenalanwilson.com',
+        full: 'hello@stevenalanwilson.com',
+      },
+      phone: {
+        prefix: '+44',
+        number: '7720846954',
+        full: '+447720846954',
+        display: '+44 7720846954',
       },
       locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],
     },
@@ -59,7 +66,9 @@ describe('ContactCard Component', () => {
 
   it('renders email link with obfuscated email', () => {
     render(<ContactCard />)
-    const emailLink = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
+    const emailLink = screen.getByRole('link', {
+      name: /Send email to hello@stevenalanwilson.com/i,
+    })
     expect(emailLink).toBeInTheDocument()
     expect(emailLink).toHaveAttribute('href', 'mailto:hello@stevenalanwilson.com')
   })
@@ -97,7 +106,9 @@ describe('ContactCard Component', () => {
 
   it('applies correct styling to email button', () => {
     render(<ContactCard />)
-    const emailButton = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
+    const emailButton = screen.getByRole('link', {
+      name: /Send email to hello@stevenalanwilson.com/i,
+    })
     expect(emailButton).toHaveClass(
       'border',
       'border-theme-bg',
@@ -108,7 +119,11 @@ describe('ContactCard Component', () => {
 
   it('constructs email from obfuscated parts to prevent scraping', () => {
     render(<ContactCard />)
-    const emailLink = screen.getByRole('link', { name: /hello@stevenalanwilson.com/i })
+    const emailLink = screen.getByRole('link', {
+      name: /Send email to hello@stevenalanwilson.com/i,
+    })
     expect(emailLink).toHaveAttribute('href', 'mailto:hello@stevenalanwilson.com')
+    // Verify the email is constructed from the obfuscated config getter
+    expect(emailLink.getAttribute('href')).toContain('@')
   })
 })

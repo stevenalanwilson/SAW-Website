@@ -1,10 +1,15 @@
 import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import ErrorBoundary from '../components/error/ErrorBoundary'
+import { validateEnv } from '../config/env'
 
 import '../public/static/screen.css'
 
 const LANG = 'en'
+
+// Validate environment variables at startup
+// This will throw an error if required variables are missing
+validateEnv()
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

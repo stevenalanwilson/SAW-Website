@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import validator from 'validator'
 
+import { sanitizeSlug, validateFilePath, createSlug } from '../utils'
 import type { MarkdownPost, MarkdownService, PostMetaData, StaticPath } from '../types/posts'
 
 /**
@@ -44,11 +44,12 @@ const loadAllMarkdownFilesAndCreatePosts = (files: string[]): MarkdownPost[] =>
 
 /**
  * Generates a URL-safe slug for a post file by removing the .md extension.
+ * Uses the centralized utility function.
  *
  * @param postFile - The file name of the post (e.g., 'my-post.md')
  * @returns The slug generated from the post file (e.g., 'my-post')
  */
-const createPostSlug = (postFile: string): string => postFile.replace('.md', '')
+const createPostSlug = (postFile: string): string => createSlug(postFile)
 
 /**
  * Generates an array of static paths for Next.js static site generation.
@@ -67,7 +68,7 @@ const loadMarkdownStaticPaths = (markdownFiles: string[]): StaticPath[] => {
 
 /**
  * Safely loads a markdown file using the slug with comprehensive security protection.
- * Implements multiple security layers:
+ * Implements multiple security layers using centralized utilities:
  * - HTML entity sanitization
  * - Character whitelist validation (alphanumeric, hyphens, underscores only)
  * - Path traversal attack prevention
@@ -81,25 +82,13 @@ const loadMarkdownStaticPaths = (markdownFiles: string[]): StaticPath[] => {
  * // Returns: '# Introduction to React\n\nReact is...'
  */
 const loadMarkdownFileUsingSlug = (slug: string): string => {
-  // Sanitize HTML entities
-  const sanitizedSlug = validator.escape(slug)
+  // Sanitize and validate the slug using utility function
+  const sanitizedSlug = sanitizeSlug(slug)
 
-  // Validate that slug only contains safe characters (alphanumeric, hyphens, underscores)
-  if (!/^[a-zA-Z0-9_-]+$/.test(sanitizedSlug)) {
-    throw new Error('Invalid slug: contains unsafe characters')
-  }
-
-  // Construct the file path
+  // Construct the file path and validate it's within the posts directory
   const postsDir = path.join(process.cwd(), 'posts')
-  const filePath = path.join(postsDir, `${sanitizedSlug}.md`)
-
-  // Resolve the absolute path and verify it's within the posts directory
-  const resolvedPath = path.resolve(filePath)
-  const resolvedPostsDir = path.resolve(postsDir)
-
-  if (!resolvedPath.startsWith(resolvedPostsDir)) {
-    throw new Error('Invalid slug: path traversal attempt detected')
-  }
+  const fileName = `${sanitizedSlug}.md`
+  const resolvedPath = validateFilePath(postsDir, fileName)
 
   // Check if file exists
   if (!fs.existsSync(resolvedPath)) {

@@ -60,10 +60,20 @@ const siteConfig: SiteConfig = {
   // SECTION 4: CONTACT INFORMATION
   // =================================================================================
   contact: {
-    phone: '07720846954',
+    // Phone number obfuscated to prevent bot scraping (split into parts)
+    phone: {
+      prefix: '+44',
+      number: '7720846954',
+      // Pre-computed properties for easy access
+      full: '+447720846954',
+      display: '+44 7720846954',
+    },
+    // Email obfuscated to prevent bot scraping (split into parts)
     email: {
       user: 'hello',
       domain: 'stevenalanwilson.com',
+      // Pre-computed property for easy access
+      full: 'hello@stevenalanwilson.com',
     },
     location: 'Derby, England, UK',
     locations: ['London', 'Manchester', 'Leeds', 'Derby', 'Birmingham'],

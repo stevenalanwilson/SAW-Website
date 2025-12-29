@@ -31,19 +31,36 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       errorInfo: errorInfo,
     })
 
-    // Log error to console in development
-    if (process.env.NODE_ENV === 'development') {
+    // Always log errors to console (helps with debugging in production if Sentry fails)
+    const errorMessage = `[ErrorBoundary] ${error.toString()}`
+    const componentStack = errorInfo.componentStack
+
+    if (process.env.NODE_ENV === 'production') {
+      // In production, log concisely as a backup if Sentry fails
+      console.error(errorMessage)
+      console.error('Component stack:', componentStack)
+    } else {
+      // In development, log verbosely for easier debugging
       console.error('Error caught by ErrorBoundary:', error, errorInfo)
     }
 
-    // Log error to Sentry
-    Sentry.captureException(error, {
-      contexts: {
-        react: {
-          componentStack: errorInfo.componentStack,
+    // Log error to Sentry with additional context
+    try {
+      Sentry.captureException(error, {
+        contexts: {
+          react: {
+            componentStack: errorInfo.componentStack,
+          },
         },
-      },
-    })
+        tags: {
+          errorBoundary: 'global',
+        },
+        level: 'error',
+      })
+    } catch (sentryError) {
+      // If Sentry fails, log that too
+      console.error('Failed to log error to Sentry:', sentryError)
+    }
   }
 
   render(): ReactNode {
