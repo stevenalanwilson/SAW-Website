@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import { Analytics } from '@vercel/analytics/react'
@@ -30,9 +29,6 @@ interface ExtendedLayoutProps {
 export default function Layout({ children, latestPosts = [], themeStyles }: ExtendedLayoutProps) {
   return (
     <div className='bg-theme-bg text-theme-text' style={themeStyles}>
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
       <SiteHeader />
       <main>{children}</main>
       <Footer latestPosts={latestPosts} />

@@ -141,8 +141,8 @@ export default function SEO({
           <meta property='article:author' content={author} />
           {modifiedTime && <meta property='article:modified_time' content={modifiedTime} />}
           {keywords.length > 0 &&
-            keywords.map((keyword, index) => (
-              <meta key={index} property='article:tag' content={keyword} />
+            keywords.map((keyword) => (
+              <meta key={keyword} property='article:tag' content={keyword} />
             ))}
         </>
       )}
