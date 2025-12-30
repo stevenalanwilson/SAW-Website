@@ -5,13 +5,13 @@ import Layout from '../../components/layout/Layout'
 // Mock the child components
 jest.mock('../../components/layout/SiteHeader', () => {
   return function SiteHeader() {
-    return <div data-testid='site-header'>Site Header</div>
+    return <header data-testid='site-header'>Site Header</header>
   }
 })
 
 jest.mock('../../components/layout/Footer', () => {
   return function Footer() {
-    return <div data-testid='footer'>Footer</div>
+    return <footer data-testid='footer'>Footer</footer>
   }
 })
 
