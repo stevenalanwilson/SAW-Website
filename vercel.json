@@ -1,6 +1,5 @@
 {
   "buildCommand": "npm run build",
   "framework": null,
-  "installCommand": "npm ci",
-  "nodeVersion": "24.x"
+  "installCommand": "npm ci"
 }
