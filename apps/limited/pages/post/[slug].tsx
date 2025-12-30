@@ -102,9 +102,16 @@ export default function PostPage({ frontmatter, content, slug, posts = [] }: Pos
   // Create CSS custom properties for this article's theme
   const themeStyles: CSSProperties = {
     '--theme-primary': theme.primary,
+    '--theme-primary-text': theme.primaryText,
+    '--theme-footer': theme.footer,
+    '--theme-footer-text': theme.footerText,
     '--theme-accent': theme.accent,
+    '--theme-accent-text': theme.accentText,
     '--theme-bg': theme.background,
     '--theme-text': theme.text,
+    '--theme-border': theme.border,
+    '--theme-link': theme.link,
+    '--theme-link-hover': theme.linkHover,
   } as CSSProperties
 
   // Create breadcrumb trail
@@ -151,7 +158,7 @@ export default function PostPage({ frontmatter, content, slug, posts = [] }: Pos
                       {frontmatter.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className='inline-block px-3 py-1 text-xs bg-theme-primary text-theme-bg'
+                          className='inline-block px-3 py-1 text-xs bg-theme-primary text-theme-primary-text'
                         >
                           {tag}
                         </span>

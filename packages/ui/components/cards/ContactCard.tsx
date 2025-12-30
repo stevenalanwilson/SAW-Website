@@ -26,15 +26,15 @@ export default function ContactCard({
   // Variant-specific styling
   const containerClasses =
     variant === 'card'
-      ? `bg-theme-primary text-theme-bg p-6 border-t-4 border-theme-bg ${className}`
+      ? `bg-theme-primary text-theme-footer-text p-6 border-t-4 border-theme-footer-text ${className}`
       : className
 
   const headingClasses =
     variant === 'card'
-      ? 'text-2xl font-bold mb-4 border-b-2 border-theme-bg pb-2'
-      : 'heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'
+      ? 'text-2xl font-bold mb-4 border-b-2 border-theme-footer-text pb-2'
+      : 'heading-3 text-2xl lg:text-3xl border-b-2 border-theme-footer-text text-theme-footer-text pb-4 mb-4'
 
-  const contentClasses = variant === 'card' ? 'space-y-4' : 'text-theme-bg'
+  const contentClasses = variant === 'card' ? 'space-y-4' : 'text-theme-footer-text'
   const paragraphClasses = variant === 'card' ? 'leading-relaxed' : 'mb-4 leading-relaxed'
   const locationsContainerClasses = variant === 'card' ? '' : 'mb-4'
 
@@ -73,7 +73,7 @@ export default function ContactCard({
           {emailAddress && (
             <a
               href={`mailto:${emailAddress}`}
-              className='block border border-theme-bg text-theme-bg hover:bg-theme-bg hover:text-theme-primary py-3 px-4 text-center transition-colors overflow-hidden'
+              className='block border border-theme-footer-text text-theme-footer-text hover:bg-theme-footer-text hover:text-theme-primary py-3 px-4 text-center transition-colors overflow-hidden'
               aria-label={`Send email to ${emailAddress}`}
             >
               <FontAwesomeIcon icon={faEnvelope as IconProp} className='mr-2' aria-hidden='true' />

@@ -79,11 +79,14 @@ export default function Post({ content, className = '' }: PostProps) {
           />
         ),
         code: (props: ComponentPropsWithoutRef<'code'>) => (
-          <code className='px-2 py-1 rounded text-sm bg-theme-accent text-theme-bg' {...props} />
+          <code
+            className='px-2 py-1 rounded text-sm bg-theme-accent text-theme-accent-text'
+            {...props}
+          />
         ),
         pre: (props: ComponentPropsWithoutRef<'pre'>) => (
           <pre
-            className='p-4 rounded overflow-x-auto mb-5 bg-theme-accent text-theme-bg'
+            className='p-4 rounded overflow-x-auto mb-5 bg-theme-accent text-theme-accent-text'
             {...props}
           />
         ),

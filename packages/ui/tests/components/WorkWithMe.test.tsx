@@ -93,8 +93,8 @@ describe('WorkWithMe Component', () => {
     })
     expect(emailButton).toHaveClass(
       'border',
-      'border-theme-bg',
-      'hover:bg-theme-bg',
+      'border-theme-footer-text',
+      'hover:bg-theme-footer-text',
       'hover:text-theme-primary'
     )
   })

@@ -85,10 +85,10 @@ describe('ContactCard Component', () => {
     const card = container.querySelector('div')
     expect(card).toHaveClass(
       'bg-theme-primary',
-      'text-theme-bg',
+      'text-theme-footer-text',
       'p-6',
       'border-t-4',
-      'border-theme-bg'
+      'border-theme-footer-text'
     )
   })
 
@@ -111,8 +111,8 @@ describe('ContactCard Component', () => {
     })
     expect(emailButton).toHaveClass(
       'border',
-      'border-theme-bg',
-      'hover:bg-theme-bg',
+      'border-theme-footer-text',
+      'hover:bg-theme-footer-text',
       'hover:text-theme-primary'
     )
   })

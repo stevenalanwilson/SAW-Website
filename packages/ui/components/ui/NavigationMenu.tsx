@@ -10,7 +10,7 @@ export default function NavigationMenu({
   onItemClick,
 }: NavigationMenuProps) {
   const baseClasses =
-    'text-theme-bg py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
+    'text-theme-primary-text py-3 px-5 hover:text-black hover:bg-white rounded transition-all duration-500 ease-in-out hover:shadow-lg'
   const desktopClasses = `${baseClasses} py-4 hover:scale-105`
   const mobileClasses = `block ${baseClasses}`
 

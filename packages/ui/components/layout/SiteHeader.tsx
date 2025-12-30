@@ -19,14 +19,14 @@ export default function SiteHeader() {
   }
 
   return (
-    <header className='bg-theme-primary text-theme-bg py-2 sticky top-0 z-50'>
+    <header className='bg-theme-primary text-theme-primary-text py-2 sticky top-0 z-50'>
       <div className='container mx-auto'>
         <div className='flex items-center justify-between saw--header'>
           <div className='w-full lg:w-1/2 p-0 lg:p-2 mx-4'>
             <Link
               href='/'
               title={name}
-              className='text-sm sm:text-base md:text-lg lg:text-xl font-bold hover:underline hover:no-underline lg:hover:underline transition-all text-theme-bg'
+              className='text-sm sm:text-base md:text-lg lg:text-xl font-bold hover:underline hover:no-underline lg:hover:underline transition-all text-theme-primary-text'
             >
               {title}
             </Link>
@@ -35,7 +35,7 @@ export default function SiteHeader() {
           {/* Burger menu button - visible on mobile, hidden on lg+ */}
           <button
             onClick={toggleMenu}
-            className='lg:hidden p-2 focus:outline-none focus:ring-2 rounded text-theme-bg border-theme-bg'
+            className='lg:hidden p-2 focus:outline-none focus:ring-2 rounded text-theme-primary-text border-theme-primary-text'
             aria-label='Toggle menu'
             aria-expanded={isMenuOpen}
           >

@@ -19,7 +19,7 @@ import type { FooterProps } from '../../types/components'
  */
 export default function Footer({ latestPosts = [] }: FooterProps) {
   return (
-    <footer className='bg-theme-primary text-theme-bg footer'>
+    <footer className='bg-theme-footer text-theme-footer-text footer'>
       <div className='container mx-auto'>
         {/* Tagline Section */}
         <div className='flex flex-wrap'>
@@ -30,7 +30,7 @@ export default function Footer({ latestPosts = [] }: FooterProps) {
         <div className='flex flex-wrap'>
           {/* Column 1: Services */}
           <div className='flex w-full lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
+            <div className='w-full border-b-2 border-theme-footer-text lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='ServicesList' errorMessage='Services list failed to load'>
                 <ServicesList />
               </SectionErrorBoundary>
@@ -39,7 +39,7 @@ export default function Footer({ latestPosts = [] }: FooterProps) {
 
           {/* Column 2: Latest Thinking */}
           <div className='flex w-full lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
+            <div className='w-full border-b-2 border-theme-footer-text lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='LatestPosts' errorMessage='Latest posts failed to load'>
                 <LatestPosts posts={latestPosts} limit={2} />
               </SectionErrorBoundary>
@@ -48,7 +48,7 @@ export default function Footer({ latestPosts = [] }: FooterProps) {
 
           {/* Column 3: Work With Me */}
           <div className='flex w-full lg:w-1/3 p-2'>
-            <div className='w-full border-b-2 border-theme-bg lg:border-b-0 mx-4 py-6'>
+            <div className='w-full border-b-2 border-theme-footer-text lg:border-b-0 mx-4 py-6'>
               <SectionErrorBoundary name='WorkWithMe' errorMessage='Contact section failed to load'>
                 <WorkWithMe />
               </SectionErrorBoundary>
@@ -59,7 +59,7 @@ export default function Footer({ latestPosts = [] }: FooterProps) {
         {/* Copyright */}
         <div className='flex flex-wrap'>
           <div className='w-full copyright mx-4 py-6'>
-            <p className='text-center text-sm text-theme-bg'>
+            <p className='text-center text-sm text-theme-footer-text'>
               {siteConfig.owner.name} <FontAwesomeIcon icon={faCopyright} aria-label='Copyright' />{' '}
               {new Date().getFullYear()} |{' '}
               <Link href={siteConfig.copyright.url} title={siteConfig.copyright.url}>

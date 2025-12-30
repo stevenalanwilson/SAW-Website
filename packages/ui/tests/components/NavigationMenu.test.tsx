@@ -37,7 +37,7 @@ describe('NavigationMenu Component', () => {
       render(<NavigationMenu items={mockMenuItems} />)
       const homeLink = screen.getByRole('link', { name: 'Home' })
 
-      expect(homeLink).toHaveClass('text-theme-bg', 'py-4', 'hover:scale-105')
+      expect(homeLink).toHaveClass('text-theme-primary-text', 'py-4', 'hover:scale-105')
     })
   })
 
@@ -60,7 +60,7 @@ describe('NavigationMenu Component', () => {
       render(<NavigationMenu items={mockMenuItems} mobile={true} />)
       const homeLink = screen.getByRole('link', { name: 'Home' })
 
-      expect(homeLink).toHaveClass('block', 'text-theme-bg')
+      expect(homeLink).toHaveClass('block', 'text-theme-primary-text')
     })
 
     it('calls onItemClick when link is clicked', () => {
@@ -135,7 +135,7 @@ describe('NavigationMenu Component', () => {
       const links = screen.getAllByRole('link')
 
       links.forEach((link) => {
-        expect(link).toHaveClass('text-theme-bg', 'py-3', 'px-5')
+        expect(link).toHaveClass('text-theme-primary-text', 'py-3', 'px-5')
       })
     })
 

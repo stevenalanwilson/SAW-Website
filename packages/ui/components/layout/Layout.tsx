@@ -35,9 +35,16 @@ export default function Layout({ children, latestPosts = [], themeStyles }: Exte
       const theme = getTheme(DEFAULT_THEME)
       return {
         '--theme-primary': theme.primary,
+        '--theme-primary-text': theme.primaryText,
+        '--theme-footer': theme.footer,
+        '--theme-footer-text': theme.footerText,
         '--theme-accent': theme.accent,
+        '--theme-accent-text': theme.accentText,
         '--theme-bg': theme.background,
         '--theme-text': theme.text,
+        '--theme-border': theme.border,
+        '--theme-link': theme.link,
+        '--theme-link-hover': theme.linkHover,
       } as CSSProperties
     })()
 

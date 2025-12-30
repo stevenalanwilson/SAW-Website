@@ -26,7 +26,7 @@ describe('Layout Component', () => {
         <div>Test Content</div>
       </Layout>
     )
-    expect(screen.getByTestId('site-header')).toBeInTheDocument()
+    expect(screen.getByRole('banner')).toBeInTheDocument()
   })
 
   it('renders children content', () => {
@@ -44,7 +44,7 @@ describe('Layout Component', () => {
         <div>Test Content</div>
       </Layout>
     )
-    expect(screen.getByTestId('footer')).toBeInTheDocument()
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument()
   })
 
   it('renders Analytics component', () => {

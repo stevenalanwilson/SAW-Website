@@ -23,25 +23,25 @@ interface LatestPostsProps {
 export default function LatestPosts({ posts = [], limit = 2 }: LatestPostsProps) {
   return (
     <div>
-      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-bg text-theme-bg pb-4 mb-4'>
+      <h2 className='heading-3 text-2xl lg:text-3xl border-b-2 border-theme-footer-text text-theme-footer-text pb-4 mb-4'>
         Latest Thinking
       </h2>
       <ul className='menu'>
         {posts.slice(0, limit).map((post) => (
           <li
             key={post.postSlug}
-            className='mb-4 pb-4 border-b border-theme-accent last:border-b-0'
+            className='mb-4 pb-4 border-b border-theme-footer-text last:border-b-0'
           >
             <Link
               href={`/post/${post.postSlug}`}
-              className='hover:underline transition-all text-theme-bg'
+              className='hover:underline transition-all text-theme-footer-text'
               title={post.postMetaData.title}
             >
               <h3 className='font-semibold mb-1'>{post.postMetaData.title}</h3>
             </Link>
-            <p className='text-sm text-theme-accent'>{post.postMetaData.summary}</p>
+            <p className='text-sm text-theme-footer-text opacity-80'>{post.postMetaData.summary}</p>
             {post.postMetaData.date && (
-              <p className='text-xs mt-2 text-theme-accent'>
+              <p className='text-xs mt-2 text-theme-footer-text opacity-70'>
                 {new Date(post.postMetaData.date).toLocaleDateString('en-GB', {
                   year: 'numeric',
                   month: 'long',
@@ -52,7 +52,7 @@ export default function LatestPosts({ posts = [], limit = 2 }: LatestPostsProps)
           </li>
         ))}
         {posts.length === 0 && (
-          <li className='text-sm text-theme-accent'>No posts available yet</li>
+          <li className='text-sm text-theme-footer-text opacity-80'>No posts available yet</li>
         )}
       </ul>
     </div>

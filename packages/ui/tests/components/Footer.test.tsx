@@ -70,6 +70,6 @@ describe('Footer Component', () => {
   it('applies footer styling', () => {
     const { container } = render(<Footer />)
     const footer = container.querySelector('footer')
-    expect(footer).toHaveClass('bg-theme-primary', 'text-theme-bg', 'footer')
+    expect(footer).toHaveClass('bg-theme-footer', 'text-theme-footer-text', 'footer')
   })
 })

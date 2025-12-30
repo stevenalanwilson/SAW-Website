@@ -21,20 +21,32 @@ export const brandColors: BrandColors = {
 export const articleThemes: ArticleThemes = {
   light: {
     name: 'Light',
-    primary: '#000000', // Black
-    accent: '#666666', // Medium gray for subtle text
-    background: '#ffffff', // White
-    text: '#000000', // Black
-    navText: '#000000', // Black navigation text
+    primary: '#000000', // Black - header background
+    primaryText: '#ffffff', // White - header text
+    footer: '#000000', // Black - footer background
+    footerText: '#ffffff', // White - footer text
+    accent: '#666666', // Medium gray - accents and highlights
+    accentText: '#ffffff', // White - text on gray background
+    background: '#ffffff', // White - page background
+    text: '#000000', // Black - body text
+    border: '#e5e5e5', // Light gray - borders
+    link: '#0066cc', // Blue - links
+    linkHover: '#004499', // Darker blue - link hover
   },
 
   dark: {
     name: 'Dark',
-    primary: '#ffffff', // White
-    accent: '#999999', // Medium-light gray for better contrast on black
-    background: '#000000', // Black
-    text: '#ffffff', // White
-    navText: '#ffffff', // White navigation text
+    primary: '#ffffff', // White - header background
+    primaryText: '#000000', // Black - header text
+    footer: '#ffffff', // White - footer background
+    footerText: '#000000', // Black - footer text
+    accent: '#999999', // Medium-light gray - accents and highlights
+    accentText: '#000000', // Black - text on gray background
+    background: '#000000', // Black - page background
+    text: '#ffffff', // White - body text
+    border: '#333333', // Dark gray - borders
+    link: '#66b3ff', // Light blue - links
+    linkHover: '#99ccff', // Lighter blue - link hover
   },
 }
 
