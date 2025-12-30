@@ -62,9 +62,14 @@ typings/
 .next
 .turbo
 
-# TypeScript build cache
+# TypeScript build cache and generated files
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+packages/ui/**/*.d.ts
+packages/ui/**/*.d.ts.map
+packages/ui/**/*.js
+!packages/ui/**/*.config.js
+!packages/ui/**/*.test.js
 
 # sonarcube
 

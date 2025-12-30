@@ -75,12 +75,62 @@ Each application maintains its own independent configuration while using the sha
 
 ### How it works (Dependency Injection)
 
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Monorepo Structure                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────────┐              ┌──────────────┐             │
+│  │ apps/limited │              │apps/creative │             │
+│  │              │              │              │             │
+│  │ ┌──────────┐ │              │ ┌──────────┐ │             │
+│  │ │  Config  │ │              │ │  Config  │ │             │
+│  │ │  @/config│ │              │ │  @/config│ │             │
+│  │ └────┬─────┘ │              │ └────┬─────┘ │             │
+│  └──────│───────┘              └──────│───────┘             │
+│         │                              │                     │
+│         └──────────┬───────────────────┘                     │
+│                    │ imports via path aliases               │
+│                    ▼                                         │
+│         ┌────────────────────┐                               │
+│         │   packages/ui      │                               │
+│         │                    │                               │
+│         │  ┌──────────────┐  │                               │
+│         │  │  Components  │  │  Shared Master Theme          │
+│         │  │  - Layout    │  │  Uses injected config         │
+│         │  │  - Footer    │  │  from each app                │
+│         │  │  - Header    │  │                               │
+│         │  └──────────────┘  │                               │
+│         │                    │                               │
+│         │  ┌──────────────┐  │                               │
+│         │  │    Types     │  │  Shared TypeScript            │
+│         │  │  - Site      │  │  definitions                  │
+│         │  │  - Component │  │                               │
+│         │  └──────────────┘  │                               │
+│         └────────────────────┘                               │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Dependency Injection Flow:**
+
 1. **Shared Components** Import: `import siteConfig from '@/config/siteConfig'`
 2. **Build-Time Resolution**:
-   - In **Limited**, `@/config` -> `apps/limited/config`
-   - In **Creative**, `@/config` -> `apps/creative/config`
+   - In **Limited**, `@/config` → `apps/limited/config` (stevenalanwilson.com)
+   - In **Creative**, `@/config` → `apps/creative/config` (creative.stevenalanwilson.com)
+3. **Result**: A single `Footer` component renders "Steven Alan Wilson Limited" on one site and "Steven Alan Wilson Creative" on the other.
 
-This allows a single `Footer` component to render "Steven Alan Wilson Limited" on one site and "Steven Alan Wilson Creative" on the other.
+**Path Alias Resolution** (defined in each app's `tsconfig.json`):
+
+```json
+{
+  "paths": {
+    "@/components/*": ["../../packages/ui/components/*"],
+    "@/types/*": ["../../packages/ui/types/*"],
+    "@/config/*": ["config/*"] // App-specific!
+  }
+}
+```
 
 ---
 
@@ -121,10 +171,36 @@ Run these scripts from the root directory:
 - **Styling**: Tailwind CSS 3.4.6 with CSS Custom Properties for theming
 - **Testing**: Jest 30.2.0, React Testing Library
 - **Quality**: ESLint, Prettier, Husky (pre-commit hooks)
+- **Build**: TypeScript Project References for incremental builds
+
+### Build System
+
+The monorepo uses **TypeScript Project References** for optimal build performance:
+
+```
+Build Order:
+  1. packages/ui (shared components & types)
+     ↓ generates .d.ts files
+  2. apps/limited & apps/creative (in parallel)
+     ↓ reference packages/ui
+  3. Production builds
+```
+
+**Build Commands:**
+
+- `npm run build` - Build all workspaces (UI package first, then apps)
+- `npm run typecheck` - Type-check all projects
+- `npx tsc --build packages/ui` - Build UI package declarations only
+
+**Benefits:**
+
+- Incremental builds (only rebuild what changed)
+- Better IDE performance and type-checking
+- Faster CI/CD pipelines
 
 ### Making Changes
 
-1. **UI Changes**: Edit components in `packages/ui`. Changes propagate to both apps immediately.
+1. **UI Changes**: Edit components in `packages/ui`. Run `npx tsc --build packages/ui` to regenerate type declarations if needed. Changes propagate to both apps immediately.
 2. **Content/Config**: Edit files in `apps/*/config/` or `apps/*/pages/`.
 
 ### Theming System
