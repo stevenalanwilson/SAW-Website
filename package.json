@@ -2,14 +2,20 @@
   "name": "saw-monorepo",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "24.x",
+    "npm": ">=10.0.0"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "husky install || true",
     "dev": "npm run dev:limited",
     "dev:limited": "npm run dev --workspace=@saw/limited",
     "dev:creative": "npm run dev --workspace=@saw/creative",
+    "dev:all": "npm run dev --workspaces",
     "build": "npm run build --workspaces",
     "build:limited": "npm run build --workspace=@saw/limited",
     "build:creative": "npm run build --workspace=@saw/creative",
@@ -18,6 +24,12 @@
     "start:creative": "npm run start --workspace=@saw/creative",
     "lint": "npm run lint --workspaces",
     "test": "npm run test --workspaces",
+    "test:ui": "npm run test --workspace=@saw/ui",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "typecheck": "npm run type-check --workspaces --if-present",
+    "clean": "rm -rf apps/*/.next apps/*/out packages/*/.next node_modules/.cache",
+    "clean:all": "rm -rf apps/*/.next apps/*/out packages/*/.next node_modules",
+    "clean:cache": "rm -rf apps/*/.next/cache .next/cache",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,css,scss}\""
   },

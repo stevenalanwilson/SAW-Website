@@ -2,7 +2,7 @@
 
 This repository contains the ecosystem of websites for Steven Alan Wilson, managed as a **Monorepo** using NPM Workspaces. It includes the main technical consultancy website ("Limited") and the creative portfolio ("Creative"), sharing a common UI library and "Master Theme".
 
-[![Node](https://img.shields.io/badge/node-22.x-brightgreen)]() [![Next.js](https://img.shields.io/badge/next.js-16.1.1-black)]() [![React](https://img.shields.io/badge/react-19.2.3-blue)]() [![TypeScript](https://img.shields.io/badge/typescript-5.x-blue)]()
+[![Node](https://img.shields.io/badge/node-24.x-brightgreen)]() [![Next.js](https://img.shields.io/badge/next.js-16.1.1-black)]() [![React](https://img.shields.io/badge/react-19.2.3-blue)]() [![TypeScript](https://img.shields.io/badge/typescript-5.x-blue)]()
 
 ---
 
@@ -88,7 +88,7 @@ This allows a single `Footer` component to render "Steven Alan Wilson Limited" o
 
 ### Prerequisites
 
-- **Node.js** 22.x or higher
+- **Node.js** 24.x or higher
 - **npm** (comes with Node.js)
 
 ### Installation
