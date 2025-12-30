@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "husky install || true",
+    "prepare": "husky || true",
     "dev": "npm run dev:limited",
     "dev:limited": "npm run dev --workspace=@saw/limited",
     "dev:creative": "npm run dev --workspace=@saw/creative",

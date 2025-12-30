@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
   "framework": null,
-  "installCommand": "npm ci --legacy-peer-deps",
+  "installCommand": "npm ci",
   "nodeVersion": "24.x"
 }
