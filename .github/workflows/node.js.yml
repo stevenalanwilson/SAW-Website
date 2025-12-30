@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -25,14 +25,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --legacy-peer-deps
+    - name: Cache TypeScript build info
+      uses: actions/cache@v4
+      with:
+        path: |
+          packages/ui/**/*.tsbuildinfo
+          packages/ui/**/*.d.ts
+          packages/ui/**/*.d.ts.map
+        key: ${{ runner.os }}-tsc-${{ hashFiles('packages/ui/**/*.ts', 'packages/ui/**/*.tsx', 'packages/ui/tsconfig.json') }}
+        restore-keys: |
+          ${{ runner.os }}-tsc-
     - name: Run tests
       run: npm test
-    # Add caching for better performance
-    - name: Cache node modules
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-

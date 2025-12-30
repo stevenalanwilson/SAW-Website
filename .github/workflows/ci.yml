@@ -70,6 +70,17 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Cache TypeScript build info
+        uses: actions/cache@v4
+        with:
+          path: |
+            packages/ui/**/*.tsbuildinfo
+            packages/ui/**/*.d.ts
+            packages/ui/**/*.d.ts.map
+          key: ${{ runner.os }}-tsc-${{ hashFiles('packages/ui/**/*.ts', 'packages/ui/**/*.tsx', 'packages/ui/tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsc-
+
       - name: Build production bundle
         run: npm run build
         env:
@@ -109,6 +120,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
+
+      - name: Cache TypeScript build info
+        uses: actions/cache@v4
+        with:
+          path: |
+            packages/ui/**/*.tsbuildinfo
+            packages/ui/**/*.d.ts
+            packages/ui/**/*.d.ts.map
+          key: ${{ runner.os }}-tsc-${{ hashFiles('packages/ui/**/*.ts', 'packages/ui/**/*.tsx', 'packages/ui/tsconfig.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsc-
 
       - name: Analyze bundle (PR)
         run: ANALYZE=true npm run build

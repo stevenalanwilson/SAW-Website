@@ -16,6 +16,7 @@
     "dev:limited": "npm run dev --workspace=@saw/limited",
     "dev:creative": "npm run dev --workspace=@saw/creative",
     "dev:all": "npm run dev --workspaces",
+    "prebuild": "npx tsc --build packages/ui",
     "build": "npm run build --workspaces",
     "build:limited": "npm run build --workspace=@saw/limited",
     "build:creative": "npm run build --workspace=@saw/creative",
